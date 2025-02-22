@@ -16,6 +16,7 @@ visit the website to get you image URL.
 
 - [/github](/github/README.md)
 - [/logos](/logos/README.md)
+- [/memes](/memes/README.md)
 - [/microbit](/microbit/README.md)
 - [/misc](/misc/README.md)
 - [/mkt](/mkt/README.md)
