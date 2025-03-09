@@ -55,6 +55,10 @@
     <td><img src="https://images.jointheleague.org/vscode/select_python.png" alt="select_python.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/vscode/select_venv.png">select_venv.png</a></td>
+    <td><img src="https://images.jointheleague.org/vscode/select_venv.png" alt="select_venv.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/vscode/vscode_start.png">vscode_start.png</a></td>
     <td><img src="https://images.jointheleague.org/vscode/vscode_start.png" alt="vscode_start.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
