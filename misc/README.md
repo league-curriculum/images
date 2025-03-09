@@ -7,6 +7,10 @@
     <th>Image</th>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/misc/codeserver-screen.png">codeserver-screen.png</a></td>
+    <td><img src="https://images.jointheleague.org/misc/codeserver-screen.png" alt="codeserver-screen.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/misc/datacenter.jpg">datacenter.jpg</a></td>
     <td><img src="https://images.jointheleague.org/misc/datacenter.jpg" alt="datacenter.jpg" style="max-width:200px; max-height:200px;"></td>
   </tr>
