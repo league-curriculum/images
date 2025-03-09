@@ -31,6 +31,10 @@
     <td><img src="https://images.jointheleague.org/vscode/run_buttons.png" alt="run_buttons.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/vscode/run_cell.png">run_cell.png</a></td>
+    <td><img src="https://images.jointheleague.org/vscode/run_cell.png" alt="run_cell.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/vscode/run_tina.png">run_tina.png</a></td>
     <td><img src="https://images.jointheleague.org/vscode/run_tina.png" alt="run_tina.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
