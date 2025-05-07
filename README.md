@@ -23,5 +23,6 @@ visit the website to get you image URL.
 - [/module-navigation](/module-navigation/README.md)
 - [/motors](/motors/README.md)
 - [/p3logos](/p3logos/README.md)
+- [/python](/python/README.md)
 - [/stock](/stock/README.md)
 - [/vscode](/vscode/README.md)
