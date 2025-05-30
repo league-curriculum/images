@@ -51,10 +51,6 @@
     <td><img src="https://images.jointheleague.org/github/create_fork.png" alt="create_fork.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/github/explorer_icon.png">explorer_icon.png</a></td>
-    <td><img src="https://images.jointheleague.org/github/explorer_icon.png" alt="explorer_icon.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/github/files.png">files.png</a></td>
     <td><img src="https://images.jointheleague.org/github/files.png" alt="files.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
@@ -65,10 +61,6 @@
   <tr>
     <td><a href="https://images.jointheleague.org/github/l0-m0_repo.png">l0-m0_repo.png</a></td>
     <td><img src="https://images.jointheleague.org/github/l0-m0_repo.png" alt="l0-m0_repo.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
-    <td><a href="https://images.jointheleague.org/github/league_flag_icon.png">league_flag_icon.png</a></td>
-    <td><img src="https://images.jointheleague.org/github/league_flag_icon.png" alt="league_flag_icon.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/github/new_codespace_button.png">new_codespace_button.png</a></td>

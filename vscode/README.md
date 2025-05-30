@@ -23,8 +23,16 @@
     <td><img src="https://images.jointheleague.org/vscode/debug_bar.png" alt="debug_bar.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/vscode/explorer_icon.png">explorer_icon.png</a></td>
+    <td><img src="https://images.jointheleague.org/vscode/explorer_icon.png" alt="explorer_icon.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/vscode/git_changes.png">git_changes.png</a></td>
     <td><img src="https://images.jointheleague.org/vscode/git_changes.png" alt="git_changes.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/vscode/league_flag_icon.png">league_flag_icon.png</a></td>
+    <td><img src="https://images.jointheleague.org/vscode/league_flag_icon.png" alt="league_flag_icon.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/vscode/run_buttons.png">run_buttons.png</a></td>
