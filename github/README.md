@@ -51,6 +51,10 @@
     <td><img src="https://images.jointheleague.org/github/create_fork.png" alt="create_fork.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/github/explorer_icon.png">explorer_icon.png</a></td>
+    <td><img src="https://images.jointheleague.org/github/explorer_icon.png" alt="explorer_icon.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/github/files.png">files.png</a></td>
     <td><img src="https://images.jointheleague.org/github/files.png" alt="files.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
@@ -61,6 +65,10 @@
   <tr>
     <td><a href="https://images.jointheleague.org/github/l0-m0_repo.png">l0-m0_repo.png</a></td>
     <td><img src="https://images.jointheleague.org/github/l0-m0_repo.png" alt="l0-m0_repo.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/github/league_flag_icon.png">league_flag_icon.png</a></td>
+    <td><img src="https://images.jointheleague.org/github/league_flag_icon.png" alt="league_flag_icon.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/github/new_codespace_button.png">new_codespace_button.png</a></td>
@@ -105,6 +113,10 @@
   <tr>
     <td><a href="https://images.jointheleague.org/github/understand_workflows.png">understand_workflows.png</a></td>
     <td><img src="https://images.jointheleague.org/github/understand_workflows.png" alt="understand_workflows.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/github/use_this_template.png">use_this_template.png</a></td>
+    <td><img src="https://images.jointheleague.org/github/use_this_template.png" alt="use_this_template.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/github/vscode.png">vscode.png</a></td>
