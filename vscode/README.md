@@ -35,6 +35,14 @@
     <td><img src="https://images.jointheleague.org/vscode/league_flag_icon.png" alt="league_flag_icon.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/vscode/lesson-browser.png">lesson-browser.png</a></td>
+    <td><img src="https://images.jointheleague.org/vscode/lesson-browser.png" alt="lesson-browser.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/vscode/monitor_icon.png">monitor_icon.png</a></td>
+    <td><img src="https://images.jointheleague.org/vscode/monitor_icon.png" alt="monitor_icon.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/vscode/run_buttons.png">run_buttons.png</a></td>
     <td><img src="https://images.jointheleague.org/vscode/run_buttons.png" alt="run_buttons.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
