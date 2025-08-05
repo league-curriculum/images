@@ -24,5 +24,6 @@ visit the website to get you image URL.
 - [/motors](/motors/README.md)
 - [/p3logos](/p3logos/README.md)
 - [/python](/python/README.md)
+- [/robots](/robots/README.md)
 - [/stock](/stock/README.md)
 - [/vscode](/vscode/README.md)
