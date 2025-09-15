@@ -15,12 +15,12 @@
     <td><img src="https://images.jointheleague.org/mkt/2020.01.03 Workshop Grads.jpg" alt="2020.01.03 Workshop Grads.jpg" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/mkt/2020.02.01 CV AP CS A Exam Prep.jpg">2020.02.01 CV AP CS A Exam Prep.jpg</a></td>
-    <td><img src="https://images.jointheleague.org/mkt/2020.02.01 CV AP CS A Exam Prep.jpg" alt="2020.02.01 CV AP CS A Exam Prep.jpg" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/mkt/2020.02.01 Central Library Shiva TA 2.jpg">2020.02.01 Central Library Shiva TA 2.jpg</a></td>
     <td><img src="https://images.jointheleague.org/mkt/2020.02.01 Central Library Shiva TA 2.jpg" alt="2020.02.01 Central Library Shiva TA 2.jpg" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/mkt/2020.02.01 CV AP CS A Exam Prep.jpg">2020.02.01 CV AP CS A Exam Prep.jpg</a></td>
+    <td><img src="https://images.jointheleague.org/mkt/2020.02.01 CV AP CS A Exam Prep.jpg" alt="2020.02.01 CV AP CS A Exam Prep.jpg" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/mkt/IMG_2333.png">IMG_2333.png</a></td>
