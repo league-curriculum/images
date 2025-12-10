@@ -23,12 +23,12 @@
     <td><img src="https://images.jointheleague.org/github/browser_window.png" alt="browser_window.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/github/code_button_sm.png">code_button_sm.png</a></td>
-    <td><img src="https://images.jointheleague.org/github/code_button_sm.png" alt="code_button_sm.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/github/code_button.png">code_button.png</a></td>
     <td><img src="https://images.jointheleague.org/github/code_button.png" alt="code_button.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/github/code_button_sm.png">code_button_sm.png</a></td>
+    <td><img src="https://images.jointheleague.org/github/code_button_sm.png" alt="code_button_sm.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/github/code_menu.png">code_menu.png</a></td>
@@ -39,12 +39,12 @@
     <td><img src="https://images.jointheleague.org/github/codespace_stopped.png" alt="codespace_stopped.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/github/create_codespace_sm.png">create_codespace_sm.png</a></td>
-    <td><img src="https://images.jointheleague.org/github/create_codespace_sm.png" alt="create_codespace_sm.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/github/create_codespace.png">create_codespace.png</a></td>
     <td><img src="https://images.jointheleague.org/github/create_codespace.png" alt="create_codespace.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/github/create_codespace_sm.png">create_codespace_sm.png</a></td>
+    <td><img src="https://images.jointheleague.org/github/create_codespace_sm.png" alt="create_codespace_sm.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/github/create_fork.png">create_fork.png</a></td>
@@ -79,12 +79,12 @@
     <td><img src="https://images.jointheleague.org/github/pane_config.png" alt="pane_config.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/github/ports_pane.png">ports_pane.png</a></td>
-    <td><img src="https://images.jointheleague.org/github/ports_pane.png" alt="ports_pane.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/github/ports.png">ports.png</a></td>
     <td><img src="https://images.jointheleague.org/github/ports.png" alt="ports.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/github/ports_pane.png">ports_pane.png</a></td>
+    <td><img src="https://images.jointheleague.org/github/ports_pane.png" alt="ports_pane.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/github/restart_codespace.png">restart_codespace.png</a></td>

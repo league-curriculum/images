@@ -55,6 +55,14 @@
     <td><img src="https://images.jointheleague.org/logos/flag.png" alt="flag.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
+    <td><a href="https://images.jointheleague.org/logos/logo4.png">logo4.png</a></td>
+    <td><img src="https://images.jointheleague.org/logos/logo4.png" alt="logo4.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/logos/logo_JTL_horiz.png">logo_JTL_horiz.png</a></td>
+    <td><img src="https://images.jointheleague.org/logos/logo_JTL_horiz.png" alt="logo_JTL_horiz.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
     <td><a href="https://images.jointheleague.org/logos/logo_black.png">logo_black.png</a></td>
     <td><img src="https://images.jointheleague.org/logos/logo_black.png" alt="logo_black.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
@@ -67,10 +75,6 @@
     <td><img src="https://images.jointheleague.org/logos/logo_girl_flag.png" alt="logo_girl_flag.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/logos/logo_JTL_horiz.png">logo_JTL_horiz.png</a></td>
-    <td><img src="https://images.jointheleague.org/logos/logo_JTL_horiz.png" alt="logo_JTL_horiz.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/logos/logo_square_1000.png">logo_square_1000.png</a></td>
     <td><img src="https://images.jointheleague.org/logos/logo_square_1000.png" alt="logo_square_1000.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
@@ -81,10 +85,6 @@
   <tr>
     <td><a href="https://images.jointheleague.org/logos/logo_white.png">logo_white.png</a></td>
     <td><img src="https://images.jointheleague.org/logos/logo_white.png" alt="logo_white.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
-    <td><a href="https://images.jointheleague.org/logos/logo4.png">logo4.png</a></td>
-    <td><img src="https://images.jointheleague.org/logos/logo4.png" alt="logo4.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/logos/t-shirt image final.png">t-shirt image final.png</a></td>

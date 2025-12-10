@@ -11,20 +11,20 @@
     <td><img src="https://images.jointheleague.org/motors/50_duty_trace.png" alt="50_duty_trace.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/motors/box_contents_2.png">box_contents_2.png</a></td>
-    <td><img src="https://images.jointheleague.org/motors/box_contents_2.png" alt="box_contents_2.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/motors/box_contents.png">box_contents.png</a></td>
     <td><img src="https://images.jointheleague.org/motors/box_contents.png" alt="box_contents.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/motors/breakout_connect.png">breakout_connect.png</a></td>
-    <td><img src="https://images.jointheleague.org/motors/breakout_connect.png" alt="breakout_connect.png" style="max-width:200px; max-height:200px;"></td>
+    <td><a href="https://images.jointheleague.org/motors/box_contents_2.png">box_contents_2.png</a></td>
+    <td><img src="https://images.jointheleague.org/motors/box_contents_2.png" alt="box_contents_2.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/motors/breakout.png">breakout.png</a></td>
     <td><img src="https://images.jointheleague.org/motors/breakout.png" alt="breakout.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/motors/breakout_connect.png">breakout_connect.png</a></td>
+    <td><img src="https://images.jointheleague.org/motors/breakout_connect.png" alt="breakout_connect.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/motors/hbridge-top.png">hbridge-top.png</a></td>

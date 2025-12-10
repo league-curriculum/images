@@ -14,6 +14,7 @@ visit the website to get you image URL.
 
 <!-- start generated content -->
 
+- [/classes](/classes/README.md)
 - [/github](/github/README.md)
 - [/logos](/logos/README.md)
 - [/memes](/memes/README.md)

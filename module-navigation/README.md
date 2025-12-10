@@ -55,12 +55,12 @@
     <td><img src="https://images.jointheleague.org/module-navigation/pane_config.png" alt="pane_config.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/module-navigation/ports_pane.png">ports_pane.png</a></td>
-    <td><img src="https://images.jointheleague.org/module-navigation/ports_pane.png" alt="ports_pane.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/module-navigation/ports.png">ports.png</a></td>
     <td><img src="https://images.jointheleague.org/module-navigation/ports.png" alt="ports.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/module-navigation/ports_pane.png">ports_pane.png</a></td>
+    <td><img src="https://images.jointheleague.org/module-navigation/ports_pane.png" alt="ports_pane.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
     <td><a href="https://images.jointheleague.org/module-navigation/red_square.png">red_square.png</a></td>
@@ -91,12 +91,12 @@
     <td><img src="https://images.jointheleague.org/module-navigation/view_button.png" alt="view_button.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
   <tr>
-    <td><a href="https://images.jointheleague.org/module-navigation/vscode_marked.png">vscode_marked.png</a></td>
-    <td><img src="https://images.jointheleague.org/module-navigation/vscode_marked.png" alt="vscode_marked.png" style="max-width:200px; max-height:200px;"></td>
-  </tr>
-  <tr>
     <td><a href="https://images.jointheleague.org/module-navigation/vscode.png">vscode.png</a></td>
     <td><img src="https://images.jointheleague.org/module-navigation/vscode.png" alt="vscode.png" style="max-width:200px; max-height:200px;"></td>
+  </tr>
+  <tr>
+    <td><a href="https://images.jointheleague.org/module-navigation/vscode_marked.png">vscode_marked.png</a></td>
+    <td><img src="https://images.jointheleague.org/module-navigation/vscode_marked.png" alt="vscode_marked.png" style="max-width:200px; max-height:200px;"></td>
   </tr>
 </table>
 
