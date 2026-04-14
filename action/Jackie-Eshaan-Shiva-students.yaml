@@ -1,0 +1,20 @@
+image:
+  name: Jackie-Eshaan-Shiva-students.jpg
+  path: action/Jackie-Eshaan-Shiva-students.jpg
+
+description: >
+  A black and white photo showing an older woman instructor and several
+  students in a computer lab with iMacs. Two younger girls in the foreground
+  are laughing and clapping excitedly, apparently delighted by something on
+  the screen. A teenage boy stands behind them smiling. Other students are
+  visible working at computers in the background.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

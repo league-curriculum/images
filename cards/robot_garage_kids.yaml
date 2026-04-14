@@ -1,0 +1,19 @@
+image:
+  name: robot_garage_kids.png
+  path: cards/robot_garage_kids.png
+
+description: >
+  A small card-sized photo of two teenage boys working together at a table
+  with electronics and a laptop. They are assembling or wiring small
+  components. The setting appears to be a classroom or workshop. One boy
+  has curly hair and the other wears glasses.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

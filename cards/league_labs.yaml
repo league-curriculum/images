@@ -1,0 +1,20 @@
+image:
+  name: league_labs.png
+  path: cards/league_labs.png
+
+description: >
+  An aerial or overhead photo showing a workbench or table with various
+  electronic components, circuit boards, and small devices scattered across
+  it. Green bounding boxes with labels are overlaid on some objects,
+  suggesting computer vision or object detection. The image appears to
+  demonstrate an AI or machine learning project.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false

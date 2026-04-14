@@ -1,0 +1,20 @@
+image:
+  name: IMG_4317-scaled.png
+  path: action/IMG_4317-scaled.png
+
+description: >
+  A teenage boy working in a workshop, measuring or adjusting a large white
+  piece of equipment that appears to be a CNC machine or scroll saw. Tools
+  hang on a pegboard wall behind him. A ruler, scissors, and sheets of
+  material are on the workbench. He is focused on a hands-on building or
+  fabrication project.
+
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

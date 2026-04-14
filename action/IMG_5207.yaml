@@ -1,0 +1,19 @@
+image:
+  name: IMG_5207.jpeg
+  path: action/IMG_5207.jpeg
+
+description: >
+  Three teenage boys leaning over and working on a competition robot in a
+  classroom. The robot has a metal frame chassis. Posters about "Robot Design
+  Executive Summary" and robot photos are on the wall behind them, along with
+  an American flag. The setting is a robotics lab or classroom.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: true

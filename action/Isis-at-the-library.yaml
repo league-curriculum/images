@@ -1,0 +1,19 @@
+image:
+  name: Isis-at-the-library.jpg
+  path: action/Isis-at-the-library.jpg
+
+description: >
+  The original rectangular version of the library coding session. Two students
+  sit at iMac computers in a library with bright green walls. A girl in a
+  yellow shirt talks to a boy who is typing on a keyboard. Other students
+  work at computers in the background. Headphones are on the desks.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

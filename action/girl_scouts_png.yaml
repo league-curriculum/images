@@ -1,0 +1,19 @@
+image:
+  name: girl_scouts.png
+  path: action/girl_scouts.png
+
+description: >
+  A smaller version of the Girl Scouts image. Three Girl Scouts sitting at
+  desktop iMac computers in a computer lab, smiling at the camera. The closest
+  girl wears a Girl Scout sash with badges. The screens show colorful graphics
+  from a coding project.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

@@ -1,0 +1,20 @@
+image:
+  name: soldering.png
+  path: action/soldering.png
+
+description: >
+  A young boy wearing safety glasses soldering a component using a soldering
+  iron and a helping-hands tool with alligator clips. A blue soldering sponge
+  and wire cutters are on the wooden workbench. The setting is a workshop or
+  maker space with equipment in the background. He is focused intently on the
+  delicate soldering work.
+
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

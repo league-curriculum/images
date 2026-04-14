@@ -1,0 +1,19 @@
+image:
+  name: League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png
+  path: action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png
+
+description: >
+  A small thumbnail image showing Councilmember Barbara Bry in a teal blazer
+  standing next to a student at a desktop computer in a coding classroom. This
+  appears to be a cropped version used in the Councilmember's February 2017
+  newsletter featuring The League.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

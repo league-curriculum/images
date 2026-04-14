@@ -1,0 +1,20 @@
+image:
+  name: DerekProgramming.png
+  path: action/DerekProgramming.png
+
+description: >
+  A teenage boy working on a laptop in a workshop or garage setting. An adult
+  man stands behind him observing. Wires and electronic components are visible
+  on the workbench next to the laptop. Tools hang on a pegboard wall in the
+  background. The scene suggests hands-on programming connected to a hardware
+  or electronics project.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

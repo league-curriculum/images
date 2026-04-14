@@ -1,0 +1,19 @@
+image:
+  name: Barbara-Bry-KPBS-visit-local-coding-school.jpg
+  path: action/Barbara-Bry-KPBS-visit-local-coding-school.jpg
+
+description: >
+  A woman in a teal blazer (Councilmember Barbara Bry) stands behind a young
+  girl sitting at a computer, observing her work during a visit to a local
+  coding school. Other students are visible at computers in the background.
+  The image appears to be a still from a KPBS news segment.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

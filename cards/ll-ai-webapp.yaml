@@ -1,0 +1,20 @@
+image:
+  name: ll-ai-webapp.png
+  path: cards/ll-ai-webapp.png
+
+description: >
+  A screenshot of a GitHub repository page for "League-Labs /
+  college-application-organizer" showing the Agents tab. A Claude Sonnet 4.6
+  AI agent session is in progress, creating a college application organizer
+  web app. The interface shows steps like setting up environment, starting
+  agent firewall, cloning the repo, and starting MCP servers.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false

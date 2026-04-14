@@ -1,0 +1,20 @@
+image:
+  name: denimkids.jpeg
+  path: action/denimkids.jpeg
+
+description: >
+  A stylized stock-style photo of two young people at a computer. A girl in a
+  denim jacket sits at a desk with a keyboard and dual monitors, smiling at the
+  screen. A young man in an orange cap stands behind her pointing at the screen,
+  appearing to guide or collaborate. The scene is lit with warm orange and blue
+  tones.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

@@ -1,0 +1,19 @@
+image:
+  name: java.png
+  path: cards/java.png
+
+description: >
+  A stylized card illustration for a Java course. Shows a steaming coffee cup
+  (referencing the Java coffee logo) on a dark surface surrounded by plant
+  leaves and floating decorative elements. The color palette is teal, yellow,
+  and dark blue.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

@@ -1,0 +1,20 @@
+image:
+  name: python_turtle.png
+  path: cards/python_turtle.png
+
+description: >
+  A screenshot of a Python Turtle graphics coding environment. The left panel
+  shows a main.py file with Python turtle code (import turtle, goto, pendown,
+  circle, forward, right commands). The right panel shows the turtle drawing
+  output — a simple face made of circles. Used as a card image for a Python
+  Turtle course.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false

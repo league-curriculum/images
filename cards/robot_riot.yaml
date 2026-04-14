@@ -1,0 +1,19 @@
+image:
+  name: robot_riot.png
+  path: cards/robot_riot.png
+
+description: >
+  A small photo of a blue LEGO-style competition robot built from Technic
+  pieces. The robot has a mechanical arm or launcher mechanism, gears, and
+  motors visible. It sits on a wooden surface. Used as a card image for a
+  Robot Riot course or activity.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false

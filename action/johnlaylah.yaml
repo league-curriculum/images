@@ -1,0 +1,20 @@
+image:
+  name: johnlaylah.jpg
+  path: action/johnlaylah.jpg
+
+description: >
+  A classroom scene with an adult man in an orange cap and orange t-shirt
+  sitting next to a girl working on a laptop. Both are wearing masks. Other
+  students and an instructor are visible in the background around tables.
+  A "Road Work Ahead" sign and artwork decorate the walls. A projector
+  screen and whiteboard are in the background.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

@@ -1,0 +1,18 @@
+image:
+  name: mx_workshop.png
+  path: action/mx_workshop.png
+
+description: >
+  A small thumbnail showing three students sitting at an outdoor table with
+  laptops, smiling at the camera. They appear to be participating in a
+  coding workshop in a casual outdoor setting.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

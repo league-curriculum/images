@@ -1,0 +1,20 @@
+image:
+  name: 2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg
+  path: action/2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg
+
+description: >
+  A group of about eight teenage students posing together for a group photo
+  outdoors in a lush garden or park setting with tropical plants and trees in
+  the background. They are smiling and standing close together. The photo
+  appears to be taken during a Bell Middle School Tech Discovery Day outing
+  or field trip.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

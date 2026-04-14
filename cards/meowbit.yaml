@@ -1,0 +1,19 @@
+image:
+  name: meowbit.png
+  path: cards/meowbit.png
+
+description: >
+  A product photo of a Meowbit handheld gaming device on a white background.
+  The orange device has a small color LCD screen displaying a platformer game,
+  directional buttons, action buttons, and cat-ear-shaped loops at the top.
+  Gold edge connectors are visible at the bottom for expansion.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false

@@ -1,0 +1,20 @@
+image:
+  name: IMG_6573_cropped.jpg
+  path: action/IMG_6573_cropped.jpg
+
+description: >
+  A group of students and adults in a courtyard with a stone fountain, posing
+  with a large ceremonial check. Two men in the foreground hold the oversized
+  check while students stand behind them, many wearing masks. This appears to
+  be a donation or grant presentation event for The League. This is a cropped
+  version of the wider shot.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

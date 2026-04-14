@@ -1,0 +1,20 @@
+image:
+  name: MG_5461_picmonkeyed-300x288-1.jpg
+  path: action/MG_5461_picmonkeyed-300x288-1.jpg
+
+description: >
+  Three people posing outdoors at what appears to be a conference or event.
+  A woman on the left and two teenage boys wearing lanyards with name badges
+  stand together smiling. One boy wears a blue button-down shirt, the other
+  a dark polo. The setting looks like a university campus with buildings
+  visible in the background.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

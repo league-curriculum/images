@@ -1,0 +1,19 @@
+image:
+  name: forcepoint-hackathon.jpg
+  path: action/forcepoint-hackathon.jpg
+
+description: >
+  A large group photo of approximately 30 students and adults at a Forcepoint
+  Hackathon event. Many participants are wearing matching dark blue Forcepoint
+  t-shirts. They are posed together in a conference room or classroom with a
+  projector screen and whiteboard behind them.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

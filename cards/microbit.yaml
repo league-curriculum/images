@@ -1,0 +1,19 @@
+image:
+  name: microbit.png
+  path: cards/microbit.png
+
+description: >
+  An illustration of a BBC micro:bit board on a light background with blue
+  and yellow geometric shapes. The board shows its LED grid displaying a
+  heart pattern, two programmable buttons (A and B), a USB connector at top,
+  and gold edge connector pins labeled 0, 1, 2, 3V, and GND at the bottom.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false

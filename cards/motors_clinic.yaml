@@ -1,0 +1,19 @@
+image:
+  name: motors_clinic.png
+  path: cards/motors_clinic.png
+
+description: >
+  A small photo of a DIY electronics project on a yellow and blue LEGO-style
+  baseplate. A motor, motor driver board, wires, and other electronic
+  components are assembled on the platform. This appears to be a card image
+  for a motors clinic or workshop.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false

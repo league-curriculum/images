@@ -1,0 +1,18 @@
+image:
+  name: python.png
+  path: cards/python.png
+
+description: >
+  A stylized card illustration for a Python course. Shows a golden/teal
+  cartoon snake (python) coiled on a dark teal background. Code bracket
+  symbols, stars, and decorative elements float around it.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

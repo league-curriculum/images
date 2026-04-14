@@ -1,0 +1,19 @@
+image:
+  name: SanMarcos.png
+  path: cards/SanMarcos.png
+
+description: >
+  A small exterior photo of a modern building at dusk with large glass windows
+  and illuminated interior. The building appears to be a community center,
+  library, or school facility in San Marcos. The sky is a twilight blue and
+  landscaping is visible in the foreground.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

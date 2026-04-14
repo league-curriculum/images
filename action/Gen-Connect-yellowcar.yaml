@@ -1,0 +1,20 @@
+image:
+  name: Gen-Connect-yellowcar.jpg
+  path: action/Gen-Connect-yellowcar.jpg
+
+description: >
+  An overhead view of a classroom or workshop with several students sitting
+  around folding tables working on laptops. Sticky notes are clustered on a
+  whiteboard in the background. Some students are wearing masks. A "Real Work
+  Ahead" road sign and posters decorate the walls. Electronics components are
+  visible on some tables. One laptop shows an image of a yellow car.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

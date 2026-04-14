@@ -1,0 +1,19 @@
+image:
+  name: logo-Forcepoint-Hackathon.png
+  path: action/logo-Forcepoint-Hackathon.png
+
+description: >
+  A small, wide thumbnail version of the Forcepoint Hackathon group photo
+  with a Forcepoint logo watermark. Shows the large group of approximately
+  30 participants in matching blue t-shirts posed together in a conference
+  room.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false

@@ -1,0 +1,20 @@
+image:
+  name: robot_garage.png
+  path: action/robot_garage.png
+
+description: >
+  Two teenage boys working together at a workbench in a garage or workshop.
+  One is leaning in to work on a small electronic component while the other
+  smiles. A laptop is open on the table along with a small red robot chassis,
+  jumper wires, and other electronics. Tools and equipment fill the workshop
+  background including a drill press.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: true

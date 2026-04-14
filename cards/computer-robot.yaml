@@ -1,0 +1,19 @@
+image:
+  name: computer-robot.png
+  path: cards/computer-robot.png
+
+description: >
+  A small 3D-style illustration of a laptop computer with an orange screen,
+  surrounded by floating decorative elements like stars, a coffee cup, and
+  abstract shapes on a light blue and purple background. A stylized, playful
+  graphic used as a card image.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

@@ -1,0 +1,19 @@
+image:
+  name: Bry-Visits-Local-Coding-Schoo.jpg
+  path: action/Bry-Visits-Local-Coding-Schoo.jpg
+
+description: >
+  A closer shot of Councilmember Barbara Bry in a teal blazer standing behind
+  a young boy wearing a League t-shirt who is working at a desktop computer.
+  She is smiling and watching the student code. This is from the same visit
+  as the KPBS image but focused on a different student.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

@@ -1,0 +1,21 @@
+image:
+  name: ap-prep.png
+  path: action/ap-prep.png
+
+description: >
+  The original uncropped version of the AP Prep at the Library image. Two
+  students in a classroom or library setting — one in a striped shirt and
+  glasses writing on a whiteboard with what appears to be code or formulas,
+  and the other in a blue shirt and black hoodie holding an open textbook
+  or study guide. Both are smiling at the camera. A folding chair and
+  carpeted floor are visible in the background.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

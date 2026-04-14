@@ -1,0 +1,18 @@
+image:
+  name: IMG_3697.png
+  path: cards/IMG_3697.png
+
+description: >
+  A small card-sized headshot photo of a smiling bald man wearing a green
+  collared shirt against a plain light background. This appears to be a
+  portrait of an instructor or staff member.
+
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

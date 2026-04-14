@@ -1,0 +1,20 @@
+image:
+  name: EEDelMarTimes.jpeg
+  path: action/EEDelMarTimes.jpeg
+
+description: >
+  A group of four female students and one adult male instructor standing in a
+  room, each holding up small electronic components or circuit boards they
+  appear to have built. One student wears a Disneyland sweatshirt, another
+  wears a hijab. The instructor stands on the right in a maroon polo shirt.
+  The setting appears to be a classroom or office space.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

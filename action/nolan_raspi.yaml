@@ -1,0 +1,20 @@
+image:
+  name: nolan_raspi.jpeg
+  path: action/nolan_raspi.jpeg
+
+description: >
+  A young boy sitting at a desk working with a Raspberry Pi mounted on a
+  LEGO baseplate with wires and electronic components. A monitor behind him
+  shows code in an editor. A mechanical keyboard and tool drawers labeled
+  "Wood Chisels" and "Files" are visible in the workshop setting. He is
+  smiling while interacting with the hardware project.
+
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

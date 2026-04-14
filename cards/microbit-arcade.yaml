@@ -1,0 +1,19 @@
+image:
+  name: microbit-arcade.png
+  path: cards/microbit-arcade.png
+
+description: >
+  A product photo of a blue handheld gaming device (micro:bit arcade-style
+  console) on a white background. It has a color LCD screen displaying a
+  platformer game, a D-pad on the left, and action buttons on the right.
+  The device resembles a miniature Game Boy.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false

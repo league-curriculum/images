@@ -1,0 +1,19 @@
+image:
+  name: tech-arcade.png
+  path: cards/tech-arcade.png
+
+description: >
+  A photo of an adult instructor and several children gathered around a table
+  covered with electronics, circuit boards, wires, and robotics components.
+  The instructor in a yellow shirt is helping the kids with a hands-on
+  building activity. The children look engaged and focused on their projects.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

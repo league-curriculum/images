@@ -1,0 +1,20 @@
+image:
+  name: Our_MissionBG.png
+  path: action/Our_MissionBG.png
+
+description: >
+  A dark, wide banner-style image showing several students gathered around an
+  iMac computer in a classroom. One student in a red shirt sits at the
+  computer while others stand around looking at the screen. The image has a
+  dark overlay, likely used as a website background for a "Our Mission"
+  section.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

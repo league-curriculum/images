@@ -1,0 +1,19 @@
+image:
+  name: forcepoint_cyber.png
+  path: action/forcepoint_cyber.png
+
+description: >
+  Three students sitting at a desk in front of an iMac computer in what appears
+  to be an office environment. Two students are wearing matching red shirts,
+  suggesting a team event or hackathon. They appear to be collaborating on a
+  programming task.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

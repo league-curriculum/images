@@ -1,0 +1,20 @@
+image:
+  name: Shreas.png
+  path: action/Shreas.png
+
+description: >
+  Two boys in a workshop or garage working on electronics at a workbench.
+  They are wiring up components on a breadboard or circuit board with motors
+  and wires. A laptop is open nearby. Yellow parts bins and tool drawers
+  labeled "Junk" and "Jigs" are visible on shelving behind them. Both boys
+  wear blue shirts.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true

@@ -1,0 +1,20 @@
+image:
+  name: orbit-lab.png
+  path: cards/orbit-lab.png
+
+description: >
+  A screenshot of an orbital mechanics simulation program running on a black
+  background. It shows the Sun, Mercury, Venus, Earth, Mars, and Jupiter with
+  their orbital paths and velocity vectors (green arrows). Data readouts on
+  the left show time, distance in AU, and velocity for each planet. Controls
+  for pause, speed, and zoom are listed on the right.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false

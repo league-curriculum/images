@@ -1,0 +1,19 @@
+image:
+  name: logo-Bell-MS-Tech-Discovery-Day_5.jpg
+  path: action/logo-Bell-MS-Tech-Discovery-Day_5.jpg
+
+description: >
+  A smaller thumbnail version of the Bell Middle School Tech Discovery Day
+  image with a small League logo watermark in the upper left corner. Shows
+  students working on electronics at a table with an instructor supervising.
+  Same scene as the full-size version.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: true
+  action: true

@@ -1,0 +1,20 @@
+image:
+  name: IMG_6573-scaled.jpeg
+  path: action/IMG_6573-scaled.jpeg
+
+description: >
+  The wider version of the check presentation photo. A group of students and
+  adults pose in a courtyard with a stone fountain. Two men in the foreground
+  hold a large ceremonial check while students stand behind them, many wearing
+  masks. The courtyard has lush greenery and a Spanish-style building in the
+  background.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

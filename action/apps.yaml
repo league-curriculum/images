@@ -1,0 +1,20 @@
+image:
+  name: apps.png
+  path: action/apps.png
+
+description: >
+  Two teenage boys posing together in front of a desktop computer monitor
+  displaying what appears to be an app or website they built. They are smiling
+  proudly. The setting looks like a home office or classroom with framed items
+  on the wall behind them. The image suggests they are showing off a
+  programming or app development project.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

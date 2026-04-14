@@ -1,0 +1,19 @@
+image:
+  name: github_pages.png
+  path: cards/github_pages.png
+
+description: >
+  The GitHub Octocat logo displayed large on a blue background. The white
+  cat-octopus silhouette is inside a white circle. Partial text "GitHub P..."
+  is visible at the bottom, indicating this is a card image for a GitHub
+  Pages course.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false

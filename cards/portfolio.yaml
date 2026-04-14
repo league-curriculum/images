@@ -1,0 +1,18 @@
+image:
+  name: portfolio.png
+  path: cards/portfolio.png
+
+description: >
+  A small photo of a laptop screen displaying a "PROJECTS" portfolio webpage
+  with a grid of project thumbnails and descriptions. The page appears to be
+  a student portfolio site showcasing various completed projects.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false

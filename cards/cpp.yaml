@@ -1,0 +1,19 @@
+image:
+  name: cpp.png
+  path: cards/cpp.png
+
+description: >
+  A stylized card illustration for a C++ course. Shows a game controller and
+  a code editor window on a soft purple and yellow gradient background. The
+  text "C++" is displayed at the bottom. Decorative pill-shaped elements
+  float in the background.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false

@@ -1,0 +1,19 @@
+image:
+  name: about_flag.png
+  path: cards/about_flag.png
+
+description: >
+  An illustrated graphic of an orange flag with a lightning bolt symbol on it.
+  Code syntax symbols like curly braces and closing tags float around it.
+  Decorative stars and a dashed orbit line surround the flag on a soft yellow
+  background. This is a stylized illustration, not a photograph.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false

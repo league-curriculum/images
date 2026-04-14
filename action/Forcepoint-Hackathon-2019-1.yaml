@@ -1,0 +1,19 @@
+image:
+  name: Forcepoint-Hackathon-2019-1.jpg
+  path: action/Forcepoint-Hackathon-2019-1.jpg
+
+description: >
+  Four teenage students sitting around a conference table with an iMac,
+  smiling at the camera during the 2019 Forcepoint Hackathon. Water bottles,
+  snacks, and cables are on the table. The setting is a corporate office or
+  conference room.
+
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true

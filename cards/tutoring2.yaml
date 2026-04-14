@@ -1,0 +1,18 @@
+image:
+  name: tutoring2.png
+  path: cards/tutoring2.png
+
+description: >
+  Same illustration as tutoring.png — the League's orange flag with a white
+  lightning bolt on a blue flagpole against radiating yellow and orange
+  sunburst rays. Appears to be a slightly different crop or size variant.
+
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
