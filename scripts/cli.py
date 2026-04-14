@@ -41,7 +41,12 @@ def index():
 
 @cli.command()
 def build():
-    """Run full pipeline: describe, compile, index."""
+    """Run full pipeline: describe, compile, index.
+
+    The describe step requires ANTHROPIC_API_KEY. If the key is not set,
+    describe is skipped and the build continues with compile and index
+    using existing YAML files.
+    """
     from scripts.describe import run_describe
     from scripts.compile import run_compile
     from scripts.index import run_index

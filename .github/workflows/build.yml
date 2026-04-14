@@ -1,0 +1,64 @@
+name: Build Image Catalog
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Describe images (skipped without API key)
+        run: uv run mkimg describe
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Compile catalog
+        run: uv run mkimg compile
+
+      - name: Generate site
+        run: uv run mkimg index
+
+      - name: Prepare Pages artifact
+        run: |
+          # Copy image directories into _site so pages are self-contained
+          for dir in action cards classes github logos memes microbit misc mkt module-navigation motors p3logos python robots stock vscode; do
+            if [ -d "$dir" ]; then
+              cp -r "$dir" _site/
+            fi
+          done
+          # Copy CNAME for custom domain
+          cp CNAME _site/ 2>/dev/null || true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -5,6 +5,7 @@ import yaml
 from pathlib import Path
 
 SKIP_DIRS = {'.git', '.venv', '__pycache__', 'data', 'scripts', 'templates', 'node_modules'}
+IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
 
 
 def run_compile(base: Path):
@@ -35,8 +36,9 @@ def run_compile(base: Path):
             'image_count': 0,
         }
 
+        # Collect described images from YAML files
+        described = {}  # image filename -> entry
         yaml_files = sorted(d.glob('*.yaml'))
-        image_count = 0
 
         for yf in yaml_files:
             if yf.name == 'category.yaml':
@@ -60,14 +62,35 @@ def run_compile(base: Path):
                 'flags': doc.get('flags', {}),
             }
 
-            catalog['images'].append(image_entry)
-            image_count += 1
+            described[doc['image']['name']] = image_entry
 
             for flag_name in doc.get('flags', {}).keys():
                 catalog['flags'].add(flag_name)
 
+        # Find all image files, including undescribed ones
+        all_images = sorted(
+            f for f in d.iterdir()
+            if f.is_file() and f.suffix.lower() in IMAGE_EXTENSIONS
+        )
+
+        undescribed = 0
+        for img_file in all_images:
+            if img_file.name in described:
+                catalog['images'].append(described[img_file.name])
+            else:
+                catalog['images'].append({
+                    'name': img_file.name,
+                    'path': str(img_file.relative_to(base)),
+                    'category': category_name,
+                    'description': '',
+                    'flags': {},
+                })
+                undescribed += 1
+
+        image_count = len(all_images)
         catalog['categories'][category_name]['image_count'] = image_count
-        print(f"  {category_name}: {image_count} images")
+        desc_label = f" ({undescribed} undescribed)" if undescribed else ""
+        print(f"  {category_name}: {image_count} images{desc_label}")
 
     catalog['flags'] = sorted(catalog['flags'])
 

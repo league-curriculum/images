@@ -292,6 +292,12 @@ def process_directory(client: anthropic.Anthropic, base: Path, dir_path: Path, c
 
 def run_describe(base: Path, categories: list[str] | None):
     """Entry point for the describe command."""
+    import os
+    api_key = os.environ.get('ANTHROPIC_API_KEY', '')
+    if not api_key:
+        print("No ANTHROPIC_API_KEY set — skipping describe step.")
+        return
+
     client = anthropic.Anthropic()
 
     dirs_to_process = categories if categories else sorted(CATEGORIES.keys())

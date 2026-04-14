@@ -2,11 +2,11 @@
   "categories": {
     "action": {
       "description": "Action shots showing students engaged in activities, demonstrating that the League is fun and active.",
-      "image_count": 44
+      "image_count": 45
     },
     "cards": {
       "description": "Adornments for classes on the website. Fairly generic representations of a class or program.",
-      "image_count": 32
+      "image_count": 31
     },
     "classes": {
       "description": "Images specific to individual classes, not the whole category but particular courses.",
@@ -1211,30 +1211,11 @@
       }
     },
     {
-      "name": "IMG_3697.png",
-      "path": "cards/IMG_3697.png",
-      "category": "cards",
-      "description": "A headshot portrait of a middle-aged man smiling at the camera against a plain light background. He is wearing a light green and black collared jacket. This appears to be a professional or staff photo, likely used for The League's website to represent an instructor or team member.",
-      "flags": {
-        "person_1": true,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
+      "name": "test_no_yaml.png",
+      "path": "action/test_no_yaml.png",
+      "category": "action",
+      "description": "",
+      "flags": {}
     },
     {
       "name": "SanMarcos.png",
