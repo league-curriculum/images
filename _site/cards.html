@@ -68,21 +68,9 @@
       border-left: 3px solid var(--orange);
       padding-left: calc(1rem - 3px);
     }
-    .sidebar .flag-btn {
-      display: inline-block;
-      padding: .2rem .5rem;
-      margin: .15rem .15rem .15rem 1rem;
-      border-radius: 4px;
-      font-size: .75rem;
-      cursor: pointer;
-      background: rgba(255,255,255,.1);
-      color: var(--gray-300);
-      text-decoration: none;
-      transition: all .15s;
-    }
-    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
-      background: var(--orange);
-      color: #fff;
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
     }
 
     /* Main area */
@@ -164,11 +152,18 @@
     .image-card .info {
       padding: .75rem;
     }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
     .image-card .name {
       font-size: .8rem;
       font-weight: 600;
       word-break: break-all;
-      margin-bottom: .35rem;
+      flex: 1;
+      min-width: 0;
     }
     .image-card .name a {
       color: var(--gray-900);
@@ -176,6 +171,26 @@
     }
     .image-card .name a:hover {
       color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
     }
     .image-card .desc {
       font-size: .75rem;
@@ -199,39 +214,123 @@
       background: var(--orange-light);
       color: var(--orange);
     }
+    .image-card .thumb {
+      cursor: pointer;
+    }
 
-    /* Index page category cards */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
     }
-    .cat-card {
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
       background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: 8px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
       padding: 1.25rem;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow .2s;
     }
-    .cat-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
     }
-    .cat-card h3 {
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
       color: var(--orange);
-      margin-bottom: .35rem;
     }
-    .cat-card p {
-      font-size: .85rem;
-      color: var(--gray-500);
-      line-height: 1.4;
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
     }
-    .cat-card .count {
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
       font-size: .8rem;
       color: var(--gray-700);
-      margin-top: .5rem;
-      font-weight: 600;
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
     }
   </style>
 </head>
@@ -308,55 +407,53 @@
   </a>
   
 
-  <h2>Filter by Flag</h2>
-  <div style="padding: 0 0 1rem 0;">
-    
-    <span class="flag-btn" data-flag="action">action</span>
-    
-    <span class="flag-btn" data-flag="building">building</span>
-    
-    <span class="flag-btn" data-flag="duplicate">duplicate</span>
-    
-    <span class="flag-btn" data-flag="event">event</span>
-    
-    <span class="flag-btn" data-flag="group_photo">group_photo</span>
-    
-    <span class="flag-btn" data-flag="hardware">hardware</span>
-    
-    <span class="flag-btn" data-flag="illustration">illustration</span>
-    
-    <span class="flag-btn" data-flag="logo">logo</span>
-    
-    <span class="flag-btn" data-flag="outdoor">outdoor</span>
-    
-    <span class="flag-btn" data-flag="person_1">person_1</span>
-    
-    <span class="flag-btn" data-flag="person_n">person_n</span>
-    
-    <span class="flag-btn" data-flag="presentation">presentation</span>
-    
-    <span class="flag-btn" data-flag="product_photo">product_photo</span>
-    
-    <span class="flag-btn" data-flag="programming">programming</span>
-    
-    <span class="flag-btn" data-flag="robot">robot</span>
-    
-    <span class="flag-btn" data-flag="screenshot">screenshot</span>
-    
-    <span class="flag-btn" data-flag="stock">stock</span>
-    
-    <span class="flag-btn" data-flag="teaching">teaching</span>
-    
-  </div>
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
 </nav>
 
 <div class="main">
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
     <span class="result-count" id="result-count"></span>
   </div>
 
-  <div class="content">
+  <div class="content" id="page-content">
     
 <h1>cards</h1>
 <p class="subtitle">Adornments for classes on the website. Fairly generic representations of a class or program. &mdash; 32 images</p>
@@ -364,944 +461,1349 @@
 <div class="image-grid" id="image-grid">
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a headshot portrait of a middle-aged man smiling at the camera against a plain light background. he is wearing a light green and black collared jacket. this appears to be a professional or staff photo, likely used for the league&#39;s website to represent an instructor or team member."
-       data-flags="person_1"
-       data-name="img_3697.png">
-    <img class="thumb" src="../cards/IMG_3697.png" alt="IMG_3697.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a headshot portrait of a middle-aged man smiling at the camera against a plain light background. he is wearing a light green and black collared jacket. this appears to be a professional or staff photo, likely used for the league&#39;s website to represent an instructor or team member."
+     data-name="img_3697.png"
+     data-src="../cards/IMG_3697.png"
+     data-url="https://images.jointheleague.org/cards/IMG_3697.png"
+     data-full-desc="A headshot portrait of a middle-aged man smiling at the camera against a plain light background. He is wearing a light green and black collared jacket. This appears to be a professional or staff photo, likely used for The League&#39;s website to represent an instructor or team member."
+     data-flags="person_1">
+  <img class="thumb" src="../cards/IMG_3697.png" alt="IMG_3697.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/IMG_3697.png" target="_blank">IMG_3697.png</a></div>
-      <div class="desc">A headshot portrait of a middle-aged man smiling at the camera against a plain light background. He is wearing a light green and black collared jacket. This appears to be a professional or staff photo, likely used for The League&#39;s website to represent an instructor or team member.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/IMG_3697.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A headshot portrait of a middle-aged man smiling at the camera against a plain light background. He is wearing a light green and black collared jacket. This appears to be a professional or staff photo, likely used for The League&#39;s website to represent an instructor or team member.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a photograph of a modern school building exterior taken during dusk or early evening. the san francisco high school building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. the sky displays blue and purple tones typical of twilight hours."
-       data-flags="building,outdoor"
-       data-name="sanmarcos.png">
-    <img class="thumb" src="../cards/SanMarcos.png" alt="SanMarcos.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a photograph of a modern school building exterior taken during dusk or early evening. the san francisco high school building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. the sky displays blue and purple tones typical of twilight hours."
+     data-name="sanmarcos.png"
+     data-src="../cards/SanMarcos.png"
+     data-url="https://images.jointheleague.org/cards/SanMarcos.png"
+     data-full-desc="A photograph of a modern school building exterior taken during dusk or early evening. The San Francisco High School building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. The sky displays blue and purple tones typical of twilight hours."
+     data-flags="building,outdoor">
+  <img class="thumb" src="../cards/SanMarcos.png" alt="SanMarcos.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/SanMarcos.png" target="_blank">SanMarcos.png</a></div>
-      <div class="desc">A photograph of a modern school building exterior taken during dusk or early evening. The San Francisco High School building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. The sky displays blue and purple tones typical of twilight hours.</div>
-      <div class="tags">
-        
-        <span class="tag">building</span>
-        
-        <span class="tag">outdoor</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/SanMarcos.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A photograph of a modern school building exterior taken during dusk or early evening. The San Francisco High School building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. The sky displays blue and purple tones typical of twilight hours.</div>
+    <div class="tags">
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. the design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit."
-       data-flags="illustration,programming"
-       data-name="about_flag.png">
-    <img class="thumb" src="../cards/about_flag.png" alt="about_flag.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. the design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit."
+     data-name="about_flag.png"
+     data-src="../cards/about_flag.png"
+     data-url="https://images.jointheleague.org/cards/about_flag.png"
+     data-full-desc="An illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. The design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/about_flag.png" alt="about_flag.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/about_flag.png" target="_blank">about_flag.png</a></div>
-      <div class="desc">An illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. The design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/about_flag.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. The design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (python, javascript, java, html5, c++, swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. the design uses a blue and white color scheme and represents the breadth of programming education."
-       data-flags="action,illustration,programming"
-       data-name="ai-agents.png">
-    <img class="thumb" src="../cards/ai-agents.png" alt="ai-agents.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (python, javascript, java, html5, c++, swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. the design uses a blue and white color scheme and represents the breadth of programming education."
+     data-name="ai-agents.png"
+     data-src="../cards/ai-agents.png"
+     data-url="https://images.jointheleague.org/cards/ai-agents.png"
+     data-full-desc="A vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (Python, JavaScript, Java, HTML5, C++, Swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. The design uses a blue and white color scheme and represents the breadth of programming education."
+     data-flags="action,illustration,programming">
+  <img class="thumb" src="../cards/ai-agents.png" alt="ai-agents.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/ai-agents.png" target="_blank">ai-agents.png</a></div>
-      <div class="desc">A vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (Python, JavaScript, Java, HTML5, C++, Swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. The design uses a blue and white color scheme and represents the breadth of programming education.</div>
-      <div class="tags">
-        
-        <span class="tag">action</span>
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/ai-agents.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (Python, JavaScript, Java, HTML5, C++, Swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. The design uses a blue and white color scheme and represents the breadth of programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. the child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning."
-       data-flags="person_1,hardware,action,stock"
-       data-name="boy_soldering.png">
-    <img class="thumb" src="../cards/boy_soldering.png" alt="boy_soldering.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. the child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning."
+     data-name="boy_soldering.png"
+     data-src="../cards/boy_soldering.png"
+     data-url="https://images.jointheleague.org/cards/boy_soldering.png"
+     data-full-desc="A young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. The child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning."
+     data-flags="person_1,hardware,action,stock">
+  <img class="thumb" src="../cards/boy_soldering.png" alt="boy_soldering.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/boy_soldering.png" target="_blank">boy_soldering.png</a></div>
-      <div class="desc">A young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. The child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">action</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/boy_soldering.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. The child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. this appears to be a generic graphic asset representing coding or computer programming education."
-       data-flags="robot,hardware,illustration,programming,stock"
-       data-name="computer-robot.png">
-    <img class="thumb" src="../cards/computer-robot.png" alt="computer-robot.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. this appears to be a generic graphic asset representing coding or computer programming education."
+     data-name="computer-robot.png"
+     data-src="../cards/computer-robot.png"
+     data-url="https://images.jointheleague.org/cards/computer-robot.png"
+     data-full-desc="A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education."
+     data-flags="robot,hardware,illustration,programming,stock">
+  <img class="thumb" src="../cards/computer-robot.png" alt="computer-robot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/computer-robot.png" target="_blank">computer-robot.png</a></div>
-      <div class="desc">A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/computer-robot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustrated card showing programming and gaming concepts with a game controller, code snippets (c++, c), and a stylized laptop or coding interface on a gradient blue and yellow background. the image uses soft, modern 3d-style graphics typical of educational technology materials."
-       data-flags="hardware,illustration,programming"
-       data-name="cpp.png">
-    <img class="thumb" src="../cards/cpp.png" alt="cpp.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustrated card showing programming and gaming concepts with a game controller, code snippets (c++, c), and a stylized laptop or coding interface on a gradient blue and yellow background. the image uses soft, modern 3d-style graphics typical of educational technology materials."
+     data-name="cpp.png"
+     data-src="../cards/cpp.png"
+     data-url="https://images.jointheleague.org/cards/cpp.png"
+     data-full-desc="An illustrated card showing programming and gaming concepts with a game controller, code snippets (C++, C), and a stylized laptop or coding interface on a gradient blue and yellow background. The image uses soft, modern 3D-style graphics typical of educational technology materials."
+     data-flags="hardware,illustration,programming">
+  <img class="thumb" src="../cards/cpp.png" alt="cpp.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/cpp.png" target="_blank">cpp.png</a></div>
-      <div class="desc">An illustrated card showing programming and gaming concepts with a game controller, code snippets (C++, C), and a stylized laptop or coding interface on a gradient blue and yellow background. The image uses soft, modern 3D-style graphics typical of educational technology materials.</div>
-      <div class="tags">
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/cpp.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated card showing programming and gaming concepts with a game controller, code snippets (C++, C), and a stylized laptop or coding interface on a gradient blue and yellow background. The image uses soft, modern 3D-style graphics typical of educational technology materials.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustrated graphic featuring a code editor window with html/css syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. the design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style."
-       data-flags="illustration,programming"
-       data-name="current_students.png">
-    <img class="thumb" src="../cards/current_students.png" alt="current_students.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustrated graphic featuring a code editor window with html/css syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. the design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style."
+     data-name="current_students.png"
+     data-src="../cards/current_students.png"
+     data-url="https://images.jointheleague.org/cards/current_students.png"
+     data-full-desc="An illustrated graphic featuring a code editor window with HTML/CSS syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. The design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/current_students.png" alt="current_students.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/current_students.png" target="_blank">current_students.png</a></div>
-      <div class="desc">An illustrated graphic featuring a code editor window with HTML/CSS syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. The design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/current_students.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated graphic featuring a code editor window with HTML/CSS syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. The design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with led displays, dual white sensors on the front, and batteries mounted on top. the robot is designed for educational purposes to teach coding and robotics principles."
-       data-flags="robot,hardware,product_photo"
-       data-name="cutebot.png">
-    <img class="thumb" src="../cards/cutebot.png" alt="cutebot.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with led displays, dual white sensors on the front, and batteries mounted on top. the robot is designed for educational purposes to teach coding and robotics principles."
+     data-name="cutebot.png"
+     data-src="../cards/cutebot.png"
+     data-url="https://images.jointheleague.org/cards/cutebot.png"
+     data-full-desc="A product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with LED displays, dual white sensors on the front, and batteries mounted on top. The robot is designed for educational purposes to teach coding and robotics principles."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../cards/cutebot.png" alt="cutebot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/cutebot.png" target="_blank">cutebot.png</a></div>
-      <div class="desc">A product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with LED displays, dual white sensors on the front, and batteries mounted on top. The robot is designed for educational purposes to teach coding and robotics principles.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/cutebot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with LED displays, dual white sensors on the front, and batteries mounted on top. The robot is designed for educational purposes to teach coding and robotics principles.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="the github logo featuring octocat (the white cat mascot with tentacles) on a blue background. this is a partial view of the logo with text beginning to appear at the bottom."
-       data-flags="logo,illustration,duplicate"
-       data-name="github_pages.png">
-    <img class="thumb" src="../cards/github_pages.png" alt="github_pages.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="the github logo featuring octocat (the white cat mascot with tentacles) on a blue background. this is a partial view of the logo with text beginning to appear at the bottom."
+     data-name="github_pages.png"
+     data-src="../cards/github_pages.png"
+     data-url="https://images.jointheleague.org/cards/github_pages.png"
+     data-full-desc="The GitHub logo featuring Octocat (the white cat mascot with tentacles) on a blue background. This is a partial view of the logo with text beginning to appear at the bottom."
+     data-flags="logo,illustration,duplicate">
+  <img class="thumb" src="../cards/github_pages.png" alt="github_pages.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/github_pages.png" target="_blank">github_pages.png</a></div>
-      <div class="desc">The GitHub logo featuring Octocat (the white cat mascot with tentacles) on a blue background. This is a partial view of the logo with text beginning to appear at the bottom.</div>
-      <div class="tags">
-        
-        <span class="tag">logo</span>
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">duplicate</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/github_pages.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The GitHub logo featuring Octocat (the white cat mascot with tentacles) on a blue background. This is a partial view of the logo with text beginning to appear at the bottom.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. the design uses a soft pastel color palette with a gentle, welcoming aesthetic."
-       data-flags="illustration"
-       data-name="java.png">
-    <img class="thumb" src="../cards/java.png" alt="java.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. the design uses a soft pastel color palette with a gentle, welcoming aesthetic."
+     data-name="java.png"
+     data-src="../cards/java.png"
+     data-url="https://images.jointheleague.org/cards/java.png"
+     data-full-desc="An illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. The design uses a soft pastel color palette with a gentle, welcoming aesthetic."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/java.png" alt="java.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/java.png" target="_blank">java.png</a></div>
-      <div class="desc">An illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. The design uses a soft pastel color palette with a gentle, welcoming aesthetic.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/java.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. The design uses a soft pastel color palette with a gentle, welcoming aesthetic.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a colorful vector illustration depicting a code editor window with programming symbols. the image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. decorative blue star shapes and dots surround the composition on a light yellow background."
-       data-flags="illustration,programming"
-       data-name="league_code.png">
-    <img class="thumb" src="../cards/league_code.png" alt="league_code.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration depicting a code editor window with programming symbols. the image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. decorative blue star shapes and dots surround the composition on a light yellow background."
+     data-name="league_code.png"
+     data-src="../cards/league_code.png"
+     data-url="https://images.jointheleague.org/cards/league_code.png"
+     data-full-desc="A colorful vector illustration depicting a code editor window with programming symbols. The image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. Decorative blue star shapes and dots surround the composition on a light yellow background."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/league_code.png" alt="league_code.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/league_code.png" target="_blank">league_code.png</a></div>
-      <div class="desc">A colorful vector illustration depicting a code editor window with programming symbols. The image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. Decorative blue star shapes and dots surround the composition on a light yellow background.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/league_code.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration depicting a code editor window with programming symbols. The image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. Decorative blue star shapes and dots surround the composition on a light yellow background.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot showing an overhead map or game view with multiple card icons scattered across a gray textured background. each card icon displays the number of a card suit and has green text labels with numerical values beneath them, connected by yellow arrow lines indicating movement or relationships between the cards."
-       data-flags="screenshot"
-       data-name="league_labs.png">
-    <img class="thumb" src="../cards/league_labs.png" alt="league_labs.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot showing an overhead map or game view with multiple card icons scattered across a gray textured background. each card icon displays the number of a card suit and has green text labels with numerical values beneath them, connected by yellow arrow lines indicating movement or relationships between the cards."
+     data-name="league_labs.png"
+     data-src="../cards/league_labs.png"
+     data-url="https://images.jointheleague.org/cards/league_labs.png"
+     data-full-desc="A screenshot showing an overhead map or game view with multiple card icons scattered across a gray textured background. Each card icon displays the number of a card suit and has green text labels with numerical values beneath them, connected by yellow arrow lines indicating movement or relationships between the cards."
+     data-flags="screenshot">
+  <img class="thumb" src="../cards/league_labs.png" alt="league_labs.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/league_labs.png" target="_blank">league_labs.png</a></div>
-      <div class="desc">A screenshot showing an overhead map or game view with multiple card icons scattered across a gray textured background. Each card icon displays the number of a card suit and has green text labels with numerical values beneath them, connected by yellow arrow lines indicating movement or relationships between the cards.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/league_labs.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot showing an overhead map or game view with multiple card icons scattered across a gray textured background. Each card icon displays the number of a card suit and has green text labels with numerical values beneath them, connected by yellow arrow lines indicating movement or relationships between the cards.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a github repository page for a project called &#39;college-application-organizer&#39; under the league-labs organization. the page shows an ai agent (claude sonnet 4.6) working on creating a college application organizer web app, with a task breakdown and setup environment steps visible."
-       data-flags="screenshot,programming"
-       data-name="ll-ai-webapp.png">
-    <img class="thumb" src="../cards/ll-ai-webapp.png" alt="ll-ai-webapp.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a github repository page for a project called &#39;college-application-organizer&#39; under the league-labs organization. the page shows an ai agent (claude sonnet 4.6) working on creating a college application organizer web app, with a task breakdown and setup environment steps visible."
+     data-name="ll-ai-webapp.png"
+     data-src="../cards/ll-ai-webapp.png"
+     data-url="https://images.jointheleague.org/cards/ll-ai-webapp.png"
+     data-full-desc="A screenshot of a GitHub repository page for a project called &#39;college-application-organizer&#39; under the League-Labs organization. The page shows an AI agent (Claude Sonnet 4.6) working on creating a college application organizer web app, with a task breakdown and setup environment steps visible."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../cards/ll-ai-webapp.png" alt="ll-ai-webapp.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/ll-ai-webapp.png" target="_blank">ll-ai-webapp.png</a></div>
-      <div class="desc">A screenshot of a GitHub repository page for a project called &#39;college-application-organizer&#39; under the League-Labs organization. The page shows an AI agent (Claude Sonnet 4.6) working on creating a college application organizer web app, with a task breakdown and setup environment steps visible.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/ll-ai-webapp.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a GitHub repository page for a project called &#39;college-application-organizer&#39; under the League-Labs organization. The page shows an AI agent (Claude Sonnet 4.6) working on creating a college application organizer web app, with a task breakdown and setup environment steps visible.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a yellow handheld gaming device or electronic toy with a small screen displaying a retro-style video game with red blocks and blue background. the device features multiple black control buttons arranged around the lower portion and appears to be a nostalgic or educational electronics product suitable for a youth coding organization."
-       data-flags="hardware,product_photo"
-       data-name="meowbit.png">
-    <img class="thumb" src="../cards/meowbit.png" alt="meowbit.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a yellow handheld gaming device or electronic toy with a small screen displaying a retro-style video game with red blocks and blue background. the device features multiple black control buttons arranged around the lower portion and appears to be a nostalgic or educational electronics product suitable for a youth coding organization."
+     data-name="meowbit.png"
+     data-src="../cards/meowbit.png"
+     data-url="https://images.jointheleague.org/cards/meowbit.png"
+     data-full-desc="A yellow handheld gaming device or electronic toy with a small screen displaying a retro-style video game with red blocks and blue background. The device features multiple black control buttons arranged around the lower portion and appears to be a nostalgic or educational electronics product suitable for a youth coding organization."
+     data-flags="hardware,product_photo">
+  <img class="thumb" src="../cards/meowbit.png" alt="meowbit.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/meowbit.png" target="_blank">meowbit.png</a></div>
-      <div class="desc">A yellow handheld gaming device or electronic toy with a small screen displaying a retro-style video game with red blocks and blue background. The device features multiple black control buttons arranged around the lower portion and appears to be a nostalgic or educational electronics product suitable for a youth coding organization.</div>
-      <div class="tags">
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/meowbit.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A yellow handheld gaming device or electronic toy with a small screen displaying a retro-style video game with red blocks and blue background. The device features multiple black control buttons arranged around the lower portion and appears to be a nostalgic or educational electronics product suitable for a youth coding organization.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a bright blue handheld gaming device or portable game console displayed against a white background. the device features a small screen showing a pixel-art style game with red structures and character sprites, along with a d-pad and action buttons on the front. this appears to be a product shot representing gaming or interactive programming concepts relevant to youth coding education."
-       data-flags="hardware,product_photo,stock"
-       data-name="microbit-arcade.png">
-    <img class="thumb" src="../cards/microbit-arcade.png" alt="microbit-arcade.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a bright blue handheld gaming device or portable game console displayed against a white background. the device features a small screen showing a pixel-art style game with red structures and character sprites, along with a d-pad and action buttons on the front. this appears to be a product shot representing gaming or interactive programming concepts relevant to youth coding education."
+     data-name="microbit-arcade.png"
+     data-src="../cards/microbit-arcade.png"
+     data-url="https://images.jointheleague.org/cards/microbit-arcade.png"
+     data-full-desc="A bright blue handheld gaming device or portable game console displayed against a white background. The device features a small screen showing a pixel-art style game with red structures and character sprites, along with a D-pad and action buttons on the front. This appears to be a product shot representing gaming or interactive programming concepts relevant to youth coding education."
+     data-flags="hardware,product_photo,stock">
+  <img class="thumb" src="../cards/microbit-arcade.png" alt="microbit-arcade.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/microbit-arcade.png" target="_blank">microbit-arcade.png</a></div>
-      <div class="desc">A bright blue handheld gaming device or portable game console displayed against a white background. The device features a small screen showing a pixel-art style game with red structures and character sprites, along with a D-pad and action buttons on the front. This appears to be a product shot representing gaming or interactive programming concepts relevant to youth coding education.</div>
-      <div class="tags">
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/microbit-arcade.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A bright blue handheld gaming device or portable game console displayed against a white background. The device features a small screen showing a pixel-art style game with red structures and character sprites, along with a D-pad and action buttons on the front. This appears to be a product shot representing gaming or interactive programming concepts relevant to youth coding education.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red led dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3v, gnd). the design features a black body with blue accents and a yellow pin header strip."
-       data-flags="hardware,illustration"
-       data-name="microbit.png">
-    <img class="thumb" src="../cards/microbit.png" alt="microbit.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red led dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3v, gnd). the design features a black body with blue accents and a yellow pin header strip."
+     data-name="microbit.png"
+     data-src="../cards/microbit.png"
+     data-url="https://images.jointheleague.org/cards/microbit.png"
+     data-full-desc="An illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red LED dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3V, GND). The design features a black body with blue accents and a yellow pin header strip."
+     data-flags="hardware,illustration">
+  <img class="thumb" src="../cards/microbit.png" alt="microbit.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/microbit.png" target="_blank">microbit.png</a></div>
-      <div class="desc">An illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red LED dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3V, GND). The design features a black body with blue accents and a yellow pin header strip.</div>
-      <div class="tags">
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/microbit.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red LED dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3V, GND). The design features a black body with blue accents and a yellow pin header strip.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. this appears to be an educational stem or robotics build typical of youth coding and engineering programs."
-       data-flags="robot,hardware,product_photo"
-       data-name="motors_clinic.png">
-    <img class="thumb" src="../cards/motors_clinic.png" alt="motors_clinic.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. this appears to be an educational stem or robotics build typical of youth coding and engineering programs."
+     data-name="motors_clinic.png"
+     data-src="../cards/motors_clinic.png"
+     data-url="https://images.jointheleague.org/cards/motors_clinic.png"
+     data-full-desc="A robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. This appears to be an educational STEM or robotics build typical of youth coding and engineering programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../cards/motors_clinic.png" alt="motors_clinic.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/motors_clinic.png" target="_blank">motors_clinic.png</a></div>
-      <div class="desc">A robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. This appears to be an educational STEM or robotics build typical of youth coding and engineering programs.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/motors_clinic.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. This appears to be an educational STEM or robotics build typical of youth coding and engineering programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of an interactive solar system simulation or educational software showing planetary orbits and positions. the display includes orbital data for mercury, venus, earth, mars, and jupiter with their distances in au and speeds in km/s, along with control options for the simulation."
-       data-flags="screenshot"
-       data-name="orbit-lab.png">
-    <img class="thumb" src="../cards/orbit-lab.png" alt="orbit-lab.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of an interactive solar system simulation or educational software showing planetary orbits and positions. the display includes orbital data for mercury, venus, earth, mars, and jupiter with their distances in au and speeds in km/s, along with control options for the simulation."
+     data-name="orbit-lab.png"
+     data-src="../cards/orbit-lab.png"
+     data-url="https://images.jointheleague.org/cards/orbit-lab.png"
+     data-full-desc="A screenshot of an interactive solar system simulation or educational software showing planetary orbits and positions. The display includes orbital data for Mercury, Venus, Earth, Mars, and Jupiter with their distances in AU and speeds in km/s, along with control options for the simulation."
+     data-flags="screenshot">
+  <img class="thumb" src="../cards/orbit-lab.png" alt="orbit-lab.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/orbit-lab.png" target="_blank">orbit-lab.png</a></div>
-      <div class="desc">A screenshot of an interactive solar system simulation or educational software showing planetary orbits and positions. The display includes orbital data for Mercury, Venus, Earth, Mars, and Jupiter with their distances in AU and speeds in km/s, along with control options for the simulation.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/orbit-lab.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of an interactive solar system simulation or educational software showing planetary orbits and positions. The display includes orbital data for Mercury, Venus, Earth, Mars, and Jupiter with their distances in AU and speeds in km/s, along with control options for the simulation.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a portfolio website displaying a &#39;projects&#39; page with a grid of project cards showing past accomplishments. the page features thumbnails of various tech projects including an automated plant watering system, mobile app development projects, and other hardware/software initiatives, typical of what young programmers at the league might create."
-       data-flags="screenshot,programming"
-       data-name="portfolio.png">
-    <img class="thumb" src="../cards/portfolio.png" alt="portfolio.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a portfolio website displaying a &#39;projects&#39; page with a grid of project cards showing past accomplishments. the page features thumbnails of various tech projects including an automated plant watering system, mobile app development projects, and other hardware/software initiatives, typical of what young programmers at the league might create."
+     data-name="portfolio.png"
+     data-src="../cards/portfolio.png"
+     data-url="https://images.jointheleague.org/cards/portfolio.png"
+     data-full-desc="A screenshot of a portfolio website displaying a &#39;PROJECTS&#39; page with a grid of project cards showing past accomplishments. The page features thumbnails of various tech projects including an Automated Plant Watering System, Mobile App Development projects, and other hardware/software initiatives, typical of what young programmers at The League might create."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../cards/portfolio.png" alt="portfolio.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/portfolio.png" target="_blank">portfolio.png</a></div>
-      <div class="desc">A screenshot of a portfolio website displaying a &#39;PROJECTS&#39; page with a grid of project cards showing past accomplishments. The page features thumbnails of various tech projects including an Automated Plant Watering System, Mobile App Development projects, and other hardware/software initiatives, typical of what young programmers at The League might create.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/portfolio.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a portfolio website displaying a &#39;PROJECTS&#39; page with a grid of project cards showing past accomplishments. The page features thumbnails of various tech projects including an Automated Plant Watering System, Mobile App Development projects, and other hardware/software initiatives, typical of what young programmers at The League might create.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. the window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment."
-       data-flags="illustration,programming"
-       data-name="programs.png">
-    <img class="thumb" src="../cards/programs.png" alt="programs.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. the window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment."
+     data-name="programs.png"
+     data-src="../cards/programs.png"
+     data-url="https://images.jointheleague.org/cards/programs.png"
+     data-full-desc="An illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. The window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/programs.png" alt="programs.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/programs.png" target="_blank">programs.png</a></div>
-      <div class="desc">An illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. The window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/programs.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. The window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. the design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content."
-       data-flags="illustration"
-       data-name="python.png">
-    <img class="thumb" src="../cards/python.png" alt="python.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. the design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content."
+     data-name="python.png"
+     data-src="../cards/python.png"
+     data-url="https://images.jointheleague.org/cards/python.png"
+     data-full-desc="A colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. The design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/python.png" alt="python.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/python.png" target="_blank">python.png</a></div>
-      <div class="desc">A colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. The design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/python.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. The design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a pixel art screenshot of the classic space invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
-       data-flags="screenshot,robot,illustration,duplicate,stock"
-       data-name="python_games.png">
-    <img class="thumb" src="../cards/python_games.png" alt="python_games.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a pixel art screenshot of the classic space invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
+     data-name="python_games.png"
+     data-src="../cards/python_games.png"
+     data-url="https://images.jointheleague.org/cards/python_games.png"
+     data-full-desc="A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
+     data-flags="screenshot,robot,illustration,duplicate,stock">
+  <img class="thumb" src="../cards/python_games.png" alt="python_games.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/python_games.png" target="_blank">python_games.png</a></div>
-      <div class="desc">A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">duplicate</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/python_games.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a python programming environment showing turtle graphics code on the left side and its output on the right. the code uses the turtle module to draw a simple character face with circles and pentagons, resulting in a cartoon-like face with two eyes, a nose, and an open mouth on the right panel."
-       data-flags="screenshot,programming"
-       data-name="python_turtle.png">
-    <img class="thumb" src="../cards/python_turtle.png" alt="python_turtle.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a python programming environment showing turtle graphics code on the left side and its output on the right. the code uses the turtle module to draw a simple character face with circles and pentagons, resulting in a cartoon-like face with two eyes, a nose, and an open mouth on the right panel."
+     data-name="python_turtle.png"
+     data-src="../cards/python_turtle.png"
+     data-url="https://images.jointheleague.org/cards/python_turtle.png"
+     data-full-desc="A screenshot of a Python programming environment showing turtle graphics code on the left side and its output on the right. The code uses the turtle module to draw a simple character face with circles and pentagons, resulting in a cartoon-like face with two eyes, a nose, and an open mouth on the right panel."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../cards/python_turtle.png" alt="python_turtle.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/python_turtle.png" target="_blank">python_turtle.png</a></div>
-      <div class="desc">A screenshot of a Python programming environment showing turtle graphics code on the left side and its output on the right. The code uses the turtle module to draw a simple character face with circles and pentagons, resulting in a cartoon-like face with two eyes, a nose, and an open mouth on the right panel.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/python_turtle.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Python programming environment showing turtle graphics code on the left side and its output on the right. The code uses the turtle module to draw a simple character face with circles and pentagons, resulting in a cartoon-like face with two eyes, a nose, and an open mouth on the right panel.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a young person works with a robotic arm in a workshop setting filled with tools and equipment. the scene shows hands-on stem learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
-       data-flags="person_1,robot,hardware,action"
-       data-name="robot_garage.png">
-    <img class="thumb" src="../cards/robot_garage.png" alt="robot_garage.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a young person works with a robotic arm in a workshop setting filled with tools and equipment. the scene shows hands-on stem learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
+     data-name="robot_garage.png"
+     data-src="../cards/robot_garage.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage.png"
+     data-full-desc="A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
+     data-flags="person_1,robot,hardware,action">
+  <img class="thumb" src="../cards/robot_garage.png" alt="robot_garage.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/robot_garage.png" target="_blank">robot_garage.png</a></div>
-      <div class="desc">A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">action</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. they are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
-       data-flags="person_1,robot,hardware,action"
-       data-name="robot_garage_building.png">
-    <img class="thumb" src="../cards/robot_garage_building.png" alt="robot_garage_building.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. they are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
+     data-name="robot_garage_building.png"
+     data-src="../cards/robot_garage_building.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_building.png"
+     data-full-desc="A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
+     data-flags="person_1,robot,hardware,action">
+  <img class="thumb" src="../cards/robot_garage_building.png" alt="robot_garage_building.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/robot_garage_building.png" target="_blank">robot_garage_building.png</a></div>
-      <div class="desc">A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">action</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_building.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="two young students work together at a table with electronics and a laptop, engaged in a hands-on hardware project. one student is holding and connecting components while the other observes, with a computer displaying code visible on the right side. the scene shows an active learning environment typical of the league&#39;s coding and robotics programs."
-       data-flags="person_n,hardware,action,programming"
-       data-name="robot_garage_kids.png">
-    <img class="thumb" src="../cards/robot_garage_kids.png" alt="robot_garage_kids.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="two young students work together at a table with electronics and a laptop, engaged in a hands-on hardware project. one student is holding and connecting components while the other observes, with a computer displaying code visible on the right side. the scene shows an active learning environment typical of the league&#39;s coding and robotics programs."
+     data-name="robot_garage_kids.png"
+     data-src="../cards/robot_garage_kids.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_kids.png"
+     data-full-desc="Two young students work together at a table with electronics and a laptop, engaged in a hands-on hardware project. One student is holding and connecting components while the other observes, with a computer displaying code visible on the right side. The scene shows an active learning environment typical of The League&#39;s coding and robotics programs."
+     data-flags="person_n,hardware,action,programming">
+  <img class="thumb" src="../cards/robot_garage_kids.png" alt="robot_garage_kids.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/robot_garage_kids.png" target="_blank">robot_garage_kids.png</a></div>
-      <div class="desc">Two young students work together at a table with electronics and a laptop, engaged in a hands-on hardware project. One student is holding and connecting components while the other observes, with a computer displaying code visible on the right side. The scene shows an active learning environment typical of The League&#39;s coding and robotics programs.</div>
-      <div class="tags">
-        
-        <span class="tag">person_n</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">action</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_kids.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two young students work together at a table with electronics and a laptop, engaged in a hands-on hardware project. One student is holding and connecting components while the other observes, with a computer displaying code visible on the right side. The scene shows an active learning environment typical of The League&#39;s coding and robotics programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. the scene shows a hands-on stem learning environment with tools and equipment organized on pegboards in the background, typical of the league&#39;s maker/robotics programs."
-       data-flags="person_1,robot,hardware,action,programming"
-       data-name="robot_garage_programming.png">
-    <img class="thumb" src="../cards/robot_garage_programming.png" alt="robot_garage_programming.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. the scene shows a hands-on stem learning environment with tools and equipment organized on pegboards in the background, typical of the league&#39;s maker/robotics programs."
+     data-name="robot_garage_programming.png"
+     data-src="../cards/robot_garage_programming.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_programming.png"
+     data-full-desc="A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs."
+     data-flags="person_1,robot,hardware,action,programming">
+  <img class="thumb" src="../cards/robot_garage_programming.png" alt="robot_garage_programming.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/robot_garage_programming.png" target="_blank">robot_garage_programming.png</a></div>
-      <div class="desc">A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">action</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_programming.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a blue and black robotic construction with mechanical arms and legs sits on a wooden floor. the robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. this appears to be a student-built robotics project typical of youth coding and engineering programs."
-       data-flags="robot,hardware,product_photo"
-       data-name="robot_riot.png">
-    <img class="thumb" src="../cards/robot_riot.png" alt="robot_riot.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a blue and black robotic construction with mechanical arms and legs sits on a wooden floor. the robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. this appears to be a student-built robotics project typical of youth coding and engineering programs."
+     data-name="robot_riot.png"
+     data-src="../cards/robot_riot.png"
+     data-url="https://images.jointheleague.org/cards/robot_riot.png"
+     data-full-desc="A blue and black robotic construction with mechanical arms and legs sits on a wooden floor. The robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. This appears to be a student-built robotics project typical of youth coding and engineering programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../cards/robot_riot.png" alt="robot_riot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/robot_riot.png" target="_blank">robot_riot.png</a></div>
-      <div class="desc">A blue and black robotic construction with mechanical arms and legs sits on a wooden floor. The robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. This appears to be a student-built robotics project typical of youth coding and engineering programs.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_riot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A blue and black robotic construction with mechanical arms and legs sits on a wooden floor. The robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. This appears to be a student-built robotics project typical of youth coding and engineering programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. the table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of the league&#39;s programs."
-       data-flags="person_n,teaching,robot,hardware,action,stock"
-       data-name="tech-arcade.png">
-    <img class="thumb" src="../cards/tech-arcade.png" alt="tech-arcade.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. the table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of the league&#39;s programs."
+     data-name="tech-arcade.png"
+     data-src="../cards/tech-arcade.png"
+     data-url="https://images.jointheleague.org/cards/tech-arcade.png"
+     data-full-desc="A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs."
+     data-flags="person_n,teaching,robot,hardware,action,stock">
+  <img class="thumb" src="../cards/tech-arcade.png" alt="tech-arcade.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/tech-arcade.png" target="_blank">tech-arcade.png</a></div>
-      <div class="desc">A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs.</div>
-      <div class="tags">
-        
-        <span class="tag">person_n</span>
-        
-        <span class="tag">teaching</span>
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">action</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tech-arcade.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. the style is minimalist and vector-based, suggesting energy, power, or achievement."
-       data-flags="illustration"
-       data-name="tutoring.png">
-    <img class="thumb" src="../cards/tutoring.png" alt="tutoring.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. the style is minimalist and vector-based, suggesting energy, power, or achievement."
+     data-name="tutoring.png"
+     data-src="../cards/tutoring.png"
+     data-url="https://images.jointheleague.org/cards/tutoring.png"
+     data-full-desc="An illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. The style is minimalist and vector-based, suggesting energy, power, or achievement."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/tutoring.png" alt="tutoring.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/tutoring.png" target="_blank">tutoring.png</a></div>
-      <div class="desc">An illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. The style is minimalist and vector-based, suggesting energy, power, or achievement.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tutoring.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. The style is minimalist and vector-based, suggesting energy, power, or achievement.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="an illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. the flag is mounted on a dark teal pole and rendered in a flat, vector art style."
-       data-flags="illustration"
-       data-name="tutoring2.png">
-    <img class="thumb" src="../cards/tutoring2.png" alt="tutoring2.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="an illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. the flag is mounted on a dark teal pole and rendered in a flat, vector art style."
+     data-name="tutoring2.png"
+     data-src="../cards/tutoring2.png"
+     data-url="https://images.jointheleague.org/cards/tutoring2.png"
+     data-full-desc="An illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. The flag is mounted on a dark teal pole and rendered in a flat, vector art style."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/tutoring2.png" alt="tutoring2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../cards/tutoring2.png" target="_blank">tutoring2.png</a></div>
-      <div class="desc">An illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. The flag is mounted on a dark teal pole and rendered in a flat, vector art style.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tutoring2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. The flag is mounted on a dark teal pole and rendered in a flat, vector art style.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
 </div>
 
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-const CATALOG_URL = 'data/catalog.json';
+const BASE_URL = 'https://images.jointheleague.org/';
 let catalog = null;
-let activeFlags = new Set();
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
 
 async function loadCatalog() {
   if (catalog) return catalog;
-  const resp = await fetch(CATALOG_URL);
+  const resp = await fetch('data/catalog.json');
   catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
   return catalog;
 }
 
-function renderCards(images) {
-  const grid = document.getElementById('image-grid');
-  if (!grid) return;
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
 
-  grid.innerHTML = images.map(img => {
-    const trueTags = Object.entries(img.flags || {})
-      .filter(([,v]) => v)
-      .map(([k]) => k);
-    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
-    return `
-      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
-           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
-        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
-        <div class="info">
-          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
-          <div class="desc">${img.description || ''}</div>
-          <div class="tags">${tagHtml}</div>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-function applyFilters() {
-  const query = document.getElementById('search').value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.image-card');
-  let shown = 0;
-
-  cards.forEach(card => {
-    const desc = card.dataset.desc || '';
-    const name = card.dataset.name || '';
-    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
-
-    let matchText = !query || desc.includes(query) || name.includes(query);
-    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
-
-    if (matchText && matchFlags) {
-      card.style.display = '';
-      shown++;
-    } else {
-      card.style.display = 'none';
-    }
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
   });
 
-  const total = cards.length;
-  const counter = document.getElementById('result-count');
-  if (query || activeFlags.size > 0) {
-    counter.textContent = `${shown} / ${total}`;
-  } else {
-    counter.textContent = `${total} images`;
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
   }
+  searchActive = false;
 }
 
-document.getElementById('search').addEventListener('input', applyFilters);
-
-document.querySelectorAll('.flag-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const flag = btn.dataset.flag;
-    if (activeFlags.has(flag)) {
-      activeFlags.delete(flag);
-      btn.classList.remove('active');
-    } else {
-      activeFlags.add(flag);
-      btn.classList.add('active');
-    }
-    applyFilters();
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
   });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
 });
 
-// Initialize count on page load
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');
   if (counter && cards.length) {

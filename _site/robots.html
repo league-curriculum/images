@@ -68,21 +68,9 @@
       border-left: 3px solid var(--orange);
       padding-left: calc(1rem - 3px);
     }
-    .sidebar .flag-btn {
-      display: inline-block;
-      padding: .2rem .5rem;
-      margin: .15rem .15rem .15rem 1rem;
-      border-radius: 4px;
-      font-size: .75rem;
-      cursor: pointer;
-      background: rgba(255,255,255,.1);
-      color: var(--gray-300);
-      text-decoration: none;
-      transition: all .15s;
-    }
-    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
-      background: var(--orange);
-      color: #fff;
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
     }
 
     /* Main area */
@@ -164,11 +152,18 @@
     .image-card .info {
       padding: .75rem;
     }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
     .image-card .name {
       font-size: .8rem;
       font-weight: 600;
       word-break: break-all;
-      margin-bottom: .35rem;
+      flex: 1;
+      min-width: 0;
     }
     .image-card .name a {
       color: var(--gray-900);
@@ -176,6 +171,26 @@
     }
     .image-card .name a:hover {
       color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
     }
     .image-card .desc {
       font-size: .75rem;
@@ -199,39 +214,123 @@
       background: var(--orange-light);
       color: var(--orange);
     }
+    .image-card .thumb {
+      cursor: pointer;
+    }
 
-    /* Index page category cards */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
     }
-    .cat-card {
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
       background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: 8px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
       padding: 1.25rem;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow .2s;
     }
-    .cat-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
     }
-    .cat-card h3 {
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
       color: var(--orange);
-      margin-bottom: .35rem;
     }
-    .cat-card p {
-      font-size: .85rem;
-      color: var(--gray-500);
-      line-height: 1.4;
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
     }
-    .cat-card .count {
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
       font-size: .8rem;
       color: var(--gray-700);
-      margin-top: .5rem;
-      font-weight: 600;
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
     }
   </style>
 </head>
@@ -308,55 +407,53 @@
   </a>
   
 
-  <h2>Filter by Flag</h2>
-  <div style="padding: 0 0 1rem 0;">
-    
-    <span class="flag-btn" data-flag="action">action</span>
-    
-    <span class="flag-btn" data-flag="building">building</span>
-    
-    <span class="flag-btn" data-flag="duplicate">duplicate</span>
-    
-    <span class="flag-btn" data-flag="event">event</span>
-    
-    <span class="flag-btn" data-flag="group_photo">group_photo</span>
-    
-    <span class="flag-btn" data-flag="hardware">hardware</span>
-    
-    <span class="flag-btn" data-flag="illustration">illustration</span>
-    
-    <span class="flag-btn" data-flag="logo">logo</span>
-    
-    <span class="flag-btn" data-flag="outdoor">outdoor</span>
-    
-    <span class="flag-btn" data-flag="person_1">person_1</span>
-    
-    <span class="flag-btn" data-flag="person_n">person_n</span>
-    
-    <span class="flag-btn" data-flag="presentation">presentation</span>
-    
-    <span class="flag-btn" data-flag="product_photo">product_photo</span>
-    
-    <span class="flag-btn" data-flag="programming">programming</span>
-    
-    <span class="flag-btn" data-flag="robot">robot</span>
-    
-    <span class="flag-btn" data-flag="screenshot">screenshot</span>
-    
-    <span class="flag-btn" data-flag="stock">stock</span>
-    
-    <span class="flag-btn" data-flag="teaching">teaching</span>
-    
-  </div>
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
 </nav>
 
 <div class="main">
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
     <span class="result-count" id="result-count"></span>
   </div>
 
-  <div class="content">
+  <div class="content" id="page-content">
     
 <h1>robots</h1>
 <p class="subtitle">Pictures of Cutebots, robots, and other kinds of robots. Use anytime robot pictures are needed. &mdash; 3 images</p>
@@ -364,176 +461,320 @@
 <div class="image-grid" id="image-grid">
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="two programmable microbit robots are displayed against a gray background. on the left is a red and blue cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. both feature circuit boards, wiring, and electronic components typical of stem education kits."
-       data-flags="robot,hardware,product_photo"
-       data-name="cutebot.png">
-    <img class="thumb" src="../robots/CuteBot.png" alt="CuteBot.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="two programmable microbit robots are displayed against a gray background. on the left is a red and blue cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. both feature circuit boards, wiring, and electronic components typical of stem education kits."
+     data-name="cutebot.png"
+     data-src="../robots/CuteBot.png"
+     data-url="https://images.jointheleague.org/robots/CuteBot.png"
+     data-full-desc="Two programmable microbit robots are displayed against a gray background. On the left is a red and blue Cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. Both feature circuit boards, wiring, and electronic components typical of STEM education kits."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../robots/CuteBot.png" alt="CuteBot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../robots/CuteBot.png" target="_blank">CuteBot.png</a></div>
-      <div class="desc">Two programmable microbit robots are displayed against a gray background. On the left is a red and blue Cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. Both feature circuit boards, wiring, and electronic components typical of STEM education kits.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/robots/CuteBot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two programmable microbit robots are displayed against a gray background. On the left is a red and blue Cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. Both feature circuit boards, wiring, and electronic components typical of STEM education kits.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a vex robotics or similar educational robotics kit assembled on a wooden floor. the robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. this is a hands-on stem learning project typical of youth coding and robotics programs."
-       data-flags="robot,hardware,product_photo"
-       data-name="robot_riot.jpeg">
-    <img class="thumb" src="../robots/robot_riot.jpeg" alt="robot_riot.jpeg" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a vex robotics or similar educational robotics kit assembled on a wooden floor. the robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. this is a hands-on stem learning project typical of youth coding and robotics programs."
+     data-name="robot_riot.jpeg"
+     data-src="../robots/robot_riot.jpeg"
+     data-url="https://images.jointheleague.org/robots/robot_riot.jpeg"
+     data-full-desc="A VEX Robotics or similar educational robotics kit assembled on a wooden floor. The robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. This is a hands-on STEM learning project typical of youth coding and robotics programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../robots/robot_riot.jpeg" alt="robot_riot.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../robots/robot_riot.jpeg" target="_blank">robot_riot.jpeg</a></div>
-      <div class="desc">A VEX Robotics or similar educational robotics kit assembled on a wooden floor. The robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. This is a hands-on STEM learning project typical of youth coding and robotics programs.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/robots/robot_riot.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A VEX Robotics or similar educational robotics kit assembled on a wooden floor. The robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. This is a hands-on STEM learning project typical of youth coding and robotics programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. the robots include wheeled vehicles with led lights, circuit boards, and colorful 3d-printed components in blue, green, yellow, and orange. these appear to be student-built projects typical of youth coding education programs."
-       data-flags="robot,hardware,product_photo"
-       data-name="robot_w_ball.jpeg">
-    <img class="thumb" src="../robots/robot_w_ball.jpeg" alt="robot_w_ball.jpeg" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. the robots include wheeled vehicles with led lights, circuit boards, and colorful 3d-printed components in blue, green, yellow, and orange. these appear to be student-built projects typical of youth coding education programs."
+     data-name="robot_w_ball.jpeg"
+     data-src="../robots/robot_w_ball.jpeg"
+     data-url="https://images.jointheleague.org/robots/robot_w_ball.jpeg"
+     data-full-desc="A collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. The robots include wheeled vehicles with LED lights, circuit boards, and colorful 3D-printed components in blue, green, yellow, and orange. These appear to be student-built projects typical of youth coding education programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../robots/robot_w_ball.jpeg" alt="robot_w_ball.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../robots/robot_w_ball.jpeg" target="_blank">robot_w_ball.jpeg</a></div>
-      <div class="desc">A collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. The robots include wheeled vehicles with LED lights, circuit boards, and colorful 3D-printed components in blue, green, yellow, and orange. These appear to be student-built projects typical of youth coding education programs.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">product_photo</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/robots/robot_w_ball.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. The robots include wheeled vehicles with LED lights, circuit boards, and colorful 3D-printed components in blue, green, yellow, and orange. These appear to be student-built projects typical of youth coding education programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
     </div>
   </div>
+</div>
+
   
 </div>
 
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-const CATALOG_URL = 'data/catalog.json';
+const BASE_URL = 'https://images.jointheleague.org/';
 let catalog = null;
-let activeFlags = new Set();
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
 
 async function loadCatalog() {
   if (catalog) return catalog;
-  const resp = await fetch(CATALOG_URL);
+  const resp = await fetch('data/catalog.json');
   catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
   return catalog;
 }
 
-function renderCards(images) {
-  const grid = document.getElementById('image-grid');
-  if (!grid) return;
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
 
-  grid.innerHTML = images.map(img => {
-    const trueTags = Object.entries(img.flags || {})
-      .filter(([,v]) => v)
-      .map(([k]) => k);
-    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
-    return `
-      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
-           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
-        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
-        <div class="info">
-          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
-          <div class="desc">${img.description || ''}</div>
-          <div class="tags">${tagHtml}</div>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-function applyFilters() {
-  const query = document.getElementById('search').value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.image-card');
-  let shown = 0;
-
-  cards.forEach(card => {
-    const desc = card.dataset.desc || '';
-    const name = card.dataset.name || '';
-    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
-
-    let matchText = !query || desc.includes(query) || name.includes(query);
-    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
-
-    if (matchText && matchFlags) {
-      card.style.display = '';
-      shown++;
-    } else {
-      card.style.display = 'none';
-    }
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
   });
 
-  const total = cards.length;
-  const counter = document.getElementById('result-count');
-  if (query || activeFlags.size > 0) {
-    counter.textContent = `${shown} / ${total}`;
-  } else {
-    counter.textContent = `${total} images`;
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
   }
+  searchActive = false;
 }
 
-document.getElementById('search').addEventListener('input', applyFilters);
-
-document.querySelectorAll('.flag-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const flag = btn.dataset.flag;
-    if (activeFlags.has(flag)) {
-      activeFlags.delete(flag);
-      btn.classList.remove('active');
-    } else {
-      activeFlags.add(flag);
-      btn.classList.add('active');
-    }
-    applyFilters();
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
   });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
 });
 
-// Initialize count on page load
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');
   if (counter && cards.length) {

@@ -1,0 +1,28 @@
+{% macro image_card(img, base_url='https://images.jointheleague.org/') %}
+{% set true_flags = [] %}
+{% for k, v in img.flags.items() if v %}
+  {% if true_flags.append(k) %}{% endif %}
+{% endfor %}
+{% set img_url = base_url + img.path | replace('../', '') %}
+<div class="image-card"
+     data-desc="{{ img.description|lower }}"
+     data-name="{{ img.name|lower }}"
+     data-src="{{ img.path }}"
+     data-url="{{ img_url }}"
+     data-full-desc="{{ img.description }}"
+     data-flags="{{ true_flags|join(',') }}">
+  <img class="thumb" src="{{ img.path }}" alt="{{ img.name }}" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="{{ img.path }}" target="_blank">{{ img.name }}</a></div>
+      <button class="copy-btn" data-url="{{ img_url }}" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">{{ img.description }}</div>
+    <div class="tags">
+      {% for flag in true_flags %}
+      <span class="tag">{{ flag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endmacro %}

@@ -68,21 +68,9 @@
       border-left: 3px solid var(--orange);
       padding-left: calc(1rem - 3px);
     }
-    .sidebar .flag-btn {
-      display: inline-block;
-      padding: .2rem .5rem;
-      margin: .15rem .15rem .15rem 1rem;
-      border-radius: 4px;
-      font-size: .75rem;
-      cursor: pointer;
-      background: rgba(255,255,255,.1);
-      color: var(--gray-300);
-      text-decoration: none;
-      transition: all .15s;
-    }
-    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
-      background: var(--orange);
-      color: #fff;
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
     }
 
     /* Main area */
@@ -164,11 +152,18 @@
     .image-card .info {
       padding: .75rem;
     }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
     .image-card .name {
       font-size: .8rem;
       font-weight: 600;
       word-break: break-all;
-      margin-bottom: .35rem;
+      flex: 1;
+      min-width: 0;
     }
     .image-card .name a {
       color: var(--gray-900);
@@ -176,6 +171,26 @@
     }
     .image-card .name a:hover {
       color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
     }
     .image-card .desc {
       font-size: .75rem;
@@ -199,39 +214,123 @@
       background: var(--orange-light);
       color: var(--orange);
     }
+    .image-card .thumb {
+      cursor: pointer;
+    }
 
-    /* Index page category cards */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
     }
-    .cat-card {
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
       background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: 8px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
       padding: 1.25rem;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow .2s;
     }
-    .cat-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
     }
-    .cat-card h3 {
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
       color: var(--orange);
-      margin-bottom: .35rem;
     }
-    .cat-card p {
-      font-size: .85rem;
-      color: var(--gray-500);
-      line-height: 1.4;
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
     }
-    .cat-card .count {
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
       font-size: .8rem;
       color: var(--gray-700);
-      margin-top: .5rem;
-      font-weight: 600;
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
     }
   </style>
 </head>
@@ -308,55 +407,53 @@
   </a>
   
 
-  <h2>Filter by Flag</h2>
-  <div style="padding: 0 0 1rem 0;">
-    
-    <span class="flag-btn" data-flag="action">action</span>
-    
-    <span class="flag-btn" data-flag="building">building</span>
-    
-    <span class="flag-btn" data-flag="duplicate">duplicate</span>
-    
-    <span class="flag-btn" data-flag="event">event</span>
-    
-    <span class="flag-btn" data-flag="group_photo">group_photo</span>
-    
-    <span class="flag-btn" data-flag="hardware">hardware</span>
-    
-    <span class="flag-btn" data-flag="illustration">illustration</span>
-    
-    <span class="flag-btn" data-flag="logo">logo</span>
-    
-    <span class="flag-btn" data-flag="outdoor">outdoor</span>
-    
-    <span class="flag-btn" data-flag="person_1">person_1</span>
-    
-    <span class="flag-btn" data-flag="person_n">person_n</span>
-    
-    <span class="flag-btn" data-flag="presentation">presentation</span>
-    
-    <span class="flag-btn" data-flag="product_photo">product_photo</span>
-    
-    <span class="flag-btn" data-flag="programming">programming</span>
-    
-    <span class="flag-btn" data-flag="robot">robot</span>
-    
-    <span class="flag-btn" data-flag="screenshot">screenshot</span>
-    
-    <span class="flag-btn" data-flag="stock">stock</span>
-    
-    <span class="flag-btn" data-flag="teaching">teaching</span>
-    
-  </div>
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
 </nav>
 
 <div class="main">
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
     <span class="result-count" id="result-count"></span>
   </div>
 
-  <div class="content">
+  <div class="content" id="page-content">
     
 <h1>python</h1>
 <p class="subtitle">Images used in the Python curriculum. &mdash; 13 images</p>
@@ -364,404 +461,638 @@
 <div class="image-grid" id="image-grid">
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
-       data-flags="person_1,illustration"
-       data-name="boy_yellow.gif">
-    <img class="thumb" src="../python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-name="boy_yellow.gif"
+     data-src="../python/boy_yellow.gif"
+     data-url="https://images.jointheleague.org/python/boy_yellow.gif"
+     data-full-desc="A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
-      <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. this is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
-       data-flags="illustration,stock"
-       data-name="emoji.png">
-    <img class="thumb" src="../python/emoji.png" alt="emoji.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. this is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
+     data-name="emoji.png"
+     data-src="../python/emoji.png"
+     data-url="https://images.jointheleague.org/python/emoji.png"
+     data-full-desc="A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
+     data-flags="illustration,stock">
+  <img class="thumb" src="../python/emoji.png" alt="emoji.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/emoji.png" target="_blank">emoji.png</a></div>
-      <div class="desc">A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a 3d rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. this is a stylized cool/confident emoji illustration commonly used in digital contexts."
-       data-flags="illustration,product_photo,duplicate,stock"
-       data-name="emoji2.png">
-    <img class="thumb" src="../python/emoji2.png" alt="emoji2.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a 3d rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. this is a stylized cool/confident emoji illustration commonly used in digital contexts."
+     data-name="emoji2.png"
+     data-src="../python/emoji2.png"
+     data-url="https://images.jointheleague.org/python/emoji2.png"
+     data-full-desc="A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts."
+     data-flags="illustration,product_photo,duplicate,stock">
+  <img class="thumb" src="../python/emoji2.png" alt="emoji2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/emoji2.png" target="_blank">emoji2.png</a></div>
-      <div class="desc">A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-        <span class="tag">product_photo</span>
-        
-        <span class="tag">duplicate</span>
-        
-        <span class="tag">stock</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">product_photo</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. the character has a simple, retro video game aesthetic typical of early computer graphics. this type of illustration is commonly used in educational programming contexts."
-       data-flags="illustration"
-       data-name="girl_blue.gif">
-    <img class="thumb" src="../python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. the character has a simple, retro video game aesthetic typical of early computer graphics. this type of illustration is commonly used in educational programming contexts."
+     data-name="girl_blue.gif"
+     data-src="../python/girl_blue.gif"
+     data-url="https://images.jointheleague.org/python/girl_blue.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts."
+     data-flags="illustration">
+  <img class="thumb" src="../python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/girl_blue.gif" target="_blank">girl_blue.gif</a></div>
-      <div class="desc">A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_blue.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
-       data-flags="person_1,illustration"
-       data-name="girl_red.gif">
-    <img class="thumb" src="../python/girl_red.gif" alt="girl_red.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-name="girl_red.gif"
+     data-src="../python/girl_red.gif"
+     data-url="https://images.jointheleague.org/python/girl_red.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../python/girl_red.gif" alt="girl_red.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/girl_red.gif" target="_blank">girl_red.gif</a></div>
-      <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
-      <div class="tags">
-        
-        <span class="tag">person_1</span>
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_red.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
-       data-flags="robot,hardware,illustration"
-       data-name="leaguebot_bolt.gif">
-    <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
+     data-name="leaguebot_bolt.gif"
+     data-src="../python/leaguebot_bolt.gif"
+     data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif"
+     data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
-      <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
-       data-flags="robot,hardware,illustration"
-       data-name="leaguebot_flag.gif">
-    <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-name="leaguebot_flag.gif"
+     data-src="../python/leaguebot_flag.gif"
+     data-url="https://images.jointheleague.org/python/leaguebot_flag.gif"
+     data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
-      <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
-      <div class="tags">
-        
-        <span class="tag">robot</span>
-        
-        <span class="tag">hardware</span>
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple black silhouette illustration of a mustache on a white background. this is a minimalist vector graphic commonly used as a decorative or humorous icon."
-       data-flags="illustration"
-       data-name="moustache1.gif">
-    <img class="thumb" src="../python/moustache1.gif" alt="moustache1.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple black silhouette illustration of a mustache on a white background. this is a minimalist vector graphic commonly used as a decorative or humorous icon."
+     data-name="moustache1.gif"
+     data-src="../python/moustache1.gif"
+     data-url="https://images.jointheleague.org/python/moustache1.gif"
+     data-full-desc="A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon."
+     data-flags="illustration">
+  <img class="thumb" src="../python/moustache1.gif" alt="moustache1.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/moustache1.gif" target="_blank">moustache1.gif</a></div>
-      <div class="desc">A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache1.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple black silhouette illustration of a mustache with curved, upturned ends on both sides. this is a classic handlebar mustache design rendered as a minimalist vector graphic."
-       data-flags="illustration"
-       data-name="moustache2.gif">
-    <img class="thumb" src="../python/moustache2.gif" alt="moustache2.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple black silhouette illustration of a mustache with curved, upturned ends on both sides. this is a classic handlebar mustache design rendered as a minimalist vector graphic."
+     data-name="moustache2.gif"
+     data-src="../python/moustache2.gif"
+     data-url="https://images.jointheleague.org/python/moustache2.gif"
+     data-full-desc="A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic."
+     data-flags="illustration">
+  <img class="thumb" src="../python/moustache2.gif" alt="moustache2.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/moustache2.gif" target="_blank">moustache2.gif</a></div>
-      <div class="desc">A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache2.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. this appears to be a stylized graphic, possibly representing a character or object used in python curriculum materials."
-       data-flags="illustration"
-       data-name="moustache3.gif">
-    <img class="thumb" src="../python/moustache3.gif" alt="moustache3.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. this appears to be a stylized graphic, possibly representing a character or object used in python curriculum materials."
+     data-name="moustache3.gif"
+     data-src="../python/moustache3.gif"
+     data-url="https://images.jointheleague.org/python/moustache3.gif"
+     data-full-desc="A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials."
+     data-flags="illustration">
+  <img class="thumb" src="../python/moustache3.gif" alt="moustache3.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/moustache3.gif" target="_blank">moustache3.gif</a></div>
-      <div class="desc">A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache3.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a pixel art illustration of pikachu, the famous pokémon character, shown in a classic 8-bit or retro video game style. the yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. this pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
-       data-flags="illustration"
-       data-name="pikachu.gif">
-    <img class="thumb" src="../python/pikachu.gif" alt="pikachu.gif" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a pixel art illustration of pikachu, the famous pokémon character, shown in a classic 8-bit or retro video game style. the yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. this pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
+     data-name="pikachu.gif"
+     data-src="../python/pikachu.gif"
+     data-url="https://images.jointheleague.org/python/pikachu.gif"
+     data-full-desc="A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
+     data-flags="illustration">
+  <img class="thumb" src="../python/pikachu.gif" alt="pikachu.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/pikachu.gif" target="_blank">pikachu.gif</a></div>
-      <div class="desc">A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/pikachu.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
-       data-flags="logo,action,illustration"
-       data-name="sanic_64.png">
-    <img class="thumb" src="../python/sanic_64.png" alt="sanic_64.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-name="sanic_64.png"
+     data-src="../python/sanic_64.png"
+     data-url="https://images.jointheleague.org/python/sanic_64.png"
+     data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-flags="logo,action,illustration">
+  <img class="thumb" src="../python/sanic_64.png" alt="sanic_64.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/sanic_64.png" target="_blank">sanic_64.png</a></div>
-      <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
-      <div class="tags">
-        
-        <span class="tag">logo</span>
-        
-        <span class="tag">action</span>
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/sanic_64.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a python turtle graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. the window title shows &#39;python turtle graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
-       data-flags="screenshot,programming"
-       data-name="spiral.png">
-    <img class="thumb" src="../python/spiral.png" alt="spiral.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a python turtle graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. the window title shows &#39;python turtle graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
+     data-name="spiral.png"
+     data-src="../python/spiral.png"
+     data-url="https://images.jointheleague.org/python/spiral.png"
+     data-full-desc="A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../python/spiral.png" alt="spiral.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../python/spiral.png" target="_blank">spiral.png</a></div>
-      <div class="desc">A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/spiral.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
 </div>
 
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-const CATALOG_URL = 'data/catalog.json';
+const BASE_URL = 'https://images.jointheleague.org/';
 let catalog = null;
-let activeFlags = new Set();
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
 
 async function loadCatalog() {
   if (catalog) return catalog;
-  const resp = await fetch(CATALOG_URL);
+  const resp = await fetch('data/catalog.json');
   catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
   return catalog;
 }
 
-function renderCards(images) {
-  const grid = document.getElementById('image-grid');
-  if (!grid) return;
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
 
-  grid.innerHTML = images.map(img => {
-    const trueTags = Object.entries(img.flags || {})
-      .filter(([,v]) => v)
-      .map(([k]) => k);
-    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
-    return `
-      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
-           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
-        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
-        <div class="info">
-          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
-          <div class="desc">${img.description || ''}</div>
-          <div class="tags">${tagHtml}</div>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-function applyFilters() {
-  const query = document.getElementById('search').value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.image-card');
-  let shown = 0;
-
-  cards.forEach(card => {
-    const desc = card.dataset.desc || '';
-    const name = card.dataset.name || '';
-    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
-
-    let matchText = !query || desc.includes(query) || name.includes(query);
-    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
-
-    if (matchText && matchFlags) {
-      card.style.display = '';
-      shown++;
-    } else {
-      card.style.display = 'none';
-    }
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
   });
 
-  const total = cards.length;
-  const counter = document.getElementById('result-count');
-  if (query || activeFlags.size > 0) {
-    counter.textContent = `${shown} / ${total}`;
-  } else {
-    counter.textContent = `${total} images`;
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
   }
+  searchActive = false;
 }
 
-document.getElementById('search').addEventListener('input', applyFilters);
-
-document.querySelectorAll('.flag-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const flag = btn.dataset.flag;
-    if (activeFlags.has(flag)) {
-      activeFlags.delete(flag);
-      btn.classList.remove('active');
-    } else {
-      activeFlags.add(flag);
-      btn.classList.add('active');
-    }
-    applyFilters();
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
   });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
 });
 
-// Initialize count on page load
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');
   if (counter && cards.length) {

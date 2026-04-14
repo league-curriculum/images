@@ -1,0 +1,3431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag: illustration - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .image-card .thumb {
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
+      padding: 1.25rem;
+    }
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
+    }
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
+      font-size: .8rem;
+      color: var(--gray-700);
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" class="active">illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content" id="page-content">
+    
+<h1>Flag: illustration</h1>
+<p class="subtitle">79 images with this flag</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. the design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit."
+     data-name="about_flag.png"
+     data-src="../cards/about_flag.png"
+     data-url="https://images.jointheleague.org/cards/about_flag.png"
+     data-full-desc="An illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. The design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/about_flag.png" alt="about_flag.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/about_flag.png" target="_blank">about_flag.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/about_flag.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated graphic featuring a red flag with a lightning bolt symbol, surrounded by coding-related elements including curly braces, angle brackets, stars, and a pencil. The design uses warm colors (orange, yellow, red) and represents coding, programming, and achievement themes relevant to a youth coding nonprofit.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (python, javascript, java, html5, c++, swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. the design uses a blue and white color scheme and represents the breadth of programming education."
+     data-name="ai-agents.png"
+     data-src="../cards/ai-agents.png"
+     data-url="https://images.jointheleague.org/cards/ai-agents.png"
+     data-full-desc="A vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (Python, JavaScript, Java, HTML5, C++, Swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. The design uses a blue and white color scheme and represents the breadth of programming education."
+     data-flags="action,illustration,programming">
+  <img class="thumb" src="../cards/ai-agents.png" alt="ai-agents.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/ai-agents.png" target="_blank">ai-agents.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/ai-agents.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration depicting programming and coding concepts, featuring hands typing on a keyboard surrounded by various programming languages (Python, JavaScript, Java, HTML5, C++, Swift), development tools, and tech-related icons like gears, bugs, code symbols, and a globe. The design uses a blue and white color scheme and represents the breadth of programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. this appears to be a generic graphic asset representing coding or computer programming education."
+     data-name="computer-robot.png"
+     data-src="../cards/computer-robot.png"
+     data-url="https://images.jointheleague.org/cards/computer-robot.png"
+     data-full-desc="A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education."
+     data-flags="robot,hardware,illustration,programming,stock">
+  <img class="thumb" src="../cards/computer-robot.png" alt="computer-robot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/computer-robot.png" target="_blank">computer-robot.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/computer-robot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated card showing programming and gaming concepts with a game controller, code snippets (c++, c), and a stylized laptop or coding interface on a gradient blue and yellow background. the image uses soft, modern 3d-style graphics typical of educational technology materials."
+     data-name="cpp.png"
+     data-src="../cards/cpp.png"
+     data-url="https://images.jointheleague.org/cards/cpp.png"
+     data-full-desc="An illustrated card showing programming and gaming concepts with a game controller, code snippets (C++, C), and a stylized laptop or coding interface on a gradient blue and yellow background. The image uses soft, modern 3D-style graphics typical of educational technology materials."
+     data-flags="hardware,illustration,programming">
+  <img class="thumb" src="../cards/cpp.png" alt="cpp.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/cpp.png" target="_blank">cpp.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/cpp.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated card showing programming and gaming concepts with a game controller, code snippets (C++, C), and a stylized laptop or coding interface on a gradient blue and yellow background. The image uses soft, modern 3D-style graphics typical of educational technology materials.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated graphic featuring a code editor window with html/css syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. the design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style."
+     data-name="current_students.png"
+     data-src="../cards/current_students.png"
+     data-url="https://images.jointheleague.org/cards/current_students.png"
+     data-full-desc="An illustrated graphic featuring a code editor window with HTML/CSS syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. The design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/current_students.png" alt="current_students.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/current_students.png" target="_blank">current_students.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/current_students.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated graphic featuring a code editor window with HTML/CSS syntax symbols and lines of code, accompanied by a red flag with a lightning bolt symbol. The design uses warm colors (orange, yellow) and is decorated with blue star shapes, representing programming and development in a vibrant, youth-friendly style.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the github logo featuring octocat (the white cat mascot with tentacles) on a blue background. this is a partial view of the logo with text beginning to appear at the bottom."
+     data-name="github_pages.png"
+     data-src="../cards/github_pages.png"
+     data-url="https://images.jointheleague.org/cards/github_pages.png"
+     data-full-desc="The GitHub logo featuring Octocat (the white cat mascot with tentacles) on a blue background. This is a partial view of the logo with text beginning to appear at the bottom."
+     data-flags="logo,illustration,duplicate">
+  <img class="thumb" src="../cards/github_pages.png" alt="github_pages.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/github_pages.png" target="_blank">github_pages.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/github_pages.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The GitHub logo featuring Octocat (the white cat mascot with tentacles) on a blue background. This is a partial view of the logo with text beginning to appear at the bottom.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. the design uses a soft pastel color palette with a gentle, welcoming aesthetic."
+     data-name="java.png"
+     data-src="../cards/java.png"
+     data-url="https://images.jointheleague.org/cards/java.png"
+     data-full-desc="An illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. The design uses a soft pastel color palette with a gentle, welcoming aesthetic."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/java.png" alt="java.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/java.png" target="_blank">java.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/java.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated graphic showing a steaming cup of tea or coffee in blue, surrounded by stylized plants and leaves, with curly braces symbols and small yellow accents scattered around. The design uses a soft pastel color palette with a gentle, welcoming aesthetic.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration depicting a code editor window with programming symbols. the image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. decorative blue star shapes and dots surround the composition on a light yellow background."
+     data-name="league_code.png"
+     data-src="../cards/league_code.png"
+     data-url="https://images.jointheleague.org/cards/league_code.png"
+     data-full-desc="A colorful vector illustration depicting a code editor window with programming symbols. The image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. Decorative blue star shapes and dots surround the composition on a light yellow background."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/league_code.png" alt="league_code.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/league_code.png" target="_blank">league_code.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/league_code.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration depicting a code editor window with programming symbols. The image shows a yellow window with an orange toolbar containing code brackets, horizontal lines representing code, a cursor, and a red flag with a lightning bolt symbol. Decorative blue star shapes and dots surround the composition on a light yellow background.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red led dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3v, gnd). the design features a black body with blue accents and a yellow pin header strip."
+     data-name="microbit.png"
+     data-src="../cards/microbit.png"
+     data-url="https://images.jointheleague.org/cards/microbit.png"
+     data-full-desc="An illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red LED dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3V, GND). The design features a black body with blue accents and a yellow pin header strip."
+     data-flags="hardware,illustration">
+  <img class="thumb" src="../cards/microbit.png" alt="microbit.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/microbit.png" target="_blank">microbit.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/microbit.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a micro:bit microcontroller board, shown from above with its characteristic grid of red LED dots, input buttons, and labeled pin connectors at the bottom (0, 1, 2, 3V, GND). The design features a black body with blue accents and a yellow pin header strip.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. the window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment."
+     data-name="programs.png"
+     data-src="../cards/programs.png"
+     data-url="https://images.jointheleague.org/cards/programs.png"
+     data-full-desc="An illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. The window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment."
+     data-flags="illustration,programming">
+  <img class="thumb" src="../cards/programs.png" alt="programs.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/programs.png" target="_blank">programs.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/programs.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a code editor window with a dark interface showing yellow lines of code and a code bracket symbol. The window is surrounded by colorful decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting a creative and educational coding environment.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. the design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content."
+     data-name="python.png"
+     data-src="../cards/python.png"
+     data-url="https://images.jointheleague.org/cards/python.png"
+     data-full-desc="A colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. The design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/python.png" alt="python.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/python.png" target="_blank">python.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/python.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration featuring a yellow snake or serpent character in a playful pose against a teal blue background. The design includes decorative elements like stars, dots, and curved lines scattered around, creating a whimsical and educational aesthetic typical of youth programming content.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art screenshot of the classic space invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
+     data-name="python_games.png"
+     data-src="../cards/python_games.png"
+     data-url="https://images.jointheleague.org/cards/python_games.png"
+     data-full-desc="A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
+     data-flags="screenshot,robot,illustration,duplicate,stock">
+  <img class="thumb" src="../cards/python_games.png" alt="python_games.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/python_games.png" target="_blank">python_games.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/python_games.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. the style is minimalist and vector-based, suggesting energy, power, or achievement."
+     data-name="tutoring.png"
+     data-src="../cards/tutoring.png"
+     data-url="https://images.jointheleague.org/cards/tutoring.png"
+     data-full-desc="An illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. The style is minimalist and vector-based, suggesting energy, power, or achievement."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/tutoring.png" alt="tutoring.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/tutoring.png" target="_blank">tutoring.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tutoring.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a red flag with a white lightning bolt symbol, held on a dark blue pole against a radiating background of warm yellow and orange rays. The style is minimalist and vector-based, suggesting energy, power, or achievement.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. the flag is mounted on a dark teal pole and rendered in a flat, vector art style."
+     data-name="tutoring2.png"
+     data-src="../cards/tutoring2.png"
+     data-url="https://images.jointheleague.org/cards/tutoring2.png"
+     data-full-desc="An illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. The flag is mounted on a dark teal pole and rendered in a flat, vector art style."
+     data-flags="illustration">
+  <img class="thumb" src="../cards/tutoring2.png" alt="tutoring2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/tutoring2.png" target="_blank">tutoring2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tutoring2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a red flag with a white lightning bolt symbol on it, set against a radiating yellow and orange sunburst background. The flag is mounted on a dark teal pole and rendered in a flat, vector art style.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a retro-style pixel art video game displayed on a handheld gaming device interface. the game shows a character with a red balloon floating above mountainous terrain with flying enemies, reminiscent of classic 8-bit games. the device has a teal/turquoise color with a d-pad, action buttons labeled a and b, and a menu button, styled like a microsoft handheld gaming device."
+     data-name="arcade_balloons.png"
+     data-src="../classes/arcade_balloons.png"
+     data-url="https://images.jointheleague.org/classes/arcade_balloons.png"
+     data-full-desc="A screenshot of a retro-style pixel art video game displayed on a handheld gaming device interface. The game shows a character with a red balloon floating above mountainous terrain with flying enemies, reminiscent of classic 8-bit games. The device has a teal/turquoise color with a D-pad, action buttons labeled A and B, and a Menu button, styled like a Microsoft handheld gaming device."
+     data-flags="screenshot,hardware,illustration,product_photo">
+  <img class="thumb" src="../classes/arcade_balloons.png" alt="arcade_balloons.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../classes/arcade_balloons.png" target="_blank">arcade_balloons.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/classes/arcade_balloons.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a retro-style pixel art video game displayed on a handheld gaming device interface. The game shows a character with a red balloon floating above mountainous terrain with flying enemies, reminiscent of classic 8-bit games. The device has a teal/turquoise color with a D-pad, action buttons labeled A and B, and a Menu button, styled like a Microsoft handheld gaming device.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple line-drawn icon showing two overlapping document or file symbols, representing copying, duplicating, or multi-file operations commonly seen in github and other software interfaces."
+     data-name="files.png"
+     data-src="../github/files.png"
+     data-url="https://images.jointheleague.org/github/files.png"
+     data-full-desc="A simple line-drawn icon showing two overlapping document or file symbols, representing copying, duplicating, or multi-file operations commonly seen in GitHub and other software interfaces."
+     data-flags="illustration">
+  <img class="thumb" src="../github/files.png" alt="files.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../github/files.png" target="_blank">files.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/github/files.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple line-drawn icon showing two overlapping document or file symbols, representing copying, duplicating, or multi-file operations commonly seen in GitHub and other software interfaces.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a minimalist line-drawn icon showing a play button (triangle pointing right) with a gear symbol overlapping or integrated below it. the icon uses simple black strokes on a light gray background, suggesting automation, workflows, or automated processes in a development context."
+     data-name="rundebug.png"
+     data-src="../github/rundebug.png"
+     data-url="https://images.jointheleague.org/github/rundebug.png"
+     data-full-desc="A minimalist line-drawn icon showing a play button (triangle pointing right) with a gear symbol overlapping or integrated below it. The icon uses simple black strokes on a light gray background, suggesting automation, workflows, or automated processes in a development context."
+     data-flags="illustration">
+  <img class="thumb" src="../github/rundebug.png" alt="rundebug.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../github/rundebug.png" target="_blank">rundebug.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/github/rundebug.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A minimalist line-drawn icon showing a play button (triangle pointing right) with a gear symbol overlapping or integrated below it. The icon uses simple black strokes on a light gray background, suggesting automation, workflows, or automated processes in a development context.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a white lightning bolt icon on an orange gradient background. the lightning bolt is stylized and minimalist, pointing diagonally upward to the right. this appears to be a logo design with a simple, modern aesthetic."
+     data-name="android-chrome-192x192.png"
+     data-src="../logos/android-chrome-192x192.png"
+     data-url="https://images.jointheleague.org/logos/android-chrome-192x192.png"
+     data-full-desc="A white lightning bolt icon on an orange gradient background. The lightning bolt is stylized and minimalist, pointing diagonally upward to the right. This appears to be a logo design with a simple, modern aesthetic."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/android-chrome-192x192.png" alt="android-chrome-192x192.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/android-chrome-192x192.png" target="_blank">android-chrome-192x192.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/android-chrome-192x192.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A white lightning bolt icon on an orange gradient background. The lightning bolt is stylized and minimalist, pointing diagonally upward to the right. This appears to be a logo design with a simple, modern aesthetic.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a stylized lightning bolt icon in white and orange/peach tones on a gradient orange background. the design is modern and minimalist, suitable for use as a logo or app icon."
+     data-name="android-chrome-512x512.png"
+     data-src="../logos/android-chrome-512x512.png"
+     data-url="https://images.jointheleague.org/logos/android-chrome-512x512.png"
+     data-full-desc="A stylized lightning bolt icon in white and orange/peach tones on a gradient orange background. The design is modern and minimalist, suitable for use as a logo or app icon."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/android-chrome-512x512.png" alt="android-chrome-512x512.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/android-chrome-512x512.png" target="_blank">android-chrome-512x512.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/android-chrome-512x512.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A stylized lightning bolt icon in white and orange/peach tones on a gradient orange background. The design is modern and minimalist, suitable for use as a logo or app icon.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a minimalist white lightning bolt icon on an orange gradient background. the bolt is stylized with a modern, geometric design and appears to be a logo symbol representing energy, speed, or power."
+     data-name="apple-touch-icon.png"
+     data-src="../logos/apple-touch-icon.png"
+     data-url="https://images.jointheleague.org/logos/apple-touch-icon.png"
+     data-full-desc="A minimalist white lightning bolt icon on an orange gradient background. The bolt is stylized with a modern, geometric design and appears to be a logo symbol representing energy, speed, or power."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/apple-touch-icon.png" alt="apple-touch-icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/apple-touch-icon.png" target="_blank">apple-touch-icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/apple-touch-icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A minimalist white lightning bolt icon on an orange gradient background. The bolt is stylized with a modern, geometric design and appears to be a logo symbol representing energy, speed, or power.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an orange lightning bolt symbol on a white background, presented as a clean, minimalist vector graphic. this is the league of amazing programmers&#39; logo, featuring a striking angular design that conveys energy and power."
+     data-name="bolt.png"
+     data-src="../logos/bolt.png"
+     data-url="https://images.jointheleague.org/logos/bolt.png"
+     data-full-desc="An orange lightning bolt symbol on a white background, presented as a clean, minimalist vector graphic. This is The League of Amazing Programmers&#39; logo, featuring a striking angular design that conveys energy and power."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/bolt.png" alt="bolt.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/bolt.png" target="_blank">bolt.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/bolt.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An orange lightning bolt symbol on a white background, presented as a clean, minimalist vector graphic. This is The League of Amazing Programmers&#39; logo, featuring a striking angular design that conveys energy and power.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. the robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos."
+     data-name="clearrobot3color1.png"
+     data-src="../logos/clearRobot3Color1.png"
+     data-url="https://images.jointheleague.org/logos/clearRobot3Color1.png"
+     data-full-desc="A stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. The robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos."
+     data-flags="logo,robot,illustration">
+  <img class="thumb" src="../logos/clearRobot3Color1.png" alt="clearRobot3Color1.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/clearRobot3Color1.png" target="_blank">clearRobot3Color1.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/clearRobot3Color1.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. The robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a stylized robot illustration with a friendly design featuring an orange and gray color scheme. the robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border."
+     data-name="clearrobotring4.png"
+     data-src="../logos/clearRobotRing4.png"
+     data-url="https://images.jointheleague.org/logos/clearRobotRing4.png"
+     data-full-desc="A stylized robot illustration with a friendly design featuring an orange and gray color scheme. The robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border."
+     data-flags="logo,robot,illustration">
+  <img class="thumb" src="../logos/clearRobotRing4.png" alt="clearRobotRing4.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/clearRobotRing4.png" target="_blank">clearRobotRing4.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/clearRobotRing4.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A stylized robot illustration with a friendly design featuring an orange and gray color scheme. The robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple square logo featuring a white star symbol centered on an orange/red background. the design appears to be a minimalist logo suitable for use by the league of amazing programmers."
+     data-name="favicon-16x16.png"
+     data-src="../logos/favicon-16x16.png"
+     data-url="https://images.jointheleague.org/logos/favicon-16x16.png"
+     data-full-desc="A simple square logo featuring a white star symbol centered on an orange/red background. The design appears to be a minimalist logo suitable for use by The League of Amazing Programmers."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/favicon-16x16.png" alt="favicon-16x16.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/favicon-16x16.png" target="_blank">favicon-16x16.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/favicon-16x16.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple square logo featuring a white star symbol centered on an orange/red background. The design appears to be a minimalist logo suitable for use by The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of five young people in silhouette standing together with one holding a flag featuring a lightning bolt symbol. the figures are rendered in a bright orange color against a white background, conveying energy, teamwork, and empowerment. this appears to be the league of amazing programmers&#39; logo or brand illustration."
+     data-name="figures_girl.png"
+     data-src="../logos/figures_girl.png"
+     data-url="https://images.jointheleague.org/logos/figures_girl.png"
+     data-full-desc="An illustration of five young people in silhouette standing together with one holding a flag featuring a lightning bolt symbol. The figures are rendered in a bright orange color against a white background, conveying energy, teamwork, and empowerment. This appears to be The League of Amazing Programmers&#39; logo or brand illustration."
+     data-flags="person_n,logo,illustration">
+  <img class="thumb" src="../logos/figures_girl.png" alt="figures_girl.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/figures_girl.png" target="_blank">figures_girl.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/figures_girl.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of five young people in silhouette standing together with one holding a flag featuring a lightning bolt symbol. The figures are rendered in a bright orange color against a white background, conveying energy, teamwork, and empowerment. This appears to be The League of Amazing Programmers&#39; logo or brand illustration.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the official logo for the league of amazing programmers, featuring five silhouetted figures in orange/red standing together with one holding a flag bearing a lightning bolt symbol. the organization name appears in bold black text below the figures."
+     data-name="figures_text_boy.png"
+     data-src="../logos/figures_text_boy.png"
+     data-url="https://images.jointheleague.org/logos/figures_text_boy.png"
+     data-full-desc="The official logo for The League of Amazing Programmers, featuring five silhouetted figures in orange/red standing together with one holding a flag bearing a lightning bolt symbol. The organization name appears in bold black text below the figures."
+     data-flags="person_n,logo,illustration">
+  <img class="thumb" src="../logos/figures_text_boy.png" alt="figures_text_boy.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/figures_text_boy.png" target="_blank">figures_text_boy.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/figures_text_boy.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The official logo for The League of Amazing Programmers, featuring five silhouetted figures in orange/red standing together with one holding a flag bearing a lightning bolt symbol. The organization name appears in bold black text below the figures.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated orange flag with a white lightning bolt symbol on it, mounted on a dark teal flagpole against a vibrant yellow and orange radiating sunburst background. this is a stylized logo design with a comic book or energy-themed aesthetic."
+     data-name="flag-sunburst.png"
+     data-src="../logos/flag-sunburst.png"
+     data-url="https://images.jointheleague.org/logos/flag-sunburst.png"
+     data-full-desc="An illustrated orange flag with a white lightning bolt symbol on it, mounted on a dark teal flagpole against a vibrant yellow and orange radiating sunburst background. This is a stylized logo design with a comic book or energy-themed aesthetic."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/flag-sunburst.png" alt="flag-sunburst.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/flag-sunburst.png" target="_blank">flag-sunburst.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/flag-sunburst.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated orange flag with a white lightning bolt symbol on it, mounted on a dark teal flagpole against a vibrant yellow and orange radiating sunburst background. This is a stylized logo design with a comic book or energy-themed aesthetic.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an orange flag with a white lightning bolt symbol in the center. the flag has a dynamic, slightly wavy appearance and is mounted on a pole, conveying energy and movement. this is a stylized logo design for the league of amazing programmers."
+     data-name="flag.png"
+     data-src="../logos/flag.png"
+     data-url="https://images.jointheleague.org/logos/flag.png"
+     data-full-desc="An orange flag with a white lightning bolt symbol in the center. The flag has a dynamic, slightly wavy appearance and is mounted on a pole, conveying energy and movement. This is a stylized logo design for The League of Amazing Programmers."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../logos/flag.png" alt="flag.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/flag.png" target="_blank">flag.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/flag.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An orange flag with a white lightning bolt symbol in the center. The flag has a dynamic, slightly wavy appearance and is mounted on a pole, conveying energy and movement. This is a stylized logo design for The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the official logo of the league of amazing programmers, featuring white silhouettes of five young people with raised fists and a flag, set against a bright orange banner-shaped background with the organization&#39;s name displayed in white text below."
+     data-name="logo4.png"
+     data-src="../logos/logo4.png"
+     data-url="https://images.jointheleague.org/logos/logo4.png"
+     data-full-desc="The official logo of The League of Amazing Programmers, featuring white silhouettes of five young people with raised fists and a flag, set against a bright orange banner-shaped background with the organization&#39;s name displayed in white text below."
+     data-flags="person_n,logo,illustration">
+  <img class="thumb" src="../logos/logo4.png" alt="logo4.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo4.png" target="_blank">logo4.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo4.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The official logo of The League of Amazing Programmers, featuring white silhouettes of five young people with raised fists and a flag, set against a bright orange banner-shaped background with the organization&#39;s name displayed in white text below.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the official logo for the league of amazing programmers, featuring an orange silhouette of five diverse young people in dynamic poses with one holding a lightning bolt flag on the left, alongside the organization&#39;s name in bold orange text on the right."
+     data-name="logo_jtl_horiz.png"
+     data-src="../logos/logo_JTL_horiz.png"
+     data-url="https://images.jointheleague.org/logos/logo_JTL_horiz.png"
+     data-full-desc="The official logo for The League of Amazing Programmers, featuring an orange silhouette of five diverse young people in dynamic poses with one holding a lightning bolt flag on the left, alongside the organization&#39;s name in bold orange text on the right."
+     data-flags="person_n,logo,illustration">
+  <img class="thumb" src="../logos/logo_JTL_horiz.png" alt="logo_JTL_horiz.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_JTL_horiz.png" target="_blank">logo_JTL_horiz.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_JTL_horiz.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The official logo for The League of Amazing Programmers, featuring an orange silhouette of five diverse young people in dynamic poses with one holding a lightning bolt flag on the left, alongside the organization&#39;s name in bold orange text on the right.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the official logo of the league of amazing programmers, featuring five silhouetted youth figures of varying heights standing together with one holding a flag bearing a lightning bolt symbol. the organization name appears in bold text below the figures."
+     data-name="logo_black.png"
+     data-src="../logos/logo_black.png"
+     data-url="https://images.jointheleague.org/logos/logo_black.png"
+     data-full-desc="The official logo of The League of Amazing Programmers, featuring five silhouetted youth figures of varying heights standing together with one holding a flag bearing a lightning bolt symbol. The organization name appears in bold text below the figures."
+     data-flags="person_n,logo,illustration">
+  <img class="thumb" src="../logos/logo_black.png" alt="logo_black.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_black.png" target="_blank">logo_black.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_black.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The official logo of The League of Amazing Programmers, featuring five silhouetted youth figures of varying heights standing together with one holding a flag bearing a lightning bolt symbol. The organization name appears in bold text below the figures.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the official logo of the league of amazing programmers, featuring five orange silhouettes of young people in dynamic poses standing together with one holding a flag with a lightning bolt symbol, set against a black background with white text."
+     data-name="logo_blackbg.jpg"
+     data-src="../logos/logo_blackbg.jpg"
+     data-url="https://images.jointheleague.org/logos/logo_blackbg.jpg"
+     data-full-desc="The official logo of The League of Amazing Programmers, featuring five orange silhouettes of young people in dynamic poses standing together with one holding a flag with a lightning bolt symbol, set against a black background with white text."
+     data-flags="person_n,logo,illustration">
+  <img class="thumb" src="../logos/logo_blackbg.jpg" alt="logo_blackbg.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_blackbg.jpg" target="_blank">logo_blackbg.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_blackbg.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The official logo of The League of Amazing Programmers, featuring five orange silhouettes of young people in dynamic poses standing together with one holding a flag with a lightning bolt symbol, set against a black background with white text.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. the figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. this is a logo design for the league of amazing programmers, featuring the organization&#39;s signature orange color and dynamic imagery."
+     data-name="logo_girl_flag.png"
+     data-src="../logos/logo_girl_flag.png"
+     data-url="https://images.jointheleague.org/logos/logo_girl_flag.png"
+     data-full-desc="An illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. The figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. This is a logo design for The League of Amazing Programmers, featuring the organization&#39;s signature orange color and dynamic imagery."
+     data-flags="person_1,logo,action,illustration">
+  <img class="thumb" src="../logos/logo_girl_flag.png" alt="logo_girl_flag.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_girl_flag.png" target="_blank">logo_girl_flag.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_girl_flag.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. The figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. This is a logo design for The League of Amazing Programmers, featuring the organization&#39;s signature orange color and dynamic imagery.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of five silhouetted youth in dynamic poses holding a flag with a lightning bolt symbol. the figures are rendered in bright orange/red and represent diverse ages and body types, embodying energy and unity. this graphic symbolizes empowerment and the mission of the league of amazing programmers."
+     data-name="logo_square_1000.png"
+     data-src="../logos/logo_square_1000.png"
+     data-url="https://images.jointheleague.org/logos/logo_square_1000.png"
+     data-full-desc="An illustration of five silhouetted youth in dynamic poses holding a flag with a lightning bolt symbol. The figures are rendered in bright orange/red and represent diverse ages and body types, embodying energy and unity. This graphic symbolizes empowerment and the mission of The League of Amazing Programmers."
+     data-flags="person_n,logo,action,illustration">
+  <img class="thumb" src="../logos/logo_square_1000.png" alt="logo_square_1000.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_square_1000.png" target="_blank">logo_square_1000.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_square_1000.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of five silhouetted youth in dynamic poses holding a flag with a lightning bolt symbol. The figures are rendered in bright orange/red and represent diverse ages and body types, embodying energy and unity. This graphic symbolizes empowerment and the mission of The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="the official logo of the league of amazing programmers, featuring white silhouettes of five young people holding a flag with a lightning bolt symbol on a bright orange background. the organization name is displayed in white text below the figures."
+     data-name="logo_w_orangebg.png"
+     data-src="../logos/logo_w_orangebg.png"
+     data-url="https://images.jointheleague.org/logos/logo_w_orangebg.png"
+     data-full-desc="The official logo of The League of Amazing Programmers, featuring white silhouettes of five young people holding a flag with a lightning bolt symbol on a bright orange background. The organization name is displayed in white text below the figures."
+     data-flags="person_n,logo,action,illustration">
+  <img class="thumb" src="../logos/logo_w_orangebg.png" alt="logo_w_orangebg.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_w_orangebg.png" target="_blank">logo_w_orangebg.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_w_orangebg.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The official logo of The League of Amazing Programmers, featuring white silhouettes of five young people holding a flag with a lightning bolt symbol on a bright orange background. The organization name is displayed in white text below the figures.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a circular badge logo for the league of amazing programmers&#39; 10th anniversary celebration in 2017. the design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;the league of amazing programmers&#39; and anniversary details around the outer edge."
+     data-name="t-shirt image final.png"
+     data-src="../logos/t-shirt image final.png"
+     data-url="https://images.jointheleague.org/logos/t-shirt image final.png"
+     data-full-desc="A circular badge logo for The League of Amazing Programmers&#39; 10th Anniversary celebration in 2017. The design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;The League of Amazing Programmers&#39; and anniversary details around the outer edge."
+     data-flags="logo,robot,illustration,event">
+  <img class="thumb" src="../logos/t-shirt image final.png" alt="t-shirt image final.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/t-shirt image final.png" target="_blank">t-shirt image final.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/t-shirt image final.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A circular badge logo for The League of Amazing Programmers&#39; 10th Anniversary celebration in 2017. The design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;The League of Amazing Programmers&#39; and anniversary details around the outer edge.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. this is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas."
+     data-name="1g8my4.jpg"
+     data-src="../memes/1g8my4.jpg"
+     data-url="https://images.jointheleague.org/memes/1g8my4.jpg"
+     data-full-desc="A two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. This is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas."
+     data-flags="person_1,illustration,duplicate">
+  <img class="thumb" src="../memes/1g8my4.jpg" alt="1g8my4.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/1g8my4.jpg" target="_blank">1g8my4.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/1g8my4.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. This is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration showing two characters on a green grassy background. the image appears to be from a retro video game or similar pixelated game art style, with a simple, minimalist aesthetic typical of early computer graphics."
+     data-name="2txtm1.jpg"
+     data-src="../memes/2txtm1.jpg"
+     data-url="https://images.jointheleague.org/memes/2txtm1.jpg"
+     data-full-desc="A pixel art style illustration showing two characters on a green grassy background. The image appears to be from a retro video game or similar pixelated game art style, with a simple, minimalist aesthetic typical of early computer graphics."
+     data-flags="screenshot,illustration">
+  <img class="thumb" src="../memes/2txtm1.jpg" alt="2txtm1.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/2txtm1.jpg" target="_blank">2txtm1.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/2txtm1.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration showing two characters on a green grassy background. The image appears to be from a retro video game or similar pixelated game art style, with a simple, minimalist aesthetic typical of early computer graphics.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a two-panel meme featuring winnie the pooh character in different poses and outfits. the top panel shows the character in casual attire looking uncertain, while the bottom panel shows the same character dressed formally in a tuxedo looking more confident. this is a popular meme template used to compare contrasting states or choices."
+     data-name="2ybua0.jpg"
+     data-src="../memes/2ybua0.jpg"
+     data-url="https://images.jointheleague.org/memes/2ybua0.jpg"
+     data-full-desc="A two-panel meme featuring Winnie the Pooh character in different poses and outfits. The top panel shows the character in casual attire looking uncertain, while the bottom panel shows the same character dressed formally in a tuxedo looking more confident. This is a popular meme template used to compare contrasting states or choices."
+     data-flags="illustration,duplicate">
+  <img class="thumb" src="../memes/2ybua0.jpg" alt="2ybua0.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/2ybua0.jpg" target="_blank">2ybua0.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/2ybua0.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A two-panel meme featuring Winnie the Pooh character in different poses and outfits. The top panel shows the character in casual attire looking uncertain, while the bottom panel shows the same character dressed formally in a tuxedo looking more confident. This is a popular meme template used to compare contrasting states or choices.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a humorous illustration showing two meme-style images: on the left, a buff/muscular doge dog with an exaggerated physique, and on the right, a normal-sized doge dog. this is a classic internet meme format often used to compare contrasts or make jokes, commonly used in educational settings for meme-based programming projects."
+     data-name="43a45p.jpg"
+     data-src="../memes/43a45p.jpg"
+     data-url="https://images.jointheleague.org/memes/43a45p.jpg"
+     data-full-desc="A humorous illustration showing two meme-style images: on the left, a buff/muscular doge dog with an exaggerated physique, and on the right, a normal-sized doge dog. This is a classic internet meme format often used to compare contrasts or make jokes, commonly used in educational settings for meme-based programming projects."
+     data-flags="illustration">
+  <img class="thumb" src="../memes/43a45p.jpg" alt="43a45p.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/43a45p.jpg" target="_blank">43a45p.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/43a45p.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A humorous illustration showing two meme-style images: on the left, a buff/muscular doge dog with an exaggerated physique, and on the right, a normal-sized doge dog. This is a classic internet meme format often used to compare contrasts or make jokes, commonly used in educational settings for meme-based programming projects.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a close-up of shrek&#39;s face from the animated film, showing his characteristic green ogre features and expression. this is a popular meme image used for adding humorous text overlays, commonly used in educational settings where students learn to create memes as a programming exercise."
+     data-name="5cxb8b.jpg"
+     data-src="../memes/5cxb8b.jpg"
+     data-url="https://images.jointheleague.org/memes/5cxb8b.jpg"
+     data-full-desc="A close-up of Shrek&#39;s face from the animated film, showing his characteristic green ogre features and expression. This is a popular meme image used for adding humorous text overlays, commonly used in educational settings where students learn to create memes as a programming exercise."
+     data-flags="illustration,duplicate">
+  <img class="thumb" src="../memes/5cxb8b.jpg" alt="5cxb8b.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/5cxb8b.jpg" target="_blank">5cxb8b.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/5cxb8b.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A close-up of Shrek&#39;s face from the animated film, showing his characteristic green ogre features and expression. This is a popular meme image used for adding humorous text overlays, commonly used in educational settings where students learn to create memes as a programming exercise.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a magenta/purple banner displaying text &#34;button a is pressed&#34; with a small dropdown arrow icon, styled as a makecode block used in micro:bit programming. this is a visual representation of an event block from the makecode block-based coding interface."
+     data-name="buttonapressed.png"
+     data-src="../microbit/buttonapressed.png"
+     data-url="https://images.jointheleague.org/microbit/buttonapressed.png"
+     data-full-desc="A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface."
+     data-flags="screenshot,illustration,programming">
+  <img class="thumb" src="../microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-name="cbextension.png"
+     data-src="../microbit/cbextension.png"
+     data-url="https://images.jointheleague.org/microbit/cbextension.png"
+     data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-flags="logo,robot,hardware,illustration">
+  <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple white icon of a document or note with a pencil, displayed on an orange background. this appears to be a ui icon commonly used to represent editing, creating, or writing functionality."
+     data-name="edit_button.png"
+     data-src="../microbit/edit_button.png"
+     data-url="https://images.jointheleague.org/microbit/edit_button.png"
+     data-full-desc="A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality."
+     data-flags="illustration">
+  <img class="thumb" src="../microbit/edit_button.png" alt="edit_button.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/edit_button.png" target="_blank">edit_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/edit_button.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a visual representation of a conditional programming block from makecode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. this is a screenshot of the block-based programming interface used for micro:bit coding."
+     data-name="if.png"
+     data-src="../microbit/if.png"
+     data-url="https://images.jointheleague.org/microbit/if.png"
+     data-full-desc="A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding."
+     data-flags="screenshot,illustration,programming">
+  <img class="thumb" src="../microbit/if.png" alt="if.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/if.png" target="_blank">if.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/if.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
+     data-name="mb_setup_2.png"
+     data-src="../microbit/mb_setup_2.png"
+     data-url="https://images.jointheleague.org/microbit/mb_setup_2.png"
+     data-full-desc="A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers."
+     data-flags="robot,hardware,illustration,programming,product_photo">
+  <img class="thumb" src="../microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. this is a typical interface icon used to represent video playback or media controls."
+     data-name="play_button.png"
+     data-src="../microbit/play_button.png"
+     data-url="https://images.jointheleague.org/microbit/play_button.png"
+     data-full-desc="A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls."
+     data-flags="illustration">
+  <img class="thumb" src="../microbit/play_button.png" alt="play_button.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/play_button.png" target="_blank">play_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/play_button.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. the card includes the title &#39;servo&#39;, subtitle &#39;a micro-servo library&#39;, and a &#39;learn more&#39; link."
+     data-name="servo_library.png"
+     data-src="../microbit/servo_library.png"
+     data-url="https://images.jointheleague.org/microbit/servo_library.png"
+     data-full-desc="A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link."
+     data-flags="hardware,illustration,product_photo">
+  <img class="thumb" src="../microbit/servo_library.png" alt="servo_library.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/servo_library.png" target="_blank">servo_library.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/servo_library.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link.</div>
+    <div class="tags">
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple vector illustration showing a diagram of a vector or arrow with labeled components. the image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education."
+     data-name="vectors.png"
+     data-src="../misc/vectors.png"
+     data-url="https://images.jointheleague.org/misc/vectors.png"
+     data-full-desc="A simple vector illustration showing a diagram of a vector or arrow with labeled components. The image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education."
+     data-flags="illustration">
+  <img class="thumb" src="../misc/vectors.png" alt="vectors.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../misc/vectors.png" target="_blank">vectors.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/misc/vectors.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple vector illustration showing a diagram of a vector or arrow with labeled components. The image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. this appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum."
+     data-name="files.png"
+     data-src="../module-navigation/files.png"
+     data-url="https://images.jointheleague.org/module-navigation/files.png"
+     data-full-desc="A simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. This appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum."
+     data-flags="illustration">
+  <img class="thumb" src="../module-navigation/files.png" alt="files.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../module-navigation/files.png" target="_blank">files.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/files.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. This appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a set of four simple line icons displayed on a dark background, showing different device or layout representations. these appear to be ui navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts)."
+     data-name="pane_config.png"
+     data-src="../module-navigation/pane_config.png"
+     data-url="https://images.jointheleague.org/module-navigation/pane_config.png"
+     data-full-desc="A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts)."
+     data-flags="screenshot,illustration">
+  <img class="thumb" src="../module-navigation/pane_config.png" alt="pane_config.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../module-navigation/pane_config.png" target="_blank">pane_config.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/pane_config.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts).</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. the icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation."
+     data-name="rundebug.png"
+     data-src="../module-navigation/rundebug.png"
+     data-url="https://images.jointheleague.org/module-navigation/rundebug.png"
+     data-full-desc="A simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. The icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation."
+     data-flags="illustration">
+  <img class="thumb" src="../module-navigation/rundebug.png" alt="rundebug.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../module-navigation/rundebug.png" target="_blank">rundebug.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/rundebug.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. The icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a minimalist logo featuring a simple geometric design in light gray on a white background. the logo appears to be a stylized symbol or icon, likely representing a third-party partner or technology platform."
+     data-name="github-mark-white.png"
+     data-src="../p3logos/github-mark-white.png"
+     data-url="https://images.jointheleague.org/p3logos/github-mark-white.png"
+     data-full-desc="A minimalist logo featuring a simple geometric design in light gray on a white background. The logo appears to be a stylized symbol or icon, likely representing a third-party partner or technology platform."
+     data-flags="logo,illustration">
+  <img class="thumb" src="../p3logos/github-mark-white.png" alt="github-mark-white.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../p3logos/github-mark-white.png" target="_blank">github-mark-white.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/p3logos/github-mark-white.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A minimalist logo featuring a simple geometric design in light gray on a white background. The logo appears to be a stylized symbol or icon, likely representing a third-party partner or technology platform.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-name="boy_yellow.gif"
+     data-src="../python/boy_yellow.gif"
+     data-url="https://images.jointheleague.org/python/boy_yellow.gif"
+     data-full-desc="A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. this is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
+     data-name="emoji.png"
+     data-src="../python/emoji.png"
+     data-url="https://images.jointheleague.org/python/emoji.png"
+     data-full-desc="A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
+     data-flags="illustration,stock">
+  <img class="thumb" src="../python/emoji.png" alt="emoji.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/emoji.png" target="_blank">emoji.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a 3d rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. this is a stylized cool/confident emoji illustration commonly used in digital contexts."
+     data-name="emoji2.png"
+     data-src="../python/emoji2.png"
+     data-url="https://images.jointheleague.org/python/emoji2.png"
+     data-full-desc="A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts."
+     data-flags="illustration,product_photo,duplicate,stock">
+  <img class="thumb" src="../python/emoji2.png" alt="emoji2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/emoji2.png" target="_blank">emoji2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">product_photo</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. the character has a simple, retro video game aesthetic typical of early computer graphics. this type of illustration is commonly used in educational programming contexts."
+     data-name="girl_blue.gif"
+     data-src="../python/girl_blue.gif"
+     data-url="https://images.jointheleague.org/python/girl_blue.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts."
+     data-flags="illustration">
+  <img class="thumb" src="../python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/girl_blue.gif" target="_blank">girl_blue.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_blue.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-name="girl_red.gif"
+     data-src="../python/girl_red.gif"
+     data-url="https://images.jointheleague.org/python/girl_red.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../python/girl_red.gif" alt="girl_red.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/girl_red.gif" target="_blank">girl_red.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_red.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
+     data-name="leaguebot_bolt.gif"
+     data-src="../python/leaguebot_bolt.gif"
+     data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif"
+     data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-name="leaguebot_flag.gif"
+     data-src="../python/leaguebot_flag.gif"
+     data-url="https://images.jointheleague.org/python/leaguebot_flag.gif"
+     data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple black silhouette illustration of a mustache on a white background. this is a minimalist vector graphic commonly used as a decorative or humorous icon."
+     data-name="moustache1.gif"
+     data-src="../python/moustache1.gif"
+     data-url="https://images.jointheleague.org/python/moustache1.gif"
+     data-full-desc="A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon."
+     data-flags="illustration">
+  <img class="thumb" src="../python/moustache1.gif" alt="moustache1.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/moustache1.gif" target="_blank">moustache1.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache1.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple black silhouette illustration of a mustache with curved, upturned ends on both sides. this is a classic handlebar mustache design rendered as a minimalist vector graphic."
+     data-name="moustache2.gif"
+     data-src="../python/moustache2.gif"
+     data-url="https://images.jointheleague.org/python/moustache2.gif"
+     data-full-desc="A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic."
+     data-flags="illustration">
+  <img class="thumb" src="../python/moustache2.gif" alt="moustache2.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/moustache2.gif" target="_blank">moustache2.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache2.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. this appears to be a stylized graphic, possibly representing a character or object used in python curriculum materials."
+     data-name="moustache3.gif"
+     data-src="../python/moustache3.gif"
+     data-url="https://images.jointheleague.org/python/moustache3.gif"
+     data-full-desc="A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials."
+     data-flags="illustration">
+  <img class="thumb" src="../python/moustache3.gif" alt="moustache3.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/moustache3.gif" target="_blank">moustache3.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache3.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art illustration of pikachu, the famous pokémon character, shown in a classic 8-bit or retro video game style. the yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. this pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
+     data-name="pikachu.gif"
+     data-src="../python/pikachu.gif"
+     data-url="https://images.jointheleague.org/python/pikachu.gif"
+     data-full-desc="A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
+     data-flags="illustration">
+  <img class="thumb" src="../python/pikachu.gif" alt="pikachu.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/pikachu.gif" target="_blank">pikachu.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/pikachu.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-name="sanic_64.png"
+     data-src="../python/sanic_64.png"
+     data-url="https://images.jointheleague.org/python/sanic_64.png"
+     data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-flags="logo,action,illustration">
+  <img class="thumb" src="../python/sanic_64.png" alt="sanic_64.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/sanic_64.png" target="_blank">sanic_64.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/sanic_64.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a person sitting at a desk working on programming tasks, viewed from behind. the scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;programming&#34; as the header and placeholder lorem ipsum text below."
+     data-name="adobestock_125147758.jpeg"
+     data-src="../stock/AdobeStock_125147758.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_125147758.jpeg"
+     data-full-desc="An illustration of a person sitting at a desk working on programming tasks, viewed from behind. The scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;PROGRAMMING&#34; as the header and placeholder Lorem Ipsum text below."
+     data-flags="person_1,action,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_125147758.jpeg" alt="AdobeStock_125147758.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_125147758.jpeg" target="_blank">AdobeStock_125147758.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_125147758.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a person sitting at a desk working on programming tasks, viewed from behind. The scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;PROGRAMMING&#34; as the header and placeholder Lorem Ipsum text below.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a digital illustration showing a laptop computer with code and data visualizations on its screen, surrounded by glowing network icons and connected nodes representing cybersecurity, data flow, and digital connectivity. the image uses a blue and cyan color palette with neon accents to convey technology and programming concepts."
+     data-name="adobestock_211095871.jpeg"
+     data-src="../stock/AdobeStock_211095871.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_211095871.jpeg"
+     data-full-desc="A digital illustration showing a laptop computer with code and data visualizations on its screen, surrounded by glowing network icons and connected nodes representing cybersecurity, data flow, and digital connectivity. The image uses a blue and cyan color palette with neon accents to convey technology and programming concepts."
+     data-flags="illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_211095871.jpeg" alt="AdobeStock_211095871.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_211095871.jpeg" target="_blank">AdobeStock_211095871.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_211095871.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A digital illustration showing a laptop computer with code and data visualizations on its screen, surrounded by glowing network icons and connected nodes representing cybersecurity, data flow, and digital connectivity. The image uses a blue and cyan color palette with neon accents to convey technology and programming concepts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vector illustration depicting programming and coding concepts, showing hands typing on a laptop keyboard surrounded by various programming language logos (python, javascript, java, c++, html5, swift, kotlin, ruby, etc.), development tools, and tech-related icons like lightbulbs, gears, and code windows."
+     data-name="adobestock_221978639.jpeg"
+     data-src="../stock/AdobeStock_221978639.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_221978639.jpeg"
+     data-full-desc="A vector illustration depicting programming and coding concepts, showing hands typing on a laptop keyboard surrounded by various programming language logos (Python, JavaScript, Java, C++, HTML5, Swift, Kotlin, Ruby, etc.), development tools, and tech-related icons like lightbulbs, gears, and code windows."
+     data-flags="logo,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_221978639.jpeg" alt="AdobeStock_221978639.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_221978639.jpeg" target="_blank">AdobeStock_221978639.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_221978639.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration depicting programming and coding concepts, showing hands typing on a laptop keyboard surrounded by various programming language logos (Python, JavaScript, Java, C++, HTML5, Swift, Kotlin, Ruby, etc.), development tools, and tech-related icons like lightbulbs, gears, and code windows.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated promotional graphic for a summer camp featuring a stylized blue laptop with a rocket launching from its screen, set against a dynamic blue and white striped background. a speech bubble contains the text &#39;summer camp&#39; in bold black and red lettering, suggesting this is marketing material for a youth coding or technology-focused summer program."
+     data-name="adobestock_310515430.jpeg"
+     data-src="../stock/AdobeStock_310515430.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_310515430.jpeg"
+     data-full-desc="An illustrated promotional graphic for a summer camp featuring a stylized blue laptop with a rocket launching from its screen, set against a dynamic blue and white striped background. A speech bubble contains the text &#39;SUMMER CAMP&#39; in bold black and red lettering, suggesting this is marketing material for a youth coding or technology-focused summer program."
+     data-flags="illustration,stock,event">
+  <img class="thumb" src="../stock/AdobeStock_310515430.jpeg" alt="AdobeStock_310515430.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_310515430.jpeg" target="_blank">AdobeStock_310515430.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_310515430.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated promotional graphic for a summer camp featuring a stylized blue laptop with a rocket launching from its screen, set against a dynamic blue and white striped background. A speech bubble contains the text &#39;SUMMER CAMP&#39; in bold black and red lettering, suggesting this is marketing material for a youth coding or technology-focused summer program.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">stock</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. the image shows a cartoon character with headphones at the center, connected to programming icons including python, javascript, css, html, scratch, unity, and iq symbols, along with gaming controllers, laptops, and cloud computing elements. this is a digital illustration representing youth coding education and technology learning."
+     data-name="adobestock_353679927.jpeg"
+     data-src="../stock/AdobeStock_353679927.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_353679927.jpeg"
+     data-full-desc="A vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. The image shows a cartoon character with headphones at the center, connected to programming icons including Python, JavaScript, CSS, HTML, Scratch, Unity, and IQ symbols, along with gaming controllers, laptops, and cloud computing elements. This is a digital illustration representing youth coding education and technology learning."
+     data-flags="person_1,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_353679927.jpeg" alt="AdobeStock_353679927.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_353679927.jpeg" target="_blank">AdobeStock_353679927.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_353679927.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. The image shows a cartoon character with headphones at the center, connected to programming icons including Python, JavaScript, CSS, HTML, Scratch, Unity, and IQ symbols, along with gaming controllers, laptops, and cloud computing elements. This is a digital illustration representing youth coding education and technology learning.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated composition showing a software development workflow with code editor windows displaying c programming code, a file tree structure, and various development-related icons including a lightbulb, gears, magnifying glass, and code brackets on a pink background. the scene depicts a typical programming environment with colorful, stylized ui elements."
+     data-name="adobestock_490333995.jpeg"
+     data-src="../stock/AdobeStock_490333995.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_490333995.jpeg"
+     data-full-desc="An illustrated composition showing a software development workflow with code editor windows displaying C programming code, a file tree structure, and various development-related icons including a lightbulb, gears, magnifying glass, and code brackets on a pink background. The scene depicts a typical programming environment with colorful, stylized UI elements."
+     data-flags="screenshot,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_490333995.jpeg" alt="AdobeStock_490333995.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_490333995.jpeg" target="_blank">AdobeStock_490333995.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_490333995.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated composition showing a software development workflow with code editor windows displaying C programming code, a file tree structure, and various development-related icons including a lightbulb, gears, magnifying glass, and code brackets on a pink background. The scene depicts a typical programming environment with colorful, stylized UI elements.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated 3d scene showing programming and development tools against a purple background. the image features multiple windows displaying code editors with c programming language, surrounded by decorative icons including a lightbulb, gears, magnifying glass, folder, cursor, and code brackets symbolizing software development and problem-solving."
+     data-name="adobestock_490333995_preview.jpeg"
+     data-src="../stock/AdobeStock_490333995_Preview.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_490333995_Preview.jpeg"
+     data-full-desc="An illustrated 3D scene showing programming and development tools against a purple background. The image features multiple windows displaying code editors with C programming language, surrounded by decorative icons including a lightbulb, gears, magnifying glass, folder, cursor, and code brackets symbolizing software development and problem-solving."
+     data-flags="illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_490333995_Preview.jpeg" alt="AdobeStock_490333995_Preview.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_490333995_Preview.jpeg" target="_blank">AdobeStock_490333995_Preview.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_490333995_Preview.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated 3D scene showing programming and development tools against a purple background. The image features multiple windows displaying code editors with C programming language, surrounded by decorative icons including a lightbulb, gears, magnifying glass, folder, cursor, and code brackets symbolizing software development and problem-solving.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. the scene features a vibrant 3d paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education."
+     data-name="adobestock_567104942.jpeg"
+     data-src="../stock/AdobeStock_567104942.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_567104942.jpeg"
+     data-full-desc="A colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. The scene features a vibrant 3D paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education."
+     data-flags="person_1,hardware,action,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_567104942.jpeg" alt="AdobeStock_567104942.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_567104942.jpeg" target="_blank">AdobeStock_567104942.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_567104942.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. The scene features a vibrant 3D paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustrated composition showing a coding development environment with multiple windows displaying c++ code, surrounded by programming-related icons and symbols like a lightbulb, gears, magnifying glass, cursor, and file folders on a pink background. the image represents software development and programming concepts in a stylized, digital art format."
+     data-name="blooby.jpeg"
+     data-src="../stock/Blooby.jpeg"
+     data-url="https://images.jointheleague.org/stock/Blooby.jpeg"
+     data-full-desc="An illustrated composition showing a coding development environment with multiple windows displaying C++ code, surrounded by programming-related icons and symbols like a lightbulb, gears, magnifying glass, cursor, and file folders on a pink background. The image represents software development and programming concepts in a stylized, digital art format."
+     data-flags="screenshot,illustration,programming,stock">
+  <img class="thumb" src="../stock/Blooby.jpeg" alt="Blooby.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/Blooby.jpeg" target="_blank">Blooby.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/Blooby.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustrated composition showing a coding development environment with multiple windows displaying C++ code, surrounded by programming-related icons and symbols like a lightbulb, gears, magnifying glass, cursor, and file folders on a pink background. The image represents software development and programming concepts in a stylized, digital art format.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in vs code to represent opening or navigating to a file."
+     data-name="browser_pane.png"
+     data-src="../vscode/browser_pane.png"
+     data-url="https://images.jointheleague.org/vscode/browser_pane.png"
+     data-full-desc="A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/browser_pane.png" alt="browser_pane.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../vscode/browser_pane.png" target="_blank">browser_pane.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/browser_pane.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing overlapping document or file pages, representing file management or code editor functionality in vs code."
+     data-name="explorer_icon.png"
+     data-src="../vscode/explorer_icon.png"
+     data-url="https://images.jointheleague.org/vscode/explorer_icon.png"
+     data-full-desc="A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/explorer_icon.png" alt="explorer_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../vscode/explorer_icon.png" target="_blank">explorer_icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/explorer_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. this appears to be a vs code interface icon representing debugging, extensions, or connection management features."
+     data-name="git_changes.png"
+     data-src="../vscode/git_changes.png"
+     data-url="https://images.jointheleague.org/vscode/git_changes.png"
+     data-full-desc="A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/git_changes.png" alt="git_changes.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../vscode/git_changes.png" target="_blank">git_changes.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/git_changes.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. this appears to be a vs code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the ide&#39;s debugging tools."
+     data-name="league_flag_icon.png"
+     data-src="../vscode/league_flag_icon.png"
+     data-url="https://images.jointheleague.org/vscode/league_flag_icon.png"
+     data-full-desc="A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/league_flag_icon.png" alt="league_flag_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../vscode/league_flag_icon.png" target="_blank">league_flag_icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/league_flag_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
+     data-name="monitor_icon.png"
+     data-src="../vscode/monitor_icon.png"
+     data-url="https://images.jointheleague.org/vscode/monitor_icon.png"
+     data-full-desc="A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/monitor_icon.png" alt="monitor_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../vscode/monitor_icon.png" target="_blank">monitor_icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/monitor_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+</div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BASE_URL = 'https://images.jointheleague.org/';
+let catalog = null;
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch('data/catalog.json');
+  catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
+  return catalog;
+}
+
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
+
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
+  });
+
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
+  }
+  searchActive = false;
+}
+
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
+document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

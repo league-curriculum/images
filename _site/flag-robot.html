@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag: robot - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .image-card .thumb {
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
+      padding: 1.25rem;
+    }
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
+    }
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
+      font-size: .8rem;
+      color: var(--gray-700);
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" class="active">robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content" id="page-content">
+    
+<h1>Flag: robot</h1>
+<p class="subtitle">37 images with this flag</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of youth and instructors gather around a table in an indoor classroom setting, engaged in a hands-on coding or robotics activity. students are working with hardware including what appears to be a small red robot and electronic components, while an instructor in the center guides them through the project. a whiteboard with names is visible in the background, and the scene captures an active, collaborative learning environment typical of the league&#39;s programming activities."
+     data-name="2020.01.14-bell-ms-tech-discovery-day_5-scaled.jpg"
+     data-src="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg"
+     data-url="https://images.jointheleague.org/action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg"
+     data-full-desc="A group of youth and instructors gather around a table in an indoor classroom setting, engaged in a hands-on coding or robotics activity. Students are working with hardware including what appears to be a small red robot and electronic components, while an instructor in the center guides them through the project. A whiteboard with names is visible in the background, and the scene captures an active, collaborative learning environment typical of The League&#39;s programming activities."
+     data-flags="person_n,teaching,robot,hardware,action,programming,event">
+  <img class="thumb" src="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" alt="2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" target="_blank">2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of youth and instructors gather around a table in an indoor classroom setting, engaged in a hands-on coding or robotics activity. Students are working with hardware including what appears to be a small red robot and electronic components, while an instructor in the center guides them through the project. A whiteboard with names is visible in the background, and the scene captures an active, collaborative learning environment typical of The League&#39;s programming activities.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two instructors or mentors are actively engaging with a young student in building or assembling a robotic device. the activity takes place in a classroom or maker space filled with project displays, posters, and educational materials on the walls. the hands-on interaction demonstrates the league&#39;s hands-on approach to teaching youth coding and robotics through direct mentorship and collaborative building."
+     data-name="img_5207.jpeg"
+     data-src="../action/IMG_5207.jpeg"
+     data-url="https://images.jointheleague.org/action/IMG_5207.jpeg"
+     data-full-desc="Two instructors or mentors are actively engaging with a young student in building or assembling a robotic device. The activity takes place in a classroom or maker space filled with project displays, posters, and educational materials on the walls. The hands-on interaction demonstrates The League&#39;s hands-on approach to teaching youth coding and robotics through direct mentorship and collaborative building."
+     data-flags="person_n,teaching,robot,hardware,action">
+  <img class="thumb" src="../action/IMG_5207.jpeg" alt="IMG_5207.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_5207.jpeg" target="_blank">IMG_5207.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_5207.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two instructors or mentors are actively engaging with a young student in building or assembling a robotic device. The activity takes place in a classroom or maker space filled with project displays, posters, and educational materials on the walls. The hands-on interaction demonstrates The League&#39;s hands-on approach to teaching youth coding and robotics through direct mentorship and collaborative building.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two young students wearing blue shirts work together at a workbench in a maker space, assembling and testing electronic hardware components and robotics equipment. they are focused on their project, with one student holding a circuit board while the other manipulates a small robotic device. the well-organized lab behind them features yellow storage bins, tools, and equipment typical of a stem learning environment."
+     data-name="shreas.png"
+     data-src="../action/Shreas.png"
+     data-url="https://images.jointheleague.org/action/Shreas.png"
+     data-full-desc="Two young students wearing blue shirts work together at a workbench in a maker space, assembling and testing electronic hardware components and robotics equipment. They are focused on their project, with one student holding a circuit board while the other manipulates a small robotic device. The well-organized lab behind them features yellow storage bins, tools, and equipment typical of a STEM learning environment."
+     data-flags="person_n,robot,hardware,action">
+  <img class="thumb" src="../action/Shreas.png" alt="Shreas.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/Shreas.png" target="_blank">Shreas.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/Shreas.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two young students wearing blue shirts work together at a workbench in a maker space, assembling and testing electronic hardware components and robotics equipment. They are focused on their project, with one student holding a circuit board while the other manipulates a small robotic device. The well-organized lab behind them features yellow storage bins, tools, and equipment typical of a STEM learning environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a custom-built robotics project is displayed on a concrete floor, featuring a metal chassis with exposed wiring, motors, wheels, and electronic components. large yellow storage bins are visible in the background, suggesting this photo was taken in a makerspace or workshop environment typical of the league of amazing programmers."
+     data-name="squashrobot.jpg"
+     data-src="../action/SquashRobot.jpg"
+     data-url="https://images.jointheleague.org/action/SquashRobot.jpg"
+     data-full-desc="A custom-built robotics project is displayed on a concrete floor, featuring a metal chassis with exposed wiring, motors, wheels, and electronic components. Large yellow storage bins are visible in the background, suggesting this photo was taken in a makerspace or workshop environment typical of The League of Amazing Programmers."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../action/SquashRobot.jpg" alt="SquashRobot.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/SquashRobot.jpg" target="_blank">SquashRobot.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/SquashRobot.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A custom-built robotics project is displayed on a concrete floor, featuring a metal chassis with exposed wiring, motors, wheels, and electronic components. Large yellow storage bins are visible in the background, suggesting this photo was taken in a makerspace or workshop environment typical of The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students and an instructor gathered around a table examining a red robotic device. the children are engaged and focused on the hardware, with an adult in a burgundy shirt guiding their interaction with the robot. this captures an active learning moment where students are hands-on with technology in what appears to be a league coding workshop or class."
+     data-name="the-league-of-amazing-programmers-mentoring-the-next-generation-of-programming-2.jpg"
+     data-src="../action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg"
+     data-url="https://images.jointheleague.org/action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg"
+     data-full-desc="A group of young students and an instructor gathered around a table examining a red robotic device. The children are engaged and focused on the hardware, with an adult in a burgundy shirt guiding their interaction with the robot. This captures an active learning moment where students are hands-on with technology in what appears to be a League coding workshop or class."
+     data-flags="person_n,teaching,robot,hardware,action,event">
+  <img class="thumb" src="../action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" alt="The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" target="_blank">The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students and an instructor gathered around a table examining a red robotic device. The children are engaged and focused on the hardware, with an adult in a burgundy shirt guiding their interaction with the robot. This captures an active learning moment where students are hands-on with technology in what appears to be a League coding workshop or class.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students gathered around a table working with electronics and robotics equipment, with an adult instructor observing and guiding them. the scene shows hands-on stem learning in progress, with visible hardware including what appears to be a red robot and electronic components. the classroom setting includes a whiteboard with student names and the league&#39;s logo visible in the upper left corner."
+     data-name="logo-bell-ms-tech-discovery-day_5.jpg"
+     data-src="../action/logo-Bell-MS-Tech-Discovery-Day_5.jpg"
+     data-url="https://images.jointheleague.org/action/logo-Bell-MS-Tech-Discovery-Day_5.jpg"
+     data-full-desc="A group of young students gathered around a table working with electronics and robotics equipment, with an adult instructor observing and guiding them. The scene shows hands-on STEM learning in progress, with visible hardware including what appears to be a red robot and electronic components. The classroom setting includes a whiteboard with student names and The League&#39;s logo visible in the upper left corner."
+     data-flags="person_n,teaching,logo,robot,hardware,action,event">
+  <img class="thumb" src="../action/logo-Bell-MS-Tech-Discovery-Day_5.jpg" alt="logo-Bell-MS-Tech-Discovery-Day_5.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/logo-Bell-MS-Tech-Discovery-Day_5.jpg" target="_blank">logo-Bell-MS-Tech-Discovery-Day_5.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/logo-Bell-MS-Tech-Discovery-Day_5.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students gathered around a table working with electronics and robotics equipment, with an adult instructor observing and guiding them. The scene shows hands-on STEM learning in progress, with visible hardware including what appears to be a red robot and electronic components. The classroom setting includes a whiteboard with student names and The League&#39;s logo visible in the upper left corner.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two youth are working together in a maker space, building and programming a robot. they are smiling and engaged as they work with electronics, wiring, and a computer keyboard at a workbench. the space is filled with tools, equipment, and shelving typical of a hands-on stem learning environment."
+     data-name="robot_garage.png"
+     data-src="../action/robot_garage.png"
+     data-url="https://images.jointheleague.org/action/robot_garage.png"
+     data-full-desc="Two youth are working together in a maker space, building and programming a robot. They are smiling and engaged as they work with electronics, wiring, and a computer keyboard at a workbench. The space is filled with tools, equipment, and shelving typical of a hands-on STEM learning environment."
+     data-flags="person_n,teaching,robot,hardware,action,programming">
+  <img class="thumb" src="../action/robot_garage.png" alt="robot_garage.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/robot_garage.png" target="_blank">robot_garage.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/robot_garage.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two youth are working together in a maker space, building and programming a robot. They are smiling and engaged as they work with electronics, wiring, and a computer keyboard at a workbench. The space is filled with tools, equipment, and shelving typical of a hands-on STEM learning environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="three young students are collaboratively building and working on a robot in a classroom setting. they are focused on assembling or adjusting components of what appears to be a robotics competition robot. the classroom walls display various robotics projects and posters, indicating this is a stem/robotics learning environment."
+     data-name="robotics_firsttech.png"
+     data-src="../action/robotics_firsttech.png"
+     data-url="https://images.jointheleague.org/action/robotics_firsttech.png"
+     data-full-desc="Three young students are collaboratively building and working on a robot in a classroom setting. They are focused on assembling or adjusting components of what appears to be a robotics competition robot. The classroom walls display various robotics projects and posters, indicating this is a STEM/robotics learning environment."
+     data-flags="person_n,robot,hardware,action">
+  <img class="thumb" src="../action/robotics_firsttech.png" alt="robotics_firsttech.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/robotics_firsttech.png" target="_blank">robotics_firsttech.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/robotics_firsttech.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Three young students are collaboratively building and working on a robot in a classroom setting. They are focused on assembling or adjusting components of what appears to be a robotics competition robot. The classroom walls display various robotics projects and posters, indicating this is a STEM/robotics learning environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. this appears to be a generic graphic asset representing coding or computer programming education."
+     data-name="computer-robot.png"
+     data-src="../cards/computer-robot.png"
+     data-url="https://images.jointheleague.org/cards/computer-robot.png"
+     data-full-desc="A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education."
+     data-flags="robot,hardware,illustration,programming,stock">
+  <img class="thumb" src="../cards/computer-robot.png" alt="computer-robot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/computer-robot.png" target="_blank">computer-robot.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/computer-robot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful vector illustration depicting a laptop computer with an orange glowing screen displaying code, surrounded by stylized programming-related elements including small robot characters, plants, stars, and decorative dots on a purple gradient background. This appears to be a generic graphic asset representing coding or computer programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with led displays, dual white sensors on the front, and batteries mounted on top. the robot is designed for educational purposes to teach coding and robotics principles."
+     data-name="cutebot.png"
+     data-src="../cards/cutebot.png"
+     data-url="https://images.jointheleague.org/cards/cutebot.png"
+     data-full-desc="A product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with LED displays, dual white sensors on the front, and batteries mounted on top. The robot is designed for educational purposes to teach coding and robotics principles."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../cards/cutebot.png" alt="cutebot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/cutebot.png" target="_blank">cutebot.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/cutebot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A product photo of a programmable robot car kit featuring a blue chassis with wheels, a black control board with LED displays, dual white sensors on the front, and batteries mounted on top. The robot is designed for educational purposes to teach coding and robotics principles.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. this appears to be an educational stem or robotics build typical of youth coding and engineering programs."
+     data-name="motors_clinic.png"
+     data-src="../cards/motors_clinic.png"
+     data-url="https://images.jointheleague.org/cards/motors_clinic.png"
+     data-full-desc="A robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. This appears to be an educational STEM or robotics build typical of youth coding and engineering programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../cards/motors_clinic.png" alt="motors_clinic.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/motors_clinic.png" target="_blank">motors_clinic.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/motors_clinic.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A robotics or hardware project built on a yellow baseplate featuring a motor, circuit board with wiring, battery pack, and blue structural components. This appears to be an educational STEM or robotics build typical of youth coding and engineering programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art screenshot of the classic space invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
+     data-name="python_games.png"
+     data-src="../cards/python_games.png"
+     data-url="https://images.jointheleague.org/cards/python_games.png"
+     data-full-desc="A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background."
+     data-flags="screenshot,robot,illustration,duplicate,stock">
+  <img class="thumb" src="../cards/python_games.png" alt="python_games.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/python_games.png" target="_blank">python_games.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/python_games.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art screenshot of the classic Space Invaders arcade game, showing rows of colorful enemy aliens in purple, cyan, and green colors descending toward the player&#39;s defensive base at the bottom of the screen against a starry black background.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person works with a robotic arm in a workshop setting filled with tools and equipment. the scene shows hands-on stem learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
+     data-name="robot_garage.png"
+     data-src="../cards/robot_garage.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage.png"
+     data-full-desc="A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
+     data-flags="person_1,robot,hardware,action">
+  <img class="thumb" src="../cards/robot_garage.png" alt="robot_garage.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_garage.png" target="_blank">robot_garage.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. they are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
+     data-name="robot_garage_building.png"
+     data-src="../cards/robot_garage_building.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_building.png"
+     data-full-desc="A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
+     data-flags="person_1,robot,hardware,action">
+  <img class="thumb" src="../cards/robot_garage_building.png" alt="robot_garage_building.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_garage_building.png" target="_blank">robot_garage_building.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_building.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. the scene shows a hands-on stem learning environment with tools and equipment organized on pegboards in the background, typical of the league&#39;s maker/robotics programs."
+     data-name="robot_garage_programming.png"
+     data-src="../cards/robot_garage_programming.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_programming.png"
+     data-full-desc="A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs."
+     data-flags="person_1,robot,hardware,action,programming">
+  <img class="thumb" src="../cards/robot_garage_programming.png" alt="robot_garage_programming.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_garage_programming.png" target="_blank">robot_garage_programming.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_programming.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a blue and black robotic construction with mechanical arms and legs sits on a wooden floor. the robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. this appears to be a student-built robotics project typical of youth coding and engineering programs."
+     data-name="robot_riot.png"
+     data-src="../cards/robot_riot.png"
+     data-url="https://images.jointheleague.org/cards/robot_riot.png"
+     data-full-desc="A blue and black robotic construction with mechanical arms and legs sits on a wooden floor. The robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. This appears to be a student-built robotics project typical of youth coding and engineering programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../cards/robot_riot.png" alt="robot_riot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_riot.png" target="_blank">robot_riot.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_riot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A blue and black robotic construction with mechanical arms and legs sits on a wooden floor. The robot features circuit boards, servo motors, colored wiring, and structural pieces made from engineering building materials. This appears to be a student-built robotics project typical of youth coding and engineering programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. the table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of the league&#39;s programs."
+     data-name="tech-arcade.png"
+     data-src="../cards/tech-arcade.png"
+     data-url="https://images.jointheleague.org/cards/tech-arcade.png"
+     data-full-desc="A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs."
+     data-flags="person_n,teaching,robot,hardware,action,stock">
+  <img class="thumb" src="../cards/tech-arcade.png" alt="tech-arcade.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/tech-arcade.png" target="_blank">tech-arcade.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tech-arcade.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a top-down photograph of an educational robotics project featuring a raspberry pi microcontroller board mounted on a black grid platform with red motor modules, colorful jumper wires, a small display screen with green border, and various electronic components assembled together. this appears to be a hands-on hardware project typical of youth coding education, likely built by students at the league of amazing programmers."
+     data-name="raspi_motors.gif"
+     data-src="../classes/raspi_motors.gif"
+     data-url="https://images.jointheleague.org/classes/raspi_motors.gif"
+     data-full-desc="A top-down photograph of an educational robotics project featuring a Raspberry Pi microcontroller board mounted on a black grid platform with red motor modules, colorful jumper wires, a small display screen with green border, and various electronic components assembled together. This appears to be a hands-on hardware project typical of youth coding education, likely built by students at The League of Amazing Programmers."
+     data-flags="robot,hardware">
+  <img class="thumb" src="../classes/raspi_motors.gif" alt="raspi_motors.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../classes/raspi_motors.gif" target="_blank">raspi_motors.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/classes/raspi_motors.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A top-down photograph of an educational robotics project featuring a Raspberry Pi microcontroller board mounted on a black grid platform with red motor modules, colorful jumper wires, a small display screen with green border, and various electronic components assembled together. This appears to be a hands-on hardware project typical of youth coding education, likely built by students at The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. the robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos."
+     data-name="clearrobot3color1.png"
+     data-src="../logos/clearRobot3Color1.png"
+     data-url="https://images.jointheleague.org/logos/clearRobot3Color1.png"
+     data-full-desc="A stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. The robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos."
+     data-flags="logo,robot,illustration">
+  <img class="thumb" src="../logos/clearRobot3Color1.png" alt="clearRobot3Color1.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/clearRobot3Color1.png" target="_blank">clearRobot3Color1.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/clearRobot3Color1.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. The robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a stylized robot illustration with a friendly design featuring an orange and gray color scheme. the robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border."
+     data-name="clearrobotring4.png"
+     data-src="../logos/clearRobotRing4.png"
+     data-url="https://images.jointheleague.org/logos/clearRobotRing4.png"
+     data-full-desc="A stylized robot illustration with a friendly design featuring an orange and gray color scheme. The robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border."
+     data-flags="logo,robot,illustration">
+  <img class="thumb" src="../logos/clearRobotRing4.png" alt="clearRobotRing4.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/clearRobotRing4.png" target="_blank">clearRobotRing4.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/clearRobotRing4.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A stylized robot illustration with a friendly design featuring an orange and gray color scheme. The robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a circular badge logo for the league of amazing programmers&#39; 10th anniversary celebration in 2017. the design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;the league of amazing programmers&#39; and anniversary details around the outer edge."
+     data-name="t-shirt image final.png"
+     data-src="../logos/t-shirt image final.png"
+     data-url="https://images.jointheleague.org/logos/t-shirt image final.png"
+     data-full-desc="A circular badge logo for The League of Amazing Programmers&#39; 10th Anniversary celebration in 2017. The design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;The League of Amazing Programmers&#39; and anniversary details around the outer edge."
+     data-flags="logo,robot,illustration,event">
+  <img class="thumb" src="../logos/t-shirt image final.png" alt="t-shirt image final.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/t-shirt image final.png" target="_blank">t-shirt image final.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/t-shirt image final.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A circular badge logo for The League of Amazing Programmers&#39; 10th Anniversary celebration in 2017. The design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;The League of Amazing Programmers&#39; and anniversary details around the outer edge.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-name="cbextension.png"
+     data-src="../microbit/cbextension.png"
+     data-url="https://images.jointheleague.org/microbit/cbextension.png"
+     data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-flags="logo,robot,hardware,illustration">
+  <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+     data-name="cbtile.png"
+     data-src="../microbit/cbtile.png"
+     data-url="https://images.jointheleague.org/microbit/cbtile.png"
+     data-full-desc="A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+     data-flags="logo,robot,hardware,product_photo">
+  <img class="thumb" src="../microbit/cbtile.png" alt="cbtile.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/cbtile.png" target="_blank">cbtile.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. the image includes a label pointing to the switch mechanism at the bottom."
+     data-name="cutebot-top.png"
+     data-src="../microbit/cutebot-top.png"
+     data-url="https://images.jointheleague.org/microbit/cutebot-top.png"
+     data-full-desc="A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../microbit/cutebot-top.png" alt="cutebot-top.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/cutebot-top.png" target="_blank">cutebot-top.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cutebot-top.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. this is a complete educational robotics platform designed for youth programming and hardware projects."
+     data-name="cutebot.jpg"
+     data-src="../microbit/cutebot.jpg"
+     data-url="https://images.jointheleague.org/microbit/cutebot.jpg"
+     data-full-desc="A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../microbit/cutebot.jpg" alt="cutebot.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/cutebot.jpg" target="_blank">cutebot.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cutebot.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
+     data-name="mb_setup_2.png"
+     data-src="../microbit/mb_setup_2.png"
+     data-url="https://images.jointheleague.org/microbit/mb_setup_2.png"
+     data-full-desc="A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers."
+     data-flags="robot,hardware,illustration,programming,product_photo">
+  <img class="thumb" src="../microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="three young people collaborate on assembling or working with a robot chassis in a classroom setting. they are focused on building hardware together, surrounded by educational posters and project displays on the walls, indicating this is a youth coding or robotics program environment."
+     data-name="img_5207.jpeg"
+     data-src="../mkt/IMG_5207.jpeg"
+     data-url="https://images.jointheleague.org/mkt/IMG_5207.jpeg"
+     data-full-desc="Three young people collaborate on assembling or working with a robot chassis in a classroom setting. They are focused on building hardware together, surrounded by educational posters and project displays on the walls, indicating this is a youth coding or robotics program environment."
+     data-flags="person_n,teaching,robot,hardware,action">
+  <img class="thumb" src="../mkt/IMG_5207.jpeg" alt="IMG_5207.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_5207.jpeg" target="_blank">IMG_5207.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_5207.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Three young people collaborate on assembling or working with a robot chassis in a classroom setting. They are focused on building hardware together, surrounded by educational posters and project displays on the walls, indicating this is a youth coding or robotics program environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of an ide (integrated development environment) showing java code from the league of amazing programmers. the left side displays the robotdemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas."
+     data-name="red_square.png"
+     data-src="../module-navigation/red_square.png"
+     data-url="https://images.jointheleague.org/module-navigation/red_square.png"
+     data-full-desc="A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas."
+     data-flags="screenshot,robot,programming">
+  <img class="thumb" src="../module-navigation/red_square.png" alt="red_square.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../module-navigation/red_square.png" target="_blank">red_square.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/red_square.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
+     data-name="leaguebot_bolt.gif"
+     data-src="../python/leaguebot_bolt.gif"
+     data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif"
+     data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-name="leaguebot_flag.gif"
+     data-src="../python/leaguebot_flag.gif"
+     data-url="https://images.jointheleague.org/python/leaguebot_flag.gif"
+     data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two programmable microbit robots are displayed against a gray background. on the left is a red and blue cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. both feature circuit boards, wiring, and electronic components typical of stem education kits."
+     data-name="cutebot.png"
+     data-src="../robots/CuteBot.png"
+     data-url="https://images.jointheleague.org/robots/CuteBot.png"
+     data-full-desc="Two programmable microbit robots are displayed against a gray background. On the left is a red and blue Cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. Both feature circuit boards, wiring, and electronic components typical of STEM education kits."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../robots/CuteBot.png" alt="CuteBot.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../robots/CuteBot.png" target="_blank">CuteBot.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/robots/CuteBot.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two programmable microbit robots are displayed against a gray background. On the left is a red and blue Cutebot with a round body design and control buttons, while on the right is a yellow and blue wheeled robot with a more complex chassis. Both feature circuit boards, wiring, and electronic components typical of STEM education kits.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vex robotics or similar educational robotics kit assembled on a wooden floor. the robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. this is a hands-on stem learning project typical of youth coding and robotics programs."
+     data-name="robot_riot.jpeg"
+     data-src="../robots/robot_riot.jpeg"
+     data-url="https://images.jointheleague.org/robots/robot_riot.jpeg"
+     data-full-desc="A VEX Robotics or similar educational robotics kit assembled on a wooden floor. The robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. This is a hands-on STEM learning project typical of youth coding and robotics programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../robots/robot_riot.jpeg" alt="robot_riot.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../robots/robot_riot.jpeg" target="_blank">robot_riot.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/robots/robot_riot.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A VEX Robotics or similar educational robotics kit assembled on a wooden floor. The robot features blue and black structural beams, a microcontroller board, servo motors, colorful wiring, and what appears to be mechanical arms or attachments. This is a hands-on STEM learning project typical of youth coding and robotics programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. the robots include wheeled vehicles with led lights, circuit boards, and colorful 3d-printed components in blue, green, yellow, and orange. these appear to be student-built projects typical of youth coding education programs."
+     data-name="robot_w_ball.jpeg"
+     data-src="../robots/robot_w_ball.jpeg"
+     data-url="https://images.jointheleague.org/robots/robot_w_ball.jpeg"
+     data-full-desc="A collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. The robots include wheeled vehicles with LED lights, circuit boards, and colorful 3D-printed components in blue, green, yellow, and orange. These appear to be student-built projects typical of youth coding education programs."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../robots/robot_w_ball.jpeg" alt="robot_w_ball.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../robots/robot_w_ball.jpeg" target="_blank">robot_w_ball.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/robots/robot_w_ball.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A collection of educational robot kits displayed on a dark surface, featuring multiple micro:bit-based robotics projects. The robots include wheeled vehicles with LED lights, circuit boards, and colorful 3D-printed components in blue, green, yellow, and orange. These appear to be student-built projects typical of youth coding education programs.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students in a modern classroom are engaged in a robotics coding activity. the girl in the foreground, wearing a yellow sweater and denim overalls, smiles at the camera while holding a small robot she&#39;s building. her classmates sit beside her at a table, also working with robotics kits and electronic components in a well-lit educational environment."
+     data-name="adobestock_236938759.jpeg"
+     data-src="../stock/AdobeStock_236938759.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_236938759.jpeg"
+     data-full-desc="A group of young students in a modern classroom are engaged in a robotics coding activity. The girl in the foreground, wearing a yellow sweater and denim overalls, smiles at the camera while holding a small robot she&#39;s building. Her classmates sit beside her at a table, also working with robotics kits and electronic components in a well-lit educational environment."
+     data-flags="person_n,robot,hardware,action,stock">
+  <img class="thumb" src="../stock/AdobeStock_236938759.jpeg" alt="AdobeStock_236938759.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_236938759.jpeg" target="_blank">AdobeStock_236938759.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_236938759.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students in a modern classroom are engaged in a robotics coding activity. The girl in the foreground, wearing a yellow sweater and denim overalls, smiles at the camera while holding a small robot she&#39;s building. Her classmates sit beside her at a table, also working with robotics kits and electronic components in a well-lit educational environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. the bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. the children are engaged in hands-on stem learning, working with components like yellow-wheeled robot bases and electronic circuits."
+     data-name="adobestock_354177033.jpeg"
+     data-src="../stock/AdobeStock_354177033.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_354177033.jpeg"
+     data-full-desc="An instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. The bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. The children are engaged in hands-on STEM learning, working with components like yellow-wheeled robot bases and electronic circuits."
+     data-flags="person_n,teaching,robot,hardware,action,stock">
+  <img class="thumb" src="../stock/AdobeStock_354177033.jpeg" alt="AdobeStock_354177033.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_354177033.jpeg" target="_blank">AdobeStock_354177033.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_354177033.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. The bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. The children are engaged in hands-on STEM learning, working with components like yellow-wheeled robot bases and electronic circuits.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of six young students pose together in a bright, modern classroom or tech workspace. they are holding various items including a laptop, robot, blueprints, and a book, suggesting a stem or coding education setting. the students are arranged casually with some standing and one sitting, displaying a collaborative and creative atmosphere typical of a youth technology learning environment."
+     data-name="adobestock_516293057_preview.jpeg"
+     data-src="../stock/AdobeStock_516293057_Preview.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_516293057_Preview.jpeg"
+     data-full-desc="A group of six young students pose together in a bright, modern classroom or tech workspace. They are holding various items including a laptop, robot, blueprints, and a book, suggesting a STEM or coding education setting. The students are arranged casually with some standing and one sitting, displaying a collaborative and creative atmosphere typical of a youth technology learning environment."
+     data-flags="person_n,robot,hardware,group_photo,stock">
+  <img class="thumb" src="../stock/AdobeStock_516293057_Preview.jpeg" alt="AdobeStock_516293057_Preview.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_516293057_Preview.jpeg" target="_blank">AdobeStock_516293057_Preview.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_516293057_Preview.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of six young students pose together in a bright, modern classroom or tech workspace. They are holding various items including a laptop, robot, blueprints, and a book, suggesting a STEM or coding education setting. The students are arranged casually with some standing and one sitting, displaying a collaborative and creative atmosphere typical of a youth technology learning environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful flat lay composition on a bright yellow background featuring various robots and electronics projects. the image shows a cute blue cartoon-style robot in the center, flanked by four different hardware builds including motorized robots with mechanical arms, circuit boards (including an arduino uno), sensors, and electronic components with wiring. this appears to be a styled product photo showcasing robotics and electronics education kits."
+     data-name="bots on yellowback.jpeg"
+     data-src="../stock/bots on yellowback.jpeg"
+     data-url="https://images.jointheleague.org/stock/bots on yellowback.jpeg"
+     data-full-desc="A colorful flat lay composition on a bright yellow background featuring various robots and electronics projects. The image shows a cute blue cartoon-style robot in the center, flanked by four different hardware builds including motorized robots with mechanical arms, circuit boards (including an Arduino UNO), sensors, and electronic components with wiring. This appears to be a styled product photo showcasing robotics and electronics education kits."
+     data-flags="robot,hardware,product_photo,stock">
+  <img class="thumb" src="../stock/bots on yellowback.jpeg" alt="bots on yellowback.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/bots on yellowback.jpeg" target="_blank">bots on yellowback.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/bots on yellowback.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful flat lay composition on a bright yellow background featuring various robots and electronics projects. The image shows a cute blue cartoon-style robot in the center, flanked by four different hardware builds including motorized robots with mechanical arms, circuit boards (including an Arduino UNO), sensors, and electronic components with wiring. This appears to be a styled product photo showcasing robotics and electronics education kits.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+</div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BASE_URL = 'https://images.jointheleague.org/';
+let catalog = null;
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch('data/catalog.json');
+  catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
+  return catalog;
+}
+
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
+
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
+  });
+
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
+  }
+  searchActive = false;
+}
+
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
+document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

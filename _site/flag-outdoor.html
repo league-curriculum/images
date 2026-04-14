@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag: outdoor - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .image-card .thumb {
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
+      padding: 1.25rem;
+    }
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
+    }
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
+      font-size: .8rem;
+      color: var(--gray-700);
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" class="active">outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content" id="page-content">
+    
+<h1>Flag: outdoor</h1>
+<p class="subtitle">12 images with this flag</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of seven youth smiling and posing together outdoors in a lush garden setting with palm trees, green hedges, and large shade trees. they appear to be wearing casual clothing with some wearing hoodies or t-shirts, and several are wearing what look like event badges or lanyards. the setting and posed nature suggests this is from a league event or gathering."
+     data-name="2020.01.14-bell-ms-tech-discovery-day_6.jpg"
+     data-src="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg"
+     data-url="https://images.jointheleague.org/action/2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg"
+     data-full-desc="A group of seven youth smiling and posing together outdoors in a lush garden setting with palm trees, green hedges, and large shade trees. They appear to be wearing casual clothing with some wearing hoodies or t-shirts, and several are wearing what look like event badges or lanyards. The setting and posed nature suggests this is from a League event or gathering."
+     data-flags="person_n,group_photo,outdoor,event">
+  <img class="thumb" src="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg" alt="2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg" target="_blank">2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/2020.01.14-Bell-MS-Tech-Discovery-Day_6.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of seven youth smiling and posing together outdoors in a lush garden setting with palm trees, green hedges, and large shade trees. They appear to be wearing casual clothing with some wearing hoodies or t-shirts, and several are wearing what look like event badges or lanyards. The setting and posed nature suggests this is from a League event or gathering.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young people wearing orange &#34;the league&#34; t-shirts pose together outdoors in front of a historic columned building with a fountain. an adult instructor in a black shirt crouches in the center front, while seven students stand behind him wearing masks. the scene captures a team moment at what appears to be an event or field trip location."
+     data-name="img_5178-scaled.jpg"
+     data-src="../action/IMG_5178-scaled.jpg"
+     data-url="https://images.jointheleague.org/action/IMG_5178-scaled.jpg"
+     data-full-desc="A group of young people wearing orange &#34;The League&#34; t-shirts pose together outdoors in front of a historic columned building with a fountain. An adult instructor in a black shirt crouches in the center front, while seven students stand behind him wearing masks. The scene captures a team moment at what appears to be an event or field trip location."
+     data-flags="person_n,teaching,logo,action,group_photo,building,outdoor,event">
+  <img class="thumb" src="../action/IMG_5178-scaled.jpg" alt="IMG_5178-scaled.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_5178-scaled.jpg" target="_blank">IMG_5178-scaled.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_5178-scaled.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young people wearing orange &#34;The League&#34; t-shirts pose together outdoors in front of a historic columned building with a fountain. An adult instructor in a black shirt crouches in the center front, while seven students stand behind him wearing masks. The scene captures a team moment at what appears to be an event or field trip location.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of youth and adults from the league of amazing programmers pose together in a courtyard holding a large charity donation check from san diego self storage. the diverse group, including children and adults wearing league-branded clothing, stands in front of a historic spanish colonial-style building with ornate architecture, displaying their fundraising success."
+     data-name="img_6573-scaled.jpeg"
+     data-src="../action/IMG_6573-scaled.jpeg"
+     data-url="https://images.jointheleague.org/action/IMG_6573-scaled.jpeg"
+     data-full-desc="A group of youth and adults from The League of Amazing Programmers pose together in a courtyard holding a large charity donation check from San Diego Self Storage. The diverse group, including children and adults wearing League-branded clothing, stands in front of a historic Spanish colonial-style building with ornate architecture, displaying their fundraising success."
+     data-flags="person_n,action,group_photo,building,outdoor,event">
+  <img class="thumb" src="../action/IMG_6573-scaled.jpeg" alt="IMG_6573-scaled.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_6573-scaled.jpeg" target="_blank">IMG_6573-scaled.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_6573-scaled.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of youth and adults from The League of Amazing Programmers pose together in a courtyard holding a large charity donation check from San Diego Self Storage. The diverse group, including children and adults wearing League-branded clothing, stands in front of a historic Spanish colonial-style building with ornate architecture, displaying their fundraising success.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of students and adults from the league of amazing programmers pose together in front of an ornate fountain in a courtyard, holding a large charity donation check from san diego self storage for $1,000 dated february 12, 2023. the photo captures a celebratory moment where the organization has received community support, with participants of various ages smiling at the camera in a formal outdoor setting with classical architecture in the background."
+     data-name="img_6573_cropped.jpg"
+     data-src="../action/IMG_6573_cropped.jpg"
+     data-url="https://images.jointheleague.org/action/IMG_6573_cropped.jpg"
+     data-full-desc="A group of students and adults from The League of Amazing Programmers pose together in front of an ornate fountain in a courtyard, holding a large charity donation check from San Diego Self Storage for $1,000 dated February 12, 2023. The photo captures a celebratory moment where the organization has received community support, with participants of various ages smiling at the camera in a formal outdoor setting with classical architecture in the background."
+     data-flags="person_n,action,group_photo,building,outdoor,event">
+  <img class="thumb" src="../action/IMG_6573_cropped.jpg" alt="IMG_6573_cropped.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_6573_cropped.jpg" target="_blank">IMG_6573_cropped.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_6573_cropped.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of students and adults from The League of Amazing Programmers pose together in front of an ornate fountain in a courtyard, holding a large charity donation check from San Diego Self Storage for $1,000 dated February 12, 2023. The photo captures a celebratory moment where the organization has received community support, with participants of various ages smiling at the camera in a formal outdoor setting with classical architecture in the background.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="three people stand together outdoors at what appears to be an event, with two of them wearing lanyards with badges and medals around their necks. they are smiling at the camera with palm trees and buildings visible in the background. this appears to be a celebratory moment from a league event or competition where the participants are displaying their achievements."
+     data-name="mg_5461_picmonkeyed-300x288-1.jpg"
+     data-src="../action/MG_5461_picmonkeyed-300x288-1.jpg"
+     data-url="https://images.jointheleague.org/action/MG_5461_picmonkeyed-300x288-1.jpg"
+     data-full-desc="Three people stand together outdoors at what appears to be an event, with two of them wearing lanyards with badges and medals around their necks. They are smiling at the camera with palm trees and buildings visible in the background. This appears to be a celebratory moment from a League event or competition where the participants are displaying their achievements."
+     data-flags="person_n,action,group_photo,outdoor,event">
+  <img class="thumb" src="../action/MG_5461_picmonkeyed-300x288-1.jpg" alt="MG_5461_picmonkeyed-300x288-1.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/MG_5461_picmonkeyed-300x288-1.jpg" target="_blank">MG_5461_picmonkeyed-300x288-1.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/MG_5461_picmonkeyed-300x288-1.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Three people stand together outdoors at what appears to be an event, with two of them wearing lanyards with badges and medals around their necks. They are smiling at the camera with palm trees and buildings visible in the background. This appears to be a celebratory moment from a League event or competition where the participants are displaying their achievements.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a photograph of a modern school building exterior taken during dusk or early evening. the san francisco high school building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. the sky displays blue and purple tones typical of twilight hours."
+     data-name="sanmarcos.png"
+     data-src="../cards/SanMarcos.png"
+     data-url="https://images.jointheleague.org/cards/SanMarcos.png"
+     data-full-desc="A photograph of a modern school building exterior taken during dusk or early evening. The San Francisco High School building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. The sky displays blue and purple tones typical of twilight hours."
+     data-flags="building,outdoor">
+  <img class="thumb" src="../cards/SanMarcos.png" alt="SanMarcos.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/SanMarcos.png" target="_blank">SanMarcos.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/SanMarcos.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A photograph of a modern school building exterior taken during dusk or early evening. The San Francisco High School building features contemporary architecture with extensive glass panels, horizontal lines, and illuminated signage. The sky displays blue and purple tones typical of twilight hours.</div>
+    <div class="tags">
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a skeleton prop or decoration sits on a wooden bench or seat outdoors on a grassy hillside. this appears to be a humorous setup photo, likely used as a meme template where text could be overlaid to create jokes or educational content for students."
+     data-name="2fm6x.jpg"
+     data-src="../memes/2fm6x.jpg"
+     data-url="https://images.jointheleague.org/memes/2fm6x.jpg"
+     data-full-desc="A skeleton prop or decoration sits on a wooden bench or seat outdoors on a grassy hillside. This appears to be a humorous setup photo, likely used as a meme template where text could be overlaid to create jokes or educational content for students."
+     data-flags="outdoor">
+  <img class="thumb" src="../memes/2fm6x.jpg" alt="2fm6x.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/2fm6x.jpg" target="_blank">2fm6x.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/2fm6x.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A skeleton prop or decoration sits on a wooden bench or seat outdoors on a grassy hillside. This appears to be a humorous setup photo, likely used as a meme template where text could be overlaid to create jokes or educational content for students.</div>
+    <div class="tags">
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of six young students from the league of amazing programmers stand outdoors in a courtyard setting, proudly displaying their certificates of achievement. they are posed in front of an ornate fountain with ivy-covered walls and classical architecture in the background. all the students are smiling and holding up their blue and white league certificates, celebrating their completion of a program."
+     data-name="2020.01.03 workshop grads.jpg"
+     data-src="../mkt/2020.01.03 Workshop Grads.jpg"
+     data-url="https://images.jointheleague.org/mkt/2020.01.03 Workshop Grads.jpg"
+     data-full-desc="A group of six young students from The League of Amazing Programmers stand outdoors in a courtyard setting, proudly displaying their certificates of achievement. They are posed in front of an ornate fountain with ivy-covered walls and classical architecture in the background. All the students are smiling and holding up their blue and white League certificates, celebrating their completion of a program."
+     data-flags="person_n,logo,group_photo,building,outdoor,event">
+  <img class="thumb" src="../mkt/2020.01.03 Workshop Grads.jpg" alt="2020.01.03 Workshop Grads.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/2020.01.03 Workshop Grads.jpg" target="_blank">2020.01.03 Workshop Grads.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/2020.01.03 Workshop Grads.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of six young students from The League of Amazing Programmers stand outdoors in a courtyard setting, proudly displaying their certificates of achievement. They are posed in front of an ornate fountain with ivy-covered walls and classical architecture in the background. All the students are smiling and holding up their blue and white League certificates, celebrating their completion of a program.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a portrait of a young person wearing glasses and a beige hoodie, standing in a courtyard setting with colonial architecture, palm trees, and manicured gardens in the background. the person is positioned centrally and appears to be at an outdoor event or campus location."
+     data-name="img_2338.png"
+     data-src="../mkt/IMG_2338.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2338.png"
+     data-full-desc="A portrait of a young person wearing glasses and a beige hoodie, standing in a courtyard setting with colonial architecture, palm trees, and manicured gardens in the background. The person is positioned centrally and appears to be at an outdoor event or campus location."
+     data-flags="person_1,building,outdoor">
+  <img class="thumb" src="../mkt/IMG_2338.png" alt="IMG_2338.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2338.png" target="_blank">IMG_2338.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2338.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A portrait of a young person wearing glasses and a beige hoodie, standing in a courtyard setting with colonial architecture, palm trees, and manicured gardens in the background. The person is positioned centrally and appears to be at an outdoor event or campus location.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a portrait of a young person wearing glasses and a flat cap over a blue checkered shirt, standing outdoors in a courtyard with a spanish colonial-style building, palm trees, and manicured gardens in the background. the person is facing the camera with a calm expression, appearing to be a professional headshot or portrait photo."
+     data-name="img_2348.png"
+     data-src="../mkt/IMG_2348.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2348.png"
+     data-full-desc="A portrait of a young person wearing glasses and a flat cap over a blue checkered shirt, standing outdoors in a courtyard with a Spanish colonial-style building, palm trees, and manicured gardens in the background. The person is facing the camera with a calm expression, appearing to be a professional headshot or portrait photo."
+     data-flags="person_1,building,outdoor">
+  <img class="thumb" src="../mkt/IMG_2348.png" alt="IMG_2348.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2348.png" target="_blank">IMG_2348.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2348.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A portrait of a young person wearing glasses and a flat cap over a blue checkered shirt, standing outdoors in a courtyard with a Spanish colonial-style building, palm trees, and manicured gardens in the background. The person is facing the camera with a calm expression, appearing to be a professional headshot or portrait photo.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a portrait of a young person wearing glasses and a beige cap, photographed outdoors in a courtyard garden setting. the background shows a cream-colored building with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting an elegant institutional or campus environment."
+     data-name="img_2349.png"
+     data-src="../mkt/IMG_2349.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2349.png"
+     data-full-desc="A portrait of a young person wearing glasses and a beige cap, photographed outdoors in a courtyard garden setting. The background shows a cream-colored building with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting an elegant institutional or campus environment."
+     data-flags="person_1,building,outdoor">
+  <img class="thumb" src="../mkt/IMG_2349.png" alt="IMG_2349.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2349.png" target="_blank">IMG_2349.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2349.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A portrait of a young person wearing glasses and a beige cap, photographed outdoors in a courtyard garden setting. The background shows a cream-colored building with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting an elegant institutional or campus environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. the child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. the image captures a moment of tech interaction in a natural, candid style."
+     data-name="blondandblueboy.jpeg"
+     data-src="../stock/blondandblueboy.jpeg"
+     data-url="https://images.jointheleague.org/stock/blondandblueboy.jpeg"
+     data-full-desc="A young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. The child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. The image captures a moment of tech interaction in a natural, candid style."
+     data-flags="person_1,hardware,action,stock,outdoor">
+  <img class="thumb" src="../stock/blondandblueboy.jpeg" alt="blondandblueboy.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/blondandblueboy.jpeg" target="_blank">blondandblueboy.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/blondandblueboy.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. The child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. The image captures a moment of tech interaction in a natural, candid style.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+</div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BASE_URL = 'https://images.jointheleague.org/';
+let catalog = null;
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch('data/catalog.json');
+  catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
+  return catalog;
+}
+
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
+
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
+  });
+
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
+  }
+  searchActive = false;
+}
+
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
+document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

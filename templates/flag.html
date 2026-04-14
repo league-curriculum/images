@@ -1,8 +1,8 @@
 {% extends "page.html" %}
 {% from "_card.html" import image_card %}
 {% block content %}
-<h1>{{ category_name }}</h1>
-<p class="subtitle">{{ category_description }} &mdash; {{ images|length }} images</p>
+<h1>Flag: {{ flag_name }}</h1>
+<p class="subtitle">{{ images|length }} images with this flag</p>
 
 <div class="image-grid" id="image-grid">
   {% for img in images %}

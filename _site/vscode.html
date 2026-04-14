@@ -68,21 +68,9 @@
       border-left: 3px solid var(--orange);
       padding-left: calc(1rem - 3px);
     }
-    .sidebar .flag-btn {
-      display: inline-block;
-      padding: .2rem .5rem;
-      margin: .15rem .15rem .15rem 1rem;
-      border-radius: 4px;
-      font-size: .75rem;
-      cursor: pointer;
-      background: rgba(255,255,255,.1);
-      color: var(--gray-300);
-      text-decoration: none;
-      transition: all .15s;
-    }
-    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
-      background: var(--orange);
-      color: #fff;
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
     }
 
     /* Main area */
@@ -164,11 +152,18 @@
     .image-card .info {
       padding: .75rem;
     }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
     .image-card .name {
       font-size: .8rem;
       font-weight: 600;
       word-break: break-all;
-      margin-bottom: .35rem;
+      flex: 1;
+      min-width: 0;
     }
     .image-card .name a {
       color: var(--gray-900);
@@ -176,6 +171,26 @@
     }
     .image-card .name a:hover {
       color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
     }
     .image-card .desc {
       font-size: .75rem;
@@ -199,39 +214,123 @@
       background: var(--orange-light);
       color: var(--orange);
     }
+    .image-card .thumb {
+      cursor: pointer;
+    }
 
-    /* Index page category cards */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
     }
-    .cat-card {
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
       background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: 8px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
       padding: 1.25rem;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow .2s;
     }
-    .cat-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
     }
-    .cat-card h3 {
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
       color: var(--orange);
-      margin-bottom: .35rem;
     }
-    .cat-card p {
-      font-size: .85rem;
-      color: var(--gray-500);
-      line-height: 1.4;
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
     }
-    .cat-card .count {
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
       font-size: .8rem;
       color: var(--gray-700);
-      margin-top: .5rem;
-      font-weight: 600;
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
     }
   </style>
 </head>
@@ -308,55 +407,53 @@
   </a>
   
 
-  <h2>Filter by Flag</h2>
-  <div style="padding: 0 0 1rem 0;">
-    
-    <span class="flag-btn" data-flag="action">action</span>
-    
-    <span class="flag-btn" data-flag="building">building</span>
-    
-    <span class="flag-btn" data-flag="duplicate">duplicate</span>
-    
-    <span class="flag-btn" data-flag="event">event</span>
-    
-    <span class="flag-btn" data-flag="group_photo">group_photo</span>
-    
-    <span class="flag-btn" data-flag="hardware">hardware</span>
-    
-    <span class="flag-btn" data-flag="illustration">illustration</span>
-    
-    <span class="flag-btn" data-flag="logo">logo</span>
-    
-    <span class="flag-btn" data-flag="outdoor">outdoor</span>
-    
-    <span class="flag-btn" data-flag="person_1">person_1</span>
-    
-    <span class="flag-btn" data-flag="person_n">person_n</span>
-    
-    <span class="flag-btn" data-flag="presentation">presentation</span>
-    
-    <span class="flag-btn" data-flag="product_photo">product_photo</span>
-    
-    <span class="flag-btn" data-flag="programming">programming</span>
-    
-    <span class="flag-btn" data-flag="robot">robot</span>
-    
-    <span class="flag-btn" data-flag="screenshot">screenshot</span>
-    
-    <span class="flag-btn" data-flag="stock">stock</span>
-    
-    <span class="flag-btn" data-flag="teaching">teaching</span>
-    
-  </div>
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
 </nav>
 
 <div class="main">
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
     <span class="result-count" id="result-count"></span>
   </div>
 
-  <div class="content">
+  <div class="content" id="page-content">
     
 <h1>vscode</h1>
 <p class="subtitle">Small images of VS Code features for instructions on how to use VS Code. &mdash; 18 images</p>
@@ -364,500 +461,779 @@
 <div class="image-grid" id="image-grid">
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in vs code to represent opening or navigating to a file."
-       data-flags="illustration"
-       data-name="browser_pane.png">
-    <img class="thumb" src="../vscode/browser_pane.png" alt="browser_pane.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in vs code to represent opening or navigating to a file."
+     data-name="browser_pane.png"
+     data-src="../vscode/browser_pane.png"
+     data-url="https://images.jointheleague.org/vscode/browser_pane.png"
+     data-full-desc="A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/browser_pane.png" alt="browser_pane.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/browser_pane.png" target="_blank">browser_pane.png</a></div>
-      <div class="desc">A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/browser_pane.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a green button or banner with white text that reads &#39;create codespace on master&#39;. this appears to be a ui element from visual studio code related to creating a github codespace."
-       data-flags="screenshot,programming"
-       data-name="create_codespace.png">
-    <img class="thumb" src="../vscode/create_codespace.png" alt="create_codespace.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a green button or banner with white text that reads &#39;create codespace on master&#39;. this appears to be a ui element from visual studio code related to creating a github codespace."
+     data-name="create_codespace.png"
+     data-src="../vscode/create_codespace.png"
+     data-url="https://images.jointheleague.org/vscode/create_codespace.png"
+     data-full-desc="A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/create_codespace.png" alt="create_codespace.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/create_codespace.png" target="_blank">create_codespace.png</a></div>
-      <div class="desc">A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/create_codespace.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a green button or label showing the text &#39;create codespace on master&#39;, which appears to be a ui element from github or vs code for creating a cloud-based development environment."
-       data-flags="screenshot,programming"
-       data-name="create_codespace_sm.png">
-    <img class="thumb" src="../vscode/create_codespace_sm.png" alt="create_codespace_sm.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a green button or label showing the text &#39;create codespace on master&#39;, which appears to be a ui element from github or vs code for creating a cloud-based development environment."
+     data-name="create_codespace_sm.png"
+     data-src="../vscode/create_codespace_sm.png"
+     data-url="https://images.jointheleague.org/vscode/create_codespace_sm.png"
+     data-full-desc="A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/create_codespace_sm.png" alt="create_codespace_sm.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/create_codespace_sm.png" target="_blank">create_codespace_sm.png</a></div>
-      <div class="desc">A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/create_codespace_sm.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a row of vs code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. these are standard ui elements found in the vs code editor interface."
-       data-flags="screenshot,programming"
-       data-name="debug_bar.png">
-    <img class="thumb" src="../vscode/debug_bar.png" alt="debug_bar.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a row of vs code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. these are standard ui elements found in the vs code editor interface."
+     data-name="debug_bar.png"
+     data-src="../vscode/debug_bar.png"
+     data-url="https://images.jointheleague.org/vscode/debug_bar.png"
+     data-full-desc="A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/debug_bar.png" alt="debug_bar.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/debug_bar.png" target="_blank">debug_bar.png</a></div>
-      <div class="desc">A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/debug_bar.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple icon showing overlapping document or file pages, representing file management or code editor functionality in vs code."
-       data-flags="illustration"
-       data-name="explorer_icon.png">
-    <img class="thumb" src="../vscode/explorer_icon.png" alt="explorer_icon.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple icon showing overlapping document or file pages, representing file management or code editor functionality in vs code."
+     data-name="explorer_icon.png"
+     data-src="../vscode/explorer_icon.png"
+     data-url="https://images.jointheleague.org/vscode/explorer_icon.png"
+     data-full-desc="A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/explorer_icon.png" alt="explorer_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/explorer_icon.png" target="_blank">explorer_icon.png</a></div>
-      <div class="desc">A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/explorer_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. this appears to be a vs code interface icon representing debugging, extensions, or connection management features."
-       data-flags="illustration"
-       data-name="git_changes.png">
-    <img class="thumb" src="../vscode/git_changes.png" alt="git_changes.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. this appears to be a vs code interface icon representing debugging, extensions, or connection management features."
+     data-name="git_changes.png"
+     data-src="../vscode/git_changes.png"
+     data-url="https://images.jointheleague.org/vscode/git_changes.png"
+     data-full-desc="A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/git_changes.png" alt="git_changes.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/git_changes.png" target="_blank">git_changes.png</a></div>
-      <div class="desc">A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/git_changes.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. this appears to be a vs code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the ide&#39;s debugging tools."
-       data-flags="illustration"
-       data-name="league_flag_icon.png">
-    <img class="thumb" src="../vscode/league_flag_icon.png" alt="league_flag_icon.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. this appears to be a vs code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the ide&#39;s debugging tools."
+     data-name="league_flag_icon.png"
+     data-src="../vscode/league_flag_icon.png"
+     data-url="https://images.jointheleague.org/vscode/league_flag_icon.png"
+     data-full-desc="A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/league_flag_icon.png" alt="league_flag_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/league_flag_icon.png" target="_blank">league_flag_icon.png</a></div>
-      <div class="desc">A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/league_flag_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a user interface showing an &#39;actions&#39; section with three buttons: a blue &#39;next lesson&#39; button at the top, and two buttons below it - a green &#39;run&#39; button with a play icon and a red &#39;stop&#39; button. this appears to be from an educational coding platform&#39;s interface."
-       data-flags="screenshot,programming"
-       data-name="lesson-browser.png">
-    <img class="thumb" src="../vscode/lesson-browser.png" alt="lesson-browser.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a user interface showing an &#39;actions&#39; section with three buttons: a blue &#39;next lesson&#39; button at the top, and two buttons below it - a green &#39;run&#39; button with a play icon and a red &#39;stop&#39; button. this appears to be from an educational coding platform&#39;s interface."
+     data-name="lesson-browser.png"
+     data-src="../vscode/lesson-browser.png"
+     data-url="https://images.jointheleague.org/vscode/lesson-browser.png"
+     data-full-desc="A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/lesson-browser.png" alt="lesson-browser.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/lesson-browser.png" target="_blank">lesson-browser.png</a></div>
-      <div class="desc">A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/lesson-browser.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
-       data-flags="illustration"
-       data-name="monitor_icon.png">
-    <img class="thumb" src="../vscode/monitor_icon.png" alt="monitor_icon.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
+     data-name="monitor_icon.png"
+     data-src="../vscode/monitor_icon.png"
+     data-url="https://images.jointheleague.org/vscode/monitor_icon.png"
+     data-full-desc="A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
+     data-flags="illustration">
+  <img class="thumb" src="../vscode/monitor_icon.png" alt="monitor_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/monitor_icon.png" target="_blank">monitor_icon.png</a></div>
-      <div class="desc">A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.</div>
-      <div class="tags">
-        
-        <span class="tag">illustration</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/monitor_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot showing a row of vs code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
-       data-flags="screenshot"
-       data-name="run_buttons.png">
-    <img class="thumb" src="../vscode/run_buttons.png" alt="run_buttons.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot showing a row of vs code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
+     data-name="run_buttons.png"
+     data-src="../vscode/run_buttons.png"
+     data-url="https://images.jointheleague.org/vscode/run_buttons.png"
+     data-full-desc="A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
+     data-flags="screenshot">
+  <img class="thumb" src="../vscode/run_buttons.png" alt="run_buttons.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/run_buttons.png" target="_blank">run_buttons.png</a></div>
-      <div class="desc">A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/run_buttons.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of python code in visual studio code showing a beginner programming example. the code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. a red arrow annotation points to the import statement at the top."
-       data-flags="screenshot,programming"
-       data-name="run_cell.png">
-    <img class="thumb" src="../vscode/run_cell.png" alt="run_cell.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of python code in visual studio code showing a beginner programming example. the code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. a red arrow annotation points to the import statement at the top."
+     data-name="run_cell.png"
+     data-src="../vscode/run_cell.png"
+     data-url="https://images.jointheleague.org/vscode/run_cell.png"
+     data-full-desc="A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/run_cell.png" alt="run_cell.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/run_cell.png" target="_blank">run_cell.png</a></div>
-      <div class="desc">A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/run_cell.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of vs code showing a python programming lesson from the league&#39;s python-apprentice curriculum. the left panel displays a file explorer with lesson folders and python files (including turtle graphics exercises), the center shows python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;why, hello there!&#39; text."
-       data-flags="screenshot,programming"
-       data-name="run_tina.png">
-    <img class="thumb" src="../vscode/run_tina.png" alt="run_tina.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of vs code showing a python programming lesson from the league&#39;s python-apprentice curriculum. the left panel displays a file explorer with lesson folders and python files (including turtle graphics exercises), the center shows python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;why, hello there!&#39; text."
+     data-name="run_tina.png"
+     data-src="../vscode/run_tina.png"
+     data-url="https://images.jointheleague.org/vscode/run_tina.png"
+     data-full-desc="A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/run_tina.png" alt="run_tina.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/run_tina.png" target="_blank">run_tina.png</a></div>
-      <div class="desc">A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/run_tina.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a source control interface in vs code showing a commit dialog. the interface displays a message input field, a blue &#34;commit&#34; button, and a list of 3 modified files related to python lessons including turtle tricks and getting started modules."
-       data-flags="screenshot,programming"
-       data-name="sc_changes.png">
-    <img class="thumb" src="../vscode/sc_changes.png" alt="sc_changes.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a source control interface in vs code showing a commit dialog. the interface displays a message input field, a blue &#34;commit&#34; button, and a list of 3 modified files related to python lessons including turtle tricks and getting started modules."
+     data-name="sc_changes.png"
+     data-src="../vscode/sc_changes.png"
+     data-url="https://images.jointheleague.org/vscode/sc_changes.png"
+     data-full-desc="A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/sc_changes.png" alt="sc_changes.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/sc_changes.png" target="_blank">sc_changes.png</a></div>
-      <div class="desc">A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/sc_changes.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a git commit message editor in vs code showing the commit_editmsg file. the editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_turtles/03c_turtle_tricks.py&#39; is modified and ready to be committed."
-       data-flags="screenshot,programming"
-       data-name="sc_edit_message.png">
-    <img class="thumb" src="../vscode/sc_edit_message.png" alt="sc_edit_message.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a git commit message editor in vs code showing the commit_editmsg file. the editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_turtles/03c_turtle_tricks.py&#39; is modified and ready to be committed."
+     data-name="sc_edit_message.png"
+     data-src="../vscode/sc_edit_message.png"
+     data-url="https://images.jointheleague.org/vscode/sc_edit_message.png"
+     data-full-desc="A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/sc_edit_message.png" alt="sc_edit_message.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/sc_edit_message.png" target="_blank">sc_edit_message.png</a></div>
-      <div class="desc">A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/sc_edit_message.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a vs code interface element showing a blue header bar with white text that reads &#39;sync changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
-       data-flags="screenshot,programming"
-       data-name="sc_sync.png">
-    <img class="thumb" src="../vscode/sc_sync.png" alt="sc_sync.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a vs code interface element showing a blue header bar with white text that reads &#39;sync changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
+     data-name="sc_sync.png"
+     data-src="../vscode/sc_sync.png"
+     data-url="https://images.jointheleague.org/vscode/sc_sync.png"
+     data-full-desc="A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/sc_sync.png" alt="sc_sync.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/sc_sync.png" target="_blank">sc_sync.png</a></div>
-      <div class="desc">A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/sc_sync.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a jupyter kernel selection dialog in vs code. the interface shows a search box with placeholder text &#34;type to choose a kernel source&#34; and two options below: &#34;python environments...&#34; and &#34;existing jupyter server...&#34;"
-       data-flags="screenshot,programming"
-       data-name="select_python.png">
-    <img class="thumb" src="../vscode/select_python.png" alt="select_python.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a jupyter kernel selection dialog in vs code. the interface shows a search box with placeholder text &#34;type to choose a kernel source&#34; and two options below: &#34;python environments...&#34; and &#34;existing jupyter server...&#34;"
+     data-name="select_python.png"
+     data-src="../vscode/select_python.png"
+     data-url="https://images.jointheleague.org/vscode/select_python.png"
+     data-full-desc="A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;"
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/select_python.png" alt="select_python.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/select_python.png" target="_blank">select_python.png</a></div>
-      <div class="desc">A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/select_python.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a python development environment selection dialog in vs code. the interface shows options to create a new python environment or select from existing ones, including a recommended .venv (python 3.12.4) and several other python installations."
-       data-flags="screenshot,programming"
-       data-name="select_venv.png">
-    <img class="thumb" src="../vscode/select_venv.png" alt="select_venv.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a python development environment selection dialog in vs code. the interface shows options to create a new python environment or select from existing ones, including a recommended .venv (python 3.12.4) and several other python installations."
+     data-name="select_venv.png"
+     data-src="../vscode/select_venv.png"
+     data-url="https://images.jointheleague.org/vscode/select_venv.png"
+     data-full-desc="A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/select_venv.png" alt="select_venv.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/select_venv.png" target="_blank">select_venv.png</a></div>
-      <div class="desc">A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/select_venv.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
   
+
+
   
-    
+
   
-    
-  
-  <div class="image-card"
-       data-desc="a screenshot of a vs code start menu showing options for creating a new file, opening files, cloning a git repository, and connecting to a remote environment. this appears to be from visual studio code&#39;s welcome screen with a dark theme."
-       data-flags="screenshot,programming"
-       data-name="vscode_start.png">
-    <img class="thumb" src="../vscode/vscode_start.png" alt="vscode_start.png" loading="lazy">
-    <div class="info">
+
+
+<div class="image-card"
+     data-desc="a screenshot of a vs code start menu showing options for creating a new file, opening files, cloning a git repository, and connecting to a remote environment. this appears to be from visual studio code&#39;s welcome screen with a dark theme."
+     data-name="vscode_start.png"
+     data-src="../vscode/vscode_start.png"
+     data-url="https://images.jointheleague.org/vscode/vscode_start.png"
+     data-full-desc="A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../vscode/vscode_start.png" alt="vscode_start.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
       <div class="name"><a href="../vscode/vscode_start.png" target="_blank">vscode_start.png</a></div>
-      <div class="desc">A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme.</div>
-      <div class="tags">
-        
-        <span class="tag">screenshot</span>
-        
-        <span class="tag">programming</span>
-        
-      </div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/vscode_start.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
     </div>
   </div>
+</div>
+
   
 </div>
 
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-const CATALOG_URL = 'data/catalog.json';
+const BASE_URL = 'https://images.jointheleague.org/';
 let catalog = null;
-let activeFlags = new Set();
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
 
 async function loadCatalog() {
   if (catalog) return catalog;
-  const resp = await fetch(CATALOG_URL);
+  const resp = await fetch('data/catalog.json');
   catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
   return catalog;
 }
 
-function renderCards(images) {
-  const grid = document.getElementById('image-grid');
-  if (!grid) return;
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
 
-  grid.innerHTML = images.map(img => {
-    const trueTags = Object.entries(img.flags || {})
-      .filter(([,v]) => v)
-      .map(([k]) => k);
-    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
-    return `
-      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
-           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
-        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
-        <div class="info">
-          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
-          <div class="desc">${img.description || ''}</div>
-          <div class="tags">${tagHtml}</div>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-function applyFilters() {
-  const query = document.getElementById('search').value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.image-card');
-  let shown = 0;
-
-  cards.forEach(card => {
-    const desc = card.dataset.desc || '';
-    const name = card.dataset.name || '';
-    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
-
-    let matchText = !query || desc.includes(query) || name.includes(query);
-    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
-
-    if (matchText && matchFlags) {
-      card.style.display = '';
-      shown++;
-    } else {
-      card.style.display = 'none';
-    }
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
   });
 
-  const total = cards.length;
-  const counter = document.getElementById('result-count');
-  if (query || activeFlags.size > 0) {
-    counter.textContent = `${shown} / ${total}`;
-  } else {
-    counter.textContent = `${total} images`;
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
   }
+  searchActive = false;
 }
 
-document.getElementById('search').addEventListener('input', applyFilters);
-
-document.querySelectorAll('.flag-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const flag = btn.dataset.flag;
-    if (activeFlags.has(flag)) {
-      activeFlags.delete(flag);
-      btn.classList.remove('active');
-    } else {
-      activeFlags.add(flag);
-      btn.classList.add('active');
-    }
-    applyFilters();
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
   });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
 });
 
-// Initialize count on page load
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');
   if (counter && cards.length) {

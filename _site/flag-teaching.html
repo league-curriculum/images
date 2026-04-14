@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag: teaching - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .image-card .thumb {
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
+      padding: 1.25rem;
+    }
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
+    }
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
+      font-size: .8rem;
+      color: var(--gray-700);
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" >person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" class="active">teaching</a>
+  
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content" id="page-content">
+    
+<h1>Flag: teaching</h1>
+<p class="subtitle">34 images with this flag</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of youth and instructors gather around a table in an indoor classroom setting, engaged in a hands-on coding or robotics activity. students are working with hardware including what appears to be a small red robot and electronic components, while an instructor in the center guides them through the project. a whiteboard with names is visible in the background, and the scene captures an active, collaborative learning environment typical of the league&#39;s programming activities."
+     data-name="2020.01.14-bell-ms-tech-discovery-day_5-scaled.jpg"
+     data-src="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg"
+     data-url="https://images.jointheleague.org/action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg"
+     data-full-desc="A group of youth and instructors gather around a table in an indoor classroom setting, engaged in a hands-on coding or robotics activity. Students are working with hardware including what appears to be a small red robot and electronic components, while an instructor in the center guides them through the project. A whiteboard with names is visible in the background, and the scene captures an active, collaborative learning environment typical of The League&#39;s programming activities."
+     data-flags="person_n,teaching,robot,hardware,action,programming,event">
+  <img class="thumb" src="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" alt="2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" target="_blank">2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/2020.01.14-Bell-MS-Tech-Discovery-Day_5-scaled.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of youth and instructors gather around a table in an indoor classroom setting, engaged in a hands-on coding or robotics activity. Students are working with hardware including what appears to be a small red robot and electronic components, while an instructor in the center guides them through the project. A whiteboard with names is visible in the background, and the scene captures an active, collaborative learning environment typical of The League&#39;s programming activities.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an instructor in a blue blazer works one-on-one with a young student at a computer in what appears to be a coding classroom or workshop environment. several other students can be seen in the background also working at computers, suggesting an active learning session at the league of amazing programmers."
+     data-name="barbara-bry-kpbs-visit-local-coding-school.jpg"
+     data-src="../action/Barbara-Bry-KPBS-visit-local-coding-school.jpg"
+     data-url="https://images.jointheleague.org/action/Barbara-Bry-KPBS-visit-local-coding-school.jpg"
+     data-full-desc="An instructor in a blue blazer works one-on-one with a young student at a computer in what appears to be a coding classroom or workshop environment. Several other students can be seen in the background also working at computers, suggesting an active learning session at The League of Amazing Programmers."
+     data-flags="person_n,teaching,action,programming,event">
+  <img class="thumb" src="../action/Barbara-Bry-KPBS-visit-local-coding-school.jpg" alt="Barbara-Bry-KPBS-visit-local-coding-school.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/Barbara-Bry-KPBS-visit-local-coding-school.jpg" target="_blank">Barbara-Bry-KPBS-visit-local-coding-school.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/Barbara-Bry-KPBS-visit-local-coding-school.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An instructor in a blue blazer works one-on-one with a young student at a computer in what appears to be a coding classroom or workshop environment. Several other students can be seen in the background also working at computers, suggesting an active learning session at The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an adult instructor in a bright blue blazer stands beside a young student who is seated at a computer, actively typing on the keyboard. the student appears focused on the screen while the instructor observes and guides. this captures a one-on-one teaching moment in what appears to be an indoor coding environment."
+     data-name="bry-visits-local-coding-schoo.jpg"
+     data-src="../action/Bry-Visits-Local-Coding-Schoo.jpg"
+     data-url="https://images.jointheleague.org/action/Bry-Visits-Local-Coding-Schoo.jpg"
+     data-full-desc="An adult instructor in a bright blue blazer stands beside a young student who is seated at a computer, actively typing on the keyboard. The student appears focused on the screen while the instructor observes and guides. This captures a one-on-one teaching moment in what appears to be an indoor coding environment."
+     data-flags="person_n,teaching,action,programming">
+  <img class="thumb" src="../action/Bry-Visits-Local-Coding-Schoo.jpg" alt="Bry-Visits-Local-Coding-Schoo.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/Bry-Visits-Local-Coding-Schoo.jpg" target="_blank">Bry-Visits-Local-Coding-Schoo.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/Bry-Visits-Local-Coding-Schoo.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An adult instructor in a bright blue blazer stands beside a young student who is seated at a computer, actively typing on the keyboard. The student appears focused on the screen while the instructor observes and guides. This captures a one-on-one teaching moment in what appears to be an indoor coding environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two young people are working together in a makerspace environment, with one person guiding the other as they interact with a keyboard and what appears to be a microcontroller or electronics project. the setting shows shelves of tools and hardware components in the background, and there are electronic components visible on the work surface, suggesting hands-on stem learning. this captures an authentic teaching moment where youth are engaged in practical coding or electronics work."
+     data-name="derekprogramming.png"
+     data-src="../action/DerekProgramming.png"
+     data-url="https://images.jointheleague.org/action/DerekProgramming.png"
+     data-full-desc="Two young people are working together in a makerspace environment, with one person guiding the other as they interact with a keyboard and what appears to be a microcontroller or electronics project. The setting shows shelves of tools and hardware components in the background, and there are electronic components visible on the work surface, suggesting hands-on STEM learning. This captures an authentic teaching moment where youth are engaged in practical coding or electronics work."
+     data-flags="person_n,teaching,hardware,action,programming">
+  <img class="thumb" src="../action/DerekProgramming.png" alt="DerekProgramming.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/DerekProgramming.png" target="_blank">DerekProgramming.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/DerekProgramming.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two young people are working together in a makerspace environment, with one person guiding the other as they interact with a keyboard and what appears to be a microcontroller or electronics project. The setting shows shelves of tools and hardware components in the background, and there are electronic components visible on the work surface, suggesting hands-on STEM learning. This captures an authentic teaching moment where youth are engaged in practical coding or electronics work.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="five people pose together indoors while holding cardboard boxes and paper crafts, appearing to be celebrating the completion of a hands-on project. the group is standing in what looks like a classroom or workshop space, with shelving and windows visible in the background. this appears to be a casual group moment at the league, showcasing student engagement with a creative building or coding activity."
+     data-name="eedelmartimes.jpeg"
+     data-src="../action/EEDelMarTimes.jpeg"
+     data-url="https://images.jointheleague.org/action/EEDelMarTimes.jpeg"
+     data-full-desc="Five people pose together indoors while holding cardboard boxes and paper crafts, appearing to be celebrating the completion of a hands-on project. The group is standing in what looks like a classroom or workshop space, with shelving and windows visible in the background. This appears to be a casual group moment at The League, showcasing student engagement with a creative building or coding activity."
+     data-flags="person_n,teaching,action,group_photo">
+  <img class="thumb" src="../action/EEDelMarTimes.jpeg" alt="EEDelMarTimes.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/EEDelMarTimes.jpeg" target="_blank">EEDelMarTimes.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/EEDelMarTimes.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Five people pose together indoors while holding cardboard boxes and paper crafts, appearing to be celebrating the completion of a hands-on project. The group is standing in what looks like a classroom or workshop space, with shelving and windows visible in the background. This appears to be a casual group moment at The League, showcasing student engagement with a creative building or coding activity.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two young students are at a computer workstation in what appears to be a classroom or coding lab setting. the student in front is seated at the desk with a keyboard and monitor, while another student stands beside him looking at the screen. both appear engaged and smiling, suggesting an active coding or programming activity."
+     data-name="former-league-student-visits-classroom.jpg"
+     data-src="../action/Former-League-Student-Visits-Classroom.jpg"
+     data-url="https://images.jointheleague.org/action/Former-League-Student-Visits-Classroom.jpg"
+     data-full-desc="Two young students are at a computer workstation in what appears to be a classroom or coding lab setting. The student in front is seated at the desk with a keyboard and monitor, while another student stands beside him looking at the screen. Both appear engaged and smiling, suggesting an active coding or programming activity."
+     data-flags="person_n,teaching,hardware,action,programming">
+  <img class="thumb" src="../action/Former-League-Student-Visits-Classroom.jpg" alt="Former-League-Student-Visits-Classroom.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/Former-League-Student-Visits-Classroom.jpg" target="_blank">Former-League-Student-Visits-Classroom.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/Former-League-Student-Visits-Classroom.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two young students are at a computer workstation in what appears to be a classroom or coding lab setting. The student in front is seated at the desk with a keyboard and monitor, while another student stands beside him looking at the screen. Both appear engaged and smiling, suggesting an active coding or programming activity.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a large group of young students and instructors gathered in a modern, colorful indoor space for what appears to be a league of amazing programmers event or workshop. multiple people are seated on the floor and in chairs around a central area, with screens displaying presenters on the walls and colorful posters visible in the background. the dynamic scene captures an engaged community of learners participating in an educational activity together."
+     data-name="gen-connect-family-screening-1200px.jpeg"
+     data-src="../action/Gen-Connect-Family-Screening-1200px.jpeg"
+     data-url="https://images.jointheleague.org/action/Gen-Connect-Family-Screening-1200px.jpeg"
+     data-full-desc="A large group of young students and instructors gathered in a modern, colorful indoor space for what appears to be a League of Amazing Programmers event or workshop. Multiple people are seated on the floor and in chairs around a central area, with screens displaying presenters on the walls and colorful posters visible in the background. The dynamic scene captures an engaged community of learners participating in an educational activity together."
+     data-flags="person_n,teaching,action,presentation,event">
+  <img class="thumb" src="../action/Gen-Connect-Family-Screening-1200px.jpeg" alt="Gen-Connect-Family-Screening-1200px.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/Gen-Connect-Family-Screening-1200px.jpeg" target="_blank">Gen-Connect-Family-Screening-1200px.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/Gen-Connect-Family-Screening-1200px.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A large group of young students and instructors gathered in a modern, colorful indoor space for what appears to be a League of Amazing Programmers event or workshop. Multiple people are seated on the floor and in chairs around a central area, with screens displaying presenters on the walls and colorful posters visible in the background. The dynamic scene captures an engaged community of learners participating in an educational activity together.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">presentation</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young people wearing orange &#34;the league&#34; t-shirts pose together outdoors in front of a historic columned building with a fountain. an adult instructor in a black shirt crouches in the center front, while seven students stand behind him wearing masks. the scene captures a team moment at what appears to be an event or field trip location."
+     data-name="img_5178-scaled.jpg"
+     data-src="../action/IMG_5178-scaled.jpg"
+     data-url="https://images.jointheleague.org/action/IMG_5178-scaled.jpg"
+     data-full-desc="A group of young people wearing orange &#34;The League&#34; t-shirts pose together outdoors in front of a historic columned building with a fountain. An adult instructor in a black shirt crouches in the center front, while seven students stand behind him wearing masks. The scene captures a team moment at what appears to be an event or field trip location."
+     data-flags="person_n,teaching,logo,action,group_photo,building,outdoor,event">
+  <img class="thumb" src="../action/IMG_5178-scaled.jpg" alt="IMG_5178-scaled.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_5178-scaled.jpg" target="_blank">IMG_5178-scaled.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_5178-scaled.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young people wearing orange &#34;The League&#34; t-shirts pose together outdoors in front of a historic columned building with a fountain. An adult instructor in a black shirt crouches in the center front, while seven students stand behind him wearing masks. The scene captures a team moment at what appears to be an event or field trip location.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two instructors or mentors are actively engaging with a young student in building or assembling a robotic device. the activity takes place in a classroom or maker space filled with project displays, posters, and educational materials on the walls. the hands-on interaction demonstrates the league&#39;s hands-on approach to teaching youth coding and robotics through direct mentorship and collaborative building."
+     data-name="img_5207.jpeg"
+     data-src="../action/IMG_5207.jpeg"
+     data-url="https://images.jointheleague.org/action/IMG_5207.jpeg"
+     data-full-desc="Two instructors or mentors are actively engaging with a young student in building or assembling a robotic device. The activity takes place in a classroom or maker space filled with project displays, posters, and educational materials on the walls. The hands-on interaction demonstrates The League&#39;s hands-on approach to teaching youth coding and robotics through direct mentorship and collaborative building."
+     data-flags="person_n,teaching,robot,hardware,action">
+  <img class="thumb" src="../action/IMG_5207.jpeg" alt="IMG_5207.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_5207.jpeg" target="_blank">IMG_5207.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_5207.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two instructors or mentors are actively engaging with a young student in building or assembling a robotic device. The activity takes place in a classroom or maker space filled with project displays, posters, and educational materials on the walls. The hands-on interaction demonstrates The League&#39;s hands-on approach to teaching youth coding and robotics through direct mentorship and collaborative building.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two women are actively engaged at a computer workstation in what appears to be a coding classroom or lab environment. the woman on the left, wearing a bright blue blazer, is instructing or collaborating with the woman on the right, who is seated at the desk. in the background, other students and desks are visible, suggesting this is taking place during a league coding session or workshop."
+     data-name="league-featured-in-councilmember-bry-february-2017-newsletter.png"
+     data-src="../action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png"
+     data-url="https://images.jointheleague.org/action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png"
+     data-full-desc="Two women are actively engaged at a computer workstation in what appears to be a coding classroom or lab environment. The woman on the left, wearing a bright blue blazer, is instructing or collaborating with the woman on the right, who is seated at the desk. In the background, other students and desks are visible, suggesting this is taking place during a League coding session or workshop."
+     data-flags="person_n,teaching,action,programming">
+  <img class="thumb" src="../action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png" alt="League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png" target="_blank">League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two women are actively engaged at a computer workstation in what appears to be a coding classroom or lab environment. The woman on the left, wearing a bright blue blazer, is instructing or collaborating with the woman on the right, who is seated at the desk. In the background, other students and desks are visible, suggesting this is taking place during a League coding session or workshop.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two students are actively engaged in testing ventilator control software in a modern classroom setting. one student wearing a mask holds white foam ventilator components while examining them, while another student gestures in explanation. the workspace shows hardware equipment, computers, and various materials typical of a hands-on stem learning environment."
+     data-name="league-ventilator-team.png"
+     data-src="../action/League-Ventilator-Team.png"
+     data-url="https://images.jointheleague.org/action/League-Ventilator-Team.png"
+     data-full-desc="Two students are actively engaged in testing ventilator control software in a modern classroom setting. One student wearing a mask holds white foam ventilator components while examining them, while another student gestures in explanation. The workspace shows hardware equipment, computers, and various materials typical of a hands-on STEM learning environment."
+     data-flags="person_n,teaching,hardware,action">
+  <img class="thumb" src="../action/League-Ventilator-Team.png" alt="League-Ventilator-Team.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/League-Ventilator-Team.png" target="_blank">League-Ventilator-Team.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/League-Ventilator-Team.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two students are actively engaged in testing ventilator control software in a modern classroom setting. One student wearing a mask holds white foam ventilator components while examining them, while another student gestures in explanation. The workspace shows hardware equipment, computers, and various materials typical of a hands-on STEM learning environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a student in a red shirt sits at a computer while an instructor in a blue shirt leans over to help guide them through a coding lesson. multiple other students and instructors are visible in the background working at computers in what appears to be a busy classroom or workshop environment. the scene captures an active learning moment with hands-on instruction typical of the league&#39;s youth coding programs."
+     data-name="our_missionbg.png"
+     data-src="../action/Our_MissionBG.png"
+     data-url="https://images.jointheleague.org/action/Our_MissionBG.png"
+     data-full-desc="A student in a red shirt sits at a computer while an instructor in a blue shirt leans over to help guide them through a coding lesson. Multiple other students and instructors are visible in the background working at computers in what appears to be a busy classroom or workshop environment. The scene captures an active learning moment with hands-on instruction typical of The League&#39;s youth coding programs."
+     data-flags="person_n,teaching,action,programming,event">
+  <img class="thumb" src="../action/Our_MissionBG.png" alt="Our_MissionBG.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/Our_MissionBG.png" target="_blank">Our_MissionBG.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/Our_MissionBG.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A student in a red shirt sits at a computer while an instructor in a blue shirt leans over to help guide them through a coding lesson. Multiple other students and instructors are visible in the background working at computers in what appears to be a busy classroom or workshop environment. The scene captures an active learning moment with hands-on instruction typical of The League&#39;s youth coding programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students and an instructor gathered around a table examining a red robotic device. the children are engaged and focused on the hardware, with an adult in a burgundy shirt guiding their interaction with the robot. this captures an active learning moment where students are hands-on with technology in what appears to be a league coding workshop or class."
+     data-name="the-league-of-amazing-programmers-mentoring-the-next-generation-of-programming-2.jpg"
+     data-src="../action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg"
+     data-url="https://images.jointheleague.org/action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg"
+     data-full-desc="A group of young students and an instructor gathered around a table examining a red robotic device. The children are engaged and focused on the hardware, with an adult in a burgundy shirt guiding their interaction with the robot. This captures an active learning moment where students are hands-on with technology in what appears to be a League coding workshop or class."
+     data-flags="person_n,teaching,robot,hardware,action,event">
+  <img class="thumb" src="../action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" alt="The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" target="_blank">The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students and an instructor gathered around a table examining a red robotic device. The children are engaged and focused on the hardware, with an adult in a burgundy shirt guiding their interaction with the robot. This captures an active learning moment where students are hands-on with technology in what appears to be a League coding workshop or class.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two young people are engaged in a coding or design activity at a computer workstation in a vibrant studio environment. an instructor in a pink hat and blue shirt stands behind and points at the screen while a student sits at the keyboard, focused on the monitor displaying what appears to be a design or programming interface. the scene captures an active learning moment with dynamic lighting and an energetic atmosphere typical of a tech education setting."
+     data-name="denimkids.jpeg"
+     data-src="../action/denimkids.jpeg"
+     data-url="https://images.jointheleague.org/action/denimkids.jpeg"
+     data-full-desc="Two young people are engaged in a coding or design activity at a computer workstation in a vibrant studio environment. An instructor in a pink hat and blue shirt stands behind and points at the screen while a student sits at the keyboard, focused on the monitor displaying what appears to be a design or programming interface. The scene captures an active learning moment with dynamic lighting and an energetic atmosphere typical of a tech education setting."
+     data-flags="person_n,teaching,screenshot,hardware,action,programming">
+  <img class="thumb" src="../action/denimkids.jpeg" alt="denimkids.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/denimkids.jpeg" target="_blank">denimkids.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/denimkids.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two young people are engaged in a coding or design activity at a computer workstation in a vibrant studio environment. An instructor in a pink hat and blue shirt stands behind and points at the screen while a student sits at the keyboard, focused on the monitor displaying what appears to be a design or programming interface. The scene captures an active learning moment with dynamic lighting and an energetic atmosphere typical of a tech education setting.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a classroom scene showing students engaged in a coding activity at a laptop during what appears to be a league of amazing programmers session. an instructor in an orange cap and shirt sits with students at a table, while another instructor stands in the background near a whiteboard with motivational signage. multiple students are gathered around working on programming tasks together."
+     data-name="johnlaylah.jpg"
+     data-src="../action/johnlaylah.jpg"
+     data-url="https://images.jointheleague.org/action/johnlaylah.jpg"
+     data-full-desc="A classroom scene showing students engaged in a coding activity at a laptop during what appears to be a League of Amazing Programmers session. An instructor in an orange cap and shirt sits with students at a table, while another instructor stands in the background near a whiteboard with motivational signage. Multiple students are gathered around working on programming tasks together."
+     data-flags="person_n,teaching,action,programming,event">
+  <img class="thumb" src="../action/johnlaylah.jpg" alt="johnlaylah.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/johnlaylah.jpg" target="_blank">johnlaylah.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/johnlaylah.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A classroom scene showing students engaged in a coding activity at a laptop during what appears to be a League of Amazing Programmers session. An instructor in an orange cap and shirt sits with students at a table, while another instructor stands in the background near a whiteboard with motivational signage. Multiple students are gathered around working on programming tasks together.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students gathered around a table working with electronics and robotics equipment, with an adult instructor observing and guiding them. the scene shows hands-on stem learning in progress, with visible hardware including what appears to be a red robot and electronic components. the classroom setting includes a whiteboard with student names and the league&#39;s logo visible in the upper left corner."
+     data-name="logo-bell-ms-tech-discovery-day_5.jpg"
+     data-src="../action/logo-Bell-MS-Tech-Discovery-Day_5.jpg"
+     data-url="https://images.jointheleague.org/action/logo-Bell-MS-Tech-Discovery-Day_5.jpg"
+     data-full-desc="A group of young students gathered around a table working with electronics and robotics equipment, with an adult instructor observing and guiding them. The scene shows hands-on STEM learning in progress, with visible hardware including what appears to be a red robot and electronic components. The classroom setting includes a whiteboard with student names and The League&#39;s logo visible in the upper left corner."
+     data-flags="person_n,teaching,logo,robot,hardware,action,event">
+  <img class="thumb" src="../action/logo-Bell-MS-Tech-Discovery-Day_5.jpg" alt="logo-Bell-MS-Tech-Discovery-Day_5.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/logo-Bell-MS-Tech-Discovery-Day_5.jpg" target="_blank">logo-Bell-MS-Tech-Discovery-Day_5.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/logo-Bell-MS-Tech-Discovery-Day_5.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students gathered around a table working with electronics and robotics equipment, with an adult instructor observing and guiding them. The scene shows hands-on STEM learning in progress, with visible hardware including what appears to be a red robot and electronic components. The classroom setting includes a whiteboard with student names and The League&#39;s logo visible in the upper left corner.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a large group of students and instructors pose together in a classroom setting, appearing to be from a league of amazing programmers event or workshop. the diverse group of young people, many wearing blue league shirts, are gathered around a table with laptops and materials visible, suggesting an active coding or tech learning session. a whiteboard, presentation screen, and casual, celebratory atmosphere indicate this is a documented moment from an educational tech event."
+     data-name="logo-forcepoint-hackathon.png"
+     data-src="../action/logo-Forcepoint-Hackathon.png"
+     data-url="https://images.jointheleague.org/action/logo-Forcepoint-Hackathon.png"
+     data-full-desc="A large group of students and instructors pose together in a classroom setting, appearing to be from a League of Amazing Programmers event or workshop. The diverse group of young people, many wearing blue League shirts, are gathered around a table with laptops and materials visible, suggesting an active coding or tech learning session. A whiteboard, presentation screen, and casual, celebratory atmosphere indicate this is a documented moment from an educational tech event."
+     data-flags="person_n,teaching,logo,action,group_photo,event">
+  <img class="thumb" src="../action/logo-Forcepoint-Hackathon.png" alt="logo-Forcepoint-Hackathon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/logo-Forcepoint-Hackathon.png" target="_blank">logo-Forcepoint-Hackathon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/logo-Forcepoint-Hackathon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A large group of students and instructors pose together in a classroom setting, appearing to be from a League of Amazing Programmers event or workshop. The diverse group of young people, many wearing blue League shirts, are gathered around a table with laptops and materials visible, suggesting an active coding or tech learning session. A whiteboard, presentation screen, and casual, celebratory atmosphere indicate this is a documented moment from an educational tech event.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">group_photo</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students from the league of amazing programmers are actively engaged in coding and learning activities at a table with laptops. multiple students are smiling and appear focused on their work, with instructors nearby supporting them in a bright, colorful classroom environment."
+     data-name="mx_workshop.png"
+     data-src="../action/mx_workshop.png"
+     data-url="https://images.jointheleague.org/action/mx_workshop.png"
+     data-full-desc="A group of young students from The League of Amazing Programmers are actively engaged in coding and learning activities at a table with laptops. Multiple students are smiling and appear focused on their work, with instructors nearby supporting them in a bright, colorful classroom environment."
+     data-flags="person_n,teaching,hardware,action,programming">
+  <img class="thumb" src="../action/mx_workshop.png" alt="mx_workshop.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/mx_workshop.png" target="_blank">mx_workshop.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/mx_workshop.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students from The League of Amazing Programmers are actively engaged in coding and learning activities at a table with laptops. Multiple students are smiling and appear focused on their work, with instructors nearby supporting them in a bright, colorful classroom environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two youth are working together in a maker space, building and programming a robot. they are smiling and engaged as they work with electronics, wiring, and a computer keyboard at a workbench. the space is filled with tools, equipment, and shelving typical of a hands-on stem learning environment."
+     data-name="robot_garage.png"
+     data-src="../action/robot_garage.png"
+     data-url="https://images.jointheleague.org/action/robot_garage.png"
+     data-full-desc="Two youth are working together in a maker space, building and programming a robot. They are smiling and engaged as they work with electronics, wiring, and a computer keyboard at a workbench. The space is filled with tools, equipment, and shelving typical of a hands-on STEM learning environment."
+     data-flags="person_n,teaching,robot,hardware,action,programming">
+  <img class="thumb" src="../action/robot_garage.png" alt="robot_garage.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/robot_garage.png" target="_blank">robot_garage.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/robot_garage.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two youth are working together in a maker space, building and programming a robot. They are smiling and engaged as they work with electronics, wiring, and a computer keyboard at a workbench. The space is filled with tools, equipment, and shelving typical of a hands-on STEM learning environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. the table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of the league&#39;s programs."
+     data-name="tech-arcade.png"
+     data-src="../cards/tech-arcade.png"
+     data-url="https://images.jointheleague.org/cards/tech-arcade.png"
+     data-full-desc="A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs."
+     data-flags="person_n,teaching,robot,hardware,action,stock">
+  <img class="thumb" src="../cards/tech-arcade.png" alt="tech-arcade.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/tech-arcade.png" target="_blank">tech-arcade.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/tech-arcade.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth instructor in a yellow hoodie works with four diverse children around a table, building and assembling robotic projects and hardware. The table is filled with various electronic components, circuit boards, wheels, and robotics kits, demonstrating hands-on coding and engineering activities typical of The League&#39;s programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="three young people pose together in a computer lab classroom setting, displaying their coding work on laptops. an adult instructor stands on the left while two students proudly show their programming projects on screens displaying code and development environments. the room features multiple computers, monitors, and windows overlooking greenery, creating an authentic educational environment."
+     data-name="1721421660553.jpeg"
+     data-src="../mkt/1721421660553.jpeg"
+     data-url="https://images.jointheleague.org/mkt/1721421660553.jpeg"
+     data-full-desc="Three young people pose together in a computer lab classroom setting, displaying their coding work on laptops. An adult instructor stands on the left while two students proudly show their programming projects on screens displaying code and development environments. The room features multiple computers, monitors, and windows overlooking greenery, creating an authentic educational environment."
+     data-flags="person_n,teaching,hardware,action,programming,group_photo">
+  <img class="thumb" src="../mkt/1721421660553.jpeg" alt="1721421660553.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/1721421660553.jpeg" target="_blank">1721421660553.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/1721421660553.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Three young people pose together in a computer lab classroom setting, displaying their coding work on laptops. An adult instructor stands on the left while two students proudly show their programming projects on screens displaying code and development environments. The room features multiple computers, monitors, and windows overlooking greenery, creating an authentic educational environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">group_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an adult instructor demonstrates or teaches programming concepts to two youth students in an indoor classroom or lab setting. one student sits at a desk with a computer monitor while another wears a red cap, and the instructor stands holding what appears to be a microcontroller or electronic component. the scene captures an active teaching moment in what looks like the league&#39;s coding education environment."
+     data-name="img_2334.png"
+     data-src="../mkt/IMG_2334.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2334.png"
+     data-full-desc="An adult instructor demonstrates or teaches programming concepts to two youth students in an indoor classroom or lab setting. One student sits at a desk with a computer monitor while another wears a red cap, and the instructor stands holding what appears to be a microcontroller or electronic component. The scene captures an active teaching moment in what looks like The League&#39;s coding education environment."
+     data-flags="person_n,teaching,hardware,action,programming">
+  <img class="thumb" src="../mkt/IMG_2334.png" alt="IMG_2334.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2334.png" target="_blank">IMG_2334.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2334.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An adult instructor demonstrates or teaches programming concepts to two youth students in an indoor classroom or lab setting. One student sits at a desk with a computer monitor while another wears a red cap, and the instructor stands holding what appears to be a microcontroller or electronic component. The scene captures an active teaching moment in what looks like The League&#39;s coding education environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an instructor teaches a group of young students in a classroom setting, standing at a whiteboard with drawings and writing. multiple students of varying ages are gathered around, some sitting on chairs and others standing, engaged in what appears to be a coding or programming lesson. the indoor classroom has fluorescent lighting and basic educational setup typical of a youth coding nonprofit environment."
+     data-name="img_2335.png"
+     data-src="../mkt/IMG_2335.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2335.png"
+     data-full-desc="An instructor teaches a group of young students in a classroom setting, standing at a whiteboard with drawings and writing. Multiple students of varying ages are gathered around, some sitting on chairs and others standing, engaged in what appears to be a coding or programming lesson. The indoor classroom has fluorescent lighting and basic educational setup typical of a youth coding nonprofit environment."
+     data-flags="person_n,teaching,action,programming,presentation">
+  <img class="thumb" src="../mkt/IMG_2335.png" alt="IMG_2335.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2335.png" target="_blank">IMG_2335.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2335.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An instructor teaches a group of young students in a classroom setting, standing at a whiteboard with drawings and writing. Multiple students of varying ages are gathered around, some sitting on chairs and others standing, engaged in what appears to be a coding or programming lesson. The indoor classroom has fluorescent lighting and basic educational setup typical of a youth coding nonprofit environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">presentation</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an indoor classroom scene showing a male instructor leading a group of youth students during a coding lesson. the room features computers at workstations, a whiteboard with drawings, and fluorescent ceiling lights. multiple children are gathered around listening to the instructor, creating an authentic teaching moment in what appears to be a league of amazing programmers session."
+     data-name="img_2336.png"
+     data-src="../mkt/IMG_2336.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2336.png"
+     data-full-desc="An indoor classroom scene showing a male instructor leading a group of youth students during a coding lesson. The room features computers at workstations, a whiteboard with drawings, and fluorescent ceiling lights. Multiple children are gathered around listening to the instructor, creating an authentic teaching moment in what appears to be a League of Amazing Programmers session."
+     data-flags="person_n,teaching,hardware,presentation,event">
+  <img class="thumb" src="../mkt/IMG_2336.png" alt="IMG_2336.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2336.png" target="_blank">IMG_2336.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2336.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An indoor classroom scene showing a male instructor leading a group of youth students during a coding lesson. The room features computers at workstations, a whiteboard with drawings, and fluorescent ceiling lights. Multiple children are gathered around listening to the instructor, creating an authentic teaching moment in what appears to be a League of Amazing Programmers session.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">presentation</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="three young people collaborate on assembling or working with a robot chassis in a classroom setting. they are focused on building hardware together, surrounded by educational posters and project displays on the walls, indicating this is a youth coding or robotics program environment."
+     data-name="img_5207.jpeg"
+     data-src="../mkt/IMG_5207.jpeg"
+     data-url="https://images.jointheleague.org/mkt/IMG_5207.jpeg"
+     data-full-desc="Three young people collaborate on assembling or working with a robot chassis in a classroom setting. They are focused on building hardware together, surrounded by educational posters and project displays on the walls, indicating this is a youth coding or robotics program environment."
+     data-flags="person_n,teaching,robot,hardware,action">
+  <img class="thumb" src="../mkt/IMG_5207.jpeg" alt="IMG_5207.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_5207.jpeg" target="_blank">IMG_5207.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_5207.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Three young people collaborate on assembling or working with a robot chassis in a classroom setting. They are focused on building hardware together, surrounded by educational posters and project displays on the walls, indicating this is a youth coding or robotics program environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an instructor teaches two young students at computers in a classroom setting. the students are smiling and engaged while working at desktop computers, with the instructor standing behind them offering guidance. multiple computer workstations are visible in the background, suggesting a coding or technology classroom environment."
+     data-name="img_7612.jpg"
+     data-src="../mkt/IMG_7612.jpg"
+     data-url="https://images.jointheleague.org/mkt/IMG_7612.jpg"
+     data-full-desc="An instructor teaches two young students at computers in a classroom setting. The students are smiling and engaged while working at desktop computers, with the instructor standing behind them offering guidance. Multiple computer workstations are visible in the background, suggesting a coding or technology classroom environment."
+     data-flags="person_n,teaching,action,programming">
+  <img class="thumb" src="../mkt/IMG_7612.jpg" alt="IMG_7612.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_7612.jpg" target="_blank">IMG_7612.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_7612.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An instructor teaches two young students at computers in a classroom setting. The students are smiling and engaged while working at desktop computers, with the instructor standing behind them offering guidance. Multiple computer workstations are visible in the background, suggesting a coding or technology classroom environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a youth coding classroom scene showing young students working at computers with mentors. an older gentleman and a woman in a maroon shirt are actively engaged with students, including a smiling boy in a red java programming shirt. multiple students are visible at computers in the background, depicting a collaborative learning environment typical of the league of amazing programmers."
+     data-name="img_8224.jpg"
+     data-src="../mkt/IMG_8224.jpg"
+     data-url="https://images.jointheleague.org/mkt/IMG_8224.jpg"
+     data-full-desc="A youth coding classroom scene showing young students working at computers with mentors. An older gentleman and a woman in a maroon shirt are actively engaged with students, including a smiling boy in a red Java Programming shirt. Multiple students are visible at computers in the background, depicting a collaborative learning environment typical of The League of Amazing Programmers."
+     data-flags="person_n,teaching,action,programming">
+  <img class="thumb" src="../mkt/IMG_8224.jpg" alt="IMG_8224.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_8224.jpg" target="_blank">IMG_8224.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_8224.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth coding classroom scene showing young students working at computers with mentors. An older gentleman and a woman in a maroon shirt are actively engaged with students, including a smiling boy in a red Java Programming shirt. Multiple students are visible at computers in the background, depicting a collaborative learning environment typical of The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a classroom scene at the league showing an instructor with red hair in a maroon shirt leading a group of young students in a coding class. one student is writing on a whiteboard while others observe, with computers visible on desks and educational materials organized on shelves. the bright, modern indoor classroom space features yellow walls, fluorescent lighting, and large windows."
+     data-name="img_9045.jpg"
+     data-src="../mkt/IMG_9045.jpg"
+     data-url="https://images.jointheleague.org/mkt/IMG_9045.jpg"
+     data-full-desc="A classroom scene at The League showing an instructor with red hair in a maroon shirt leading a group of young students in a coding class. One student is writing on a whiteboard while others observe, with computers visible on desks and educational materials organized on shelves. The bright, modern indoor classroom space features yellow walls, fluorescent lighting, and large windows."
+     data-flags="person_n,teaching,action,programming">
+  <img class="thumb" src="../mkt/IMG_9045.jpg" alt="IMG_9045.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_9045.jpg" target="_blank">IMG_9045.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_9045.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A classroom scene at The League showing an instructor with red hair in a maroon shirt leading a group of young students in a coding class. One student is writing on a whiteboard while others observe, with computers visible on desks and educational materials organized on shelves. The bright, modern indoor classroom space features yellow walls, fluorescent lighting, and large windows.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a group of young students are gathered around laptops in a modern tech classroom or lab environment with bright green and colorful walls. multiple students are actively engaged with computers, smiling and collaborating together. an instructor or mentor can be seen in the background, and the space appears to be part of the league of amazing programmers&#39; coding education program."
+     data-name="mx library workshop_1.jpg"
+     data-src="../mkt/MX Library Workshop_1.jpg"
+     data-url="https://images.jointheleague.org/mkt/MX Library Workshop_1.jpg"
+     data-full-desc="A group of young students are gathered around laptops in a modern tech classroom or lab environment with bright green and colorful walls. Multiple students are actively engaged with computers, smiling and collaborating together. An instructor or mentor can be seen in the background, and the space appears to be part of The League of Amazing Programmers&#39; coding education program."
+     data-flags="person_n,teaching,hardware,action,programming">
+  <img class="thumb" src="../mkt/MX Library Workshop_1.jpg" alt="MX Library Workshop_1.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/MX Library Workshop_1.jpg" target="_blank">MX Library Workshop_1.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/MX Library Workshop_1.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A group of young students are gathered around laptops in a modern tech classroom or lab environment with bright green and colorful walls. Multiple students are actively engaged with computers, smiling and collaborating together. An instructor or mentor can be seen in the background, and the space appears to be part of The League of Amazing Programmers&#39; coding education program.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an adult instructor works one-on-one with young students at computers in a classroom setting. multiple students are visible working on laptops, with an older male mentor engaging with students at a table. the environment appears to be an indoor educational space with wooden doors and typical classroom furnishings."
+     data-name="vic teaching.jpeg"
+     data-src="../mkt/Vic teaching.jpeg"
+     data-url="https://images.jointheleague.org/mkt/Vic teaching.jpeg"
+     data-full-desc="An adult instructor works one-on-one with young students at computers in a classroom setting. Multiple students are visible working on laptops, with an older male mentor engaging with students at a table. The environment appears to be an indoor educational space with wooden doors and typical classroom furnishings."
+     data-flags="person_n,teaching,hardware,action,programming">
+  <img class="thumb" src="../mkt/Vic teaching.jpeg" alt="Vic teaching.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/Vic teaching.jpeg" target="_blank">Vic teaching.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/Vic teaching.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An adult instructor works one-on-one with young students at computers in a classroom setting. Multiple students are visible working on laptops, with an older male mentor engaging with students at a table. The environment appears to be an indoor educational space with wooden doors and typical classroom furnishings.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young woman sits at a desk working on a computer with design software open on the monitor, while a man in a hat stands beside her pointing at the screen in what appears to be a mentoring or collaborative moment. the scene is set in a colorful studio environment with warm orange and cool blue lighting, featuring a guitar and other creative elements in the background. this appears to be a stock photo depicting a tech or design mentorship scenario."
+     data-name="adobestock_274382199.jpeg"
+     data-src="../stock/AdobeStock_274382199.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_274382199.jpeg"
+     data-full-desc="A young woman sits at a desk working on a computer with design software open on the monitor, while a man in a hat stands beside her pointing at the screen in what appears to be a mentoring or collaborative moment. The scene is set in a colorful studio environment with warm orange and cool blue lighting, featuring a guitar and other creative elements in the background. This appears to be a stock photo depicting a tech or design mentorship scenario."
+     data-flags="person_n,teaching,screenshot,action,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_274382199.jpeg" alt="AdobeStock_274382199.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_274382199.jpeg" target="_blank">AdobeStock_274382199.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_274382199.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young woman sits at a desk working on a computer with design software open on the monitor, while a man in a hat stands beside her pointing at the screen in what appears to be a mentoring or collaborative moment. The scene is set in a colorful studio environment with warm orange and cool blue lighting, featuring a guitar and other creative elements in the background. This appears to be a stock photo depicting a tech or design mentorship scenario.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. the bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. the children are engaged in hands-on stem learning, working with components like yellow-wheeled robot bases and electronic circuits."
+     data-name="adobestock_354177033.jpeg"
+     data-src="../stock/AdobeStock_354177033.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_354177033.jpeg"
+     data-full-desc="An instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. The bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. The children are engaged in hands-on STEM learning, working with components like yellow-wheeled robot bases and electronic circuits."
+     data-flags="person_n,teaching,robot,hardware,action,stock">
+  <img class="thumb" src="../stock/AdobeStock_354177033.jpeg" alt="AdobeStock_354177033.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_354177033.jpeg" target="_blank">AdobeStock_354177033.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_354177033.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. The bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. The children are engaged in hands-on STEM learning, working with components like yellow-wheeled robot bases and electronic circuits.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young girl wearing glasses and a red shirt smiles at the camera while working on a laptop in what appears to be a coding classroom or workshop setting. in the blurred background, an instructor and other students are gathered around a computer, suggesting an educational or training environment focused on programming."
+     data-name="adobestock_433003729.jpeg"
+     data-src="../stock/AdobeStock_433003729.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_433003729.jpeg"
+     data-full-desc="A young girl wearing glasses and a red shirt smiles at the camera while working on a laptop in what appears to be a coding classroom or workshop setting. In the blurred background, an instructor and other students are gathered around a computer, suggesting an educational or training environment focused on programming."
+     data-flags="person_n,teaching,action,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_433003729.jpeg" alt="AdobeStock_433003729.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_433003729.jpeg" target="_blank">AdobeStock_433003729.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_433003729.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young girl wearing glasses and a red shirt smiles at the camera while working on a laptop in what appears to be a coding classroom or workshop setting. In the blurred background, an instructor and other students are gathered around a computer, suggesting an educational or training environment focused on programming.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="two young people work together at a computer setup in a colorfully lit room, with one person seated at the keyboard and monitor while another stands beside them pointing at the screen. the scene shows a collaborative coding or design session with hardware visible on the desk, set against a vibrant background with orange and blue lighting. the casual, staged setting with props and dramatic lighting suggests this is a carefully composed stock photograph rather than candid documentation."
+     data-name="denimkids.jpeg"
+     data-src="../stock/denimkids.jpeg"
+     data-url="https://images.jointheleague.org/stock/denimkids.jpeg"
+     data-full-desc="Two young people work together at a computer setup in a colorfully lit room, with one person seated at the keyboard and monitor while another stands beside them pointing at the screen. The scene shows a collaborative coding or design session with hardware visible on the desk, set against a vibrant background with orange and blue lighting. The casual, staged setting with props and dramatic lighting suggests this is a carefully composed stock photograph rather than candid documentation."
+     data-flags="person_n,teaching,hardware,action,programming,stock">
+  <img class="thumb" src="../stock/denimkids.jpeg" alt="denimkids.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/denimkids.jpeg" target="_blank">denimkids.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/denimkids.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">Two young people work together at a computer setup in a colorfully lit room, with one person seated at the keyboard and monitor while another stands beside them pointing at the screen. The scene shows a collaborative coding or design session with hardware visible on the desk, set against a vibrant background with orange and blue lighting. The casual, staged setting with props and dramatic lighting suggests this is a carefully composed stock photograph rather than candid documentation.</div>
+    <div class="tags">
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">teaching</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+</div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BASE_URL = 'https://images.jointheleague.org/';
+let catalog = null;
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch('data/catalog.json');
+  catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
+  return catalog;
+}
+
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
+
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
+  });
+
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
+  }
+  searchActive = false;
+}
+
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
+document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

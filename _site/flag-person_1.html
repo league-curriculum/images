@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag: person_1 - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-link {
+      padding-left: 1.25rem;
+      font-size: .85rem;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: .2rem .35rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: .75rem;
+      line-height: 1;
+      transition: all .15s;
+    }
+    .image-card .copy-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .image-card .copy-btn.copied {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .image-card .thumb {
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,.7);
+    }
+    .modal-img-wrap {
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      display: block;
+    }
+    .modal-body {
+      padding: 1.25rem;
+    }
+    .modal-body h2 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      word-break: break-all;
+    }
+    .modal-body .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body .modal-tags .tag {
+      font-size: .75rem;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+    .modal-url-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .modal-url-row input {
+      flex: 1;
+      padding: .4rem .6rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 5px;
+      font-size: .8rem;
+      color: var(--gray-700);
+      background: var(--gray-50);
+    }
+    .modal-url-row button {
+      padding: .4rem .75rem;
+      border: 1px solid var(--orange);
+      border-radius: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .modal-url-row button:hover {
+      opacity: .85;
+    }
+    .modal-url-row button.copied {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Flags</h2>
+  
+  <a class="flag-link" href="flag-action.html" >action</a>
+  
+  <a class="flag-link" href="flag-building.html" >building</a>
+  
+  <a class="flag-link" href="flag-duplicate.html" >duplicate</a>
+  
+  <a class="flag-link" href="flag-event.html" >event</a>
+  
+  <a class="flag-link" href="flag-group_photo.html" >group_photo</a>
+  
+  <a class="flag-link" href="flag-hardware.html" >hardware</a>
+  
+  <a class="flag-link" href="flag-illustration.html" >illustration</a>
+  
+  <a class="flag-link" href="flag-logo.html" >logo</a>
+  
+  <a class="flag-link" href="flag-outdoor.html" >outdoor</a>
+  
+  <a class="flag-link" href="flag-person_1.html" class="active">person_1</a>
+  
+  <a class="flag-link" href="flag-person_n.html" >person_n</a>
+  
+  <a class="flag-link" href="flag-presentation.html" >presentation</a>
+  
+  <a class="flag-link" href="flag-product_photo.html" >product_photo</a>
+  
+  <a class="flag-link" href="flag-programming.html" >programming</a>
+  
+  <a class="flag-link" href="flag-robot.html" >robot</a>
+  
+  <a class="flag-link" href="flag-screenshot.html" >screenshot</a>
+  
+  <a class="flag-link" href="flag-stock.html" >stock</a>
+  
+  <a class="flag-link" href="flag-teaching.html" >teaching</a>
+  
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search all images..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content" id="page-content">
+    
+<h1>Flag: person_1</h1>
+<p class="subtitle">29 images with this flag</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person is actively working on a 3d printer in a maker space workshop, using a measuring tape to check dimensions or alignment on the machine. the workshop is filled with tools, pegboard storage, and various equipment visible in the background, creating an authentic hands-on learning environment typical of youth coding and maker education programs."
+     data-name="img_4317-scaled.png"
+     data-src="../action/IMG_4317-scaled.png"
+     data-url="https://images.jointheleague.org/action/IMG_4317-scaled.png"
+     data-full-desc="A young person is actively working on a 3D printer in a maker space workshop, using a measuring tape to check dimensions or alignment on the machine. The workshop is filled with tools, pegboard storage, and various equipment visible in the background, creating an authentic hands-on learning environment typical of youth coding and maker education programs."
+     data-flags="person_1,hardware,action">
+  <img class="thumb" src="../action/IMG_4317-scaled.png" alt="IMG_4317-scaled.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_4317-scaled.png" target="_blank">IMG_4317-scaled.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_4317-scaled.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person is actively working on a 3D printer in a maker space workshop, using a measuring tape to check dimensions or alignment on the machine. The workshop is filled with tools, pegboard storage, and various equipment visible in the background, creating an authentic hands-on learning environment typical of youth coding and maker education programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person is actively working with electronics at a table, holding a red digital multimeter while examining a circuit board or breadboard. a printed worksheet with diagrams and a color-coded legend is visible on the table, suggesting this is a hands-on learning activity focused on electrical circuits and measurement."
+     data-name="img_4343-scaled.jpeg"
+     data-src="../action/IMG_4343-scaled.jpeg"
+     data-url="https://images.jointheleague.org/action/IMG_4343-scaled.jpeg"
+     data-full-desc="A young person is actively working with electronics at a table, holding a red digital multimeter while examining a circuit board or breadboard. A printed worksheet with diagrams and a color-coded legend is visible on the table, suggesting this is a hands-on learning activity focused on electrical circuits and measurement."
+     data-flags="person_1,hardware,action">
+  <img class="thumb" src="../action/IMG_4343-scaled.jpeg" alt="IMG_4343-scaled.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/IMG_4343-scaled.jpeg" target="_blank">IMG_4343-scaled.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/IMG_4343-scaled.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person is actively working with electronics at a table, holding a red digital multimeter while examining a circuit board or breadboard. A printed worksheet with diagrams and a color-coded legend is visible on the table, suggesting this is a hands-on learning activity focused on electrical circuits and measurement.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person wearing a red lanyard badge is speaking at a microphone in front of a large projection screen displaying a presentation about bike safety. the presenter appears to be giving a talk or demonstration at what looks like a league of amazing programmers event, with audience members visible in the foreground."
+     data-name="mg_5502-scaled.jpg"
+     data-src="../action/MG_5502-scaled.jpg"
+     data-url="https://images.jointheleague.org/action/MG_5502-scaled.jpg"
+     data-full-desc="A young person wearing a red lanyard badge is speaking at a microphone in front of a large projection screen displaying a presentation about bike safety. The presenter appears to be giving a talk or demonstration at what looks like a League of Amazing Programmers event, with audience members visible in the foreground."
+     data-flags="person_1,person_n,action,presentation,event">
+  <img class="thumb" src="../action/MG_5502-scaled.jpg" alt="MG_5502-scaled.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/MG_5502-scaled.jpg" target="_blank">MG_5502-scaled.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/MG_5502-scaled.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person wearing a red lanyard badge is speaking at a microphone in front of a large projection screen displaying a presentation about bike safety. The presenter appears to be giving a talk or demonstration at what looks like a League of Amazing Programmers event, with audience members visible in the foreground.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">person_n</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">presentation</span>
+      
+      <span class="tag">event</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young student sits at a wooden desk engaged in hands-on programming and hardware work, with a monitor displaying code in the background and an electronic circuit board setup with wires and components in front of them. the student is wearing a yellow long-sleeved shirt and appears focused on the hardware project, demonstrating active engagement in stem learning. the setup includes a keyboard, mouse, and various organizational storage visible behind the workspace."
+     data-name="nolan_raspi.jpeg"
+     data-src="../action/nolan_raspi.jpeg"
+     data-url="https://images.jointheleague.org/action/nolan_raspi.jpeg"
+     data-full-desc="A young student sits at a wooden desk engaged in hands-on programming and hardware work, with a monitor displaying code in the background and an electronic circuit board setup with wires and components in front of them. The student is wearing a yellow long-sleeved shirt and appears focused on the hardware project, demonstrating active engagement in STEM learning. The setup includes a keyboard, mouse, and various organizational storage visible behind the workspace."
+     data-flags="person_1,hardware,action,programming">
+  <img class="thumb" src="../action/nolan_raspi.jpeg" alt="nolan_raspi.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/nolan_raspi.jpeg" target="_blank">nolan_raspi.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/nolan_raspi.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young student sits at a wooden desk engaged in hands-on programming and hardware work, with a monitor displaying code in the background and an electronic circuit board setup with wires and components in front of them. The student is wearing a yellow long-sleeved shirt and appears focused on the hardware project, demonstrating active engagement in STEM learning. The setup includes a keyboard, mouse, and various organizational storage visible behind the workspace.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a youth student wearing safety glasses is actively soldering electronics at a workbench in a maker space or electronics lab. the student is focused on their work, holding a soldering iron and working with electronic components mounted in a helping hands tool. the workshop environment in the background contains various tools, storage, and equipment typical of a hands-on coding and electronics learning space."
+     data-name="soldering.png"
+     data-src="../action/soldering.png"
+     data-url="https://images.jointheleague.org/action/soldering.png"
+     data-full-desc="A youth student wearing safety glasses is actively soldering electronics at a workbench in a maker space or electronics lab. The student is focused on their work, holding a soldering iron and working with electronic components mounted in a helping hands tool. The workshop environment in the background contains various tools, storage, and equipment typical of a hands-on coding and electronics learning space."
+     data-flags="person_1,hardware,action">
+  <img class="thumb" src="../action/soldering.png" alt="soldering.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../action/soldering.png" target="_blank">soldering.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/action/soldering.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth student wearing safety glasses is actively soldering electronics at a workbench in a maker space or electronics lab. The student is focused on their work, holding a soldering iron and working with electronic components mounted in a helping hands tool. The workshop environment in the background contains various tools, storage, and equipment typical of a hands-on coding and electronics learning space.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a headshot portrait of a middle-aged man smiling at the camera against a plain light background. he is wearing a light green and black collared jacket. this appears to be a professional or staff photo, likely used for the league&#39;s website to represent an instructor or team member."
+     data-name="img_3697.png"
+     data-src="../cards/IMG_3697.png"
+     data-url="https://images.jointheleague.org/cards/IMG_3697.png"
+     data-full-desc="A headshot portrait of a middle-aged man smiling at the camera against a plain light background. He is wearing a light green and black collared jacket. This appears to be a professional or staff photo, likely used for The League&#39;s website to represent an instructor or team member."
+     data-flags="person_1">
+  <img class="thumb" src="../cards/IMG_3697.png" alt="IMG_3697.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/IMG_3697.png" target="_blank">IMG_3697.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/IMG_3697.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A headshot portrait of a middle-aged man smiling at the camera against a plain light background. He is wearing a light green and black collared jacket. This appears to be a professional or staff photo, likely used for The League&#39;s website to represent an instructor or team member.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. the child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning."
+     data-name="boy_soldering.png"
+     data-src="../cards/boy_soldering.png"
+     data-url="https://images.jointheleague.org/cards/boy_soldering.png"
+     data-full-desc="A young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. The child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning."
+     data-flags="person_1,hardware,action,stock">
+  <img class="thumb" src="../cards/boy_soldering.png" alt="boy_soldering.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/boy_soldering.png" target="_blank">boy_soldering.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/boy_soldering.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young child with curly hair wearing glasses and a denim shirt is focused on soldering or assembling an electronic circuit board at a white table. The child is using a soldering iron tool on a motherboard, with various electronic components and hardware visible in the foreground, representing hands-on hardware/electronics learning.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person works with a robotic arm in a workshop setting filled with tools and equipment. the scene shows hands-on stem learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
+     data-name="robot_garage.png"
+     data-src="../cards/robot_garage.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage.png"
+     data-full-desc="A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench."
+     data-flags="person_1,robot,hardware,action">
+  <img class="thumb" src="../cards/robot_garage.png" alt="robot_garage.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_garage.png" target="_blank">robot_garage.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person works with a robotic arm in a workshop setting filled with tools and equipment. The scene shows hands-on STEM learning in what appears to be a maker space or robotics lab, with various tools visible on pegboards in the background and a laptop on the workbench.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. they are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
+     data-name="robot_garage_building.png"
+     data-src="../cards/robot_garage_building.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_building.png"
+     data-full-desc="A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program."
+     data-flags="person_1,robot,hardware,action">
+  <img class="thumb" src="../cards/robot_garage_building.png" alt="robot_garage_building.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_garage_building.png" target="_blank">robot_garage_building.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_building.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person wearing a blue cap is working on building or assembling a white mechanical structure or robot in a workshop setting. They are using a measuring tape and surrounded by tools, pegboards with hand tools, and various hardware supplies, suggesting an active hands-on learning environment typical of a maker or robotics program.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. the scene shows a hands-on stem learning environment with tools and equipment organized on pegboards in the background, typical of the league&#39;s maker/robotics programs."
+     data-name="robot_garage_programming.png"
+     data-src="../cards/robot_garage_programming.png"
+     data-url="https://images.jointheleague.org/cards/robot_garage_programming.png"
+     data-full-desc="A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs."
+     data-flags="person_1,robot,hardware,action,programming">
+  <img class="thumb" src="../cards/robot_garage_programming.png" alt="robot_garage_programming.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../cards/robot_garage_programming.png" target="_blank">robot_garage_programming.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/cards/robot_garage_programming.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A youth programmer is working with a robotic arm in a workshop setting, with a laptop open for programming and control. The scene shows a hands-on STEM learning environment with tools and equipment organized on pegboards in the background, typical of The League&#39;s maker/robotics programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. the figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. this is a logo design for the league of amazing programmers, featuring the organization&#39;s signature orange color and dynamic imagery."
+     data-name="logo_girl_flag.png"
+     data-src="../logos/logo_girl_flag.png"
+     data-url="https://images.jointheleague.org/logos/logo_girl_flag.png"
+     data-full-desc="An illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. The figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. This is a logo design for The League of Amazing Programmers, featuring the organization&#39;s signature orange color and dynamic imagery."
+     data-flags="person_1,logo,action,illustration">
+  <img class="thumb" src="../logos/logo_girl_flag.png" alt="logo_girl_flag.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../logos/logo_girl_flag.png" target="_blank">logo_girl_flag.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/logos/logo_girl_flag.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. The figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. This is a logo design for The League of Amazing Programmers, featuring the organization&#39;s signature orange color and dynamic imagery.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. this is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas."
+     data-name="1g8my4.jpg"
+     data-src="../memes/1g8my4.jpg"
+     data-url="https://images.jointheleague.org/memes/1g8my4.jpg"
+     data-full-desc="A two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. This is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas."
+     data-flags="person_1,illustration,duplicate">
+  <img class="thumb" src="../memes/1g8my4.jpg" alt="1g8my4.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/1g8my4.jpg" target="_blank">1g8my4.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/1g8my4.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. This is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">duplicate</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a black and white vintage photograph of a young woman in what appears to be a girl scout or similar youth organization uniform, with her hand raised to her head in a casual pose. the image has a classic mid-20th century aesthetic and is likely used as a meme template for adding humorous text overlays."
+     data-name="1reewn.jpg"
+     data-src="../memes/1reewn.jpg"
+     data-url="https://images.jointheleague.org/memes/1reewn.jpg"
+     data-full-desc="A black and white vintage photograph of a young woman in what appears to be a Girl Scout or similar youth organization uniform, with her hand raised to her head in a casual pose. The image has a classic mid-20th century aesthetic and is likely used as a meme template for adding humorous text overlays."
+     data-flags="person_1,duplicate,stock">
+  <img class="thumb" src="../memes/1reewn.jpg" alt="1reewn.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/1reewn.jpg" target="_blank">1reewn.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/1reewn.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A black and white vintage photograph of a young woman in what appears to be a Girl Scout or similar youth organization uniform, with her hand raised to her head in a casual pose. The image has a classic mid-20th century aesthetic and is likely used as a meme template for adding humorous text overlays.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a four-panel meme template showing the same person in different poses with blank light blue sections, commonly used for creating meme content by adding text overlays. the person wears glasses and dark clothing, photographed against a warm-toned background."
+     data-name="26jxvz.jpg"
+     data-src="../memes/26jxvz.jpg"
+     data-url="https://images.jointheleague.org/memes/26jxvz.jpg"
+     data-full-desc="A four-panel meme template showing the same person in different poses with blank light blue sections, commonly used for creating meme content by adding text overlays. The person wears glasses and dark clothing, photographed against a warm-toned background."
+     data-flags="person_1,stock">
+  <img class="thumb" src="../memes/26jxvz.jpg" alt="26jxvz.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/26jxvz.jpg" target="_blank">26jxvz.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/26jxvz.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A four-panel meme template showing the same person in different poses with blank light blue sections, commonly used for creating meme content by adding text overlays. The person wears glasses and dark clothing, photographed against a warm-toned background.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a meme template featuring two panels of the same person against a yellow background, wearing a red/orange jacket. the top panel shows the person with hand to ear in a dismissive gesture, while the bottom panel shows approval or agreement. this is a classic meme format used for expressing rejection versus acceptance of ideas."
+     data-name="30b1gx.jpg"
+     data-src="../memes/30b1gx.jpg"
+     data-url="https://images.jointheleague.org/memes/30b1gx.jpg"
+     data-full-desc="A meme template featuring two panels of the same person against a yellow background, wearing a red/orange jacket. The top panel shows the person with hand to ear in a dismissive gesture, while the bottom panel shows approval or agreement. This is a classic meme format used for expressing rejection versus acceptance of ideas."
+     data-flags="person_1,stock">
+  <img class="thumb" src="../memes/30b1gx.jpg" alt="30b1gx.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/30b1gx.jpg" target="_blank">30b1gx.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/30b1gx.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A meme template featuring two panels of the same person against a yellow background, wearing a red/orange jacket. The top panel shows the person with hand to ear in a dismissive gesture, while the bottom panel shows approval or agreement. This is a classic meme format used for expressing rejection versus acceptance of ideas.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a person wearing a clown mask with white face paint, black eye makeup, and red nose, shown in a close-up portrait shot indoors. this appears to be a meme image format commonly used in programming classes where students add text overlays to create humorous content."
+     data-name="789p72.jpg"
+     data-src="../memes/789p72.jpg"
+     data-url="https://images.jointheleague.org/memes/789p72.jpg"
+     data-full-desc="A person wearing a clown mask with white face paint, black eye makeup, and red nose, shown in a close-up portrait shot indoors. This appears to be a meme image format commonly used in programming classes where students add text overlays to create humorous content."
+     data-flags="person_1">
+  <img class="thumb" src="../memes/789p72.jpg" alt="789p72.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../memes/789p72.jpg" target="_blank">789p72.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/memes/789p72.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A person wearing a clown mask with white face paint, black eye makeup, and red nose, shown in a close-up portrait shot indoors. This appears to be a meme image format commonly used in programming classes where students add text overlays to create humorous content.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a portrait of a young person wearing glasses and a beige hoodie, standing in a courtyard setting with colonial architecture, palm trees, and manicured gardens in the background. the person is positioned centrally and appears to be at an outdoor event or campus location."
+     data-name="img_2338.png"
+     data-src="../mkt/IMG_2338.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2338.png"
+     data-full-desc="A portrait of a young person wearing glasses and a beige hoodie, standing in a courtyard setting with colonial architecture, palm trees, and manicured gardens in the background. The person is positioned centrally and appears to be at an outdoor event or campus location."
+     data-flags="person_1,building,outdoor">
+  <img class="thumb" src="../mkt/IMG_2338.png" alt="IMG_2338.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2338.png" target="_blank">IMG_2338.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2338.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A portrait of a young person wearing glasses and a beige hoodie, standing in a courtyard setting with colonial architecture, palm trees, and manicured gardens in the background. The person is positioned centrally and appears to be at an outdoor event or campus location.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a portrait of a young person wearing glasses and a flat cap over a blue checkered shirt, standing outdoors in a courtyard with a spanish colonial-style building, palm trees, and manicured gardens in the background. the person is facing the camera with a calm expression, appearing to be a professional headshot or portrait photo."
+     data-name="img_2348.png"
+     data-src="../mkt/IMG_2348.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2348.png"
+     data-full-desc="A portrait of a young person wearing glasses and a flat cap over a blue checkered shirt, standing outdoors in a courtyard with a Spanish colonial-style building, palm trees, and manicured gardens in the background. The person is facing the camera with a calm expression, appearing to be a professional headshot or portrait photo."
+     data-flags="person_1,building,outdoor">
+  <img class="thumb" src="../mkt/IMG_2348.png" alt="IMG_2348.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2348.png" target="_blank">IMG_2348.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2348.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A portrait of a young person wearing glasses and a flat cap over a blue checkered shirt, standing outdoors in a courtyard with a Spanish colonial-style building, palm trees, and manicured gardens in the background. The person is facing the camera with a calm expression, appearing to be a professional headshot or portrait photo.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a portrait of a young person wearing glasses and a beige cap, photographed outdoors in a courtyard garden setting. the background shows a cream-colored building with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting an elegant institutional or campus environment."
+     data-name="img_2349.png"
+     data-src="../mkt/IMG_2349.png"
+     data-url="https://images.jointheleague.org/mkt/IMG_2349.png"
+     data-full-desc="A portrait of a young person wearing glasses and a beige cap, photographed outdoors in a courtyard garden setting. The background shows a cream-colored building with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting an elegant institutional or campus environment."
+     data-flags="person_1,building,outdoor">
+  <img class="thumb" src="../mkt/IMG_2349.png" alt="IMG_2349.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../mkt/IMG_2349.png" target="_blank">IMG_2349.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/mkt/IMG_2349.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A portrait of a young person wearing glasses and a beige cap, photographed outdoors in a courtyard garden setting. The background shows a cream-colored building with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting an elegant institutional or campus environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">building</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-name="boy_yellow.gif"
+     data-src="../python/boy_yellow.gif"
+     data-url="https://images.jointheleague.org/python/boy_yellow.gif"
+     data-full-desc="A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-name="girl_red.gif"
+     data-src="../python/girl_red.gif"
+     data-url="https://images.jointheleague.org/python/girl_red.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../python/girl_red.gif" alt="girl_red.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../python/girl_red.gif" target="_blank">girl_red.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_red.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="an illustration of a person sitting at a desk working on programming tasks, viewed from behind. the scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;programming&#34; as the header and placeholder lorem ipsum text below."
+     data-name="adobestock_125147758.jpeg"
+     data-src="../stock/AdobeStock_125147758.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_125147758.jpeg"
+     data-full-desc="An illustration of a person sitting at a desk working on programming tasks, viewed from behind. The scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;PROGRAMMING&#34; as the header and placeholder Lorem Ipsum text below."
+     data-flags="person_1,action,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_125147758.jpeg" alt="AdobeStock_125147758.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_125147758.jpeg" target="_blank">AdobeStock_125147758.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_125147758.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">An illustration of a person sitting at a desk working on programming tasks, viewed from behind. The scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;PROGRAMMING&#34; as the header and placeholder Lorem Ipsum text below.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. the image shows a cartoon character with headphones at the center, connected to programming icons including python, javascript, css, html, scratch, unity, and iq symbols, along with gaming controllers, laptops, and cloud computing elements. this is a digital illustration representing youth coding education and technology learning."
+     data-name="adobestock_353679927.jpeg"
+     data-src="../stock/AdobeStock_353679927.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_353679927.jpeg"
+     data-full-desc="A vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. The image shows a cartoon character with headphones at the center, connected to programming icons including Python, JavaScript, CSS, HTML, Scratch, Unity, and IQ symbols, along with gaming controllers, laptops, and cloud computing elements. This is a digital illustration representing youth coding education and technology learning."
+     data-flags="person_1,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_353679927.jpeg" alt="AdobeStock_353679927.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_353679927.jpeg" target="_blank">AdobeStock_353679927.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_353679927.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. The image shows a cartoon character with headphones at the center, connected to programming icons including Python, JavaScript, CSS, HTML, Scratch, Unity, and IQ symbols, along with gaming controllers, laptops, and cloud computing elements. This is a digital illustration representing youth coding education and technology learning.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person sits cross-legged on a white floor against a plain white background, working on a laptop computer. they are wearing a blue checkered shirt over a white t-shirt, dark jeans, and white sneakers. a beige messenger bag is visible beside them on the right side."
+     data-name="adobestock_364394456_preview.jpeg"
+     data-src="../stock/AdobeStock_364394456_Preview.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_364394456_Preview.jpeg"
+     data-full-desc="A young person sits cross-legged on a white floor against a plain white background, working on a laptop computer. They are wearing a blue checkered shirt over a white t-shirt, dark jeans, and white sneakers. A beige messenger bag is visible beside them on the right side."
+     data-flags="person_1,action,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_364394456_Preview.jpeg" alt="AdobeStock_364394456_Preview.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_364394456_Preview.jpeg" target="_blank">AdobeStock_364394456_Preview.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_364394456_Preview.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person sits cross-legged on a white floor against a plain white background, working on a laptop computer. They are wearing a blue checkered shirt over a white t-shirt, dark jeans, and white sneakers. A beige messenger bag is visible beside them on the right side.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. the scene features a vibrant 3d paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education."
+     data-name="adobestock_567104942.jpeg"
+     data-src="../stock/AdobeStock_567104942.jpeg"
+     data-url="https://images.jointheleague.org/stock/AdobeStock_567104942.jpeg"
+     data-full-desc="A colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. The scene features a vibrant 3D paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education."
+     data-flags="person_1,hardware,action,illustration,programming,stock">
+  <img class="thumb" src="../stock/AdobeStock_567104942.jpeg" alt="AdobeStock_567104942.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/AdobeStock_567104942.jpeg" target="_blank">AdobeStock_567104942.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/AdobeStock_567104942.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. The scene features a vibrant 3D paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. the child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. the image captures a moment of tech interaction in a natural, candid style."
+     data-name="blondandblueboy.jpeg"
+     data-src="../stock/blondandblueboy.jpeg"
+     data-url="https://images.jointheleague.org/stock/blondandblueboy.jpeg"
+     data-full-desc="A young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. The child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. The image captures a moment of tech interaction in a natural, candid style."
+     data-flags="person_1,hardware,action,stock,outdoor">
+  <img class="thumb" src="../stock/blondandblueboy.jpeg" alt="blondandblueboy.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/blondandblueboy.jpeg" target="_blank">blondandblueboy.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/blondandblueboy.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. The child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. The image captures a moment of tech interaction in a natural, candid style.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+      <span class="tag">outdoor</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young person wearing a yellow shirt works with an electronics circuit board setup, featuring a microcontroller board on the left and a breadboard with colorful wires and components on the right. the person is focused on assembling or testing the electronic hardware components in what appears to be an educational or maker environment."
+     data-name="breadboard.jpeg"
+     data-src="../stock/breadboard.jpeg"
+     data-url="https://images.jointheleague.org/stock/breadboard.jpeg"
+     data-full-desc="A young person wearing a yellow shirt works with an electronics circuit board setup, featuring a microcontroller board on the left and a breadboard with colorful wires and components on the right. The person is focused on assembling or testing the electronic hardware components in what appears to be an educational or maker environment."
+     data-flags="person_1,hardware,action,stock">
+  <img class="thumb" src="../stock/breadboard.jpeg" alt="breadboard.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/breadboard.jpeg" target="_blank">breadboard.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/breadboard.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young person wearing a yellow shirt works with an electronics circuit board setup, featuring a microcontroller board on the left and a breadboard with colorful wires and components on the right. The person is focused on assembling or testing the electronic hardware components in what appears to be an educational or maker environment.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a composite image showing a young person working on a laptop with overlaid digital ui elements displaying code and programming interfaces. the scene includes file browser windows, code editor panels with syntax-highlighted arduino-style code, and visual programming elements with orange accents. in the background, hands are visible working at the desk with a laptop and what appears to be electronics or hardware components on a turquoise surface."
+     data-name="code and screwdriver.jpeg"
+     data-src="../stock/code and screwdriver.jpeg"
+     data-url="https://images.jointheleague.org/stock/code and screwdriver.jpeg"
+     data-full-desc="A composite image showing a young person working on a laptop with overlaid digital UI elements displaying code and programming interfaces. The scene includes file browser windows, code editor panels with syntax-highlighted Arduino-style code, and visual programming elements with orange accents. In the background, hands are visible working at the desk with a laptop and what appears to be electronics or hardware components on a turquoise surface."
+     data-flags="person_1,screenshot,hardware,action,programming,stock">
+  <img class="thumb" src="../stock/code and screwdriver.jpeg" alt="code and screwdriver.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/code and screwdriver.jpeg" target="_blank">code and screwdriver.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/code and screwdriver.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A composite image showing a young person working on a laptop with overlaid digital UI elements displaying code and programming interfaces. The scene includes file browser windows, code editor panels with syntax-highlighted Arduino-style code, and visual programming elements with orange accents. In the background, hands are visible working at the desk with a laptop and what appears to be electronics or hardware components on a turquoise surface.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a young student is focused on soldering or working on electronic circuit boards and hardware components at a workbench. the setup includes various tools like a soldering iron, magnifying glass, and multiple green circuit boards, suggesting a hands-on electronics or robotics learning activity typical of youth coding programs."
+     data-name="soldering.jpeg"
+     data-src="../stock/soldering.jpeg"
+     data-url="https://images.jointheleague.org/stock/soldering.jpeg"
+     data-full-desc="A young student is focused on soldering or working on electronic circuit boards and hardware components at a workbench. The setup includes various tools like a soldering iron, magnifying glass, and multiple green circuit boards, suggesting a hands-on electronics or robotics learning activity typical of youth coding programs."
+     data-flags="person_1,hardware,action,stock">
+  <img class="thumb" src="../stock/soldering.jpeg" alt="soldering.jpeg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../stock/soldering.jpeg" target="_blank">soldering.jpeg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/stock/soldering.jpeg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A young student is focused on soldering or working on electronic circuit boards and hardware components at a workbench. The setup includes various tools like a soldering iron, magnifying glass, and multiple green circuit boards, suggesting a hands-on electronics or robotics learning activity typical of youth coding programs.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+</div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-img-wrap">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-name"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-url-row">
+        <input type="text" id="modal-url" readonly>
+        <button id="modal-copy-btn">Copy URL</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BASE_URL = 'https://images.jointheleague.org/';
+let catalog = null;
+let searchActive = false;
+
+function escAttr(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function makeCardHtml(img) {
+  const flags = img.flags || {};
+  const trueTags = Object.keys(flags).filter(k => flags[k]);
+  const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+  const url = BASE_URL + img.path.replace(/^\.\.\//,'');
+  return `
+    <div class="image-card"
+         data-desc="${escAttr(img.description).toLowerCase()}"
+         data-name="${escAttr(img.name).toLowerCase()}"
+         data-src="${escAttr(img.path)}"
+         data-url="${escAttr(url)}"
+         data-full-desc="${escAttr(img.description)}"
+         data-flags="${escAttr(trueTags.join(','))}">
+      <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+      <div class="info">
+        <div class="name-row">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <button class="copy-btn" data-url="${url}" title="Copy URL">&#x2398;</button>
+        </div>
+        <div class="desc">${img.description || ''}</div>
+        <div class="tags">${tagHtml}</div>
+      </div>
+    </div>`;
+}
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch('data/catalog.json');
+  catalog = await resp.json();
+  // Fix paths for _site context
+  catalog.images.forEach(img => {
+    if (!img.path.startsWith('../')) img.path = '../' + img.path;
+  });
+  return catalog;
+}
+
+async function doSearch(query) {
+  const data = await loadCatalog();
+  const q = query.toLowerCase().trim();
+
+  const matches = data.images.filter(img => {
+    const desc = (img.description || '').toLowerCase();
+    const name = img.name.toLowerCase();
+    return desc.includes(q) || name.includes(q);
+  });
+
+  const content = document.getElementById('page-content');
+  content.innerHTML = `
+    <h1>Search results</h1>
+    <p class="subtitle">Showing ${matches.length} of ${data.images.length} images matching "${query}"</p>
+    <div class="image-grid" id="image-grid">
+      ${matches.map(makeCardHtml).join('')}
+    </div>`;
+
+  document.getElementById('result-count').textContent = `${matches.length} / ${data.images.length}`;
+  bindCards();
+
+  // Clear active states in sidebar
+  document.querySelectorAll('.sidebar a.active').forEach(a => a.classList.remove('active'));
+  searchActive = true;
+}
+
+// Store original page content for restoring
+let originalContent = null;
+
+function restorePage() {
+  if (originalContent) {
+    document.getElementById('page-content').innerHTML = originalContent;
+    bindCards();
+    const cards = document.querySelectorAll('.image-card');
+    document.getElementById('result-count').textContent = `${cards.length} images`;
+  }
+  searchActive = false;
+}
+
+// --- Copy buttons ---
+function bindCopyButtons() {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.dataset.url;
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '\u2713';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = '&#x2398;';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+}
+
+// --- Modal ---
+const overlay = document.getElementById('modal-overlay');
+
+function openModal(card) {
+  const src = card.dataset.src;
+  const url = card.dataset.url;
+  const desc = card.dataset.fullDesc;
+  const name = card.querySelector('.name a')?.textContent || card.dataset.name;
+  const flags = card.dataset.flags ? card.dataset.flags.split(',').filter(Boolean) : [];
+
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-url').value = url;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = flags.map(f => `<span class="tag">${f}</span>`).join('');
+
+  const copyBtn = document.getElementById('modal-copy-btn');
+  copyBtn.textContent = 'Copy URL';
+  copyBtn.classList.remove('copied');
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.getElementById('modal-img').src = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('modal-copy-btn').addEventListener('click', async () => {
+  const url = document.getElementById('modal-url').value;
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('modal-copy-btn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy URL';
+    btn.classList.remove('copied');
+  }, 1500);
+});
+
+function bindCards() {
+  bindCopyButtons();
+  document.querySelectorAll('.image-card .thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(thumb.closest('.image-card'));
+    });
+  });
+}
+
+// --- Search ---
+let debounceTimer;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(debounceTimer);
+  const query = e.target.value.trim();
+  debounceTimer = setTimeout(() => {
+    if (query.length > 0) {
+      doSearch(query);
+    } else {
+      restorePage();
+    }
+  }, 200);
+});
+
+// --- Init ---
+document.addEventListener('DOMContentLoaded', () => {
+  originalContent = document.getElementById('page-content').innerHTML;
+  bindCards();
+
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

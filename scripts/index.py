@@ -50,6 +50,7 @@ def run_index(base: Path):
     common = {
         'categories': categories_list,
         'flags': flags,
+        'active_flag': None,
     }
 
     # Home page
@@ -79,4 +80,23 @@ def run_index(base: Path):
         (site / f"{cat['name']}.html").write_text(html)
         print(f"  Generated {cat['name']}.html ({len(cat_images)} images)")
 
-    print(f"\nGenerated {1 + len(categories_list)} HTML pages in {SITE_DIR}/")
+    # Per-flag pages
+    flag_tmpl = env.get_template('flag.html')
+    for flag in flags:
+        flag_images = [
+            img for img in all_images
+            if img.get('flags', {}).get(flag, False)
+        ]
+        html = flag_tmpl.render(
+            title=f"Flag: {flag}",
+            active_category=None,
+            active_flag=flag,
+            flag_name=flag,
+            images=flag_images,
+            **{k: v for k, v in common.items() if k != 'active_flag'},
+        )
+        (site / f"flag-{flag}.html").write_text(html)
+        print(f"  Generated flag-{flag}.html ({len(flag_images)} images)")
+
+    total_pages = 1 + len(categories_list) + len(flags)
+    print(f"\nGenerated {total_pages} HTML pages in {SITE_DIR}/")
