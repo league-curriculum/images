@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_390627982.jpeg
+  path: stock/AdobeStock_390627982.jpeg
+category: stock
+description: A group of young students are seated at a table during a coding or programming
+  activity. Two girls in the foreground are turned toward the camera with pleasant
+  expressions while working on a laptop, with additional students visible in the background
+  also engaged with computers. The scene appears to be set in a classroom or workshop
+  environment focused on technology education.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

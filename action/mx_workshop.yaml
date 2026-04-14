@@ -1,18 +1,27 @@
 image:
   name: mx_workshop.png
   path: action/mx_workshop.png
-
-description: >
-  A small thumbnail showing three students sitting at an outdoor table with
-  laptops, smiling at the camera. They appear to be participating in a
-  coding workshop in a casual outdoor setting.
-
+category: action
+description: A group of young students from The League of Amazing Programmers are
+  actively engaged in coding and learning activities at a table with laptops. Multiple
+  students are smiling and appear focused on their work, with instructors nearby supporting
+  them in a bright, colorful classroom environment.
 flags:
   person_1: false
   person_n: true
-  teaching: false
+  teaching: true
   screenshot: false
   logo: false
   robot: false
-  hardware: false
+  hardware: true
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

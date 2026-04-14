@@ -1,0 +1,28 @@
+image:
+  name: 1721421660553.jpeg
+  path: mkt/1721421660553.jpeg
+category: mkt
+description: Three young people pose together in a computer lab classroom setting,
+  displaying their coding work on laptops. An adult instructor stands on the left
+  while two students proudly show their programming projects on screens displaying
+  code and development environments. The room features multiple computers, monitors,
+  and windows overlooking greenery, creating an authentic educational environment.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

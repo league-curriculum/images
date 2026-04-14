@@ -1,13 +1,12 @@
 image:
   name: League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png
   path: action/League-Featured-in-Councilmember-Bry-February-2017-Newsletter.png
-
-description: >
-  A small thumbnail image showing Councilmember Barbara Bry in a teal blazer
-  standing next to a student at a desktop computer in a coding classroom. This
-  appears to be a cropped version used in the Councilmember's February 2017
-  newsletter featuring The League.
-
+category: action
+description: Two women are actively engaged at a computer workstation in what appears
+  to be a coding classroom or lab environment. The woman on the left, wearing a bright
+  blue blazer, is instructing or collaborating with the woman on the right, who is
+  seated at the desk. In the background, other students and desks are visible, suggesting
+  this is taking place during a League coding session or workshop.
 flags:
   person_1: false
   person_n: true
@@ -17,3 +16,13 @@ flags:
   robot: false
   hardware: false
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

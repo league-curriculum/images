@@ -1,0 +1,25 @@
+image:
+  name: create_codespace.png
+  path: github/create_codespace.png
+category: github
+description: A green button or interface element with white text that reads 'Create
+  codespace on master', typical of GitHub's codespace creation feature.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

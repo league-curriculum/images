@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_490333995_Preview.jpeg
+  path: stock/AdobeStock_490333995_Preview.jpeg
+category: stock
+description: An illustrated 3D scene showing programming and development tools against
+  a purple background. The image features multiple windows displaying code editors
+  with C programming language, surrounded by decorative icons including a lightbulb,
+  gears, magnifying glass, folder, cursor, and code brackets symbolizing software
+  development and problem-solving.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

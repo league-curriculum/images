@@ -1,0 +1,26 @@
+image:
+  name: sign_in.png
+  path: microbit/sign_in.png
+category: microbit
+description: A sign-in button interface element with the text 'Sign In' accompanied
+  by a user account icon. This appears to be a UI component from a website or application,
+  likely from the MicroBit MakeCode platform.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

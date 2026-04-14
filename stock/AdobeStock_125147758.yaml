@@ -1,0 +1,27 @@
+image:
+  name: AdobeStock_125147758.jpeg
+  path: stock/AdobeStock_125147758.jpeg
+category: stock
+description: An illustration of a person sitting at a desk working on programming
+  tasks, viewed from behind. The scene shows multiple computer monitors displaying
+  code and programming interfaces on a bright green background, with "PROGRAMMING"
+  as the header and placeholder Lorem Ipsum text below.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

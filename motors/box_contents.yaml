@@ -1,0 +1,28 @@
+image:
+  name: box_contents.png
+  path: motors/box_contents.png
+category: motors
+description: A flat-lay product photograph showing various electronic components and
+  hardware used in robotics or maker projects, including circuit boards, motors, servos,
+  wiring harnesses, and control modules arranged neatly on a gray surface. This appears
+  to be a kit or collection of parts for building motorized projects, typical of what
+  The League of Amazing Programmers would use in their youth coding and robotics curriculum.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

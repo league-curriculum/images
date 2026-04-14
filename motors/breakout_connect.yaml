@@ -1,0 +1,28 @@
+image:
+  name: breakout_connect.png
+  path: motors/breakout_connect.png
+category: motors
+description: A Dell laptop is connected via USB cable to a microcontroller board (appears
+  to be a micro:bit or similar educational circuit board) with an LED grid visible
+  on top and colorful component headers below. The laptop screen displays what appears
+  to be a programming interface or application. This setup demonstrates a typical
+  hardware-software integration used in youth coding education.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,19 +1,28 @@
 image:
   name: computer-robot.png
   path: cards/computer-robot.png
-
-description: >
-  A small 3D-style illustration of a laptop computer with an orange screen,
-  surrounded by floating decorative elements like stars, a coffee cup, and
-  abstract shapes on a light blue and purple background. A stylized, playful
-  graphic used as a card image.
-
+category: cards
+description: A colorful vector illustration depicting a laptop computer with an orange
+  glowing screen displaying code, surrounded by stylized programming-related elements
+  including small robot characters, plants, stars, and decorative dots on a purple
+  gradient background. This appears to be a generic graphic asset representing coding
+  or computer programming education.
 flags:
   person_1: false
   person_n: false
   teaching: false
   screenshot: false
   logo: false
-  robot: false
-  hardware: false
+  robot: true
+  hardware: true
   action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

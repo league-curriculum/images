@@ -1,0 +1,28 @@
+image:
+  name: 30b1gx.jpg
+  path: memes/30b1gx.jpg
+category: memes
+description: A meme template featuring two panels of the same person against a yellow
+  background, wearing a red/orange jacket. The top panel shows the person with hand
+  to ear in a dismissive gesture, while the bottom panel shows approval or agreement.
+  This is a classic meme format used for expressing rejection versus acceptance of
+  ideas.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

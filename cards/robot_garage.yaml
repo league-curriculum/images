@@ -1,12 +1,11 @@
 image:
   name: robot_garage.png
   path: cards/robot_garage.png
-
-description: >
-  A small thumbnail version of the robot garage programming image. A teenage
-  boy stands next to a large white robotic arm in a workshop with tools on
-  the wall. Same scene as robot_garage_programming.png but from a wider angle.
-
+category: cards
+description: A young person works with a robotic arm in a workshop setting filled
+  with tools and equipment. The scene shows hands-on STEM learning in what appears
+  to be a maker space or robotics lab, with various tools visible on pegboards in
+  the background and a laptop on the workbench.
 flags:
   person_1: true
   person_n: false
@@ -16,3 +15,13 @@ flags:
   robot: true
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

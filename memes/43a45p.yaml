@@ -1,0 +1,28 @@
+image:
+  name: 43a45p.jpg
+  path: memes/43a45p.jpg
+category: memes
+description: 'A humorous illustration showing two meme-style images: on the left,
+  a buff/muscular doge dog with an exaggerated physique, and on the right, a normal-sized
+  doge dog. This is a classic internet meme format often used to compare contrasts
+  or make jokes, commonly used in educational settings for meme-based programming
+  projects.'
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

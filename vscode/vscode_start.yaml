@@ -1,0 +1,26 @@
+image:
+  name: vscode_start.png
+  path: vscode/vscode_start.png
+category: vscode
+description: A screenshot of a VS Code Start menu showing options for creating a new
+  file, opening files, cloning a Git repository, and connecting to a remote environment.
+  This appears to be from Visual Studio Code's welcome screen with a dark theme.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

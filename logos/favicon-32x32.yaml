@@ -1,0 +1,26 @@
+image:
+  name: favicon-32x32.png
+  path: logos/favicon-32x32.png
+category: logos
+description: A simple logo featuring a white lightning bolt icon on a solid orange-red
+  square background. This is a minimalist design suitable for use as an app icon,
+  favicon, or branding element for The League of Amazing Programmers.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

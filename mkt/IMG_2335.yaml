@@ -1,0 +1,28 @@
+image:
+  name: IMG_2335.png
+  path: mkt/IMG_2335.png
+category: mkt
+description: An instructor teaches a group of young students in a classroom setting,
+  standing at a whiteboard with drawings and writing. Multiple students of varying
+  ages are gathered around, some sitting on chairs and others standing, engaged in
+  what appears to be a coding or programming lesson. The indoor classroom has fluorescent
+  lighting and basic educational setup typical of a youth coding nonprofit environment.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: true
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: 1reewn.jpg
+  path: memes/1reewn.jpg
+category: memes
+description: A black and white vintage photograph of a young woman in what appears
+  to be a Girl Scout or similar youth organization uniform, with her hand raised to
+  her head in a casual pose. The image has a classic mid-20th century aesthetic and
+  is likely used as a meme template for adding humorous text overlays.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: true
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: IMG_2338.png
+  path: mkt/IMG_2338.png
+category: mkt
+description: A portrait of a young person wearing glasses and a beige hoodie, standing
+  in a courtyard setting with colonial architecture, palm trees, and manicured gardens
+  in the background. The person is positioned centrally and appears to be at an outdoor
+  event or campus location.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: false

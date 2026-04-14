@@ -1,0 +1,27 @@
+image:
+  name: blondandblueboy.jpeg
+  path: stock/blondandblueboy.jpeg
+category: stock
+description: A young child with blonde hair wearing a blue shirt is focused on holding
+  and examining a mobile device or tablet outdoors. The child appears engaged and
+  concentrated on the screen, with a blurred green background suggesting an outdoor
+  setting. The image captures a moment of tech interaction in a natural, candid style.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: true
+  event: false

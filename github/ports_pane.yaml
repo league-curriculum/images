@@ -1,0 +1,28 @@
+image:
+  name: ports_pane.png
+  path: github/ports_pane.png
+category: github
+description: A screenshot of a development environment's port forwarding configuration
+  interface, showing multiple ports (5901, 6080) with their forwarded addresses, running
+  processes, and visibility settings. The image displays technical details including
+  URLs, command-line processes, and a 'Preview in Editor' button, typical of a web
+  development or coding workspace setup.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

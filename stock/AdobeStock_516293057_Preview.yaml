@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_516293057_Preview.jpeg
+  path: stock/AdobeStock_516293057_Preview.jpeg
+category: stock
+description: A group of six young students pose together in a bright, modern classroom
+  or tech workspace. They are holding various items including a laptop, robot, blueprints,
+  and a book, suggesting a STEM or coding education setting. The students are arranged
+  casually with some standing and one sitting, displaying a collaborative and creative
+  atmosphere typical of a youth technology learning environment.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

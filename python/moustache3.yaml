@@ -1,0 +1,26 @@
+image:
+  name: moustache3.gif
+  path: python/moustache3.gif
+category: python
+description: A black silhouette illustration of a simple, rounded dome-like or umbrella-like
+  shape with hair-like strands hanging down from the top. This appears to be a stylized
+  graphic, possibly representing a character or object used in Python curriculum materials.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,13 +1,12 @@
 image:
   name: girl_scouts.jpg
   path: action/girl_scouts.jpg
-
-description: >
-  Three Girl Scouts sitting in a row at desktop iMac computers in a computer
-  lab. The closest girl is wearing a Girl Scout sash with badges. They are all
-  smiling at the camera. The computer screens show colorful graphics, possibly
-  a game or coding project they are working on.
-
+category: action
+description: Multiple students are seated at a wooden table in a classroom setting,
+  engaged in computer programming activities. The students are focused on their individual
+  monitors and keyboards, with one student in the foreground smiling at the camera
+  while working. The room appears to be a dedicated coding lab with fluorescent lighting
+  and educational materials visible on the walls.
 flags:
   person_1: false
   person_n: true
@@ -17,3 +16,13 @@ flags:
   robot: false
   hardware: false
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

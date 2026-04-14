@@ -1,13 +1,11 @@
 image:
   name: programs.png
   path: cards/programs.png
-
-description: >
-  An illustrated card graphic showing a dark teal code editor window with
-  yellow lines of code and an HTML closing tag symbol. Orange and teal stars
-  and decorative elements surround it on a light background with dashed
-  orbit lines.
-
+category: cards
+description: An illustration of a code editor window with a dark interface showing
+  yellow lines of code and a code bracket symbol. The window is surrounded by colorful
+  decorative elements including orange stars, blue dashes, and a yellow pencil, suggesting
+  a creative and educational coding environment.
 flags:
   person_1: false
   person_n: false
@@ -17,3 +15,13 @@ flags:
   robot: false
   hardware: false
   action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

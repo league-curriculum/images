@@ -1,12 +1,12 @@
 image:
   name: portfolio.png
   path: cards/portfolio.png
-
-description: >
-  A small photo of a laptop screen displaying a "PROJECTS" portfolio webpage
-  with a grid of project thumbnails and descriptions. The page appears to be
-  a student portfolio site showcasing various completed projects.
-
+category: cards
+description: A screenshot of a portfolio website displaying a 'PROJECTS' page with
+  a grid of project cards showing past accomplishments. The page features thumbnails
+  of various tech projects including an Automated Plant Watering System, Mobile App
+  Development projects, and other hardware/software initiatives, typical of what young
+  programmers at The League might create.
 flags:
   person_1: false
   person_n: false
@@ -16,3 +16,13 @@ flags:
   robot: false
   hardware: false
   action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

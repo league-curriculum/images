@@ -1,0 +1,27 @@
+image:
+  name: LgX0SnfGKm.webp
+  path: mkt/LgX0SnfGKm.webp
+category: mkt
+description: A young student smiles at the camera while working at a wooden table
+  during what appears to be a coding class or workshop. Multiple students are visible
+  around the table in an indoor classroom setting, with colorful items and materials
+  visible in the background.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

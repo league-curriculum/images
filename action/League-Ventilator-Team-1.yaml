@@ -1,14 +1,13 @@
 image:
   name: League-Ventilator-Team-1.png
   path: action/League-Ventilator-Team-1.png
-
-description: >
-  Two students working on a ventilator prototype in a lab or workshop space
-  with glass partition walls. One student wearing a mask holds a white foam
-  component while the other examines the device on the table. Electronic
-  components and a control box are visible on the workbench. The project
-  appears to be a League ventilator development effort during COVID-19.
-
+category: action
+description: Multiple young people work together at a table in a modern classroom
+  or lab space, actively engaged with hardware and electronics projects. One student
+  holds a white 3D-printed or constructed component while others examine circuit boards
+  and equipment, demonstrating hands-on collaborative learning. The scene captures
+  authentic student engagement in a tech-focused activity within an indoor educational
+  setting.
 flags:
   person_1: false
   person_n: true
@@ -18,3 +17,13 @@ flags:
   robot: false
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,13 +1,12 @@
 image:
   name: robot_garage_kids.png
   path: cards/robot_garage_kids.png
-
-description: >
-  A small card-sized photo of two teenage boys working together at a table
-  with electronics and a laptop. They are assembling or wiring small
-  components. The setting appears to be a classroom or workshop. One boy
-  has curly hair and the other wears glasses.
-
+category: cards
+description: Two young students work together at a table with electronics and a laptop,
+  engaged in a hands-on hardware project. One student is holding and connecting components
+  while the other observes, with a computer displaying code visible on the right side.
+  The scene shows an active learning environment typical of The League's coding and
+  robotics programs.
 flags:
   person_1: false
   person_n: true
@@ -17,3 +16,13 @@ flags:
   robot: false
   hardware: true
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

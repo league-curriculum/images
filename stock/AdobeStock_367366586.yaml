@@ -1,0 +1,27 @@
+image:
+  name: AdobeStock_367366586.jpeg
+  path: stock/AdobeStock_367366586.jpeg
+category: stock
+description: Two young people are posed at a desk in a modern office setting, smiling
+  at the camera. Behind them is a computer monitor displaying colorful code or programming
+  interface. The scene shows a clean, bright workspace with shelving, notebooks, and
+  other office supplies.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

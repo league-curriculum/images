@@ -1,0 +1,29 @@
+image:
+  name: run_tina.png
+  path: vscode/run_tina.png
+category: vscode
+description: A screenshot of VS Code showing a Python programming lesson from The
+  League's Python-Apprentice curriculum. The left panel displays a file explorer with
+  lesson folders and Python files (including turtle graphics exercises), the center
+  shows Python code for a turtle graphics program with comments, and the right panel
+  displays the output - a red circle drawn by the turtle graphics program with 'Why,
+  hello there!' text.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

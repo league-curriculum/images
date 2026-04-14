@@ -1,0 +1,26 @@
+image:
+  name: code_button.png
+  path: github/code_button.png
+category: github
+description: A green button with code bracket icons and the word 'Code' followed by
+  a dropdown arrow. This is a GitHub interface element commonly used to access repository
+  cloning and downloading options.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

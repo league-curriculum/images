@@ -1,0 +1,28 @@
+image:
+  name: MX Library Workshop_1.jpg
+  path: mkt/MX Library Workshop_1.jpg
+category: mkt
+description: A group of young students are gathered around laptops in a modern tech
+  classroom or lab environment with bright green and colorful walls. Multiple students
+  are actively engaged with computers, smiling and collaborating together. An instructor
+  or mentor can be seen in the background, and the space appears to be part of The
+  League of Amazing Programmers' coding education program.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_310515430.jpeg
+  path: stock/AdobeStock_310515430.jpeg
+category: stock
+description: An illustrated promotional graphic for a summer camp featuring a stylized
+  blue laptop with a rocket launching from its screen, set against a dynamic blue
+  and white striped background. A speech bubble contains the text 'SUMMER CAMP' in
+  bold black and red lettering, suggesting this is marketing material for a youth
+  coding or technology-focused summer program.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

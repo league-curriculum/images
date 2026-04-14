@@ -1,0 +1,26 @@
+image:
+  name: sc_sync.png
+  path: vscode/sc_sync.png
+category: vscode
+description: "A screenshot of a VS Code interface element showing a blue header bar\
+  \ with white text that reads 'Sync Changes 1\u2191', indicating a synchronization\
+  \ feature with one pending change to upload."
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: pane_config.png
+  path: module-navigation/pane_config.png
+category: module-navigation
+description: A set of four simple line icons displayed on a dark background, showing
+  different device or layout representations. These appear to be UI navigation icons,
+  possibly representing different view modes or device types (phone, tablet, book/split
+  view, and grid layouts).
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

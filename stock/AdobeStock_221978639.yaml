@@ -1,0 +1,27 @@
+image:
+  name: AdobeStock_221978639.jpeg
+  path: stock/AdobeStock_221978639.jpeg
+category: stock
+description: A vector illustration depicting programming and coding concepts, showing
+  hands typing on a laptop keyboard surrounded by various programming language logos
+  (Python, JavaScript, Java, C++, HTML5, Swift, Kotlin, Ruby, etc.), development tools,
+  and tech-related icons like lightbulbs, gears, and code windows.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

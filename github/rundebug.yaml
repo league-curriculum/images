@@ -1,0 +1,27 @@
+image:
+  name: rundebug.png
+  path: github/rundebug.png
+category: github
+description: A minimalist line-drawn icon showing a play button (triangle pointing
+  right) with a gear symbol overlapping or integrated below it. The icon uses simple
+  black strokes on a light gray background, suggesting automation, workflows, or automated
+  processes in a development context.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,14 +1,12 @@
 image:
   name: IMG_6573-scaled.jpeg
   path: action/IMG_6573-scaled.jpeg
-
-description: >
-  The wider version of the check presentation photo. A group of students and
-  adults pose in a courtyard with a stone fountain. Two men in the foreground
-  hold a large ceremonial check while students stand behind them, many wearing
-  masks. The courtyard has lush greenery and a Spanish-style building in the
-  background.
-
+category: action
+description: A group of youth and adults from The League of Amazing Programmers pose
+  together in a courtyard holding a large charity donation check from San Diego Self
+  Storage. The diverse group, including children and adults wearing League-branded
+  clothing, stands in front of a historic Spanish colonial-style building with ornate
+  architecture, displaying their fundraising success.
 flags:
   person_1: false
   person_n: true
@@ -17,4 +15,14 @@ flags:
   logo: false
   robot: false
   hardware: false
-  action: false
+  action: true
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: true

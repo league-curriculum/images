@@ -1,13 +1,12 @@
 image:
   name: Isis-at-the-library.jpg
   path: action/Isis-at-the-library.jpg
-
-description: >
-  The original rectangular version of the library coding session. Two students
-  sit at iMac computers in a library with bright green walls. A girl in a
-  yellow shirt talks to a boy who is typing on a keyboard. Other students
-  work at computers in the background. Headphones are on the desks.
-
+category: action
+description: A group of young students are engaged in a coding activity at computers
+  in a bright room with lime green walls. Multiple students are seated at workstations
+  with monitors, keyboards, and headphones, actively working on programming tasks.
+  The scene captures an energetic learning environment typical of The League of Amazing
+  Programmers, with students collaborating and focusing on their screens.
 flags:
   person_1: false
   person_n: true
@@ -15,5 +14,15 @@ flags:
   screenshot: false
   logo: false
   robot: false
-  hardware: false
+  hardware: true
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

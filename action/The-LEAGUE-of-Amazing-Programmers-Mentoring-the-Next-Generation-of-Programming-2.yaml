@@ -1,14 +1,12 @@
 image:
   name: The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg
   path: action/The-LEAGUE-of-Amazing-Programmers-Mentoring-the-Next-Generation-of-Programming-2.jpg
-
-description: >
-  An instructor and several students sitting on the floor around a small
-  wheeled robot on a large sheet of paper. The instructor is gesturing
-  and explaining while the students watch the robot. The setting is a
-  classroom or office space. This appears to be a mentoring session
-  focused on robot programming.
-
+category: action
+description: A group of young students and an instructor gathered around a table examining
+  a red robotic device. The children are engaged and focused on the hardware, with
+  an adult in a burgundy shirt guiding their interaction with the robot. This captures
+  an active learning moment where students are hands-on with technology in what appears
+  to be a League coding workshop or class.
 flags:
   person_1: false
   person_n: true
@@ -18,3 +16,13 @@ flags:
   robot: true
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

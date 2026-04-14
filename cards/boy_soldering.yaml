@@ -1,12 +1,12 @@
 image:
   name: boy_soldering.png
   path: cards/boy_soldering.png
-
-description: >
-  A small card-sized photo of a young boy with curly hair working at a table,
-  soldering or assembling electronic components. Circuit boards and tools are
-  on the table in front of him. He is focused on the hands-on work.
-
+category: cards
+description: A young child with curly hair wearing glasses and a denim shirt is focused
+  on soldering or assembling an electronic circuit board at a white table. The child
+  is using a soldering iron tool on a motherboard, with various electronic components
+  and hardware visible in the foreground, representing hands-on hardware/electronics
+  learning.
 flags:
   person_1: true
   person_n: false
@@ -16,3 +16,13 @@ flags:
   robot: false
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

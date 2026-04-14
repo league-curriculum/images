@@ -1,0 +1,26 @@
+image:
+  name: emoji2.png
+  path: python/emoji2.png
+category: python
+description: A 3D rendered emoji character with a yellow-to-orange gradient sphere
+  displaying a smiling face wearing black sunglasses. This is a stylized cool/confident
+  emoji illustration commonly used in digital contexts.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: true
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

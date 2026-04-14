@@ -1,13 +1,11 @@
 image:
   name: cutebot.png
   path: cards/cutebot.png
-
-description: >
-  A product photo of a Cutebot micro:bit robot car. The small blue wheeled
-  robot has two large white ultrasonic sensor "eyes," a micro:bit slot on
-  top with batteries, and black rubber wheels. It is shown on a white
-  background.
-
+category: cards
+description: A product photo of a programmable robot car kit featuring a blue chassis
+  with wheels, a black control board with LED displays, dual white sensors on the
+  front, and batteries mounted on top. The robot is designed for educational purposes
+  to teach coding and robotics principles.
 flags:
   person_1: false
   person_n: false
@@ -17,3 +15,13 @@ flags:
   robot: true
   hardware: true
   action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

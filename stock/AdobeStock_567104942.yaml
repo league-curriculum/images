@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_567104942.jpeg
+  path: stock/AdobeStock_567104942.jpeg
+category: stock
+description: A colorful illustration depicting a young person with red hair and glasses
+  working on a laptop, surrounded by tech-themed elements including gears, circuit
+  boards, code snippets, and speech bubbles. The scene features a vibrant 3D paper-cut
+  art style with a turquoise digital background, clouds, and various programming-related
+  graphics that emphasize coding and technology education.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

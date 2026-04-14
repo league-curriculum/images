@@ -1,0 +1,27 @@
+image:
+  name: t-shirt image final.png
+  path: logos/t-shirt image final.png
+category: logos
+description: A circular badge logo for The League of Amazing Programmers' 10th Anniversary
+  celebration in 2017. The design features a friendly robot mascot with an orange
+  and black color scheme, centered within concentric circles of text that reads 'The
+  League of Amazing Programmers' and anniversary details around the outer edge.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: true
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

@@ -1,19 +1,29 @@
 image:
   name: logo-Forcepoint-Hackathon.png
   path: action/logo-Forcepoint-Hackathon.png
-
-description: >
-  A small, wide thumbnail version of the Forcepoint Hackathon group photo
-  with a Forcepoint logo watermark. Shows the large group of approximately
-  30 participants in matching blue t-shirts posed together in a conference
-  room.
-
+category: action
+description: A large group of students and instructors pose together in a classroom
+  setting, appearing to be from a League of Amazing Programmers event or workshop.
+  The diverse group of young people, many wearing blue League shirts, are gathered
+  around a table with laptops and materials visible, suggesting an active coding or
+  tech learning session. A whiteboard, presentation screen, and casual, celebratory
+  atmosphere indicate this is a documented moment from an educational tech event.
 flags:
   person_1: false
   person_n: true
-  teaching: false
+  teaching: true
   screenshot: false
   logo: true
   robot: false
   hardware: false
-  action: false
+  action: true
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

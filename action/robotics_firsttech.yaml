@@ -1,13 +1,11 @@
 image:
   name: robotics_firsttech.png
   path: action/robotics_firsttech.png
-
-description: >
-  A small thumbnail showing three students working together on a competition
-  robot in a robotics lab. They are leaning over and assembling or adjusting
-  a metal-framed robot. Posters and equipment are visible on the walls in the
-  background. This appears to be a FIRST Tech Challenge robotics activity.
-
+category: action
+description: Three young students are collaboratively building and working on a robot
+  in a classroom setting. They are focused on assembling or adjusting components of
+  what appears to be a robotics competition robot. The classroom walls display various
+  robotics projects and posters, indicating this is a STEM/robotics learning environment.
 flags:
   person_1: false
   person_n: true
@@ -17,3 +15,13 @@ flags:
   robot: true
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

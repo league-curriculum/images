@@ -1,0 +1,27 @@
+image:
+  name: active_codespace.png
+  path: module-navigation/active_codespace.png
+category: module-navigation
+description: A screenshot of GitHub Codespaces interface showing cloud-based development
+  workspaces. The interface displays tabs for 'Local' and 'Codespaces', with details
+  about an active codespace named 'cautious space halibut' on the master branch with
+  no changes.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

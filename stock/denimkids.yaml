@@ -1,0 +1,29 @@
+image:
+  name: denimkids.jpeg
+  path: stock/denimkids.jpeg
+category: stock
+description: Two young people work together at a computer setup in a colorfully lit
+  room, with one person seated at the keyboard and monitor while another stands beside
+  them pointing at the screen. The scene shows a collaborative coding or design session
+  with hardware visible on the desk, set against a vibrant background with orange
+  and blue lighting. The casual, staged setting with props and dramatic lighting suggests
+  this is a carefully composed stock photograph rather than candid documentation.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

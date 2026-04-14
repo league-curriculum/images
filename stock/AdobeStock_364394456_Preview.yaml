@@ -1,0 +1,27 @@
+image:
+  name: AdobeStock_364394456_Preview.jpeg
+  path: stock/AdobeStock_364394456_Preview.jpeg
+category: stock
+description: A young person sits cross-legged on a white floor against a plain white
+  background, working on a laptop computer. They are wearing a blue checkered shirt
+  over a white t-shirt, dark jeans, and white sneakers. A beige messenger bag is visible
+  beside them on the right side.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

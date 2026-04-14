@@ -1,0 +1,27 @@
+image:
+  name: AdobeStock_433003729.jpeg
+  path: stock/AdobeStock_433003729.jpeg
+category: stock
+description: A young girl wearing glasses and a red shirt smiles at the camera while
+  working on a laptop in what appears to be a coding classroom or workshop setting.
+  In the blurred background, an instructor and other students are gathered around
+  a computer, suggesting an educational or training environment focused on programming.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: logo_JTL_horiz.png
+  path: logos/logo_JTL_horiz.png
+category: logos
+description: The official logo for The League of Amazing Programmers, featuring an
+  orange silhouette of five diverse young people in dynamic poses with one holding
+  a lightning bolt flag on the left, alongside the organization's name in bold orange
+  text on the right.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

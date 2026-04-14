@@ -1,19 +1,28 @@
 image:
   name: League-Ventilator-Team.png
   path: action/League-Ventilator-Team.png
-
-description: >
-  Same image as League-Ventilator-Team-1 but with a caption at the bottom
-  reading "Rowan Law and Dalia Sebat Test New Ventilator Control Software."
-  Two students work on a ventilator prototype in a lab space with glass
-  partition walls, examining electronics and foam components on the workbench.
-
+category: action
+description: Two students are actively engaged in testing ventilator control software
+  in a modern classroom setting. One student wearing a mask holds white foam ventilator
+  components while examining them, while another student gestures in explanation.
+  The workspace shows hardware equipment, computers, and various materials typical
+  of a hands-on STEM learning environment.
 flags:
   person_1: false
   person_n: true
-  teaching: false
+  teaching: true
   screenshot: false
   logo: false
   robot: false
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

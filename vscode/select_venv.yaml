@@ -1,0 +1,27 @@
+image:
+  name: select_venv.png
+  path: vscode/select_venv.png
+category: vscode
+description: A screenshot of a Python development environment selection dialog in
+  VS Code. The interface shows options to create a new Python environment or select
+  from existing ones, including a recommended .venv (Python 3.12.4) and several other
+  Python installations.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

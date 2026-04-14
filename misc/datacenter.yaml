@@ -1,0 +1,27 @@
+image:
+  name: datacenter.jpg
+  path: misc/datacenter.jpg
+category: misc
+description: This image shows a data center or server room featuring rows of large
+  server cabinets and hardware infrastructure. The industrial space has exposed silver
+  ductwork, fluorescent lighting, and a raised floor typical of enterprise computing
+  facilities. There are no people visible in this professional technology environment.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

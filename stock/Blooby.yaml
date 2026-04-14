@@ -1,0 +1,28 @@
+image:
+  name: Blooby.jpeg
+  path: stock/Blooby.jpeg
+category: stock
+description: An illustrated composition showing a coding development environment with
+  multiple windows displaying C++ code, surrounded by programming-related icons and
+  symbols like a lightbulb, gears, magnifying glass, cursor, and file folders on a
+  pink background. The image represents software development and programming concepts
+  in a stylized, digital art format.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

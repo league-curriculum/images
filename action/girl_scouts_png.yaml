@@ -1,13 +1,13 @@
 image:
   name: girl_scouts.png
   path: action/girl_scouts.png
-
-description: >
-  A smaller version of the Girl Scouts image. Three Girl Scouts sitting at
-  desktop iMac computers in a computer lab, smiling at the camera. The closest
-  girl wears a Girl Scout sash with badges. The screens show colorful graphics
-  from a coding project.
-
+category: action
+description: A group of young students are seated at a wooden table in an indoor classroom
+  or computer lab setting, actively engaged with computer workstations. The student
+  in the foreground is smiling at the camera while working at a desktop computer displaying
+  colorful graphics, with other students visible behind them also working at their
+  own stations. The scene captures an energetic, hands-on learning environment typical
+  of a youth coding organization.
 flags:
   person_1: false
   person_n: true
@@ -15,5 +15,15 @@ flags:
   screenshot: false
   logo: false
   robot: false
-  hardware: false
+  hardware: true
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

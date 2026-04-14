@@ -1,0 +1,26 @@
+image:
+  name: github-mark-white.png
+  path: p3logos/github-mark-white.png
+category: p3logos
+description: A minimalist logo featuring a simple geometric design in light gray on
+  a white background. The logo appears to be a stylized symbol or icon, likely representing
+  a third-party partner or technology platform.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

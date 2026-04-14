@@ -1,0 +1,26 @@
+image:
+  name: view_button.png
+  path: module-navigation/view_button.png
+category: module-navigation
+description: A navigation header showing the GitHub logo alongside text that reads
+  'View Level0-Module0'. This appears to be a clickable link or button for accessing
+  a specific module in The League's Java curriculum.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

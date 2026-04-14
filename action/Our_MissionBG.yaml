@@ -1,14 +1,12 @@
 image:
   name: Our_MissionBG.png
   path: action/Our_MissionBG.png
-
-description: >
-  A dark, wide banner-style image showing several students gathered around an
-  iMac computer in a classroom. One student in a red shirt sits at the
-  computer while others stand around looking at the screen. The image has a
-  dark overlay, likely used as a website background for a "Our Mission"
-  section.
-
+category: action
+description: A student in a red shirt sits at a computer while an instructor in a
+  blue shirt leans over to help guide them through a coding lesson. Multiple other
+  students and instructors are visible in the background working at computers in what
+  appears to be a busy classroom or workshop environment. The scene captures an active
+  learning moment with hands-on instruction typical of The League's youth coding programs.
 flags:
   person_1: false
   person_n: true
@@ -18,3 +16,13 @@ flags:
   robot: false
   hardware: false
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

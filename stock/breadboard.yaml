@@ -1,0 +1,28 @@
+image:
+  name: breadboard.jpeg
+  path: stock/breadboard.jpeg
+category: stock
+description: A young person wearing a yellow shirt works with an electronics circuit
+  board setup, featuring a microcontroller board on the left and a breadboard with
+  colorful wires and components on the right. The person is focused on assembling
+  or testing the electronic hardware components in what appears to be an educational
+  or maker environment.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

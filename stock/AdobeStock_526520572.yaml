@@ -1,0 +1,27 @@
+image:
+  name: AdobeStock_526520572.jpeg
+  path: stock/AdobeStock_526520572.jpeg
+category: stock
+description: Three young students work together on a coding or robotics project in
+  a bright classroom with blue walls. They are engaged with electronics, wiring, and
+  a laptop, appearing to be collaborating on hands-on STEM learning. The scene captures
+  an active learning environment typical of youth coding programs.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

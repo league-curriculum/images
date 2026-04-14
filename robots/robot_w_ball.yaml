@@ -1,0 +1,28 @@
+image:
+  name: robot_w_ball.jpeg
+  path: robots/robot_w_ball.jpeg
+category: robots
+description: A collection of educational robot kits displayed on a dark surface, featuring
+  multiple micro:bit-based robotics projects. The robots include wheeled vehicles
+  with LED lights, circuit boards, and colorful 3D-printed components in blue, green,
+  yellow, and orange. These appear to be student-built projects typical of youth coding
+  education programs.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

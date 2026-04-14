@@ -1,0 +1,28 @@
+image:
+  name: bottom_pane_menu.png
+  path: module-navigation/bottom_pane_menu.png
+category: module-navigation
+description: A screenshot showing a navigation menu bar with multiple tabs including
+  TERMINAL, PORTS, JUPYTER, PROBLEMS, OUTPUT, and DEBUG CONSOLE. The PORTS tab is
+  highlighted with a blue underline and displays a notification badge with the number
+  5, indicating there are 5 active ports. This appears to be from a development environment
+  interface.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,19 +1,27 @@
 image:
   name: about_flag.png
   path: cards/about_flag.png
-
-description: >
-  An illustrated graphic of an orange flag with a lightning bolt symbol on it.
-  Code syntax symbols like curly braces and closing tags float around it.
-  Decorative stars and a dashed orbit line surround the flag on a soft yellow
-  background. This is a stylized illustration, not a photograph.
-
+category: cards
+description: An illustrated graphic featuring a red flag with a lightning bolt symbol,
+  surrounded by coding-related elements including curly braces, angle brackets, stars,
+  and a pencil. The design uses warm colors (orange, yellow, red) and represents coding,
+  programming, and achievement themes relevant to a youth coding nonprofit.
 flags:
   person_1: false
   person_n: false
   teaching: false
   screenshot: false
-  logo: true
+  logo: false
   robot: false
   hardware: false
   action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

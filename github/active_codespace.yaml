@@ -1,0 +1,27 @@
+image:
+  name: active_codespace.png
+  path: github/active_codespace.png
+category: github
+description: A screenshot of GitHub's Codespaces interface showing cloud-based development
+  workspace options. The page displays a workspace named 'cautious space halibut'
+  on the master branch with an 'Active' status, along with usage information indicating
+  the codespace is paid for by a user named 'bbobson'.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,19 +1,26 @@
 image:
   name: python_games.png
   path: cards/python_games.png
-
-description: >
-  A screenshot of a classic Space Invaders-style game with rows of colorful
-  pixel alien sprites (purple, blue, and green) arranged in formation against
-  a black background. Stars are visible at the bottom. Used as a card image
-  for a Python games course.
-
+category: cards
+description: A pixel art screenshot of the classic Space Invaders arcade game, showing
+  rows of colorful enemy aliens in purple, cyan, and green colors descending toward
+  the player's defensive base at the bottom of the screen against a starry black background.
 flags:
   person_1: false
   person_n: false
   teaching: false
   screenshot: true
   logo: false
-  robot: false
+  robot: true
   hardware: false
   action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: true
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

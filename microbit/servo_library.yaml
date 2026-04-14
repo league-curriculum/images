@@ -1,0 +1,27 @@
+image:
+  name: servo_library.png
+  path: microbit/servo_library.png
+category: microbit
+description: A product card for the 'servo' micro-servo library, featuring a stylized
+  illustration of a servo motor component on a coral red background with decorative
+  technical elements. The card includes the title 'servo', subtitle 'A micro-servo
+  library', and a 'Learn More' link.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: novnc.png
+  path: github/novnc.png
+category: github
+description: A screenshot of the noVNC application interface showing a connection
+  screen with the noVNC logo displayed prominently in green and yellow text, along
+  with a blue 'Connect' button. The interface has a dark gray background with a curved
+  design element, and a small noVNC icon visible in the top left corner.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

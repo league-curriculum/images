@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_236938759.jpeg
+  path: stock/AdobeStock_236938759.jpeg
+category: stock
+description: A group of young students in a modern classroom are engaged in a robotics
+  coding activity. The girl in the foreground, wearing a yellow sweater and denim
+  overalls, smiles at the camera while holding a small robot she's building. Her classmates
+  sit beside her at a table, also working with robotics kits and electronic components
+  in a well-lit educational environment.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

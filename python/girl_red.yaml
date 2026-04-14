@@ -1,0 +1,27 @@
+image:
+  name: girl_red.gif
+  path: python/girl_red.gif
+category: python
+description: A pixel art style illustration of a yellow character with a round head
+  and simple features, wearing what appears to be red clothing. This is a classic
+  retro-style sprite graphic, likely used as an icon or mascot in educational programming
+  materials.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,28 @@
+image:
+  name: 2020.02.01 CV AP CS A Exam Prep.jpg
+  path: mkt/2020.02.01 CV AP CS A Exam Prep.jpg
+category: mkt
+description: Three young students sit together in a computer lab classroom, smiling
+  at the camera. The room features multiple workstations with iMac computers displaying
+  The League of Amazing Programmers logo on one screen. The students appear to be
+  posing for a group photo in what looks like an indoor educational facility with
+  beige walls.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

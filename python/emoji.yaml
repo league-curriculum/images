@@ -1,0 +1,26 @@
+image:
+  name: emoji.png
+  path: python/emoji.png
+category: python
+description: A thinking face emoji with a hand gesture touching its chin, expressing
+  thoughtfulness or contemplation. This is a standard emoji illustration commonly
+  used to represent confusion, consideration, or problem-solving.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: 789p72.jpg
+  path: memes/789p72.jpg
+category: memes
+description: A person wearing a clown mask with white face paint, black eye makeup,
+  and red nose, shown in a close-up portrait shot indoors. This appears to be a meme
+  image format commonly used in programming classes where students add text overlays
+  to create humorous content.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

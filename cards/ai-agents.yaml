@@ -1,14 +1,12 @@
 image:
   name: ai-agents.png
   path: cards/ai-agents.png
-
-description: >
-  A flat-style illustration showing hands typing on a laptop surrounded by
-  programming-related icons and keywords including Python, HTML, Swift, code,
-  gears, lightbulbs, charts, a mobile phone, and other tech symbols. The
-  illustration uses a dark blue and white color scheme. Used as a card image
-  for an AI agents or programming course.
-
+category: cards
+description: A vector illustration depicting programming and coding concepts, featuring
+  hands typing on a keyboard surrounded by various programming languages (Python,
+  JavaScript, Java, HTML5, C++, Swift), development tools, and tech-related icons
+  like gears, bugs, code symbols, and a globe. The design uses a blue and white color
+  scheme and represents the breadth of programming education.
 flags:
   person_1: false
   person_n: false
@@ -17,4 +15,14 @@ flags:
   logo: false
   robot: false
   hardware: false
-  action: false
+  action: true
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

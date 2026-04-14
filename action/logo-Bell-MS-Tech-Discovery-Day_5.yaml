@@ -1,19 +1,29 @@
 image:
   name: logo-Bell-MS-Tech-Discovery-Day_5.jpg
   path: action/logo-Bell-MS-Tech-Discovery-Day_5.jpg
-
-description: >
-  A smaller thumbnail version of the Bell Middle School Tech Discovery Day
-  image with a small League logo watermark in the upper left corner. Shows
-  students working on electronics at a table with an instructor supervising.
-  Same scene as the full-size version.
-
+category: action
+description: A group of young students gathered around a table working with electronics
+  and robotics equipment, with an adult instructor observing and guiding them. The
+  scene shows hands-on STEM learning in progress, with visible hardware including
+  what appears to be a red robot and electronic components. The classroom setting
+  includes a whiteboard with student names and The League's logo visible in the upper
+  left corner.
 flags:
   person_1: false
   person_n: true
   teaching: true
   screenshot: false
   logo: true
-  robot: false
+  robot: true
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: true

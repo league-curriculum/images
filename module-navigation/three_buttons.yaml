@@ -1,0 +1,27 @@
+image:
+  name: three_buttons.png
+  path: module-navigation/three_buttons.png
+category: module-navigation
+description: Three horizontal button bars with GitHub branding and action text. The
+  left orange button says 'Open in Codespaces', the middle green button says 'Fork
+  Level0-Module0', and the right blue button says 'View Level0-Module0'. These appear
+  to be navigation/action buttons for a coding module interface.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

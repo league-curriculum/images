@@ -1,0 +1,29 @@
+image:
+  name: bots on yellowback.jpeg
+  path: stock/bots on yellowback.jpeg
+category: stock
+description: A colorful flat lay composition on a bright yellow background featuring
+  various robots and electronics projects. The image shows a cute blue cartoon-style
+  robot in the center, flanked by four different hardware builds including motorized
+  robots with mechanical arms, circuit boards (including an Arduino UNO), sensors,
+  and electronic components with wiring. This appears to be a styled product photo
+  showcasing robotics and electronics education kits.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

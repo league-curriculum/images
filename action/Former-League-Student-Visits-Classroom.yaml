@@ -1,13 +1,11 @@
 image:
   name: Former-League-Student-Visits-Classroom.jpg
   path: action/Former-League-Student-Visits-Classroom.jpg
-
-description: >
-  Two young men at a desk with a desktop computer. One sits in front of the
-  computer wearing a blue t-shirt, the other stands behind him wearing glasses
-  and a dark hoodie. The setting is a classroom or lab space. The image
-  suggests a former League student visiting and mentoring a current student.
-
+category: action
+description: Two young students are at a computer workstation in what appears to be
+  a classroom or coding lab setting. The student in front is seated at the desk with
+  a keyboard and monitor, while another student stands beside him looking at the screen.
+  Both appear engaged and smiling, suggesting an active coding or programming activity.
 flags:
   person_1: false
   person_n: true
@@ -15,5 +13,15 @@ flags:
   screenshot: false
   logo: false
   robot: false
-  hardware: false
+  hardware: true
   action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

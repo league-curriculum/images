@@ -1,0 +1,27 @@
+image:
+  name: lesson-browser.png
+  path: vscode/lesson-browser.png
+category: vscode
+description: 'A screenshot of a user interface showing an ''ACTIONS'' section with
+  three buttons: a blue ''Next Lesson'' button at the top, and two buttons below it
+  - a green ''Run'' button with a play icon and a red ''Stop'' button. This appears
+  to be from an educational coding platform''s interface.'
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

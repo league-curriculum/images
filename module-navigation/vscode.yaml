@@ -1,0 +1,28 @@
+image:
+  name: vscode.png
+  path: module-navigation/vscode.png
+category: module-navigation
+description: A screenshot of VS Code showing a README.md file for Level0-Module0,
+  which is part of a coding curriculum. The file contains introductory instructions
+  for students learning to draw shapes, control code flow, use dialogs, and build
+  games. The left sidebar displays the project explorer with various files and folders,
+  while a terminal window is visible at the bottom.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

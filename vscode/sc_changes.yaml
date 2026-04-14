@@ -1,0 +1,27 @@
+image:
+  name: sc_changes.png
+  path: vscode/sc_changes.png
+category: vscode
+description: A screenshot of a source control interface in VS Code showing a commit
+  dialog. The interface displays a message input field, a blue "Commit" button, and
+  a list of 3 modified files related to Python lessons including turtle tricks and
+  getting started modules.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

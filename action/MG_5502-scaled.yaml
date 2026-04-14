@@ -1,20 +1,27 @@
 image:
   name: MG_5502-scaled.jpg
   path: action/MG_5502-scaled.jpg
-
-description: >
-  A teenage boy standing at a microphone giving a presentation. He wears a
-  gray polo shirt and a red lanyard with a name badge. Behind him is a
-  projected slide showing a person on a bicycle with text about bikes and
-  traveling safely. The League logo is visible at the top of the projection.
-  An adult sits to the left watching.
-
+category: action
+description: A young person wearing a red lanyard badge is speaking at a microphone
+  in front of a large projection screen displaying a presentation about bike safety.
+  The presenter appears to be giving a talk or demonstration at what looks like a
+  League of Amazing Programmers event, with audience members visible in the foreground.
 flags:
   person_1: true
-  person_n: false
+  person_n: true
   teaching: false
   screenshot: false
-  logo: true
+  logo: false
   robot: false
   hardware: false
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: true
+  building: false
+  outdoor: false
+  event: true

@@ -1,0 +1,27 @@
+image:
+  name: clearRobotRing4.png
+  path: logos/clearRobotRing4.png
+category: logos
+description: A stylized robot illustration with a friendly design featuring an orange
+  and gray color scheme. The robot has a rectangular head with a black display screen,
+  large orange circular eyes, orange ears, and a body with orange arms and a lightning
+  bolt symbol on the chest, all contained within a dark circular border.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: true
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,28 @@
+image:
+  name: cutebot.jpg
+  path: microbit/cutebot.jpg
+category: microbit
+description: A micro:bit robot car kit displayed against a white background, featuring
+  a blue and gray chassis with two white sensor modules on the front, a circuit board
+  control unit mounted on top, batteries on the side, and black wheels with silver
+  rims. This is a complete educational robotics platform designed for youth programming
+  and hardware projects.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,27 @@
+image:
+  name: 26jxvz.jpg
+  path: memes/26jxvz.jpg
+category: memes
+description: A four-panel meme template showing the same person in different poses
+  with blank light blue sections, commonly used for creating meme content by adding
+  text overlays. The person wears glasses and dark clothing, photographed against
+  a warm-toned background.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

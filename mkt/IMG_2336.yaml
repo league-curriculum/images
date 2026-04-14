@@ -1,0 +1,28 @@
+image:
+  name: IMG_2336.png
+  path: mkt/IMG_2336.png
+category: mkt
+description: An indoor classroom scene showing a male instructor leading a group of
+  youth students during a coding lesson. The room features computers at workstations,
+  a whiteboard with drawings, and fluorescent ceiling lights. Multiple children are
+  gathered around listening to the instructor, creating an authentic teaching moment
+  in what appears to be a League of Amazing Programmers session.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: true
+  building: false
+  outdoor: false
+  event: true

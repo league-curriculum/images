@@ -1,0 +1,26 @@
+image:
+  name: bolt.png
+  path: logos/bolt.png
+category: logos
+description: An orange lightning bolt symbol on a white background, presented as a
+  clean, minimalist vector graphic. This is The League of Amazing Programmers' logo,
+  featuring a striking angular design that conveys energy and power.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

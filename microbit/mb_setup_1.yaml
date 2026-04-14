@@ -1,0 +1,28 @@
+image:
+  name: mb_setup_1.png
+  path: microbit/mb_setup_1.png
+category: microbit
+description: A product photo showing a blue netbook/laptop with a micro:bit microcontroller
+  circuit board and its accessories laid out below it on a wooden surface. The image
+  displays the micro:bit board, a battery pack, a USB cable, and what appears to be
+  instructional documentation, representing the complete hardware kit used for coding
+  education.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

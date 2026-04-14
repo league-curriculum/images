@@ -1,14 +1,12 @@
 image:
   name: EEDelMarTimes.jpeg
   path: action/EEDelMarTimes.jpeg
-
-description: >
-  A group of four female students and one adult male instructor standing in a
-  room, each holding up small electronic components or circuit boards they
-  appear to have built. One student wears a Disneyland sweatshirt, another
-  wears a hijab. The instructor stands on the right in a maroon polo shirt.
-  The setting appears to be a classroom or office space.
-
+category: action
+description: Five people pose together indoors while holding cardboard boxes and paper
+  crafts, appearing to be celebrating the completion of a hands-on project. The group
+  is standing in what looks like a classroom or workshop space, with shelving and
+  windows visible in the background. This appears to be a casual group moment at The
+  League, showcasing student engagement with a creative building or coding activity.
 flags:
   person_1: false
   person_n: true
@@ -16,5 +14,15 @@ flags:
   screenshot: false
   logo: false
   robot: false
-  hardware: true
+  hardware: false
   action: true
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

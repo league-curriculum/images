@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_436767512.jpeg
+  path: stock/AdobeStock_436767512.jpeg
+category: stock
+description: A group of young students sitting at a table working on laptops in a
+  classroom setting. The students are focused on their screens, engaged in what appears
+  to be a coding or computer science lesson. Multiple children of diverse backgrounds
+  are visible, each with their own device, suggesting a tech education or programming
+  class.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

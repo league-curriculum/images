@@ -1,0 +1,28 @@
+image:
+  name: l0-m0_repo.png
+  path: module-navigation/l0-m0_repo.png
+category: module-navigation
+description: A GitHub repository page showing the Level0-Module0 project from The
+  League's Java curriculum. The screenshot displays the repository structure with
+  various folders (.devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src)
+  and configuration files, forked from League-Java/Level0-Module0. The page shows
+  code repository management interface with branch information and project metadata.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

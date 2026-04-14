@@ -1,0 +1,26 @@
+image:
+  name: monitor_icon.png
+  path: vscode/monitor_icon.png
+category: vscode
+description: A simple black and white icon of a desktop monitor or computer screen,
+  commonly used in software interfaces to represent display settings or screen-related
+  features.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

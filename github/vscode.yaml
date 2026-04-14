@@ -1,0 +1,27 @@
+image:
+  name: vscode.png
+  path: github/vscode.png
+category: github
+description: 'A screenshot of a code editor (VS Code) showing a README.md file for
+  a Level0-Module0 coding course project called ''Codespaces: musical space fishstick''.
+  The file displays introductory course content for students, including learning objectives
+  like drawing shapes in Processing, controlling code flow, and building games.'
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

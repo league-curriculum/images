@@ -1,0 +1,29 @@
+image:
+  name: code and screwdriver.jpeg
+  path: stock/code and screwdriver.jpeg
+category: stock
+description: A composite image showing a young person working on a laptop with overlaid
+  digital UI elements displaying code and programming interfaces. The scene includes
+  file browser windows, code editor panels with syntax-highlighted Arduino-style code,
+  and visual programming elements with orange accents. In the background, hands are
+  visible working at the desk with a laptop and what appears to be electronics or
+  hardware components on a turquoise surface.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

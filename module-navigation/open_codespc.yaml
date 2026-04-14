@@ -1,0 +1,26 @@
+image:
+  name: open_codespc.png
+  path: module-navigation/open_codespc.png
+category: module-navigation
+description: A clickable button or banner with an orange background featuring the
+  GitHub logo and text "Open in Codespaces". This is a navigation element for opening
+  a coding project in GitHub Codespaces, commonly used in educational coding platforms.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

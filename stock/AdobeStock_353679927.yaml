@@ -1,0 +1,29 @@
+image:
+  name: AdobeStock_353679927.jpeg
+  path: stock/AdobeStock_353679927.jpeg
+category: stock
+description: A vibrant neon illustration depicting a young programmer surrounded by
+  various coding languages and technology concepts. The image shows a cartoon character
+  with headphones at the center, connected to programming icons including Python,
+  JavaScript, CSS, HTML, Scratch, Unity, and IQ symbols, along with gaming controllers,
+  laptops, and cloud computing elements. This is a digital illustration representing
+  youth coding education and technology learning.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

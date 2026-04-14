@@ -1,0 +1,28 @@
+image:
+  name: motor_setup.png
+  path: motors/motor_setup.png
+category: motors
+description: A Dell laptop is connected to a microcontroller board (appears to be
+  a micro:bit or similar educational circuit board) with USB cables. The board features
+  colorful components including an LED matrix display and is positioned on a dark
+  surface next to the laptop. The laptop screen displays what appears to be a programming
+  interface or application window.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

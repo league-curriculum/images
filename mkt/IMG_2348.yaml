@@ -1,0 +1,28 @@
+image:
+  name: IMG_2348.png
+  path: mkt/IMG_2348.png
+category: mkt
+description: A portrait of a young person wearing glasses and a flat cap over a blue
+  checkered shirt, standing outdoors in a courtyard with a Spanish colonial-style
+  building, palm trees, and manicured gardens in the background. The person is facing
+  the camera with a calm expression, appearing to be a professional headshot or portrait
+  photo.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: false

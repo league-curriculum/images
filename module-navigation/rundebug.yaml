@@ -1,0 +1,27 @@
+image:
+  name: rundebug.png
+  path: module-navigation/rundebug.png
+category: module-navigation
+description: A simple line icon showing a play button (triangle) pointing right with
+  a gear or cog symbol overlapping it on the left side. The icon uses a minimalist
+  design with black lines on a light gray background, suggesting a module or lesson
+  related to coding mechanics or programming automation.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

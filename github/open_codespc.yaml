@@ -1,0 +1,26 @@
+image:
+  name: open_codespc.png
+  path: github/open_codespc.png
+category: github
+description: A screenshot of a GitHub button or interface element with an orange background
+  displaying the GitHub logo and white text that reads 'Open in Codespaces'. This
+  is a user interface element commonly found on GitHub repositories.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

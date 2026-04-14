@@ -1,0 +1,28 @@
+image:
+  name: 2020.01.03 Workshop Grads.jpg
+  path: mkt/2020.01.03 Workshop Grads.jpg
+category: mkt
+description: A group of six young students from The League of Amazing Programmers
+  stand outdoors in a courtyard setting, proudly displaying their certificates of
+  achievement. They are posed in front of an ornate fountain with ivy-covered walls
+  and classical architecture in the background. All the students are smiling and holding
+  up their blue and white League certificates, celebrating their completion of a program.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: true

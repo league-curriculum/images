@@ -1,0 +1,29 @@
+image:
+  name: 50_duty_trace.png
+  path: motors/50_duty_trace.png
+category: motors
+description: An oscilloscope display showing an electrical waveform measurement with
+  voltage and frequency data. The screen displays a yellow square wave pattern with
+  measurements including Vmax (3.35V), Vmin (0.02V), Vave (1.65V), Vrms (2.32V), Vpp
+  (3.37V), frequency (0.050kHz), duty cycle (50.0%), and cycle time (20.000ms). This
+  is a screenshot of oscilloscope software or hardware used for electronics analysis
+  and measurement.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

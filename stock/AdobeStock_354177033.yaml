@@ -1,0 +1,29 @@
+image:
+  name: AdobeStock_354177033.jpeg
+  path: stock/AdobeStock_354177033.jpeg
+category: stock
+description: An instructor in a yellow hoodie works with four children at a table
+  building and assembling robotics projects and electronic devices. The bright, modern
+  classroom setting features large windows with outdoor views, shelving with educational
+  materials, and various robot kits and circuit boards scattered across the work surface.
+  The children are engaged in hands-on STEM learning, working with components like
+  yellow-wheeled robot bases and electronic circuits.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

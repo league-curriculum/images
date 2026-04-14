@@ -1,0 +1,27 @@
+image:
+  name: novnc.png
+  path: module-navigation/novnc.png
+category: module-navigation
+description: A screenshot of the noVNC interface showing a connection screen with
+  the noVNC logo in green and yellow text and a blue "Connect" button. This appears
+  to be a remote desktop/virtual machine connection interface, likely used for accessing
+  CodeSpaces Motors development environments in The League's Java curriculum.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,26 @@
+image:
+  name: 2txtm1.jpg
+  path: memes/2txtm1.jpg
+category: memes
+description: A pixel art style illustration showing two characters on a green grassy
+  background. The image appears to be from a retro video game or similar pixelated
+  game art style, with a simple, minimalist aesthetic typical of early computer graphics.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

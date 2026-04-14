@@ -1,0 +1,29 @@
+image:
+  name: browser_window.png
+  path: module-navigation/browser_window.png
+category: module-navigation
+description: A screenshot of a Python development environment showing a coding editor
+  on the left with file explorer displaying project structure, Python code in the
+  center editor pane showing a test function with assertions and HTML display statements,
+  and a browser preview on the right showing a noVNC interface with a Connect button.
+  This appears to be a Codespaces development setup for a League of Amazing Programmers
+  Python lesson.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

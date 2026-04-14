@@ -1,0 +1,25 @@
+image:
+  name: explorer_icon.png
+  path: vscode/explorer_icon.png
+category: vscode
+description: A simple icon showing overlapping document or file pages, representing
+  file management or code editor functionality in VS Code.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

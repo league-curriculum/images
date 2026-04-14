@@ -1,13 +1,12 @@
 image:
   name: league_code.png
   path: cards/league_code.png
-
-description: >
-  A small illustrated card graphic showing an orange code editor window with
-  lines of text and a closing tag symbol. An orange flag with a lightning bolt
-  is on the right side. Decorative purple star shapes dot the soft yellow
-  background. Very similar to current_students.png.
-
+category: cards
+description: A colorful vector illustration depicting a code editor window with programming
+  symbols. The image shows a yellow window with an orange toolbar containing code
+  brackets, horizontal lines representing code, a cursor, and a red flag with a lightning
+  bolt symbol. Decorative blue star shapes and dots surround the composition on a
+  light yellow background.
 flags:
   person_1: false
   person_n: false
@@ -17,3 +16,13 @@ flags:
   robot: false
   hardware: false
   action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

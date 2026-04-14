@@ -1,0 +1,27 @@
+image:
+  name: ports.png
+  path: module-navigation/ports.png
+category: module-navigation
+description: A screenshot of a development environment's Ports tab showing two active
+  port forwards (5901 and 6080) with their associated URLs, running processes, and
+  an 'Open in Browser' button. This appears to be from VS Code or a similar IDE being
+  used for running web applications.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

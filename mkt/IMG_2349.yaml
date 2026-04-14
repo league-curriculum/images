@@ -1,0 +1,27 @@
+image:
+  name: IMG_2349.png
+  path: mkt/IMG_2349.png
+category: mkt
+description: A portrait of a young person wearing glasses and a beige cap, photographed
+  outdoors in a courtyard garden setting. The background shows a cream-colored building
+  with white columns, palm trees, manicured hedges, and terra cotta planters, suggesting
+  an elegant institutional or campus environment.
+flags:
+  person_1: true
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: false

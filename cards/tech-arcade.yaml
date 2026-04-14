@@ -1,19 +1,28 @@
 image:
   name: tech-arcade.png
   path: cards/tech-arcade.png
-
-description: >
-  A photo of an adult instructor and several children gathered around a table
-  covered with electronics, circuit boards, wires, and robotics components.
-  The instructor in a yellow shirt is helping the kids with a hands-on
-  building activity. The children look engaged and focused on their projects.
-
+category: cards
+description: A youth instructor in a yellow hoodie works with four diverse children
+  around a table, building and assembling robotic projects and hardware. The table
+  is filled with various electronic components, circuit boards, wheels, and robotics
+  kits, demonstrating hands-on coding and engineering activities typical of The League's
+  programs.
 flags:
   person_1: false
   person_n: true
   teaching: true
   screenshot: false
   logo: false
-  robot: false
+  robot: true
   hardware: true
   action: true
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,26 @@
+image:
+  name: cbextension.png
+  path: microbit/cbextension.png
+category: microbit
+description: A logo image displaying a stylized green robot or vehicle icon next to
+  the text "CuteBot" in green. The design is simple and appears to be a product or
+  project branding element, likely representing a cute robot vehicle project.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: true
+  hardware: true
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

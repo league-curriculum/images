@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_490333995.jpeg
+  path: stock/AdobeStock_490333995.jpeg
+category: stock
+description: An illustrated composition showing a software development workflow with
+  code editor windows displaying C programming code, a file tree structure, and various
+  development-related icons including a lightbulb, gears, magnifying glass, and code
+  brackets on a pink background. The scene depicts a typical programming environment
+  with colorful, stylized UI elements.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

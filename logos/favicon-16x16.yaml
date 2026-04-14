@@ -1,0 +1,26 @@
+image:
+  name: favicon-16x16.png
+  path: logos/favicon-16x16.png
+category: logos
+description: A simple square logo featuring a white star symbol centered on an orange/red
+  background. The design appears to be a minimalist logo suitable for use by The League
+  of Amazing Programmers.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

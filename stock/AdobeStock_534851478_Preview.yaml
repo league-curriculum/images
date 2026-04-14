@@ -1,0 +1,28 @@
+image:
+  name: AdobeStock_534851478_Preview.jpeg
+  path: stock/AdobeStock_534851478_Preview.jpeg
+category: stock
+description: Two young students work together at a table with a laptop in a bright,
+  modern classroom setting. One student wears a blue headset around her neck while
+  the other wears a blue bandana, both focused on the laptop screen. Several other
+  students can be seen blurred in the background at wooden tables, suggesting an active
+  learning environment.
+flags:
+  person_1: false
+  person_n: true
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: false
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: true
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

@@ -1,0 +1,26 @@
+image:
+  name: android-chrome-512x512.png
+  path: logos/android-chrome-512x512.png
+category: logos
+description: A stylized lightning bolt icon in white and orange/peach tones on a gradient
+  orange background. The design is modern and minimalist, suitable for use as a logo
+  or app icon.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: true
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

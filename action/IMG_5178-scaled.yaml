@@ -1,20 +1,28 @@
 image:
   name: IMG_5178-scaled.jpg
   path: action/IMG_5178-scaled.jpg
-
-description: >
-  A group of about eight students wearing matching orange "The LEAGUE" t-shirts
-  standing together in a courtyard with a stone fountain and greenery behind
-  them. An adult instructor kneels in front. Everyone is wearing face masks,
-  indicating this was during the COVID-19 pandemic. This appears to be a League
-  class or event group photo.
-
+category: action
+description: A group of young people wearing orange "The League" t-shirts pose together
+  outdoors in front of a historic columned building with a fountain. An adult instructor
+  in a black shirt crouches in the center front, while seven students stand behind
+  him wearing masks. The scene captures a team moment at what appears to be an event
+  or field trip location.
 flags:
   person_1: false
   person_n: true
-  teaching: false
+  teaching: true
   screenshot: false
-  logo: false
+  logo: true
   robot: false
   hardware: false
-  action: false
+  action: true
+  illustration: false
+  programming: false
+  group_photo: true
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: true

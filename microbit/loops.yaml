@@ -1,0 +1,26 @@
+image:
+  name: loops.png
+  path: microbit/loops.png
+category: microbit
+description: A header or title graphic showing the word "Loops" in green text alongside
+  a green stylized 'C' logo, appearing to be from MicroBit's MakeCode educational
+  platform.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: true
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

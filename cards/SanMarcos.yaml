@@ -1,13 +1,11 @@
 image:
   name: SanMarcos.png
   path: cards/SanMarcos.png
-
-description: >
-  A small exterior photo of a modern building at dusk with large glass windows
-  and illuminated interior. The building appears to be a community center,
-  library, or school facility in San Marcos. The sky is a twilight blue and
-  landscaping is visible in the foreground.
-
+category: cards
+description: A photograph of a modern school building exterior taken during dusk or
+  early evening. The San Francisco High School building features contemporary architecture
+  with extensive glass panels, horizontal lines, and illuminated signage. The sky
+  displays blue and purple tones typical of twilight hours.
 flags:
   person_1: false
   person_n: false
@@ -17,3 +15,13 @@ flags:
   robot: false
   hardware: false
   action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: true
+  outdoor: true
+  event: false

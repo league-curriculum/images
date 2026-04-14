@@ -1,0 +1,29 @@
+image:
+  name: IMG_2334.png
+  path: mkt/IMG_2334.png
+category: mkt
+description: An adult instructor demonstrates or teaches programming concepts to two
+  youth students in an indoor classroom or lab setting. One student sits at a desk
+  with a computer monitor while another wears a red cap, and the instructor stands
+  holding what appears to be a microcontroller or electronic component. The scene
+  captures an active teaching moment in what looks like The League's coding education
+  environment.
+flags:
+  person_1: false
+  person_n: true
+  teaching: true
+  screenshot: false
+  logo: false
+  robot: false
+  hardware: true
+  action: true
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

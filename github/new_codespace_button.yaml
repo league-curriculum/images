@@ -1,0 +1,28 @@
+image:
+  name: new_codespace_button.png
+  path: github/new_codespace_button.png
+category: github
+description: A screenshot of GitHub Codespaces setup form for creating a new codespace.
+  The form shows configuration options including a Java repository from The League
+  (League-Java/Lev...), branch selection (master), dev container configuration (Java),
+  region (US West), and machine type (2-core). A green 'Create codespace' button is
+  visible at the bottom.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: true
+  logo: false
+  robot: false
+  hardware: false
+  action: false
+  illustration: false
+  programming: true
+  group_photo: false
+  product_photo: false
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false
