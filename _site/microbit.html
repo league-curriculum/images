@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>microbit - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-btn {
+      display: inline-block;
+      padding: .2rem .5rem;
+      margin: .15rem .15rem .15rem 1rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      margin-bottom: .35rem;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    /* Index page category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s;
+    }
+    .cat-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .cat-card h3 {
+      color: var(--orange);
+      margin-bottom: .35rem;
+    }
+    .cat-card p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    .cat-card .count {
+      font-size: .8rem;
+      color: var(--gray-700);
+      margin-top: .5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" class="active">
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Filter by Flag</h2>
+  <div style="padding: 0 0 1rem 0;">
+    
+    <span class="flag-btn" data-flag="action">action</span>
+    
+    <span class="flag-btn" data-flag="building">building</span>
+    
+    <span class="flag-btn" data-flag="duplicate">duplicate</span>
+    
+    <span class="flag-btn" data-flag="event">event</span>
+    
+    <span class="flag-btn" data-flag="group_photo">group_photo</span>
+    
+    <span class="flag-btn" data-flag="hardware">hardware</span>
+    
+    <span class="flag-btn" data-flag="illustration">illustration</span>
+    
+    <span class="flag-btn" data-flag="logo">logo</span>
+    
+    <span class="flag-btn" data-flag="outdoor">outdoor</span>
+    
+    <span class="flag-btn" data-flag="person_1">person_1</span>
+    
+    <span class="flag-btn" data-flag="person_n">person_n</span>
+    
+    <span class="flag-btn" data-flag="presentation">presentation</span>
+    
+    <span class="flag-btn" data-flag="product_photo">product_photo</span>
+    
+    <span class="flag-btn" data-flag="programming">programming</span>
+    
+    <span class="flag-btn" data-flag="robot">robot</span>
+    
+    <span class="flag-btn" data-flag="screenshot">screenshot</span>
+    
+    <span class="flag-btn" data-flag="stock">stock</span>
+    
+    <span class="flag-btn" data-flag="teaching">teaching</span>
+    
+  </div>
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content">
+    
+<h1>microbit</h1>
+<p class="subtitle">Images for websites, instructions, and classes describing how to use the micro:bit MakeCode site. &mdash; 19 images</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a header or label showing the word &#39;basic&#39; in blue text next to a grid icon made of blue squares, typically representing the basic category or section in makecode for micro:bit programming."
+       data-flags="screenshot,programming"
+       data-name="basic.png">
+    <img class="thumb" src="../microbit/basic.png" alt="basic.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/basic.png" target="_blank">basic.png</a></div>
+      <div class="desc">A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="this image shows a micro:bit led display matrix with a simple pixel art design illuminated in pink/red. the glowing rectangular led elements form a pattern on the black background, representing how the micro:bit&#39;s 5x5 led grid can display custom graphics and patterns."
+       data-flags="hardware,product_photo"
+       data-name="big_heart.png">
+    <img class="thumb" src="../microbit/big_heart.png" alt="big_heart.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/big_heart.png" target="_blank">big_heart.png</a></div>
+      <div class="desc">This image shows a micro:bit LED display matrix with a simple pixel art design illuminated in pink/red. The glowing rectangular LED elements form a pattern on the black background, representing how the micro:bit&#39;s 5x5 LED grid can display custom graphics and patterns.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a magenta/purple banner displaying text &#34;button a is pressed&#34; with a small dropdown arrow icon, styled as a makecode block used in micro:bit programming. this is a visual representation of an event block from the makecode block-based coding interface."
+       data-flags="screenshot,illustration,programming"
+       data-name="buttonapressed.png">
+    <img class="thumb" src="../microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
+      <div class="desc">A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+       data-flags="logo,robot,hardware,illustration"
+       data-name="cbextension.png">
+    <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+       data-flags="logo,robot,hardware,product_photo"
+       data-name="cbtile.png">
+    <img class="thumb" src="../microbit/cbtile.png" alt="cbtile.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/cbtile.png" target="_blank">cbtile.png</a></div>
+      <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. the image includes a label pointing to the switch mechanism at the bottom."
+       data-flags="robot,hardware,product_photo"
+       data-name="cutebot-top.png">
+    <img class="thumb" src="../microbit/cutebot-top.png" alt="cutebot-top.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/cutebot-top.png" target="_blank">cutebot-top.png</a></div>
+      <div class="desc">A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.</div>
+      <div class="tags">
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. this is a complete educational robotics platform designed for youth programming and hardware projects."
+       data-flags="robot,hardware,product_photo"
+       data-name="cutebot.jpg">
+    <img class="thumb" src="../microbit/cutebot.jpg" alt="cutebot.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/cutebot.jpg" target="_blank">cutebot.jpg</a></div>
+      <div class="desc">A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.</div>
+      <div class="tags">
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple white icon of a document or note with a pencil, displayed on an orange background. this appears to be a ui icon commonly used to represent editing, creating, or writing functionality."
+       data-flags="illustration"
+       data-name="edit_button.png">
+    <img class="thumb" src="../microbit/edit_button.png" alt="edit_button.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/edit_button.png" target="_blank">edit_button.png</a></div>
+      <div class="desc">A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold led matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. this is a product shot of the popular educational hardware used in coding education."
+       data-flags="hardware,product_photo"
+       data-name="hardware.png">
+    <img class="thumb" src="../microbit/hardware.png" alt="hardware.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/hardware.png" target="_blank">hardware.png</a></div>
+      <div class="desc">A micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold LED matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. This is a product shot of the popular educational hardware used in coding education.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a visual representation of a conditional programming block from makecode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. this is a screenshot of the block-based programming interface used for micro:bit coding."
+       data-flags="screenshot,illustration,programming"
+       data-name="if.png">
+    <img class="thumb" src="../microbit/if.png" alt="if.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/if.png" target="_blank">if.png</a></div>
+      <div class="desc">A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple ui button or interface element showing an upload/import icon with an upward arrow and the text &#39;import&#39; next to it. this appears to be a screenshot of a software interface element, likely from the makecode platform used for micro:bit programming."
+       data-flags="screenshot,programming"
+       data-name="import_button.png">
+    <img class="thumb" src="../microbit/import_button.png" alt="import_button.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/import_button.png" target="_blank">import_button.png</a></div>
+      <div class="desc">A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a header or title graphic showing the word &#34;loops&#34; in green text alongside a green stylized &#39;c&#39; logo, appearing to be from microbit&#39;s makecode educational platform."
+       data-flags="screenshot,logo,programming"
+       data-name="loops.png">
+    <img class="thumb" src="../microbit/loops.png" alt="loops.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/loops.png" target="_blank">loops.png</a></div>
+      <div class="desc">A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of the microsoft makecode interface for micro:bit programming. the screen shows the blocks editor with a micro:bit device visualization on the left displaying led patterns, and a color-coded menu of programming blocks (basic, input, music, led, radio, loops, logic, variables, math, extensions, advanced) on the left. the main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
+       data-flags="screenshot,hardware,programming"
+       data-name="mb_editor.png">
+    <img class="thumb" src="../microbit/mb_editor.png" alt="mb_editor.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/mb_editor.png" target="_blank">mb_editor.png</a></div>
+      <div class="desc">A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. the image displays the micro:bit board, a battery pack, a usb cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education."
+       data-flags="hardware,product_photo"
+       data-name="mb_setup_1.png">
+    <img class="thumb" src="../microbit/mb_setup_1.png" alt="mb_setup_1.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/mb_setup_1.png" target="_blank">mb_setup_1.png</a></div>
+      <div class="desc">A product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. The image displays the micro:bit board, a battery pack, a USB cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
+       data-flags="robot,hardware,illustration,programming,product_photo"
+       data-name="mb_setup_2.png">
+    <img class="thumb" src="../microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
+      <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
+      <div class="tags">
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="the micro:bit logo displayed on a blue background. the logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
+       data-flags="logo"
+       data-name="microbit.png">
+    <img class="thumb" src="../microbit/microbit.png" alt="microbit.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/microbit.png" target="_blank">microbit.png</a></div>
+      <div class="desc">The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. this is a typical interface icon used to represent video playback or media controls."
+       data-flags="illustration"
+       data-name="play_button.png">
+    <img class="thumb" src="../microbit/play_button.png" alt="play_button.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/play_button.png" target="_blank">play_button.png</a></div>
+      <div class="desc">A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. the card includes the title &#39;servo&#39;, subtitle &#39;a micro-servo library&#39;, and a &#39;learn more&#39; link."
+       data-flags="hardware,illustration,product_photo"
+       data-name="servo_library.png">
+    <img class="thumb" src="../microbit/servo_library.png" alt="servo_library.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/servo_library.png" target="_blank">servo_library.png</a></div>
+      <div class="desc">A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a sign-in button interface element with the text &#39;sign in&#39; accompanied by a user account icon. this appears to be a ui component from a website or application, likely from the microbit makecode platform."
+       data-flags="screenshot"
+       data-name="sign_in.png">
+    <img class="thumb" src="../microbit/sign_in.png" alt="sign_in.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../microbit/sign_in.png" target="_blank">sign_in.png</a></div>
+      <div class="desc">A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+</div>
+
+<script>
+const CATALOG_URL = 'data/catalog.json';
+let catalog = null;
+let activeFlags = new Set();
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch(CATALOG_URL);
+  catalog = await resp.json();
+  return catalog;
+}
+
+function renderCards(images) {
+  const grid = document.getElementById('image-grid');
+  if (!grid) return;
+
+  grid.innerHTML = images.map(img => {
+    const trueTags = Object.entries(img.flags || {})
+      .filter(([,v]) => v)
+      .map(([k]) => k);
+    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
+           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
+        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+        <div class="info">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <div class="desc">${img.description || ''}</div>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.image-card');
+  let shown = 0;
+
+  cards.forEach(card => {
+    const desc = card.dataset.desc || '';
+    const name = card.dataset.name || '';
+    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
+
+    let matchText = !query || desc.includes(query) || name.includes(query);
+    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
+
+    if (matchText && matchFlags) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const total = cards.length;
+  const counter = document.getElementById('result-count');
+  if (query || activeFlags.size > 0) {
+    counter.textContent = `${shown} / ${total}`;
+  } else {
+    counter.textContent = `${total} images`;
+  }
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+
+document.querySelectorAll('.flag-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const flag = btn.dataset.flag;
+    if (activeFlags.has(flag)) {
+      activeFlags.delete(flag);
+      btn.classList.remove('active');
+    } else {
+      activeFlags.add(flag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// Initialize count on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

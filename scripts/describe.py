@@ -1,20 +1,12 @@
-#!/usr/bin/env python3
-"""
-Use Claude vision to describe images and write YAML description files.
-Skips images that already have a corresponding .yaml file.
-"""
+"""Describe images using Claude vision API."""
 
 import anthropic
 import base64
 import io
 import json
-import os
-import sys
 import yaml
 from pathlib import Path
 from PIL import Image
-
-BASE = Path(__file__).parent
 
 IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
 
@@ -128,6 +120,8 @@ Flag definitions:
 Set each flag to true or false. Be accurate and conservative — only set true when clearly applicable.
 """
 
+MAX_BYTES = 4_500_000
+
 
 def get_media_type(ext: str) -> str:
     return {
@@ -142,8 +136,6 @@ def get_media_type(ext: str) -> str:
 def yaml_path_for_image(image_path: Path) -> Path:
     """Return the YAML path for a given image. Handles name collisions."""
     base_yaml = image_path.with_suffix('.yaml')
-    # Check if another image with same stem but different extension exists
-    # and already claimed the base yaml name
     siblings = [
         f for f in image_path.parent.iterdir()
         if f.suffix.lower() in IMAGE_EXTENSIONS
@@ -151,17 +143,13 @@ def yaml_path_for_image(image_path: Path) -> Path:
         and f != image_path
     ]
     if siblings and any(s < image_path for s in sorted(siblings)):
-        # Another image with same stem sorts first, so we need a unique name
         ext_tag = image_path.suffix.lstrip('.').lower()
         return image_path.with_name(f"{image_path.stem}_{ext_tag}.yaml")
     return base_yaml
 
 
-MAX_BYTES = 4_500_000  # Stay under 5MB base64 limit with margin
-
-
 def load_and_resize(image_path: Path) -> tuple[str, str]:
-    """Load image, resize if needed to fit under API limit. Returns (b64_data, media_type)."""
+    """Load image, resize if needed to fit under API limit."""
     with open(image_path, 'rb') as f:
         raw = f.read()
 
@@ -171,29 +159,21 @@ def load_and_resize(image_path: Path) -> tuple[str, str]:
     if len(b64) <= MAX_BYTES:
         return b64, media_type
 
-    # Resize using Pillow
     img = Image.open(image_path)
-
-    # For animated GIFs, just use the first frame
     if hasattr(img, 'n_frames') and img.n_frames > 1:
         img.seek(0)
-
-    # Convert to RGB if needed (handles RGBA, palette, etc.)
     if img.mode not in ('RGB', 'L'):
         img = img.convert('RGB')
 
-    # Progressively shrink until it fits
-    quality = 85
     for scale in [0.75, 0.5, 0.35, 0.25]:
         new_size = (int(img.width * scale), int(img.height * scale))
         resized = img.resize(new_size, Image.LANCZOS)
         buf = io.BytesIO()
-        resized.save(buf, format='JPEG', quality=quality)
+        resized.save(buf, format='JPEG', quality=85)
         b64 = base64.standard_b64encode(buf.getvalue()).decode('utf-8')
         if len(b64) <= MAX_BYTES:
             return b64, 'image/jpeg'
 
-    # Last resort: very small
     resized = img.resize((800, int(800 * img.height / img.width)), Image.LANCZOS)
     buf = io.BytesIO()
     resized.save(buf, format='JPEG', quality=70)
@@ -209,32 +189,29 @@ def describe_image(client: anthropic.Anthropic, image_path: Path, category: str)
         model="claude-haiku-4-5-20251001",
         max_tokens=1024,
         system=SYSTEM_PROMPT,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "image",
-                        "source": {
-                            "type": "base64",
-                            "media_type": media_type,
-                            "data": image_data,
-                        },
+        messages=[{
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "source": {
+                        "type": "base64",
+                        "media_type": media_type,
+                        "data": image_data,
                     },
-                    {
-                        "type": "text",
-                        "text": (
-                            f"Describe this image. It is in the '{category}' category "
-                            f"({CATEGORIES.get(category, 'no description')})."
-                        ),
-                    },
-                ],
-            }
-        ],
+                },
+                {
+                    "type": "text",
+                    "text": (
+                        f"Describe this image. It is in the '{category}' category "
+                        f"({CATEGORIES.get(category, 'no description')})."
+                    ),
+                },
+            ],
+        }],
     )
 
     text = message.content[0].text.strip()
-    # Strip markdown fencing if present
     if text.startswith('```'):
         text = text.split('\n', 1)[1]
         text = text.rsplit('```', 1)[0]
@@ -243,10 +220,9 @@ def describe_image(client: anthropic.Anthropic, image_path: Path, category: str)
     return json.loads(text)
 
 
-def write_yaml(image_path: Path, yaml_out: Path, result: dict, category: str):
+def write_yaml(base: Path, image_path: Path, yaml_out: Path, result: dict, category: str):
     """Write the YAML description file."""
-    rel_path = image_path.relative_to(BASE)
-
+    rel_path = image_path.relative_to(base)
     doc = {
         'image': {
             'name': image_path.name,
@@ -256,7 +232,6 @@ def write_yaml(image_path: Path, yaml_out: Path, result: dict, category: str):
         'description': result['description'],
         'flags': result['flags'],
     }
-
     with open(yaml_out, 'w') as f:
         yaml.dump(doc, f, default_flow_style=False, sort_keys=False, width=80)
 
@@ -266,11 +241,9 @@ def write_category_yaml(dir_path: Path, category: str):
     cat_file = dir_path / 'category.yaml'
     if cat_file.exists():
         return
-
-    desc = CATEGORIES.get(category, 'No description available.')
     doc = {
         'category': category,
-        'description': desc,
+        'description': CATEGORIES.get(category, 'No description available.'),
     }
     with open(cat_file, 'w') as f:
         yaml.dump(doc, f, default_flow_style=False, sort_keys=False, width=80)
@@ -279,14 +252,13 @@ def write_category_yaml(dir_path: Path, category: str):
 
 def find_images(dir_path: Path) -> list[Path]:
     """Find all image files in a directory (non-recursive)."""
-    images = []
-    for f in sorted(dir_path.iterdir()):
-        if f.is_file() and f.suffix.lower() in IMAGE_EXTENSIONS:
-            images.append(f)
-    return images
+    return sorted(
+        f for f in dir_path.iterdir()
+        if f.is_file() and f.suffix.lower() in IMAGE_EXTENSIONS
+    )
 
 
-def process_directory(client: anthropic.Anthropic, dir_path: Path, category: str):
+def process_directory(client: anthropic.Anthropic, base: Path, dir_path: Path, category: str):
     """Process all images in a directory."""
     images = find_images(dir_path)
     if not images:
@@ -308,7 +280,7 @@ def process_directory(client: anthropic.Anthropic, dir_path: Path, category: str
         try:
             print(f"  Processing: {img.name} ...", end=" ", flush=True)
             result = describe_image(client, img, category)
-            write_yaml(img, ypath, result, category)
+            write_yaml(base, img, ypath, result, category)
             processed += 1
             print("done")
         except Exception as e:
@@ -318,24 +290,17 @@ def process_directory(client: anthropic.Anthropic, dir_path: Path, category: str
     print(f"  Summary: {processed} processed, {skipped} skipped, {errors} errors")
 
 
-def main():
+def run_describe(base: Path, categories: list[str] | None):
+    """Entry point for the describe command."""
     client = anthropic.Anthropic()
 
-    # Process only specific directories if given as args, otherwise all
-    if len(sys.argv) > 1:
-        dirs_to_process = sys.argv[1:]
-    else:
-        dirs_to_process = sorted(CATEGORIES.keys())
+    dirs_to_process = categories if categories else sorted(CATEGORIES.keys())
 
     for category in dirs_to_process:
-        dir_path = BASE / category
+        dir_path = base / category
         if dir_path.is_dir():
-            process_directory(client, dir_path, category)
+            process_directory(client, base, dir_path, category)
         else:
             print(f"Warning: directory '{category}' not found, skipping")
 
-    print("\nAll done!")
-
-
-if __name__ == '__main__':
-    main()
+    print("\nDescribe complete!")

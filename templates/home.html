@@ -1,0 +1,40 @@
+{% extends "page.html" %}
+{% block content %}
+<h1>League Image Catalog</h1>
+<p class="subtitle">{{ total_images }} images across {{ categories|length }} categories</p>
+
+<div class="cat-grid">
+  {% for cat in categories %}
+  <a class="cat-card" href="{{ cat.name }}.html">
+    <h3>{{ cat.name }}</h3>
+    <p>{{ cat.description }}</p>
+    <div class="count">{{ cat.count }} images</div>
+  </a>
+  {% endfor %}
+</div>
+
+<h2 style="margin-top:2rem; margin-bottom:1rem;">All Images</h2>
+<div class="image-grid" id="image-grid">
+  {% for img in images %}
+  {% set true_flags = [] %}
+  {% for k, v in img.flags.items() if v %}
+    {% if true_flags.append(k) %}{% endif %}
+  {% endfor %}
+  <div class="image-card"
+       data-desc="{{ img.description|lower }}"
+       data-flags="{{ true_flags|join(',') }}"
+       data-name="{{ img.name|lower }}">
+    <img class="thumb" src="{{ img.path }}" alt="{{ img.name }}" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="{{ img.path }}" target="_blank">{{ img.name }}</a></div>
+      <div class="desc">{{ img.description }}</div>
+      <div class="tags">
+        {% for flag in true_flags %}
+        <span class="tag">{{ flag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stock - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-btn {
+      display: inline-block;
+      padding: .2rem .5rem;
+      margin: .15rem .15rem .15rem 1rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      margin-bottom: .35rem;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    /* Index page category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s;
+    }
+    .cat-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .cat-card h3 {
+      color: var(--orange);
+      margin-bottom: .35rem;
+    }
+    .cat-card p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    .cat-card .count {
+      font-size: .8rem;
+      color: var(--gray-700);
+      margin-top: .5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" class="active">
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Filter by Flag</h2>
+  <div style="padding: 0 0 1rem 0;">
+    
+    <span class="flag-btn" data-flag="action">action</span>
+    
+    <span class="flag-btn" data-flag="building">building</span>
+    
+    <span class="flag-btn" data-flag="duplicate">duplicate</span>
+    
+    <span class="flag-btn" data-flag="event">event</span>
+    
+    <span class="flag-btn" data-flag="group_photo">group_photo</span>
+    
+    <span class="flag-btn" data-flag="hardware">hardware</span>
+    
+    <span class="flag-btn" data-flag="illustration">illustration</span>
+    
+    <span class="flag-btn" data-flag="logo">logo</span>
+    
+    <span class="flag-btn" data-flag="outdoor">outdoor</span>
+    
+    <span class="flag-btn" data-flag="person_1">person_1</span>
+    
+    <span class="flag-btn" data-flag="person_n">person_n</span>
+    
+    <span class="flag-btn" data-flag="presentation">presentation</span>
+    
+    <span class="flag-btn" data-flag="product_photo">product_photo</span>
+    
+    <span class="flag-btn" data-flag="programming">programming</span>
+    
+    <span class="flag-btn" data-flag="robot">robot</span>
+    
+    <span class="flag-btn" data-flag="screenshot">screenshot</span>
+    
+    <span class="flag-btn" data-flag="stock">stock</span>
+    
+    <span class="flag-btn" data-flag="teaching">teaching</span>
+    
+  </div>
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content">
+    
+<h1>stock</h1>
+<p class="subtitle">Stock photography. &mdash; 26 images</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustration of a person sitting at a desk working on programming tasks, viewed from behind. the scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;programming&#34; as the header and placeholder lorem ipsum text below."
+       data-flags="person_1,action,illustration,programming,stock"
+       data-name="adobestock_125147758.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_125147758.jpeg" alt="AdobeStock_125147758.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_125147758.jpeg" target="_blank">AdobeStock_125147758.jpeg</a></div>
+      <div class="desc">An illustration of a person sitting at a desk working on programming tasks, viewed from behind. The scene shows multiple computer monitors displaying code and programming interfaces on a bright green background, with &#34;PROGRAMMING&#34; as the header and placeholder Lorem Ipsum text below.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a digital illustration showing a laptop computer with code and data visualizations on its screen, surrounded by glowing network icons and connected nodes representing cybersecurity, data flow, and digital connectivity. the image uses a blue and cyan color palette with neon accents to convey technology and programming concepts."
+       data-flags="illustration,programming,stock"
+       data-name="adobestock_211095871.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_211095871.jpeg" alt="AdobeStock_211095871.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_211095871.jpeg" target="_blank">AdobeStock_211095871.jpeg</a></div>
+      <div class="desc">A digital illustration showing a laptop computer with code and data visualizations on its screen, surrounded by glowing network icons and connected nodes representing cybersecurity, data flow, and digital connectivity. The image uses a blue and cyan color palette with neon accents to convey technology and programming concepts.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a vector illustration depicting programming and coding concepts, showing hands typing on a laptop keyboard surrounded by various programming language logos (python, javascript, java, c++, html5, swift, kotlin, ruby, etc.), development tools, and tech-related icons like lightbulbs, gears, and code windows."
+       data-flags="logo,illustration,programming,stock"
+       data-name="adobestock_221978639.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_221978639.jpeg" alt="AdobeStock_221978639.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_221978639.jpeg" target="_blank">AdobeStock_221978639.jpeg</a></div>
+      <div class="desc">A vector illustration depicting programming and coding concepts, showing hands typing on a laptop keyboard surrounded by various programming language logos (Python, JavaScript, Java, C++, HTML5, Swift, Kotlin, Ruby, etc.), development tools, and tech-related icons like lightbulbs, gears, and code windows.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a group of young students in a modern classroom are engaged in a robotics coding activity. the girl in the foreground, wearing a yellow sweater and denim overalls, smiles at the camera while holding a small robot she&#39;s building. her classmates sit beside her at a table, also working with robotics kits and electronic components in a well-lit educational environment."
+       data-flags="person_n,robot,hardware,action,stock"
+       data-name="adobestock_236938759.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_236938759.jpeg" alt="AdobeStock_236938759.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_236938759.jpeg" target="_blank">AdobeStock_236938759.jpeg</a></div>
+      <div class="desc">A group of young students in a modern classroom are engaged in a robotics coding activity. The girl in the foreground, wearing a yellow sweater and denim overalls, smiles at the camera while holding a small robot she&#39;s building. Her classmates sit beside her at a table, also working with robotics kits and electronic components in a well-lit educational environment.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a young woman sits at a desk working on a computer with design software open on the monitor, while a man in a hat stands beside her pointing at the screen in what appears to be a mentoring or collaborative moment. the scene is set in a colorful studio environment with warm orange and cool blue lighting, featuring a guitar and other creative elements in the background. this appears to be a stock photo depicting a tech or design mentorship scenario."
+       data-flags="person_n,teaching,screenshot,action,programming,stock"
+       data-name="adobestock_274382199.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_274382199.jpeg" alt="AdobeStock_274382199.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_274382199.jpeg" target="_blank">AdobeStock_274382199.jpeg</a></div>
+      <div class="desc">A young woman sits at a desk working on a computer with design software open on the monitor, while a man in a hat stands beside her pointing at the screen in what appears to be a mentoring or collaborative moment. The scene is set in a colorful studio environment with warm orange and cool blue lighting, featuring a guitar and other creative elements in the background. This appears to be a stock photo depicting a tech or design mentorship scenario.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">teaching</span>
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustrated promotional graphic for a summer camp featuring a stylized blue laptop with a rocket launching from its screen, set against a dynamic blue and white striped background. a speech bubble contains the text &#39;summer camp&#39; in bold black and red lettering, suggesting this is marketing material for a youth coding or technology-focused summer program."
+       data-flags="illustration,stock,event"
+       data-name="adobestock_310515430.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_310515430.jpeg" alt="AdobeStock_310515430.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_310515430.jpeg" target="_blank">AdobeStock_310515430.jpeg</a></div>
+      <div class="desc">An illustrated promotional graphic for a summer camp featuring a stylized blue laptop with a rocket launching from its screen, set against a dynamic blue and white striped background. A speech bubble contains the text &#39;SUMMER CAMP&#39; in bold black and red lettering, suggesting this is marketing material for a youth coding or technology-focused summer program.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">stock</span>
+        
+        <span class="tag">event</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. the image shows a cartoon character with headphones at the center, connected to programming icons including python, javascript, css, html, scratch, unity, and iq symbols, along with gaming controllers, laptops, and cloud computing elements. this is a digital illustration representing youth coding education and technology learning."
+       data-flags="person_1,illustration,programming,stock"
+       data-name="adobestock_353679927.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_353679927.jpeg" alt="AdobeStock_353679927.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_353679927.jpeg" target="_blank">AdobeStock_353679927.jpeg</a></div>
+      <div class="desc">A vibrant neon illustration depicting a young programmer surrounded by various coding languages and technology concepts. The image shows a cartoon character with headphones at the center, connected to programming icons including Python, JavaScript, CSS, HTML, Scratch, Unity, and IQ symbols, along with gaming controllers, laptops, and cloud computing elements. This is a digital illustration representing youth coding education and technology learning.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. the bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. the children are engaged in hands-on stem learning, working with components like yellow-wheeled robot bases and electronic circuits."
+       data-flags="person_n,teaching,robot,hardware,action,stock"
+       data-name="adobestock_354177033.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_354177033.jpeg" alt="AdobeStock_354177033.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_354177033.jpeg" target="_blank">AdobeStock_354177033.jpeg</a></div>
+      <div class="desc">An instructor in a yellow hoodie works with four children at a table building and assembling robotics projects and electronic devices. The bright, modern classroom setting features large windows with outdoor views, shelving with educational materials, and various robot kits and circuit boards scattered across the work surface. The children are engaged in hands-on STEM learning, working with components like yellow-wheeled robot bases and electronic circuits.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">teaching</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a young person sits cross-legged on a white floor against a plain white background, working on a laptop computer. they are wearing a blue checkered shirt over a white t-shirt, dark jeans, and white sneakers. a beige messenger bag is visible beside them on the right side."
+       data-flags="person_1,action,programming,stock"
+       data-name="adobestock_364394456_preview.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_364394456_Preview.jpeg" alt="AdobeStock_364394456_Preview.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_364394456_Preview.jpeg" target="_blank">AdobeStock_364394456_Preview.jpeg</a></div>
+      <div class="desc">A young person sits cross-legged on a white floor against a plain white background, working on a laptop computer. They are wearing a blue checkered shirt over a white t-shirt, dark jeans, and white sneakers. A beige messenger bag is visible beside them on the right side.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="two young people are posed at a desk in a modern office setting, smiling at the camera. behind them is a computer monitor displaying colorful code or programming interface. the scene shows a clean, bright workspace with shelving, notebooks, and other office supplies."
+       data-flags="person_n,group_photo,stock"
+       data-name="adobestock_367366586.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_367366586.jpeg" alt="AdobeStock_367366586.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_367366586.jpeg" target="_blank">AdobeStock_367366586.jpeg</a></div>
+      <div class="desc">Two young people are posed at a desk in a modern office setting, smiling at the camera. Behind them is a computer monitor displaying colorful code or programming interface. The scene shows a clean, bright workspace with shelving, notebooks, and other office supplies.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">group_photo</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a group of young students are seated at a table during a coding or programming activity. two girls in the foreground are turned toward the camera with pleasant expressions while working on a laptop, with additional students visible in the background also engaged with computers. the scene appears to be set in a classroom or workshop environment focused on technology education."
+       data-flags="person_n,hardware,action,programming,stock"
+       data-name="adobestock_390627982.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_390627982.jpeg" alt="AdobeStock_390627982.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_390627982.jpeg" target="_blank">AdobeStock_390627982.jpeg</a></div>
+      <div class="desc">A group of young students are seated at a table during a coding or programming activity. Two girls in the foreground are turned toward the camera with pleasant expressions while working on a laptop, with additional students visible in the background also engaged with computers. The scene appears to be set in a classroom or workshop environment focused on technology education.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a young girl wearing glasses and a red shirt smiles at the camera while working on a laptop in what appears to be a coding classroom or workshop setting. in the blurred background, an instructor and other students are gathered around a computer, suggesting an educational or training environment focused on programming."
+       data-flags="person_n,teaching,action,programming,stock"
+       data-name="adobestock_433003729.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_433003729.jpeg" alt="AdobeStock_433003729.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_433003729.jpeg" target="_blank">AdobeStock_433003729.jpeg</a></div>
+      <div class="desc">A young girl wearing glasses and a red shirt smiles at the camera while working on a laptop in what appears to be a coding classroom or workshop setting. In the blurred background, an instructor and other students are gathered around a computer, suggesting an educational or training environment focused on programming.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">teaching</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a group of young students sitting at a table working on laptops in a classroom setting. the students are focused on their screens, engaged in what appears to be a coding or computer science lesson. multiple children of diverse backgrounds are visible, each with their own device, suggesting a tech education or programming class."
+       data-flags="person_n,action,programming,stock"
+       data-name="adobestock_436767512.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_436767512.jpeg" alt="AdobeStock_436767512.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_436767512.jpeg" target="_blank">AdobeStock_436767512.jpeg</a></div>
+      <div class="desc">A group of young students sitting at a table working on laptops in a classroom setting. The students are focused on their screens, engaged in what appears to be a coding or computer science lesson. Multiple children of diverse backgrounds are visible, each with their own device, suggesting a tech education or programming class.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustrated composition showing a software development workflow with code editor windows displaying c programming code, a file tree structure, and various development-related icons including a lightbulb, gears, magnifying glass, and code brackets on a pink background. the scene depicts a typical programming environment with colorful, stylized ui elements."
+       data-flags="screenshot,illustration,programming,stock"
+       data-name="adobestock_490333995.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_490333995.jpeg" alt="AdobeStock_490333995.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_490333995.jpeg" target="_blank">AdobeStock_490333995.jpeg</a></div>
+      <div class="desc">An illustrated composition showing a software development workflow with code editor windows displaying C programming code, a file tree structure, and various development-related icons including a lightbulb, gears, magnifying glass, and code brackets on a pink background. The scene depicts a typical programming environment with colorful, stylized UI elements.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustrated 3d scene showing programming and development tools against a purple background. the image features multiple windows displaying code editors with c programming language, surrounded by decorative icons including a lightbulb, gears, magnifying glass, folder, cursor, and code brackets symbolizing software development and problem-solving."
+       data-flags="illustration,programming,stock"
+       data-name="adobestock_490333995_preview.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_490333995_Preview.jpeg" alt="AdobeStock_490333995_Preview.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_490333995_Preview.jpeg" target="_blank">AdobeStock_490333995_Preview.jpeg</a></div>
+      <div class="desc">An illustrated 3D scene showing programming and development tools against a purple background. The image features multiple windows displaying code editors with C programming language, surrounded by decorative icons including a lightbulb, gears, magnifying glass, folder, cursor, and code brackets symbolizing software development and problem-solving.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a group of six young students pose together in a bright, modern classroom or tech workspace. they are holding various items including a laptop, robot, blueprints, and a book, suggesting a stem or coding education setting. the students are arranged casually with some standing and one sitting, displaying a collaborative and creative atmosphere typical of a youth technology learning environment."
+       data-flags="person_n,robot,hardware,group_photo,stock"
+       data-name="adobestock_516293057_preview.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_516293057_Preview.jpeg" alt="AdobeStock_516293057_Preview.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_516293057_Preview.jpeg" target="_blank">AdobeStock_516293057_Preview.jpeg</a></div>
+      <div class="desc">A group of six young students pose together in a bright, modern classroom or tech workspace. They are holding various items including a laptop, robot, blueprints, and a book, suggesting a STEM or coding education setting. The students are arranged casually with some standing and one sitting, displaying a collaborative and creative atmosphere typical of a youth technology learning environment.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">group_photo</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="three young students work together on a coding or robotics project in a bright classroom with blue walls. they are engaged with electronics, wiring, and a laptop, appearing to be collaborating on hands-on stem learning. the scene captures an active learning environment typical of youth coding programs."
+       data-flags="person_n,hardware,action,programming,stock"
+       data-name="adobestock_526520572.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_526520572.jpeg" alt="AdobeStock_526520572.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_526520572.jpeg" target="_blank">AdobeStock_526520572.jpeg</a></div>
+      <div class="desc">Three young students work together on a coding or robotics project in a bright classroom with blue walls. They are engaged with electronics, wiring, and a laptop, appearing to be collaborating on hands-on STEM learning. The scene captures an active learning environment typical of youth coding programs.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="two young students work together at a table with a laptop in a bright, modern classroom setting. one student wears a blue headset around her neck while the other wears a blue bandana, both focused on the laptop screen. several other students can be seen blurred in the background at wooden tables, suggesting an active learning environment."
+       data-flags="person_n,action,programming,stock"
+       data-name="adobestock_534851478_preview.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_534851478_Preview.jpeg" alt="AdobeStock_534851478_Preview.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_534851478_Preview.jpeg" target="_blank">AdobeStock_534851478_Preview.jpeg</a></div>
+      <div class="desc">Two young students work together at a table with a laptop in a bright, modern classroom setting. One student wears a blue headset around her neck while the other wears a blue bandana, both focused on the laptop screen. Several other students can be seen blurred in the background at wooden tables, suggesting an active learning environment.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. the scene features a vibrant 3d paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education."
+       data-flags="person_1,hardware,action,illustration,programming,stock"
+       data-name="adobestock_567104942.jpeg">
+    <img class="thumb" src="../stock/AdobeStock_567104942.jpeg" alt="AdobeStock_567104942.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/AdobeStock_567104942.jpeg" target="_blank">AdobeStock_567104942.jpeg</a></div>
+      <div class="desc">A colorful illustration depicting a young person with red hair and glasses working on a laptop, surrounded by tech-themed elements including gears, circuit boards, code snippets, and speech bubbles. The scene features a vibrant 3D paper-cut art style with a turquoise digital background, clouds, and various programming-related graphics that emphasize coding and technology education.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustrated composition showing a coding development environment with multiple windows displaying c++ code, surrounded by programming-related icons and symbols like a lightbulb, gears, magnifying glass, cursor, and file folders on a pink background. the image represents software development and programming concepts in a stylized, digital art format."
+       data-flags="screenshot,illustration,programming,stock"
+       data-name="blooby.jpeg">
+    <img class="thumb" src="../stock/Blooby.jpeg" alt="Blooby.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/Blooby.jpeg" target="_blank">Blooby.jpeg</a></div>
+      <div class="desc">An illustrated composition showing a coding development environment with multiple windows displaying C++ code, surrounded by programming-related icons and symbols like a lightbulb, gears, magnifying glass, cursor, and file folders on a pink background. The image represents software development and programming concepts in a stylized, digital art format.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. the child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. the image captures a moment of tech interaction in a natural, candid style."
+       data-flags="person_1,hardware,action,stock,outdoor"
+       data-name="blondandblueboy.jpeg">
+    <img class="thumb" src="../stock/blondandblueboy.jpeg" alt="blondandblueboy.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/blondandblueboy.jpeg" target="_blank">blondandblueboy.jpeg</a></div>
+      <div class="desc">A young child with blonde hair wearing a blue shirt is focused on holding and examining a mobile device or tablet outdoors. The child appears engaged and concentrated on the screen, with a blurred green background suggesting an outdoor setting. The image captures a moment of tech interaction in a natural, candid style.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">stock</span>
+        
+        <span class="tag">outdoor</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a colorful flat lay composition on a bright yellow background featuring various robots and electronics projects. the image shows a cute blue cartoon-style robot in the center, flanked by four different hardware builds including motorized robots with mechanical arms, circuit boards (including an arduino uno), sensors, and electronic components with wiring. this appears to be a styled product photo showcasing robotics and electronics education kits."
+       data-flags="robot,hardware,product_photo,stock"
+       data-name="bots on yellowback.jpeg">
+    <img class="thumb" src="../stock/bots on yellowback.jpeg" alt="bots on yellowback.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/bots on yellowback.jpeg" target="_blank">bots on yellowback.jpeg</a></div>
+      <div class="desc">A colorful flat lay composition on a bright yellow background featuring various robots and electronics projects. The image shows a cute blue cartoon-style robot in the center, flanked by four different hardware builds including motorized robots with mechanical arms, circuit boards (including an Arduino UNO), sensors, and electronic components with wiring. This appears to be a styled product photo showcasing robotics and electronics education kits.</div>
+      <div class="tags">
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a young person wearing a yellow shirt works with an electronics circuit board setup, featuring a microcontroller board on the left and a breadboard with colorful wires and components on the right. the person is focused on assembling or testing the electronic hardware components in what appears to be an educational or maker environment."
+       data-flags="person_1,hardware,action,stock"
+       data-name="breadboard.jpeg">
+    <img class="thumb" src="../stock/breadboard.jpeg" alt="breadboard.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/breadboard.jpeg" target="_blank">breadboard.jpeg</a></div>
+      <div class="desc">A young person wearing a yellow shirt works with an electronics circuit board setup, featuring a microcontroller board on the left and a breadboard with colorful wires and components on the right. The person is focused on assembling or testing the electronic hardware components in what appears to be an educational or maker environment.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a composite image showing a young person working on a laptop with overlaid digital ui elements displaying code and programming interfaces. the scene includes file browser windows, code editor panels with syntax-highlighted arduino-style code, and visual programming elements with orange accents. in the background, hands are visible working at the desk with a laptop and what appears to be electronics or hardware components on a turquoise surface."
+       data-flags="person_1,screenshot,hardware,action,programming,stock"
+       data-name="code and screwdriver.jpeg">
+    <img class="thumb" src="../stock/code and screwdriver.jpeg" alt="code and screwdriver.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/code and screwdriver.jpeg" target="_blank">code and screwdriver.jpeg</a></div>
+      <div class="desc">A composite image showing a young person working on a laptop with overlaid digital UI elements displaying code and programming interfaces. The scene includes file browser windows, code editor panels with syntax-highlighted Arduino-style code, and visual programming elements with orange accents. In the background, hands are visible working at the desk with a laptop and what appears to be electronics or hardware components on a turquoise surface.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="two young people work together at a computer setup in a colorfully lit room, with one person seated at the keyboard and monitor while another stands beside them pointing at the screen. the scene shows a collaborative coding or design session with hardware visible on the desk, set against a vibrant background with orange and blue lighting. the casual, staged setting with props and dramatic lighting suggests this is a carefully composed stock photograph rather than candid documentation."
+       data-flags="person_n,teaching,hardware,action,programming,stock"
+       data-name="denimkids.jpeg">
+    <img class="thumb" src="../stock/denimkids.jpeg" alt="denimkids.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/denimkids.jpeg" target="_blank">denimkids.jpeg</a></div>
+      <div class="desc">Two young people work together at a computer setup in a colorfully lit room, with one person seated at the keyboard and monitor while another stands beside them pointing at the screen. The scene shows a collaborative coding or design session with hardware visible on the desk, set against a vibrant background with orange and blue lighting. The casual, staged setting with props and dramatic lighting suggests this is a carefully composed stock photograph rather than candid documentation.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">teaching</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">programming</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a young student is focused on soldering or working on electronic circuit boards and hardware components at a workbench. the setup includes various tools like a soldering iron, magnifying glass, and multiple green circuit boards, suggesting a hands-on electronics or robotics learning activity typical of youth coding programs."
+       data-flags="person_1,hardware,action,stock"
+       data-name="soldering.jpeg">
+    <img class="thumb" src="../stock/soldering.jpeg" alt="soldering.jpeg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../stock/soldering.jpeg" target="_blank">soldering.jpeg</a></div>
+      <div class="desc">A young student is focused on soldering or working on electronic circuit boards and hardware components at a workbench. The setup includes various tools like a soldering iron, magnifying glass, and multiple green circuit boards, suggesting a hands-on electronics or robotics learning activity typical of youth coding programs.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+</div>
+
+<script>
+const CATALOG_URL = 'data/catalog.json';
+let catalog = null;
+let activeFlags = new Set();
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch(CATALOG_URL);
+  catalog = await resp.json();
+  return catalog;
+}
+
+function renderCards(images) {
+  const grid = document.getElementById('image-grid');
+  if (!grid) return;
+
+  grid.innerHTML = images.map(img => {
+    const trueTags = Object.entries(img.flags || {})
+      .filter(([,v]) => v)
+      .map(([k]) => k);
+    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
+           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
+        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+        <div class="info">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <div class="desc">${img.description || ''}</div>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.image-card');
+  let shown = 0;
+
+  cards.forEach(card => {
+    const desc = card.dataset.desc || '';
+    const name = card.dataset.name || '';
+    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
+
+    let matchText = !query || desc.includes(query) || name.includes(query);
+    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
+
+    if (matchText && matchFlags) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const total = cards.length;
+  const counter = document.getElementById('result-count');
+  if (query || activeFlags.size > 0) {
+    counter.textContent = `${shown} / ${total}`;
+  } else {
+    counter.textContent = `${total} images`;
+  }
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+
+document.querySelectorAll('.flag-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const flag = btn.dataset.flag;
+    if (activeFlags.has(flag)) {
+      activeFlags.delete(flag);
+      btn.classList.remove('active');
+    } else {
+      activeFlags.add(flag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// Initialize count on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

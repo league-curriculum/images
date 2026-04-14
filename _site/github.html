@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>github - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-btn {
+      display: inline-block;
+      padding: .2rem .5rem;
+      margin: .15rem .15rem .15rem 1rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      margin-bottom: .35rem;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    /* Index page category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s;
+    }
+    .cat-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .cat-card h3 {
+      color: var(--orange);
+      margin-bottom: .35rem;
+    }
+    .cat-card p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    .cat-card .count {
+      font-size: .8rem;
+      color: var(--gray-700);
+      margin-top: .5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" class="active">
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Filter by Flag</h2>
+  <div style="padding: 0 0 1rem 0;">
+    
+    <span class="flag-btn" data-flag="action">action</span>
+    
+    <span class="flag-btn" data-flag="building">building</span>
+    
+    <span class="flag-btn" data-flag="duplicate">duplicate</span>
+    
+    <span class="flag-btn" data-flag="event">event</span>
+    
+    <span class="flag-btn" data-flag="group_photo">group_photo</span>
+    
+    <span class="flag-btn" data-flag="hardware">hardware</span>
+    
+    <span class="flag-btn" data-flag="illustration">illustration</span>
+    
+    <span class="flag-btn" data-flag="logo">logo</span>
+    
+    <span class="flag-btn" data-flag="outdoor">outdoor</span>
+    
+    <span class="flag-btn" data-flag="person_1">person_1</span>
+    
+    <span class="flag-btn" data-flag="person_n">person_n</span>
+    
+    <span class="flag-btn" data-flag="presentation">presentation</span>
+    
+    <span class="flag-btn" data-flag="product_photo">product_photo</span>
+    
+    <span class="flag-btn" data-flag="programming">programming</span>
+    
+    <span class="flag-btn" data-flag="robot">robot</span>
+    
+    <span class="flag-btn" data-flag="screenshot">screenshot</span>
+    
+    <span class="flag-btn" data-flag="stock">stock</span>
+    
+    <span class="flag-btn" data-flag="teaching">teaching</span>
+    
+  </div>
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content">
+    
+<h1>github</h1>
+<p class="subtitle">Screenshots for websites or instructions describing how to use GitHub. Many are images of particular features of the GitHub website. &mdash; 27 images</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot showing the github &#39;actions&#39; feature label with a play button icon. this appears to be a ui element from the github website interface, likely from a repository&#39;s navigation or feature menu."
+       data-flags="screenshot"
+       data-name="actions_menu.png">
+    <img class="thumb" src="../github/actions_menu.png" alt="actions_menu.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/actions_menu.png" target="_blank">actions_menu.png</a></div>
+      <div class="desc">A screenshot showing the GitHub &#39;Actions&#39; feature label with a play button icon. This appears to be a UI element from the GitHub website interface, likely from a repository&#39;s navigation or feature menu.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of github&#39;s codespaces interface showing cloud-based development workspace options. the page displays a workspace named &#39;cautious space halibut&#39; on the master branch with an &#39;active&#39; status, along with usage information indicating the codespace is paid for by a user named &#39;bbobson&#39;."
+       data-flags="screenshot,programming"
+       data-name="active_codespace.png">
+    <img class="thumb" src="../github/active_codespace.png" alt="active_codespace.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/active_codespace.png" target="_blank">active_codespace.png</a></div>
+      <div class="desc">A screenshot of GitHub&#39;s Codespaces interface showing cloud-based development workspace options. The page displays a workspace named &#39;cautious space halibut&#39; on the master branch with an &#39;Active&#39; status, along with usage information indicating the codespace is paid for by a user named &#39;bbobson&#39;.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a development environment or ide interface showing multiple tabs including terminal, ports, jupyter, problems, output, and debug console. the ports tab is currently selected and highlighted in blue."
+       data-flags="screenshot,programming"
+       data-name="bottom_pane_menu.png">
+    <img class="thumb" src="../github/bottom_pane_menu.png" alt="bottom_pane_menu.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/bottom_pane_menu.png" target="_blank">bottom_pane_menu.png</a></div>
+      <div class="desc">A screenshot of a development environment or IDE interface showing multiple tabs including Terminal, Ports, Jupyter, Problems, Output, and Debug Console. The Ports tab is currently selected and highlighted in blue.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a python development environment showing vs code with a coding project open. the left panel displays a file explorer with python files and folders, the center shows python test code with imports and assertions, and the right panel displays a web browser showing a novnc remote desktop interface. the bottom panel shows terminal output with port forwarding information."
+       data-flags="screenshot,programming"
+       data-name="browser_window.png">
+    <img class="thumb" src="../github/browser_window.png" alt="browser_window.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/browser_window.png" target="_blank">browser_window.png</a></div>
+      <div class="desc">A screenshot of a Python development environment showing VS Code with a coding project open. The left panel displays a file explorer with Python files and folders, the center shows Python test code with imports and assertions, and the right panel displays a web browser showing a noVNC remote desktop interface. The bottom panel shows terminal output with port forwarding information.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a green button with code bracket icons and the word &#39;code&#39; followed by a dropdown arrow. this is a github interface element commonly used to access repository cloning and downloading options."
+       data-flags="screenshot,programming"
+       data-name="code_button.png">
+    <img class="thumb" src="../github/code_button.png" alt="code_button.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/code_button.png" target="_blank">code_button.png</a></div>
+      <div class="desc">A green button with code bracket icons and the word &#39;Code&#39; followed by a dropdown arrow. This is a GitHub interface element commonly used to access repository cloning and downloading options.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a green button with white text reading &#34;code&#34; and a dropdown arrow, styled as a github interface element. this is a screenshot of the github website&#39;s code download button."
+       data-flags="screenshot"
+       data-name="code_button_sm.png">
+    <img class="thumb" src="../github/code_button_sm.png" alt="code_button_sm.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/code_button_sm.png" target="_blank">code_button_sm.png</a></div>
+      <div class="desc">A green button with white text reading &#34;Code&#34; and a dropdown arrow, styled as a GitHub interface element. This is a screenshot of the GitHub website&#39;s code download button.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple logo or icon showing code brackets (&lt; &gt;) alongside the word &#39;code&#39; in bold text. this appears to be a github interface element or button label used to navigate to or access code-related features."
+       data-flags="screenshot,programming"
+       data-name="code_menu.png">
+    <img class="thumb" src="../github/code_menu.png" alt="code_menu.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/code_menu.png" target="_blank">code_menu.png</a></div>
+      <div class="desc">A simple logo or icon showing code brackets (&lt; &gt;) alongside the word &#39;Code&#39; in bold text. This appears to be a GitHub interface element or button label used to navigate to or access code-related features.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of github&#39;s codespace interface showing the github octocat logo at the top, with a message stating &#39;codespace is stopped&#39; and a green &#39;restart codespace&#39; button below it."
+       data-flags="screenshot,logo"
+       data-name="codespace_stopped.png">
+    <img class="thumb" src="../github/codespace_stopped.png" alt="codespace_stopped.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/codespace_stopped.png" target="_blank">codespace_stopped.png</a></div>
+      <div class="desc">A screenshot of GitHub&#39;s Codespace interface showing the GitHub Octocat logo at the top, with a message stating &#39;Codespace is stopped&#39; and a green &#39;Restart codespace&#39; button below it.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">logo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a green button or interface element with white text that reads &#39;create codespace on master&#39;, typical of github&#39;s codespace creation feature."
+       data-flags="screenshot,programming"
+       data-name="create_codespace.png">
+    <img class="thumb" src="../github/create_codespace.png" alt="create_codespace.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/create_codespace.png" target="_blank">create_codespace.png</a></div>
+      <div class="desc">A green button or interface element with white text that reads &#39;Create codespace on master&#39;, typical of GitHub&#39;s codespace creation feature.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a github button with the text &#39;create codespace on master&#39; displayed on a green background. this is a ui element from the github website showing the option to create a codespace development environment."
+       data-flags="screenshot"
+       data-name="create_codespace_sm.png">
+    <img class="thumb" src="../github/create_codespace_sm.png" alt="create_codespace_sm.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/create_codespace_sm.png" target="_blank">create_codespace_sm.png</a></div>
+      <div class="desc">A screenshot of a GitHub button with the text &#39;Create codespace on master&#39; displayed on a green background. This is a UI element from the GitHub website showing the option to create a codespace development environment.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a github button labeled &#39;create fork&#39; with white text on a green rounded rectangular background. this is a ui element from the github website used to create a fork of a repository."
+       data-flags="screenshot"
+       data-name="create_fork.png">
+    <img class="thumb" src="../github/create_fork.png" alt="create_fork.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/create_fork.png" target="_blank">create_fork.png</a></div>
+      <div class="desc">A screenshot of a GitHub button labeled &#39;Create fork&#39; with white text on a green rounded rectangular background. This is a UI element from the GitHub website used to create a fork of a repository.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple line-drawn icon showing two overlapping document or file symbols, representing copying, duplicating, or multi-file operations commonly seen in github and other software interfaces."
+       data-flags="illustration"
+       data-name="files.png">
+    <img class="thumb" src="../github/files.png" alt="files.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/files.png" target="_blank">files.png</a></div>
+      <div class="desc">A simple line-drawn icon showing two overlapping document or file symbols, representing copying, duplicating, or multi-file operations commonly seen in GitHub and other software interfaces.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a github interface element showing a fork button with a count of 0. the button displays a fork icon on the left, the text &#39;fork&#39;, and the number &#39;0&#39; indicating no forks have been made of this repository."
+       data-flags="screenshot"
+       data-name="fork.png">
+    <img class="thumb" src="../github/fork.png" alt="fork.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/fork.png" target="_blank">fork.png</a></div>
+      <div class="desc">A screenshot of a GitHub interface element showing a Fork button with a count of 0. The button displays a fork icon on the left, the text &#39;Fork&#39;, and the number &#39;0&#39; indicating no forks have been made of this repository.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a github repository page showing the level0-module0 project forked from league-java/level0-module0. the page displays the repository structure with various folders and files like .devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src, and configuration files. this appears to be a coding project repository for the league of amazing programmers."
+       data-flags="screenshot,programming"
+       data-name="l0-m0_repo.png">
+    <img class="thumb" src="../github/l0-m0_repo.png" alt="l0-m0_repo.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/l0-m0_repo.png" target="_blank">l0-m0_repo.png</a></div>
+      <div class="desc">A GitHub repository page showing the Level0-Module0 project forked from League-Java/Level0-Module0. The page displays the repository structure with various folders and files like .devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src, and configuration files. This appears to be a coding project repository for The League of Amazing Programmers.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of github codespaces setup form for creating a new codespace. the form shows configuration options including a java repository from the league (league-java/lev...), branch selection (master), dev container configuration (java), region (us west), and machine type (2-core). a green &#39;create codespace&#39; button is visible at the bottom."
+       data-flags="screenshot,programming"
+       data-name="new_codespace_button.png">
+    <img class="thumb" src="../github/new_codespace_button.png" alt="new_codespace_button.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/new_codespace_button.png" target="_blank">new_codespace_button.png</a></div>
+      <div class="desc">A screenshot of GitHub Codespaces setup form for creating a new codespace. The form shows configuration options including a Java repository from The League (League-Java/Lev...), branch selection (master), dev container configuration (Java), region (US West), and machine type (2-core). A green &#39;Create codespace&#39; button is visible at the bottom.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of the novnc application interface showing a connection screen with the novnc logo displayed prominently in green and yellow text, along with a blue &#39;connect&#39; button. the interface has a dark gray background with a curved design element, and a small novnc icon visible in the top left corner."
+       data-flags="screenshot,logo"
+       data-name="novnc.png">
+    <img class="thumb" src="../github/novnc.png" alt="novnc.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/novnc.png" target="_blank">novnc.png</a></div>
+      <div class="desc">A screenshot of the noVNC application interface showing a connection screen with the noVNC logo displayed prominently in green and yellow text, along with a blue &#39;Connect&#39; button. The interface has a dark gray background with a curved design element, and a small noVNC icon visible in the top left corner.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">logo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a github button or interface element with an orange background displaying the github logo and white text that reads &#39;open in codespaces&#39;. this is a user interface element commonly found on github repositories."
+       data-flags="screenshot,logo,programming"
+       data-name="open_codespc.png">
+    <img class="thumb" src="../github/open_codespc.png" alt="open_codespc.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/open_codespc.png" target="_blank">open_codespc.png</a></div>
+      <div class="desc">A screenshot of a GitHub button or interface element with an orange background displaying the GitHub logo and white text that reads &#39;Open in Codespaces&#39;. This is a user interface element commonly found on GitHub repositories.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot showing four minimalist interface icons representing different layout or view options, displayed in white outline style on a dark background. these appear to be ui control buttons for toggling between different display modes or layouts."
+       data-flags="screenshot"
+       data-name="pane_config.png">
+    <img class="thumb" src="../github/pane_config.png" alt="pane_config.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/pane_config.png" target="_blank">pane_config.png</a></div>
+      <div class="desc">A screenshot showing four minimalist interface icons representing different layout or view options, displayed in white outline style on a dark background. These appear to be UI control buttons for toggling between different display modes or layouts.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a development environment&#39;s ports tab showing port forwarding configuration. the interface displays two active ports (5901 and 6080) with their associated forwarded addresses and running processes, along with an &#39;add port&#39; button and an &#39;open in browser&#39; option."
+       data-flags="screenshot,programming"
+       data-name="ports.png">
+    <img class="thumb" src="../github/ports.png" alt="ports.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/ports.png" target="_blank">ports.png</a></div>
+      <div class="desc">A screenshot of a development environment&#39;s Ports tab showing port forwarding configuration. The interface displays two active ports (5901 and 6080) with their associated forwarded addresses and running processes, along with an &#39;Add Port&#39; button and an &#39;Open in Browser&#39; option.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a development environment&#39;s port forwarding configuration interface, showing multiple ports (5901, 6080) with their forwarded addresses, running processes, and visibility settings. the image displays technical details including urls, command-line processes, and a &#39;preview in editor&#39; button, typical of a web development or coding workspace setup."
+       data-flags="screenshot,programming"
+       data-name="ports_pane.png">
+    <img class="thumb" src="../github/ports_pane.png" alt="ports_pane.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/ports_pane.png" target="_blank">ports_pane.png</a></div>
+      <div class="desc">A screenshot of a development environment&#39;s port forwarding configuration interface, showing multiple ports (5901, 6080) with their forwarded addresses, running processes, and visibility settings. The image displays technical details including URLs, command-line processes, and a &#39;Preview in Editor&#39; button, typical of a web development or coding workspace setup.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of github&#39;s codespaces interface showing the local and codespaces tabs. the local tab displays a codespace named &#39;expert broccoli&#39; on the master branch with 1 change made 35 minutes ago. the interface includes options to create new codespaces and manage existing ones."
+       data-flags="screenshot,programming"
+       data-name="restart_codespace.png">
+    <img class="thumb" src="../github/restart_codespace.png" alt="restart_codespace.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/restart_codespace.png" target="_blank">restart_codespace.png</a></div>
+      <div class="desc">A screenshot of GitHub&#39;s Codespaces interface showing the Local and Codespaces tabs. The Local tab displays a codespace named &#39;expert broccoli&#39; on the master branch with 1 change made 35 minutes ago. The interface includes options to create new codespaces and manage existing ones.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot showing a github interface element with &#39;run and debug&#39; text on the left, followed by a play button icon and a dropdown menu labeled &#39;dragonfight&#39;. this appears to be part of a code editor or ide debugging toolbar."
+       data-flags="screenshot,programming"
+       data-name="run_menu_closed.png">
+    <img class="thumb" src="../github/run_menu_closed.png" alt="run_menu_closed.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/run_menu_closed.png" target="_blank">run_menu_closed.png</a></div>
+      <div class="desc">A screenshot showing a GitHub interface element with &#39;RUN AND DEBUG&#39; text on the left, followed by a play button icon and a dropdown menu labeled &#39;DragonFight&#39;. This appears to be part of a code editor or IDE debugging toolbar.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a code editor&#39;s run and debug configuration dropdown menu, showing various program names like dragonffight, flamingninjastar, robotdemo, and others. the menu displays debugging options including node.js, python debugger, and cmake debugger at the bottom."
+       data-flags="screenshot,programming"
+       data-name="run_menu_open.png">
+    <img class="thumb" src="../github/run_menu_open.png" alt="run_menu_open.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/run_menu_open.png" target="_blank">run_menu_open.png</a></div>
+      <div class="desc">A screenshot of a code editor&#39;s Run and Debug configuration dropdown menu, showing various program names like DragonfFight, FlamingNinjaStar, RobotDemo, and others. The menu displays debugging options including Node.js, Python Debugger, and CMake Debugger at the bottom.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a minimalist line-drawn icon showing a play button (triangle pointing right) with a gear symbol overlapping or integrated below it. the icon uses simple black strokes on a light gray background, suggesting automation, workflows, or automated processes in a development context."
+       data-flags="illustration"
+       data-name="rundebug.png">
+    <img class="thumb" src="../github/rundebug.png" alt="rundebug.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/rundebug.png" target="_blank">rundebug.png</a></div>
+      <div class="desc">A minimalist line-drawn icon showing a play button (triangle pointing right) with a gear symbol overlapping or integrated below it. The icon uses simple black strokes on a light gray background, suggesting automation, workflows, or automated processes in a development context.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a green button or banner with white text that reads &#39;i understand my workflows, go ahead and enable them&#39;. this appears to be a github interface element, likely from a workflow configuration or enablement dialog."
+       data-flags="screenshot"
+       data-name="understand_workflows.png">
+    <img class="thumb" src="../github/understand_workflows.png" alt="understand_workflows.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/understand_workflows.png" target="_blank">understand_workflows.png</a></div>
+      <div class="desc">A screenshot of a green button or banner with white text that reads &#39;I understand my workflows, go ahead and enable them&#39;. This appears to be a GitHub interface element, likely from a workflow configuration or enablement dialog.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a green button with white text that says &#39;use this template&#39; with a dropdown arrow, typical of github&#39;s interface for creating a new repository from a template."
+       data-flags="screenshot"
+       data-name="use_this_template.png">
+    <img class="thumb" src="../github/use_this_template.png" alt="use_this_template.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/use_this_template.png" target="_blank">use_this_template.png</a></div>
+      <div class="desc">A green button with white text that says &#39;Use this template&#39; with a dropdown arrow, typical of GitHub&#39;s interface for creating a new repository from a template.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a screenshot of a code editor (vs code) showing a readme.md file for a level0-module0 coding course project called &#39;codespaces: musical space fishstick&#39;. the file displays introductory course content for students, including learning objectives like drawing shapes in processing, controlling code flow, and building games."
+       data-flags="screenshot,programming"
+       data-name="vscode.png">
+    <img class="thumb" src="../github/vscode.png" alt="vscode.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../github/vscode.png" target="_blank">vscode.png</a></div>
+      <div class="desc">A screenshot of a code editor (VS Code) showing a README.md file for a Level0-Module0 coding course project called &#39;Codespaces: musical space fishstick&#39;. The file displays introductory course content for students, including learning objectives like drawing shapes in Processing, controlling code flow, and building games.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+</div>
+
+<script>
+const CATALOG_URL = 'data/catalog.json';
+let catalog = null;
+let activeFlags = new Set();
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch(CATALOG_URL);
+  catalog = await resp.json();
+  return catalog;
+}
+
+function renderCards(images) {
+  const grid = document.getElementById('image-grid');
+  if (!grid) return;
+
+  grid.innerHTML = images.map(img => {
+    const trueTags = Object.entries(img.flags || {})
+      .filter(([,v]) => v)
+      .map(([k]) => k);
+    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
+           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
+        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+        <div class="info">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <div class="desc">${img.description || ''}</div>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.image-card');
+  let shown = 0;
+
+  cards.forEach(card => {
+    const desc = card.dataset.desc || '';
+    const name = card.dataset.name || '';
+    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
+
+    let matchText = !query || desc.includes(query) || name.includes(query);
+    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
+
+    if (matchText && matchFlags) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const total = cards.length;
+  const counter = document.getElementById('result-count');
+  if (query || activeFlags.size > 0) {
+    counter.textContent = `${shown} / ${total}`;
+  } else {
+    counter.textContent = `${total} images`;
+  }
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+
+document.querySelectorAll('.flag-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const flag = btn.dataset.flag;
+    if (activeFlags.has(flag)) {
+      activeFlags.delete(flag);
+      btn.classList.remove('active');
+    } else {
+      activeFlags.add(flag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// Initialize count on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

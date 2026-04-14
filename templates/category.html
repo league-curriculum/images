@@ -1,0 +1,29 @@
+{% extends "page.html" %}
+{% block content %}
+<h1>{{ category_name }}</h1>
+<p class="subtitle">{{ category_description }} &mdash; {{ images|length }} images</p>
+
+<div class="image-grid" id="image-grid">
+  {% for img in images %}
+  {% set true_flags = [] %}
+  {% for k, v in img.flags.items() if v %}
+    {% if true_flags.append(k) %}{% endif %}
+  {% endfor %}
+  <div class="image-card"
+       data-desc="{{ img.description|lower }}"
+       data-flags="{{ true_flags|join(',') }}"
+       data-name="{{ img.name|lower }}">
+    <img class="thumb" src="{{ img.path }}" alt="{{ img.name }}" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="{{ img.path }}" target="_blank">{{ img.name }}</a></div>
+      <div class="desc">{{ img.description }}</div>
+      <div class="tags">
+        {% for flag in true_flags %}
+        <span class="tag">{{ flag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

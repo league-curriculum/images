@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>memes - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-btn {
+      display: inline-block;
+      padding: .2rem .5rem;
+      margin: .15rem .15rem .15rem 1rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      margin-bottom: .35rem;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    /* Index page category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s;
+    }
+    .cat-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .cat-card h3 {
+      color: var(--orange);
+      margin-bottom: .35rem;
+    }
+    .cat-card p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    .cat-card .count {
+      font-size: .8rem;
+      color: var(--gray-700);
+      margin-top: .5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" class="active">
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Filter by Flag</h2>
+  <div style="padding: 0 0 1rem 0;">
+    
+    <span class="flag-btn" data-flag="action">action</span>
+    
+    <span class="flag-btn" data-flag="building">building</span>
+    
+    <span class="flag-btn" data-flag="duplicate">duplicate</span>
+    
+    <span class="flag-btn" data-flag="event">event</span>
+    
+    <span class="flag-btn" data-flag="group_photo">group_photo</span>
+    
+    <span class="flag-btn" data-flag="hardware">hardware</span>
+    
+    <span class="flag-btn" data-flag="illustration">illustration</span>
+    
+    <span class="flag-btn" data-flag="logo">logo</span>
+    
+    <span class="flag-btn" data-flag="outdoor">outdoor</span>
+    
+    <span class="flag-btn" data-flag="person_1">person_1</span>
+    
+    <span class="flag-btn" data-flag="person_n">person_n</span>
+    
+    <span class="flag-btn" data-flag="presentation">presentation</span>
+    
+    <span class="flag-btn" data-flag="product_photo">product_photo</span>
+    
+    <span class="flag-btn" data-flag="programming">programming</span>
+    
+    <span class="flag-btn" data-flag="robot">robot</span>
+    
+    <span class="flag-btn" data-flag="screenshot">screenshot</span>
+    
+    <span class="flag-btn" data-flag="stock">stock</span>
+    
+    <span class="flag-btn" data-flag="teaching">teaching</span>
+    
+  </div>
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content">
+    
+<h1>memes</h1>
+<p class="subtitle">Meme images used in class where students program overlaying text over images to make memes. &mdash; 12 images</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. this is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas."
+       data-flags="person_1,illustration,duplicate"
+       data-name="1g8my4.jpg">
+    <img class="thumb" src="../memes/1g8my4.jpg" alt="1g8my4.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/1g8my4.jpg" target="_blank">1g8my4.jpg</a></div>
+      <div class="desc">A two-panel meme illustration showing a person in a car looking at two red buttons on the dashboard, with an uncertain/conflicted expression. This is a classic decision-making meme format commonly used to humorously present two contrasting choices or dilemmas.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">duplicate</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a black and white vintage photograph of a young woman in what appears to be a girl scout or similar youth organization uniform, with her hand raised to her head in a casual pose. the image has a classic mid-20th century aesthetic and is likely used as a meme template for adding humorous text overlays."
+       data-flags="person_1,duplicate,stock"
+       data-name="1reewn.jpg">
+    <img class="thumb" src="../memes/1reewn.jpg" alt="1reewn.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/1reewn.jpg" target="_blank">1reewn.jpg</a></div>
+      <div class="desc">A black and white vintage photograph of a young woman in what appears to be a Girl Scout or similar youth organization uniform, with her hand raised to her head in a casual pose. The image has a classic mid-20th century aesthetic and is likely used as a meme template for adding humorous text overlays.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">duplicate</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a four-panel meme template showing the same person in different poses with blank light blue sections, commonly used for creating meme content by adding text overlays. the person wears glasses and dark clothing, photographed against a warm-toned background."
+       data-flags="person_1,stock"
+       data-name="26jxvz.jpg">
+    <img class="thumb" src="../memes/26jxvz.jpg" alt="26jxvz.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/26jxvz.jpg" target="_blank">26jxvz.jpg</a></div>
+      <div class="desc">A four-panel meme template showing the same person in different poses with blank light blue sections, commonly used for creating meme content by adding text overlays. The person wears glasses and dark clothing, photographed against a warm-toned background.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a skeleton prop or decoration sits on a wooden bench or seat outdoors on a grassy hillside. this appears to be a humorous setup photo, likely used as a meme template where text could be overlaid to create jokes or educational content for students."
+       data-flags="outdoor"
+       data-name="2fm6x.jpg">
+    <img class="thumb" src="../memes/2fm6x.jpg" alt="2fm6x.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/2fm6x.jpg" target="_blank">2fm6x.jpg</a></div>
+      <div class="desc">A skeleton prop or decoration sits on a wooden bench or seat outdoors on a grassy hillside. This appears to be a humorous setup photo, likely used as a meme template where text could be overlaid to create jokes or educational content for students.</div>
+      <div class="tags">
+        
+        <span class="tag">outdoor</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a pixel art style illustration showing two characters on a green grassy background. the image appears to be from a retro video game or similar pixelated game art style, with a simple, minimalist aesthetic typical of early computer graphics."
+       data-flags="screenshot,illustration"
+       data-name="2txtm1.jpg">
+    <img class="thumb" src="../memes/2txtm1.jpg" alt="2txtm1.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/2txtm1.jpg" target="_blank">2txtm1.jpg</a></div>
+      <div class="desc">A pixel art style illustration showing two characters on a green grassy background. The image appears to be from a retro video game or similar pixelated game art style, with a simple, minimalist aesthetic typical of early computer graphics.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a two-panel meme featuring winnie the pooh character in different poses and outfits. the top panel shows the character in casual attire looking uncertain, while the bottom panel shows the same character dressed formally in a tuxedo looking more confident. this is a popular meme template used to compare contrasting states or choices."
+       data-flags="illustration,duplicate"
+       data-name="2ybua0.jpg">
+    <img class="thumb" src="../memes/2ybua0.jpg" alt="2ybua0.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/2ybua0.jpg" target="_blank">2ybua0.jpg</a></div>
+      <div class="desc">A two-panel meme featuring Winnie the Pooh character in different poses and outfits. The top panel shows the character in casual attire looking uncertain, while the bottom panel shows the same character dressed formally in a tuxedo looking more confident. This is a popular meme template used to compare contrasting states or choices.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">duplicate</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a meme template featuring two panels of the same person against a yellow background, wearing a red/orange jacket. the top panel shows the person with hand to ear in a dismissive gesture, while the bottom panel shows approval or agreement. this is a classic meme format used for expressing rejection versus acceptance of ideas."
+       data-flags="person_1,stock"
+       data-name="30b1gx.jpg">
+    <img class="thumb" src="../memes/30b1gx.jpg" alt="30b1gx.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/30b1gx.jpg" target="_blank">30b1gx.jpg</a></div>
+      <div class="desc">A meme template featuring two panels of the same person against a yellow background, wearing a red/orange jacket. The top panel shows the person with hand to ear in a dismissive gesture, while the bottom panel shows approval or agreement. This is a classic meme format used for expressing rejection versus acceptance of ideas.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">stock</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a meme image showing two women reacting with surprise and confusion to a white cat sitting at a dinner table with a plate of food. this is a popular internet meme format used to express shocked reactions or disagreement."
+       data-flags="person_n,duplicate"
+       data-name="345v97.jpg">
+    <img class="thumb" src="../memes/345v97.jpg" alt="345v97.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/345v97.jpg" target="_blank">345v97.jpg</a></div>
+      <div class="desc">A meme image showing two women reacting with surprise and confusion to a white cat sitting at a dinner table with a plate of food. This is a popular internet meme format used to express shocked reactions or disagreement.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">duplicate</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a humorous illustration showing two meme-style images: on the left, a buff/muscular doge dog with an exaggerated physique, and on the right, a normal-sized doge dog. this is a classic internet meme format often used to compare contrasts or make jokes, commonly used in educational settings for meme-based programming projects."
+       data-flags="illustration"
+       data-name="43a45p.jpg">
+    <img class="thumb" src="../memes/43a45p.jpg" alt="43a45p.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/43a45p.jpg" target="_blank">43a45p.jpg</a></div>
+      <div class="desc">A humorous illustration showing two meme-style images: on the left, a buff/muscular doge dog with an exaggerated physique, and on the right, a normal-sized doge dog. This is a classic internet meme format often used to compare contrasts or make jokes, commonly used in educational settings for meme-based programming projects.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="image-card"
+       data-desc="a black cat sits next to a laptop computer on a wooden desk or table, appearing to be positioned as if working or using the computer. the scene is set indoors with furniture and items visible in the background, creating a humorous composition typical of meme imagery."
+       data-flags=""
+       data-name="4bd1a0.jpg">
+    <img class="thumb" src="../memes/4bd1a0.jpg" alt="4bd1a0.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/4bd1a0.jpg" target="_blank">4bd1a0.jpg</a></div>
+      <div class="desc">A black cat sits next to a laptop computer on a wooden desk or table, appearing to be positioned as if working or using the computer. The scene is set indoors with furniture and items visible in the background, creating a humorous composition typical of meme imagery.</div>
+      <div class="tags">
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a close-up of shrek&#39;s face from the animated film, showing his characteristic green ogre features and expression. this is a popular meme image used for adding humorous text overlays, commonly used in educational settings where students learn to create memes as a programming exercise."
+       data-flags="illustration,duplicate"
+       data-name="5cxb8b.jpg">
+    <img class="thumb" src="../memes/5cxb8b.jpg" alt="5cxb8b.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/5cxb8b.jpg" target="_blank">5cxb8b.jpg</a></div>
+      <div class="desc">A close-up of Shrek&#39;s face from the animated film, showing his characteristic green ogre features and expression. This is a popular meme image used for adding humorous text overlays, commonly used in educational settings where students learn to create memes as a programming exercise.</div>
+      <div class="tags">
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">duplicate</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a person wearing a clown mask with white face paint, black eye makeup, and red nose, shown in a close-up portrait shot indoors. this appears to be a meme image format commonly used in programming classes where students add text overlays to create humorous content."
+       data-flags="person_1"
+       data-name="789p72.jpg">
+    <img class="thumb" src="../memes/789p72.jpg" alt="789p72.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../memes/789p72.jpg" target="_blank">789p72.jpg</a></div>
+      <div class="desc">A person wearing a clown mask with white face paint, black eye makeup, and red nose, shown in a close-up portrait shot indoors. This appears to be a meme image format commonly used in programming classes where students add text overlays to create humorous content.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+</div>
+
+<script>
+const CATALOG_URL = 'data/catalog.json';
+let catalog = null;
+let activeFlags = new Set();
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch(CATALOG_URL);
+  catalog = await resp.json();
+  return catalog;
+}
+
+function renderCards(images) {
+  const grid = document.getElementById('image-grid');
+  if (!grid) return;
+
+  grid.innerHTML = images.map(img => {
+    const trueTags = Object.entries(img.flags || {})
+      .filter(([,v]) => v)
+      .map(([k]) => k);
+    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
+           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
+        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+        <div class="info">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <div class="desc">${img.description || ''}</div>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.image-card');
+  let shown = 0;
+
+  cards.forEach(card => {
+    const desc = card.dataset.desc || '';
+    const name = card.dataset.name || '';
+    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
+
+    let matchText = !query || desc.includes(query) || name.includes(query);
+    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
+
+    if (matchText && matchFlags) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const total = cards.length;
+  const counter = document.getElementById('result-count');
+  if (query || activeFlags.size > 0) {
+    counter.textContent = `${shown} / ${total}`;
+  } else {
+    counter.textContent = `${total} images`;
+  }
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+
+document.querySelectorAll('.flag-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const flag = btn.dataset.flag;
+    if (activeFlags.has(flag)) {
+      activeFlags.delete(flag);
+      btn.classList.remove('active');
+    } else {
+      activeFlags.add(flag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// Initialize count on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

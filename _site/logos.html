@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>logos - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-btn {
+      display: inline-block;
+      padding: .2rem .5rem;
+      margin: .15rem .15rem .15rem 1rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      margin-bottom: .35rem;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    /* Index page category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s;
+    }
+    .cat-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .cat-card h3 {
+      color: var(--orange);
+      margin-bottom: .35rem;
+    }
+    .cat-card p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    .cat-card .count {
+      font-size: .8rem;
+      color: var(--gray-700);
+      margin-top: .5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" class="active">
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" >
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Filter by Flag</h2>
+  <div style="padding: 0 0 1rem 0;">
+    
+    <span class="flag-btn" data-flag="action">action</span>
+    
+    <span class="flag-btn" data-flag="building">building</span>
+    
+    <span class="flag-btn" data-flag="duplicate">duplicate</span>
+    
+    <span class="flag-btn" data-flag="event">event</span>
+    
+    <span class="flag-btn" data-flag="group_photo">group_photo</span>
+    
+    <span class="flag-btn" data-flag="hardware">hardware</span>
+    
+    <span class="flag-btn" data-flag="illustration">illustration</span>
+    
+    <span class="flag-btn" data-flag="logo">logo</span>
+    
+    <span class="flag-btn" data-flag="outdoor">outdoor</span>
+    
+    <span class="flag-btn" data-flag="person_1">person_1</span>
+    
+    <span class="flag-btn" data-flag="person_n">person_n</span>
+    
+    <span class="flag-btn" data-flag="presentation">presentation</span>
+    
+    <span class="flag-btn" data-flag="product_photo">product_photo</span>
+    
+    <span class="flag-btn" data-flag="programming">programming</span>
+    
+    <span class="flag-btn" data-flag="robot">robot</span>
+    
+    <span class="flag-btn" data-flag="screenshot">screenshot</span>
+    
+    <span class="flag-btn" data-flag="stock">stock</span>
+    
+    <span class="flag-btn" data-flag="teaching">teaching</span>
+    
+  </div>
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content">
+    
+<h1>logos</h1>
+<p class="subtitle">Logos for The League. Use these anywhere logos are required. &mdash; 22 images</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a white lightning bolt icon on an orange gradient background. the lightning bolt is stylized and minimalist, pointing diagonally upward to the right. this appears to be a logo design with a simple, modern aesthetic."
+       data-flags="logo,illustration"
+       data-name="android-chrome-192x192.png">
+    <img class="thumb" src="../logos/android-chrome-192x192.png" alt="android-chrome-192x192.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/android-chrome-192x192.png" target="_blank">android-chrome-192x192.png</a></div>
+      <div class="desc">A white lightning bolt icon on an orange gradient background. The lightning bolt is stylized and minimalist, pointing diagonally upward to the right. This appears to be a logo design with a simple, modern aesthetic.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a stylized lightning bolt icon in white and orange/peach tones on a gradient orange background. the design is modern and minimalist, suitable for use as a logo or app icon."
+       data-flags="logo,illustration"
+       data-name="android-chrome-512x512.png">
+    <img class="thumb" src="../logos/android-chrome-512x512.png" alt="android-chrome-512x512.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/android-chrome-512x512.png" target="_blank">android-chrome-512x512.png</a></div>
+      <div class="desc">A stylized lightning bolt icon in white and orange/peach tones on a gradient orange background. The design is modern and minimalist, suitable for use as a logo or app icon.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a minimalist white lightning bolt icon on an orange gradient background. the bolt is stylized with a modern, geometric design and appears to be a logo symbol representing energy, speed, or power."
+       data-flags="logo,illustration"
+       data-name="apple-touch-icon.png">
+    <img class="thumb" src="../logos/apple-touch-icon.png" alt="apple-touch-icon.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/apple-touch-icon.png" target="_blank">apple-touch-icon.png</a></div>
+      <div class="desc">A minimalist white lightning bolt icon on an orange gradient background. The bolt is stylized with a modern, geometric design and appears to be a logo symbol representing energy, speed, or power.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an orange lightning bolt symbol on a white background, presented as a clean, minimalist vector graphic. this is the league of amazing programmers&#39; logo, featuring a striking angular design that conveys energy and power."
+       data-flags="logo,illustration"
+       data-name="bolt.png">
+    <img class="thumb" src="../logos/bolt.png" alt="bolt.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/bolt.png" target="_blank">bolt.png</a></div>
+      <div class="desc">An orange lightning bolt symbol on a white background, presented as a clean, minimalist vector graphic. This is The League of Amazing Programmers&#39; logo, featuring a striking angular design that conveys energy and power.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. the robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos."
+       data-flags="logo,robot,illustration"
+       data-name="clearrobot3color1.png">
+    <img class="thumb" src="../logos/clearRobot3Color1.png" alt="clearRobot3Color1.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/clearRobot3Color1.png" target="_blank">clearRobot3Color1.png</a></div>
+      <div class="desc">A stylized robot illustration with a rounded rectangular head featuring two bright orange circular eyes on a black face, gray metallic plating, and an orange and gray body with geometric shapes. The robot is centered within a thick black circular border, creating a badge or emblem design typical of organization logos.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a stylized robot illustration with a friendly design featuring an orange and gray color scheme. the robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border."
+       data-flags="logo,robot,illustration"
+       data-name="clearrobotring4.png">
+    <img class="thumb" src="../logos/clearRobotRing4.png" alt="clearRobotRing4.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/clearRobotRing4.png" target="_blank">clearRobotRing4.png</a></div>
+      <div class="desc">A stylized robot illustration with a friendly design featuring an orange and gray color scheme. The robot has a rectangular head with a black display screen, large orange circular eyes, orange ears, and a body with orange arms and a lightning bolt symbol on the chest, all contained within a dark circular border.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple square logo featuring a white star symbol centered on an orange/red background. the design appears to be a minimalist logo suitable for use by the league of amazing programmers."
+       data-flags="logo,illustration"
+       data-name="favicon-16x16.png">
+    <img class="thumb" src="../logos/favicon-16x16.png" alt="favicon-16x16.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/favicon-16x16.png" target="_blank">favicon-16x16.png</a></div>
+      <div class="desc">A simple square logo featuring a white star symbol centered on an orange/red background. The design appears to be a minimalist logo suitable for use by The League of Amazing Programmers.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="a simple logo featuring a white lightning bolt icon on a solid orange-red square background. this is a minimalist design suitable for use as an app icon, favicon, or branding element for the league of amazing programmers."
+       data-flags="logo"
+       data-name="favicon-32x32.png">
+    <img class="thumb" src="../logos/favicon-32x32.png" alt="favicon-32x32.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/favicon-32x32.png" target="_blank">favicon-32x32.png</a></div>
+      <div class="desc">A simple logo featuring a white lightning bolt icon on a solid orange-red square background. This is a minimalist design suitable for use as an app icon, favicon, or branding element for The League of Amazing Programmers.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustration of five young people in silhouette standing together with one holding a flag featuring a lightning bolt symbol. the figures are rendered in a bright orange color against a white background, conveying energy, teamwork, and empowerment. this appears to be the league of amazing programmers&#39; logo or brand illustration."
+       data-flags="person_n,logo,illustration"
+       data-name="figures_girl.png">
+    <img class="thumb" src="../logos/figures_girl.png" alt="figures_girl.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/figures_girl.png" target="_blank">figures_girl.png</a></div>
+      <div class="desc">An illustration of five young people in silhouette standing together with one holding a flag featuring a lightning bolt symbol. The figures are rendered in a bright orange color against a white background, conveying energy, teamwork, and empowerment. This appears to be The League of Amazing Programmers&#39; logo or brand illustration.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="the official logo for the league of amazing programmers, featuring five silhouetted figures in orange/red standing together with one holding a flag bearing a lightning bolt symbol. the organization name appears in bold black text below the figures."
+       data-flags="person_n,logo,illustration"
+       data-name="figures_text_boy.png">
+    <img class="thumb" src="../logos/figures_text_boy.png" alt="figures_text_boy.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/figures_text_boy.png" target="_blank">figures_text_boy.png</a></div>
+      <div class="desc">The official logo for The League of Amazing Programmers, featuring five silhouetted figures in orange/red standing together with one holding a flag bearing a lightning bolt symbol. The organization name appears in bold black text below the figures.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustrated orange flag with a white lightning bolt symbol on it, mounted on a dark teal flagpole against a vibrant yellow and orange radiating sunburst background. this is a stylized logo design with a comic book or energy-themed aesthetic."
+       data-flags="logo,illustration"
+       data-name="flag-sunburst.png">
+    <img class="thumb" src="../logos/flag-sunburst.png" alt="flag-sunburst.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/flag-sunburst.png" target="_blank">flag-sunburst.png</a></div>
+      <div class="desc">An illustrated orange flag with a white lightning bolt symbol on it, mounted on a dark teal flagpole against a vibrant yellow and orange radiating sunburst background. This is a stylized logo design with a comic book or energy-themed aesthetic.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an orange flag with a white lightning bolt symbol in the center. the flag has a dynamic, slightly wavy appearance and is mounted on a pole, conveying energy and movement. this is a stylized logo design for the league of amazing programmers."
+       data-flags="logo,illustration"
+       data-name="flag.png">
+    <img class="thumb" src="../logos/flag.png" alt="flag.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/flag.png" target="_blank">flag.png</a></div>
+      <div class="desc">An orange flag with a white lightning bolt symbol in the center. The flag has a dynamic, slightly wavy appearance and is mounted on a pole, conveying energy and movement. This is a stylized logo design for The League of Amazing Programmers.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="the official logo of the league of amazing programmers, featuring white silhouettes of five young people with raised fists and a flag, set against a bright orange banner-shaped background with the organization&#39;s name displayed in white text below."
+       data-flags="person_n,logo,illustration"
+       data-name="logo4.png">
+    <img class="thumb" src="../logos/logo4.png" alt="logo4.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo4.png" target="_blank">logo4.png</a></div>
+      <div class="desc">The official logo of The League of Amazing Programmers, featuring white silhouettes of five young people with raised fists and a flag, set against a bright orange banner-shaped background with the organization&#39;s name displayed in white text below.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="the official logo for the league of amazing programmers, featuring an orange silhouette of five diverse young people in dynamic poses with one holding a lightning bolt flag on the left, alongside the organization&#39;s name in bold orange text on the right."
+       data-flags="person_n,logo,illustration"
+       data-name="logo_jtl_horiz.png">
+    <img class="thumb" src="../logos/logo_JTL_horiz.png" alt="logo_JTL_horiz.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_JTL_horiz.png" target="_blank">logo_JTL_horiz.png</a></div>
+      <div class="desc">The official logo for The League of Amazing Programmers, featuring an orange silhouette of five diverse young people in dynamic poses with one holding a lightning bolt flag on the left, alongside the organization&#39;s name in bold orange text on the right.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="the official logo of the league of amazing programmers, featuring five silhouetted youth figures of varying heights standing together with one holding a flag bearing a lightning bolt symbol. the organization name appears in bold text below the figures."
+       data-flags="person_n,logo,illustration"
+       data-name="logo_black.png">
+    <img class="thumb" src="../logos/logo_black.png" alt="logo_black.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_black.png" target="_blank">logo_black.png</a></div>
+      <div class="desc">The official logo of The League of Amazing Programmers, featuring five silhouetted youth figures of varying heights standing together with one holding a flag bearing a lightning bolt symbol. The organization name appears in bold text below the figures.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="the official logo of the league of amazing programmers, featuring five orange silhouettes of young people in dynamic poses standing together with one holding a flag with a lightning bolt symbol, set against a black background with white text."
+       data-flags="person_n,logo,illustration"
+       data-name="logo_blackbg.jpg">
+    <img class="thumb" src="../logos/logo_blackbg.jpg" alt="logo_blackbg.jpg" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_blackbg.jpg" target="_blank">logo_blackbg.jpg</a></div>
+      <div class="desc">The official logo of The League of Amazing Programmers, featuring five orange silhouettes of young people in dynamic poses standing together with one holding a flag with a lightning bolt symbol, set against a black background with white text.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. the figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. this is a logo design for the league of amazing programmers, featuring the organization&#39;s signature orange color and dynamic imagery."
+       data-flags="person_1,logo,action,illustration"
+       data-name="logo_girl_flag.png">
+    <img class="thumb" src="../logos/logo_girl_flag.png" alt="logo_girl_flag.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_girl_flag.png" target="_blank">logo_girl_flag.png</a></div>
+      <div class="desc">An illustration of a silhouetted figure in orange holding a flag with a lightning bolt symbol. The figure is standing in a confident pose with one hand on their hip, representing empowerment and energy. This is a logo design for The League of Amazing Programmers, featuring the organization&#39;s signature orange color and dynamic imagery.</div>
+      <div class="tags">
+        
+        <span class="tag">person_1</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an illustration of five silhouetted youth in dynamic poses holding a flag with a lightning bolt symbol. the figures are rendered in bright orange/red and represent diverse ages and body types, embodying energy and unity. this graphic symbolizes empowerment and the mission of the league of amazing programmers."
+       data-flags="person_n,logo,action,illustration"
+       data-name="logo_square_1000.png">
+    <img class="thumb" src="../logos/logo_square_1000.png" alt="logo_square_1000.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_square_1000.png" target="_blank">logo_square_1000.png</a></div>
+      <div class="desc">An illustration of five silhouetted youth in dynamic poses holding a flag with a lightning bolt symbol. The figures are rendered in bright orange/red and represent diverse ages and body types, embodying energy and unity. This graphic symbolizes empowerment and the mission of The League of Amazing Programmers.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="the official logo of the league of amazing programmers, featuring white silhouettes of five young people holding a flag with a lightning bolt symbol on a bright orange background. the organization name is displayed in white text below the figures."
+       data-flags="person_n,logo,action,illustration"
+       data-name="logo_w_orangebg.png">
+    <img class="thumb" src="../logos/logo_w_orangebg.png" alt="logo_w_orangebg.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_w_orangebg.png" target="_blank">logo_w_orangebg.png</a></div>
+      <div class="desc">The official logo of The League of Amazing Programmers, featuring white silhouettes of five young people holding a flag with a lightning bolt symbol on a bright orange background. The organization name is displayed in white text below the figures.</div>
+      <div class="tags">
+        
+        <span class="tag">person_n</span>
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">action</span>
+        
+        <span class="tag">illustration</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="image-card"
+       data-desc="a blank or empty white/light gray image with no visible content, text, or design elements."
+       data-flags=""
+       data-name="logo_white.png">
+    <img class="thumb" src="../logos/logo_white.png" alt="logo_white.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/logo_white.png" target="_blank">logo_white.png</a></div>
+      <div class="desc">A blank or empty white/light gray image with no visible content, text, or design elements.</div>
+      <div class="tags">
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a circular badge logo for the league of amazing programmers&#39; 10th anniversary celebration in 2017. the design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;the league of amazing programmers&#39; and anniversary details around the outer edge."
+       data-flags="logo,robot,illustration,event"
+       data-name="t-shirt image final.png">
+    <img class="thumb" src="../logos/t-shirt image final.png" alt="t-shirt image final.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/t-shirt image final.png" target="_blank">t-shirt image final.png</a></div>
+      <div class="desc">A circular badge logo for The League of Amazing Programmers&#39; 10th Anniversary celebration in 2017. The design features a friendly robot mascot with an orange and black color scheme, centered within concentric circles of text that reads &#39;The League of Amazing Programmers&#39; and anniversary details around the outer edge.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+        <span class="tag">robot</span>
+        
+        <span class="tag">illustration</span>
+        
+        <span class="tag">event</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+  <div class="image-card"
+       data-desc="the logo for the league of amazing programmers, displaying the organization&#39;s name in bold orange text on a white background. the full name &#34;the league of amazing programmers&#34; is presented in a clean, modern sans-serif font."
+       data-flags="logo"
+       data-name="wordmark.png">
+    <img class="thumb" src="../logos/wordmark.png" alt="wordmark.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../logos/wordmark.png" target="_blank">wordmark.png</a></div>
+      <div class="desc">The logo for The League of Amazing Programmers, displaying the organization&#39;s name in bold orange text on a white background. The full name &#34;The LEAGUE of Amazing Programmers&#34; is presented in a clean, modern sans-serif font.</div>
+      <div class="tags">
+        
+        <span class="tag">logo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+</div>
+
+<script>
+const CATALOG_URL = 'data/catalog.json';
+let catalog = null;
+let activeFlags = new Set();
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch(CATALOG_URL);
+  catalog = await resp.json();
+  return catalog;
+}
+
+function renderCards(images) {
+  const grid = document.getElementById('image-grid');
+  if (!grid) return;
+
+  grid.innerHTML = images.map(img => {
+    const trueTags = Object.entries(img.flags || {})
+      .filter(([,v]) => v)
+      .map(([k]) => k);
+    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
+           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
+        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+        <div class="info">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <div class="desc">${img.description || ''}</div>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.image-card');
+  let shown = 0;
+
+  cards.forEach(card => {
+    const desc = card.dataset.desc || '';
+    const name = card.dataset.name || '';
+    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
+
+    let matchText = !query || desc.includes(query) || name.includes(query);
+    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
+
+    if (matchText && matchFlags) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const total = cards.length;
+  const counter = document.getElementById('result-count');
+  if (query || activeFlags.size > 0) {
+    counter.textContent = `${shown} / ${total}`;
+  } else {
+    counter.textContent = `${total} images`;
+  }
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+
+document.querySelectorAll('.flag-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const flag = btn.dataset.flag;
+    if (activeFlags.has(flag)) {
+      activeFlags.delete(flag);
+      btn.classList.remove('active');
+    } else {
+      activeFlags.add(flag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// Initialize count on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>

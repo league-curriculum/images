@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>motors - League Image Catalog</title>
+  <style>
+    :root {
+      --orange: #f26522;
+      --orange-light: #fff3eb;
+      --dark: #1a1a2e;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--dark);
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .sidebar h1 {
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .sidebar h2 {
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .sidebar a {
+      display: block;
+      padding: .35rem 1rem;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .15s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    .sidebar a.active {
+      border-left: 3px solid var(--orange);
+      padding-left: calc(1rem - 3px);
+    }
+    .sidebar .flag-btn {
+      display: inline-block;
+      padding: .2rem .5rem;
+      margin: .15rem .15rem .15rem 1rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      cursor: pointer;
+      background: rgba(255,255,255,.1);
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .sidebar .flag-btn:hover, .sidebar .flag-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Main area */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Search bar */
+    .search-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      padding: .75rem 1.5rem;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: .5rem .75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-bar input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242,101,34,.15);
+    }
+    .search-bar .result-count {
+      font-size: .8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* Content */
+    .content {
+      padding: 1.5rem;
+    }
+    .content h1 {
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+    }
+    .content .subtitle {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+    }
+
+    /* Image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .image-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--gray-100);
+      display: block;
+    }
+    .image-card .info {
+      padding: .75rem;
+    }
+    .image-card .name {
+      font-size: .8rem;
+      font-weight: 600;
+      word-break: break-all;
+      margin-bottom: .35rem;
+    }
+    .image-card .name a {
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .image-card .name a:hover {
+      color: var(--orange);
+    }
+    .image-card .desc {
+      font-size: .75rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .image-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+    .image-card .tag {
+      font-size: .65rem;
+      padding: .1rem .4rem;
+      border-radius: 3px;
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    /* Index page category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s;
+    }
+    .cat-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .cat-card h3 {
+      color: var(--orange);
+      margin-bottom: .35rem;
+    }
+    .cat-card p {
+      font-size: .85rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    .cat-card .count {
+      font-size: .8rem;
+      color: var(--gray-700);
+      margin-top: .5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h1>League Images</h1>
+
+  <h2>Categories</h2>
+  <a href="index.html" >All Categories</a>
+  
+  <a href="action.html" >
+    action (44)
+  </a>
+  
+  <a href="cards.html" >
+    cards (32)
+  </a>
+  
+  <a href="classes.html" >
+    classes (3)
+  </a>
+  
+  <a href="github.html" >
+    github (27)
+  </a>
+  
+  <a href="logos.html" >
+    logos (22)
+  </a>
+  
+  <a href="memes.html" >
+    memes (12)
+  </a>
+  
+  <a href="microbit.html" >
+    microbit (19)
+  </a>
+  
+  <a href="misc.html" >
+    misc (4)
+  </a>
+  
+  <a href="mkt.html" >
+    mkt (19)
+  </a>
+  
+  <a href="module-navigation.html" >
+    module-navigation (23)
+  </a>
+  
+  <a href="motors.html" class="active">
+    motors (12)
+  </a>
+  
+  <a href="p3logos.html" >
+    p3logos (1)
+  </a>
+  
+  <a href="python.html" >
+    python (13)
+  </a>
+  
+  <a href="robots.html" >
+    robots (3)
+  </a>
+  
+  <a href="stock.html" >
+    stock (26)
+  </a>
+  
+  <a href="vscode.html" >
+    vscode (18)
+  </a>
+  
+
+  <h2>Filter by Flag</h2>
+  <div style="padding: 0 0 1rem 0;">
+    
+    <span class="flag-btn" data-flag="action">action</span>
+    
+    <span class="flag-btn" data-flag="building">building</span>
+    
+    <span class="flag-btn" data-flag="duplicate">duplicate</span>
+    
+    <span class="flag-btn" data-flag="event">event</span>
+    
+    <span class="flag-btn" data-flag="group_photo">group_photo</span>
+    
+    <span class="flag-btn" data-flag="hardware">hardware</span>
+    
+    <span class="flag-btn" data-flag="illustration">illustration</span>
+    
+    <span class="flag-btn" data-flag="logo">logo</span>
+    
+    <span class="flag-btn" data-flag="outdoor">outdoor</span>
+    
+    <span class="flag-btn" data-flag="person_1">person_1</span>
+    
+    <span class="flag-btn" data-flag="person_n">person_n</span>
+    
+    <span class="flag-btn" data-flag="presentation">presentation</span>
+    
+    <span class="flag-btn" data-flag="product_photo">product_photo</span>
+    
+    <span class="flag-btn" data-flag="programming">programming</span>
+    
+    <span class="flag-btn" data-flag="robot">robot</span>
+    
+    <span class="flag-btn" data-flag="screenshot">screenshot</span>
+    
+    <span class="flag-btn" data-flag="stock">stock</span>
+    
+    <span class="flag-btn" data-flag="teaching">teaching</span>
+    
+  </div>
+</nav>
+
+<div class="main">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search image descriptions..." autocomplete="off">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="content">
+    
+<h1>motors</h1>
+<p class="subtitle">Images for the Motors clinic. These may be deprecated as content has been moved into the Motors website. &mdash; 12 images</p>
+
+<div class="image-grid" id="image-grid">
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="an oscilloscope display showing an electrical waveform measurement with voltage and frequency data. the screen displays a yellow square wave pattern with measurements including vmax (3.35v), vmin (0.02v), vave (1.65v), vrms (2.32v), vpp (3.37v), frequency (0.050khz), duty cycle (50.0%), and cycle time (20.000ms). this is a screenshot of oscilloscope software or hardware used for electronics analysis and measurement."
+       data-flags="screenshot,hardware"
+       data-name="50_duty_trace.png">
+    <img class="thumb" src="../motors/50_duty_trace.png" alt="50_duty_trace.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/50_duty_trace.png" target="_blank">50_duty_trace.png</a></div>
+      <div class="desc">An oscilloscope display showing an electrical waveform measurement with voltage and frequency data. The screen displays a yellow square wave pattern with measurements including Vmax (3.35V), Vmin (0.02V), Vave (1.65V), Vrms (2.32V), Vpp (3.37V), frequency (0.050kHz), duty cycle (50.0%), and cycle time (20.000ms). This is a screenshot of oscilloscope software or hardware used for electronics analysis and measurement.</div>
+      <div class="tags">
+        
+        <span class="tag">screenshot</span>
+        
+        <span class="tag">hardware</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a flat-lay product photograph showing various electronic components and hardware used in robotics or maker projects, including circuit boards, motors, servos, wiring harnesses, and control modules arranged neatly on a gray surface. this appears to be a kit or collection of parts for building motorized projects, typical of what the league of amazing programmers would use in their youth coding and robotics curriculum."
+       data-flags="hardware,product_photo"
+       data-name="box_contents.png">
+    <img class="thumb" src="../motors/box_contents.png" alt="box_contents.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/box_contents.png" target="_blank">box_contents.png</a></div>
+      <div class="desc">A flat-lay product photograph showing various electronic components and hardware used in robotics or maker projects, including circuit boards, motors, servos, wiring harnesses, and control modules arranged neatly on a gray surface. This appears to be a kit or collection of parts for building motorized projects, typical of what The League of Amazing Programmers would use in their youth coding and robotics curriculum.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a flat-lay product photo of various electronic components and hardware used for robotics and motor control projects, arranged neatly on a gray background. the collection includes servo motors, a microcontroller board, circuit boards, jumper wires, connectors, and other electrical components. this appears to be a kit or collection of parts for the league&#39;s motors clinic curriculum."
+       data-flags="hardware,product_photo"
+       data-name="box_contents_2.png">
+    <img class="thumb" src="../motors/box_contents_2.png" alt="box_contents_2.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/box_contents_2.png" target="_blank">box_contents_2.png</a></div>
+      <div class="desc">A flat-lay product photo of various electronic components and hardware used for robotics and motor control projects, arranged neatly on a gray background. The collection includes servo motors, a microcontroller board, circuit boards, jumper wires, connectors, and other electrical components. This appears to be a kit or collection of parts for The League&#39;s motors clinic curriculum.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a photograph of a keyestudio circuit board module with a cytronix 80p connector at the top. the black pcb board features various electronic components including resistors, capacitors, and connector pins arranged in rows (numbered 0-7 on the sides) with red and yellow terminal blocks. this appears to be a motor control or expansion board commonly used in educational robotics projects."
+       data-flags="hardware,product_photo"
+       data-name="breakout.png">
+    <img class="thumb" src="../motors/breakout.png" alt="breakout.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/breakout.png" target="_blank">breakout.png</a></div>
+      <div class="desc">A photograph of a Keyestudio circuit board module with a Cytronix 80P connector at the top. The black PCB board features various electronic components including resistors, capacitors, and connector pins arranged in rows (numbered 0-7 on the sides) with red and yellow terminal blocks. This appears to be a motor control or expansion board commonly used in educational robotics projects.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a dell laptop is connected via usb cable to a microcontroller board (appears to be a micro:bit or similar educational circuit board) with an led grid visible on top and colorful component headers below. the laptop screen displays what appears to be a programming interface or application. this setup demonstrates a typical hardware-software integration used in youth coding education."
+       data-flags="hardware,programming"
+       data-name="breakout_connect.png">
+    <img class="thumb" src="../motors/breakout_connect.png" alt="breakout_connect.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/breakout_connect.png" target="_blank">breakout_connect.png</a></div>
+      <div class="desc">A Dell laptop is connected via USB cable to a microcontroller board (appears to be a micro:bit or similar educational circuit board) with an LED grid visible on top and colorful component headers below. The laptop screen displays what appears to be a programming interface or application. This setup demonstrates a typical hardware-software integration used in youth coding education.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a close-up photograph of an electronic circuit board with green terminal blocks at the top, various resistors, capacitors, and integrated circuits on a blue pcb base, and connector pins at the bottom. this appears to be a motor control or driver module used in robotics projects."
+       data-flags="hardware,product_photo"
+       data-name="hbridge-top.png">
+    <img class="thumb" src="../motors/hbridge-top.png" alt="hbridge-top.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/hbridge-top.png" target="_blank">hbridge-top.png</a></div>
+      <div class="desc">A close-up photograph of an electronic circuit board with green terminal blocks at the top, various resistors, capacitors, and integrated circuits on a blue PCB base, and connector pins at the bottom. This appears to be a motor control or driver module used in robotics projects.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a blue microservo motor (labeled sg90) photographed against a white background with colored wires (red, yellow, brown) attached. this is a common small servo motor used in robotics and electronics projects, typical of components used in youth coding and hardware education."
+       data-flags="hardware,product_photo"
+       data-name="hobby_servo.png">
+    <img class="thumb" src="../motors/hobby_servo.png" alt="hobby_servo.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/hobby_servo.png" target="_blank">hobby_servo.png</a></div>
+      <div class="desc">A blue microservo motor (labeled SG90) photographed against a white background with colored wires (red, yellow, brown) attached. This is a common small servo motor used in robotics and electronics projects, typical of components used in youth coding and hardware education.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a flat-lay product photo of microcontroller hardware components arranged on a dark surface. the image shows a micro:bit board (top left), a battery pack with red and white wires (left), white usb cables, and a black usb cable connector (right). these are typical components used in educational coding and robotics projects."
+       data-flags="hardware,product_photo"
+       data-name="microbit_contents.png">
+    <img class="thumb" src="../motors/microbit_contents.png" alt="microbit_contents.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/microbit_contents.png" target="_blank">microbit_contents.png</a></div>
+      <div class="desc">A flat-lay product photo of microcontroller hardware components arranged on a dark surface. The image shows a micro:bit board (top left), a battery pack with red and white wires (left), white USB cables, and a black USB cable connector (right). These are typical components used in educational coding and robotics projects.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a dell laptop is connected to a microcontroller board (appears to be a micro:bit or similar educational circuit board) with usb cables. the board features colorful components including an led matrix display and is positioned on a dark surface next to the laptop. the laptop screen displays what appears to be a programming interface or application window."
+       data-flags="hardware,programming"
+       data-name="motor_setup.png">
+    <img class="thumb" src="../motors/motor_setup.png" alt="motor_setup.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/motor_setup.png" target="_blank">motor_setup.png</a></div>
+      <div class="desc">A Dell laptop is connected to a microcontroller board (appears to be a micro:bit or similar educational circuit board) with USB cables. The board features colorful components including an LED matrix display and is positioned on a dark surface next to the laptop. The laptop screen displays what appears to be a programming interface or application window.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">programming</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a flat-lay photograph of electronic testing and measurement equipment displayed on a gray surface. the kit includes an oscilloscope with a yellow-green rugged case and digital display, various probe cables with connectors, a soldering iron with stand, and test leads with alligator clips. this appears to be a typical electronics troubleshooting or repair kit used for measuring electrical signals and testing circuits."
+       data-flags="hardware,product_photo"
+       data-name="oscope.png">
+    <img class="thumb" src="../motors/oscope.png" alt="oscope.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/oscope.png" target="_blank">oscope.png</a></div>
+      <div class="desc">A flat-lay photograph of electronic testing and measurement equipment displayed on a gray surface. The kit includes an oscilloscope with a yellow-green rugged case and digital display, various probe cables with connectors, a soldering iron with stand, and test leads with alligator clips. This appears to be a typical electronics troubleshooting or repair kit used for measuring electrical signals and testing circuits.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a small electric motor with a gray metal cylindrical housing and a white plastic mounting bracket or base. the motor has a protruding shaft and appears to be a basic dc motor commonly used in educational robotics and electronics projects."
+       data-flags="hardware,product_photo"
+       data-name="small_dc_motor.png">
+    <img class="thumb" src="../motors/small_dc_motor.png" alt="small_dc_motor.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/small_dc_motor.png" target="_blank">small_dc_motor.png</a></div>
+      <div class="desc">A small electric motor with a gray metal cylindrical housing and a white plastic mounting bracket or base. The motor has a protruding shaft and appears to be a basic DC motor commonly used in educational robotics and electronics projects.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+  
+    
+  
+  <div class="image-card"
+       data-desc="a circuit board showing electronic components including a uln2003an motor driver ic chip, four resistors labeled r5-r8, a white connector block with positions a-b-c-d, and mounting holes. this appears to be a motor control circuit board commonly used in educational robotics projects."
+       data-flags="hardware,product_photo"
+       data-name="stepper-driver.png">
+    <img class="thumb" src="../motors/stepper-driver.png" alt="stepper-driver.png" loading="lazy">
+    <div class="info">
+      <div class="name"><a href="../motors/stepper-driver.png" target="_blank">stepper-driver.png</a></div>
+      <div class="desc">A circuit board showing electronic components including a ULN2003AN motor driver IC chip, four resistors labeled R5-R8, a white connector block with positions A-B-C-D, and mounting holes. This appears to be a motor control circuit board commonly used in educational robotics projects.</div>
+      <div class="tags">
+        
+        <span class="tag">hardware</span>
+        
+        <span class="tag">product_photo</span>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+</div>
+
+<script>
+const CATALOG_URL = 'data/catalog.json';
+let catalog = null;
+let activeFlags = new Set();
+
+async function loadCatalog() {
+  if (catalog) return catalog;
+  const resp = await fetch(CATALOG_URL);
+  catalog = await resp.json();
+  return catalog;
+}
+
+function renderCards(images) {
+  const grid = document.getElementById('image-grid');
+  if (!grid) return;
+
+  grid.innerHTML = images.map(img => {
+    const trueTags = Object.entries(img.flags || {})
+      .filter(([,v]) => v)
+      .map(([k]) => k);
+    const tagHtml = trueTags.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="image-card" data-desc="${(img.description || '').toLowerCase()}"
+           data-flags="${trueTags.join(',')}" data-name="${img.name.toLowerCase()}">
+        <img class="thumb" src="${img.path}" alt="${img.name}" loading="lazy">
+        <div class="info">
+          <div class="name"><a href="${img.path}" target="_blank">${img.name}</a></div>
+          <div class="desc">${img.description || ''}</div>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.image-card');
+  let shown = 0;
+
+  cards.forEach(card => {
+    const desc = card.dataset.desc || '';
+    const name = card.dataset.name || '';
+    const cardFlags = card.dataset.flags ? card.dataset.flags.split(',') : [];
+
+    let matchText = !query || desc.includes(query) || name.includes(query);
+    let matchFlags = activeFlags.size === 0 || [...activeFlags].every(f => cardFlags.includes(f));
+
+    if (matchText && matchFlags) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const total = cards.length;
+  const counter = document.getElementById('result-count');
+  if (query || activeFlags.size > 0) {
+    counter.textContent = `${shown} / ${total}`;
+  } else {
+    counter.textContent = `${total} images`;
+  }
+}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+
+document.querySelectorAll('.flag-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const flag = btn.dataset.flag;
+    if (activeFlags.has(flag)) {
+      activeFlags.delete(flag);
+      btn.classList.remove('active');
+    } else {
+      activeFlags.add(flag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// Initialize count on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.image-card');
+  const counter = document.getElementById('result-count');
+  if (counter && cards.length) {
+    counter.textContent = `${cards.length} images`;
+  }
+});
+</script>
+
+</body>
+</html>
