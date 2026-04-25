@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" >
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" >
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" >
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" >
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" >
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -1364,207 +1398,6 @@
 
   
 
-
-<div class="image-card"
-     data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
-     data-name="cbextension.png"
-     data-src="../microbit/cbextension.png"
-     data-url="https://images.jointheleague.org/microbit/cbextension.png"
-     data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
-     data-flags="logo,robot,hardware,illustration">
-  <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
-     data-name="cbtile.png"
-     data-src="../microbit/cbtile.png"
-     data-url="https://images.jointheleague.org/microbit/cbtile.png"
-     data-full-desc="A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
-     data-flags="logo,robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cbtile.png" alt="cbtile.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/cbtile.png" target="_blank">cbtile.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">product_photo</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. the image includes a label pointing to the switch mechanism at the bottom."
-     data-name="cutebot-top.png"
-     data-src="../microbit/cutebot-top.png"
-     data-url="https://images.jointheleague.org/microbit/cutebot-top.png"
-     data-full-desc="A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom."
-     data-flags="robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cutebot-top.png" alt="cutebot-top.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/cutebot-top.png" target="_blank">cutebot-top.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cutebot-top.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.</div>
-    <div class="tags">
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">product_photo</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. this is a complete educational robotics platform designed for youth programming and hardware projects."
-     data-name="cutebot.jpg"
-     data-src="../microbit/cutebot.jpg"
-     data-url="https://images.jointheleague.org/microbit/cutebot.jpg"
-     data-full-desc="A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects."
-     data-flags="robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cutebot.jpg" alt="cutebot.jpg" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/cutebot.jpg" target="_blank">cutebot.jpg</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cutebot.jpg" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.</div>
-    <div class="tags">
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">product_photo</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
-     data-name="mb_setup_2.png"
-     data-src="../microbit/mb_setup_2.png"
-     data-url="https://images.jointheleague.org/microbit/mb_setup_2.png"
-     data-full-desc="A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers."
-     data-flags="robot,hardware,illustration,programming,product_photo">
-  <img class="thumb" src="../microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
-    <div class="tags">
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">illustration</span>
-      
-      <span class="tag">programming</span>
-      
-      <span class="tag">product_photo</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-  
-
   
 
 
@@ -1608,19 +1441,220 @@
 
   
 
+  
+
+
+<div class="image-card"
+     data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-name="cbextension.png"
+     data-src="../old_classes/microbit/cbextension.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png"
+     data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-flags="logo,robot,hardware,illustration">
+  <img class="thumb" src="../old_classes/microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+     data-name="cbtile.png"
+     data-src="../old_classes/microbit/cbtile.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbtile.png"
+     data-full-desc="A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+     data-flags="logo,robot,hardware,product_photo">
+  <img class="thumb" src="../old_classes/microbit/cbtile.png" alt="cbtile.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/cbtile.png" target="_blank">cbtile.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. the image includes a label pointing to the switch mechanism at the bottom."
+     data-name="cutebot-top.png"
+     data-src="../old_classes/microbit/cutebot-top.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cutebot-top.png"
+     data-full-desc="A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../old_classes/microbit/cutebot-top.png" alt="cutebot-top.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/cutebot-top.png" target="_blank">cutebot-top.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cutebot-top.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. this is a complete educational robotics platform designed for youth programming and hardware projects."
+     data-name="cutebot.jpg"
+     data-src="../old_classes/microbit/cutebot.jpg"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cutebot.jpg"
+     data-full-desc="A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects."
+     data-flags="robot,hardware,product_photo">
+  <img class="thumb" src="../old_classes/microbit/cutebot.jpg" alt="cutebot.jpg" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/cutebot.jpg" target="_blank">cutebot.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cutebot.jpg" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
+     data-name="mb_setup_2.png"
+     data-src="../old_classes/microbit/mb_setup_2.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_2.png"
+     data-full-desc="A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers."
+     data-flags="robot,hardware,illustration,programming,product_photo">
+  <img class="thumb" src="../old_classes/microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
 
 <div class="image-card"
      data-desc="a screenshot of an ide (integrated development environment) showing java code from the league of amazing programmers. the left side displays the robotdemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas."
      data-name="red_square.png"
-     data-src="../module-navigation/red_square.png"
-     data-url="https://images.jointheleague.org/module-navigation/red_square.png"
+     data-src="../old_classes/module-navigation/red_square.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/red_square.png"
      data-full-desc="A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas."
      data-flags="screenshot,robot,programming">
-  <img class="thumb" src="../module-navigation/red_square.png" alt="red_square.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/red_square.png" alt="red_square.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/red_square.png" target="_blank">red_square.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/red_square.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/red_square.png" target="_blank">red_square.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/red_square.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas.</div>
     <div class="tags">
@@ -1649,15 +1683,15 @@
 <div class="image-card"
      data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
      data-name="leaguebot_bolt.gif"
-     data-src="../python/leaguebot_bolt.gif"
-     data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif"
+     data-src="../old_classes/python/leaguebot_bolt.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/leaguebot_bolt.gif"
      data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
      data-flags="robot,hardware,illustration">
-  <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
     <div class="tags">
@@ -1686,15 +1720,15 @@
 <div class="image-card"
      data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
      data-name="leaguebot_flag.gif"
-     data-src="../python/leaguebot_flag.gif"
-     data-url="https://images.jointheleague.org/python/leaguebot_flag.gif"
+     data-src="../old_classes/python/leaguebot_flag.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/leaguebot_flag.gif"
      data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
      data-flags="robot,hardware,illustration">
-  <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
     <div class="tags">
@@ -2200,10 +2234,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

@@ -31,14 +31,16 @@ def run_index(base: Path):
         autoescape=True,
     )
 
-    categories_list = [
-        {
+    def _entry(name, info):
+        return {
             'name': name,
             'description': info['description'],
             'count': info['image_count'],
         }
-        for name, info in sorted(catalog['categories'].items())
-    ]
+
+    sorted_cats = sorted(catalog['categories'].items())
+    categories_list = [_entry(n, i) for n, i in sorted_cats if not i.get('old')]
+    old_categories_list = [_entry(n, i) for n, i in sorted_cats if i.get('old')]
 
     flags = catalog.get('flags', [])
     all_images = catalog.get('images', [])
@@ -49,6 +51,7 @@ def run_index(base: Path):
 
     common = {
         'categories': categories_list,
+        'old_categories': old_categories_list,
         'flags': flags,
         'active_flag': None,
     }
@@ -65,8 +68,8 @@ def run_index(base: Path):
     (site / 'index.html').write_text(html)
     print(f"  Generated index.html ({len(all_images)} images)")
 
-    # Per-category pages
-    for cat in categories_list:
+    # Per-category pages (current + old; both are reachable from the sidebar)
+    for cat in categories_list + old_categories_list:
         cat_images = [img for img in all_images if img['category'] == cat['name']]
         tmpl = env.get_template('category.html')
         html = tmpl.render(
@@ -98,5 +101,5 @@ def run_index(base: Path):
         (site / f"flag-{flag}.html").write_text(html)
         print(f"  Generated flag-{flag}.html ({len(flag_images)} images)")
 
-    total_pages = 1 + len(categories_list) + len(flags)
+    total_pages = 1 + len(categories_list) + len(old_categories_list) + len(flags)
     print(f"\nGenerated {total_pages} HTML pages in {SITE_DIR}/")

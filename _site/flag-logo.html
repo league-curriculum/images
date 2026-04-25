@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" >
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" >
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" >
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" >
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" >
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -1517,154 +1551,6 @@
 
   
 
-  
-
-
-<div class="image-card"
-     data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
-     data-name="cbextension.png"
-     data-src="../microbit/cbextension.png"
-     data-url="https://images.jointheleague.org/microbit/cbextension.png"
-     data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
-     data-flags="logo,robot,hardware,illustration">
-  <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
-     data-name="cbtile.png"
-     data-src="../microbit/cbtile.png"
-     data-url="https://images.jointheleague.org/microbit/cbtile.png"
-     data-full-desc="A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
-     data-flags="logo,robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cbtile.png" alt="cbtile.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/cbtile.png" target="_blank">cbtile.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">product_photo</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a header or title graphic showing the word &#34;loops&#34; in green text alongside a green stylized &#39;c&#39; logo, appearing to be from microbit&#39;s makecode educational platform."
-     data-name="loops.png"
-     data-src="../microbit/loops.png"
-     data-url="https://images.jointheleague.org/microbit/loops.png"
-     data-full-desc="A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform."
-     data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../microbit/loops.png" alt="loops.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/loops.png" target="_blank">loops.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/loops.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="the micro:bit logo displayed on a blue background. the logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
-     data-name="microbit.png"
-     data-src="../microbit/microbit.png"
-     data-url="https://images.jointheleague.org/microbit/microbit.png"
-     data-full-desc="The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
-     data-flags="logo">
-  <img class="thumb" src="../microbit/microbit.png" alt="microbit.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/microbit.png" target="_blank">microbit.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/microbit.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
 
 <div class="image-card"
      data-desc="a user interface button or prompt displaying the github logo (octocat) alongside the text &#39;continue with github&#39;. this appears to be a login or authentication interface element commonly used on web applications and websites."
@@ -1790,19 +1676,167 @@
 
   
 
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-name="cbextension.png"
+     data-src="../old_classes/microbit/cbextension.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png"
+     data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
+     data-flags="logo,robot,hardware,illustration">
+  <img class="thumb" src="../old_classes/microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+     data-name="cbtile.png"
+     data-src="../old_classes/microbit/cbtile.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbtile.png"
+     data-full-desc="A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
+     data-flags="logo,robot,hardware,product_photo">
+  <img class="thumb" src="../old_classes/microbit/cbtile.png" alt="cbtile.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/cbtile.png" target="_blank">cbtile.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">product_photo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a header or title graphic showing the word &#34;loops&#34; in green text alongside a green stylized &#39;c&#39; logo, appearing to be from microbit&#39;s makecode educational platform."
+     data-name="loops.png"
+     data-src="../old_classes/microbit/loops.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/loops.png"
+     data-full-desc="A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform."
+     data-flags="screenshot,logo,programming">
+  <img class="thumb" src="../old_classes/microbit/loops.png" alt="loops.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/loops.png" target="_blank">loops.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/loops.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="the micro:bit logo displayed on a blue background. the logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
+     data-name="microbit.png"
+     data-src="../old_classes/microbit/microbit.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/microbit.png"
+     data-full-desc="The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
+     data-flags="logo">
+  <img class="thumb" src="../old_classes/microbit/microbit.png" alt="microbit.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/microbit.png" target="_blank">microbit.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/microbit.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
 
 <div class="image-card"
      data-desc="a navigation header displaying &#39;fork level0-module0&#39; with the github logo on a green background. this appears to be part of a web interface for a coding curriculum module."
      data-name="fork_button.png"
-     data-src="../module-navigation/fork_button.png"
-     data-url="https://images.jointheleague.org/module-navigation/fork_button.png"
+     data-src="../old_classes/module-navigation/fork_button.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/fork_button.png"
      data-full-desc="A navigation header displaying &#39;Fork Level0-Module0&#39; with the GitHub logo on a green background. This appears to be part of a web interface for a coding curriculum module."
      data-flags="screenshot,logo">
-  <img class="thumb" src="../module-navigation/fork_button.png" alt="fork_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/fork_button.png" alt="fork_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/fork_button.png" target="_blank">fork_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/fork_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/fork_button.png" target="_blank">fork_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/fork_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A navigation header displaying &#39;Fork Level0-Module0&#39; with the GitHub logo on a green background. This appears to be part of a web interface for a coding curriculum module.</div>
     <div class="tags">
@@ -1827,15 +1861,15 @@
 <div class="image-card"
      data-desc="a screenshot of the novnc interface showing a connection screen with the novnc logo in green and yellow text and a blue &#34;connect&#34; button. this appears to be a remote desktop/virtual machine connection interface, likely used for accessing codespaces motors development environments in the league&#39;s java curriculum."
      data-name="novnc.png"
-     data-src="../module-navigation/novnc.png"
-     data-url="https://images.jointheleague.org/module-navigation/novnc.png"
+     data-src="../old_classes/module-navigation/novnc.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/novnc.png"
      data-full-desc="A screenshot of the noVNC interface showing a connection screen with the noVNC logo in green and yellow text and a blue &#34;Connect&#34; button. This appears to be a remote desktop/virtual machine connection interface, likely used for accessing CodeSpaces Motors development environments in The League&#39;s Java curriculum."
      data-flags="screenshot,logo">
-  <img class="thumb" src="../module-navigation/novnc.png" alt="novnc.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/novnc.png" alt="novnc.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/novnc.png" target="_blank">novnc.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/novnc.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/novnc.png" target="_blank">novnc.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/novnc.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of the noVNC interface showing a connection screen with the noVNC logo in green and yellow text and a blue &#34;Connect&#34; button. This appears to be a remote desktop/virtual machine connection interface, likely used for accessing CodeSpaces Motors development environments in The League&#39;s Java curriculum.</div>
     <div class="tags">
@@ -1862,15 +1896,15 @@
 <div class="image-card"
      data-desc="a clickable button or banner with an orange background featuring the github logo and text &#34;open in codespaces&#34;. this is a navigation element for opening a coding project in github codespaces, commonly used in educational coding platforms."
      data-name="open_codespc.png"
-     data-src="../module-navigation/open_codespc.png"
-     data-url="https://images.jointheleague.org/module-navigation/open_codespc.png"
+     data-src="../old_classes/module-navigation/open_codespc.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/open_codespc.png"
      data-full-desc="A clickable button or banner with an orange background featuring the GitHub logo and text &#34;Open in Codespaces&#34;. This is a navigation element for opening a coding project in GitHub Codespaces, commonly used in educational coding platforms."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../module-navigation/open_codespc.png" alt="open_codespc.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/open_codespc.png" alt="open_codespc.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/open_codespc.png" target="_blank">open_codespc.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/open_codespc.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/open_codespc.png" target="_blank">open_codespc.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/open_codespc.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A clickable button or banner with an orange background featuring the GitHub logo and text &#34;Open in Codespaces&#34;. This is a navigation element for opening a coding project in GitHub Codespaces, commonly used in educational coding platforms.</div>
     <div class="tags">
@@ -1897,15 +1931,15 @@
 <div class="image-card"
      data-desc="a navigation button or link showing the github logo (octocat) in black alongside the text &#39;view source&#39; in orange. this appears to be a ui element for accessing source code, likely part of a coding curriculum interface."
      data-name="source_link.png"
-     data-src="../module-navigation/source_link.png"
-     data-url="https://images.jointheleague.org/module-navigation/source_link.png"
+     data-src="../old_classes/module-navigation/source_link.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/source_link.png"
      data-full-desc="A navigation button or link showing the GitHub logo (Octocat) in black alongside the text &#39;View Source&#39; in orange. This appears to be a UI element for accessing source code, likely part of a coding curriculum interface."
      data-flags="screenshot,logo">
-  <img class="thumb" src="../module-navigation/source_link.png" alt="source_link.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/source_link.png" alt="source_link.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/source_link.png" target="_blank">source_link.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/source_link.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/source_link.png" target="_blank">source_link.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/source_link.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A navigation button or link showing the GitHub logo (Octocat) in black alongside the text &#39;View Source&#39; in orange. This appears to be a UI element for accessing source code, likely part of a coding curriculum interface.</div>
     <div class="tags">
@@ -1932,15 +1966,15 @@
 <div class="image-card"
      data-desc="three horizontal button bars with github branding and action text. the left orange button says &#39;open in codespaces&#39;, the middle green button says &#39;fork level0-module0&#39;, and the right blue button says &#39;view level0-module0&#39;. these appear to be navigation/action buttons for a coding module interface."
      data-name="three_buttons.png"
-     data-src="../module-navigation/three_buttons.png"
-     data-url="https://images.jointheleague.org/module-navigation/three_buttons.png"
+     data-src="../old_classes/module-navigation/three_buttons.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/three_buttons.png"
      data-full-desc="Three horizontal button bars with GitHub branding and action text. The left orange button says &#39;Open in Codespaces&#39;, the middle green button says &#39;Fork Level0-Module0&#39;, and the right blue button says &#39;View Level0-Module0&#39;. These appear to be navigation/action buttons for a coding module interface."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../module-navigation/three_buttons.png" alt="three_buttons.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/three_buttons.png" alt="three_buttons.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/three_buttons.png" target="_blank">three_buttons.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/three_buttons.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/three_buttons.png" target="_blank">three_buttons.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/three_buttons.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">Three horizontal button bars with GitHub branding and action text. The left orange button says &#39;Open in Codespaces&#39;, the middle green button says &#39;Fork Level0-Module0&#39;, and the right blue button says &#39;View Level0-Module0&#39;. These appear to be navigation/action buttons for a coding module interface.</div>
     <div class="tags">
@@ -1969,15 +2003,15 @@
 <div class="image-card"
      data-desc="a navigation header showing the github logo alongside text that reads &#39;view level0-module0&#39;. this appears to be a clickable link or button for accessing a specific module in the league&#39;s java curriculum."
      data-name="view_button.png"
-     data-src="../module-navigation/view_button.png"
-     data-url="https://images.jointheleague.org/module-navigation/view_button.png"
+     data-src="../old_classes/module-navigation/view_button.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/view_button.png"
      data-full-desc="A navigation header showing the GitHub logo alongside text that reads &#39;View Level0-Module0&#39;. This appears to be a clickable link or button for accessing a specific module in The League&#39;s Java curriculum."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../module-navigation/view_button.png" alt="view_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/view_button.png" alt="view_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/view_button.png" target="_blank">view_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/view_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/view_button.png" target="_blank">view_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/view_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A navigation header showing the GitHub logo alongside text that reads &#39;View Level0-Module0&#39;. This appears to be a clickable link or button for accessing a specific module in The League&#39;s Java curriculum.</div>
     <div class="tags">
@@ -1987,6 +2021,43 @@
       <span class="tag">logo</span>
       
       <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-name="sanic_64.png"
+     data-src="../old_classes/python/sanic_64.png"
+     data-url="https://images.jointheleague.org/old_classes/python/sanic_64.png"
+     data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-flags="logo,action,illustration">
+  <img class="thumb" src="../old_classes/python/sanic_64.png" alt="sanic_64.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/sanic_64.png" target="_blank">sanic_64.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/sanic_64.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
       
     </div>
   </div>
@@ -2018,43 +2089,6 @@
     <div class="tags">
       
       <span class="tag">logo</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
-     data-name="sanic_64.png"
-     data-src="../python/sanic_64.png"
-     data-url="https://images.jointheleague.org/python/sanic_64.png"
-     data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
-     data-flags="logo,action,illustration">
-  <img class="thumb" src="../python/sanic_64.png" alt="sanic_64.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/sanic_64.png" target="_blank">sanic_64.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/sanic_64.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">action</span>
       
       <span class="tag">illustration</span>
       
@@ -2303,10 +2337,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

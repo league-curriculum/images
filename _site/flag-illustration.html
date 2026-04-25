@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" >
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" >
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" >
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" >
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" >
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -1902,6 +1936,35 @@
 
   
 
+
+<div class="image-card"
+     data-desc="a simple vector illustration showing a diagram of a vector or arrow with labeled components. the image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education."
+     data-name="vectors.png"
+     data-src="../misc/vectors.png"
+     data-url="https://images.jointheleague.org/misc/vectors.png"
+     data-full-desc="A simple vector illustration showing a diagram of a vector or arrow with labeled components. The image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education."
+     data-flags="illustration">
+  <img class="thumb" src="../misc/vectors.png" alt="vectors.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../misc/vectors.png" target="_blank">vectors.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/misc/vectors.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple vector illustration showing a diagram of a vector or arrow with labeled components. The image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
   
 
   
@@ -1910,15 +1973,15 @@
 <div class="image-card"
      data-desc="a magenta/purple banner displaying text &#34;button a is pressed&#34; with a small dropdown arrow icon, styled as a makecode block used in micro:bit programming. this is a visual representation of an event block from the makecode block-based coding interface."
      data-name="buttonapressed.png"
-     data-src="../microbit/buttonapressed.png"
-     data-url="https://images.jointheleague.org/microbit/buttonapressed.png"
+     data-src="../old_classes/microbit/buttonapressed.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/buttonapressed.png"
      data-full-desc="A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface."
      data-flags="screenshot,illustration,programming">
-  <img class="thumb" src="../microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.</div>
     <div class="tags">
@@ -1949,15 +2012,15 @@
 <div class="image-card"
      data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
      data-name="cbextension.png"
-     data-src="../microbit/cbextension.png"
-     data-url="https://images.jointheleague.org/microbit/cbextension.png"
+     data-src="../old_classes/microbit/cbextension.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png"
      data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
      data-flags="logo,robot,hardware,illustration">
-  <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/cbextension.png" alt="cbextension.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
     <div class="tags">
@@ -1984,15 +2047,15 @@
 <div class="image-card"
      data-desc="a simple white icon of a document or note with a pencil, displayed on an orange background. this appears to be a ui icon commonly used to represent editing, creating, or writing functionality."
      data-name="edit_button.png"
-     data-src="../microbit/edit_button.png"
-     data-url="https://images.jointheleague.org/microbit/edit_button.png"
+     data-src="../old_classes/microbit/edit_button.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/edit_button.png"
      data-full-desc="A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality."
      data-flags="illustration">
-  <img class="thumb" src="../microbit/edit_button.png" alt="edit_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/edit_button.png" alt="edit_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/edit_button.png" target="_blank">edit_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/edit_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/edit_button.png" target="_blank">edit_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/edit_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality.</div>
     <div class="tags">
@@ -2017,15 +2080,15 @@
 <div class="image-card"
      data-desc="a visual representation of a conditional programming block from makecode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. this is a screenshot of the block-based programming interface used for micro:bit coding."
      data-name="if.png"
-     data-src="../microbit/if.png"
-     data-url="https://images.jointheleague.org/microbit/if.png"
+     data-src="../old_classes/microbit/if.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/if.png"
      data-full-desc="A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding."
      data-flags="screenshot,illustration,programming">
-  <img class="thumb" src="../microbit/if.png" alt="if.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/if.png" alt="if.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/if.png" target="_blank">if.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/if.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/if.png" target="_blank">if.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/if.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.</div>
     <div class="tags">
@@ -2058,15 +2121,15 @@
 <div class="image-card"
      data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
      data-name="mb_setup_2.png"
-     data-src="../microbit/mb_setup_2.png"
-     data-url="https://images.jointheleague.org/microbit/mb_setup_2.png"
+     data-src="../old_classes/microbit/mb_setup_2.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_2.png"
      data-full-desc="A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers."
      data-flags="robot,hardware,illustration,programming,product_photo">
-  <img class="thumb" src="../microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
     <div class="tags">
@@ -2095,15 +2158,15 @@
 <div class="image-card"
      data-desc="a simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. this is a typical interface icon used to represent video playback or media controls."
      data-name="play_button.png"
-     data-src="../microbit/play_button.png"
-     data-url="https://images.jointheleague.org/microbit/play_button.png"
+     data-src="../old_classes/microbit/play_button.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/play_button.png"
      data-full-desc="A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls."
      data-flags="illustration">
-  <img class="thumb" src="../microbit/play_button.png" alt="play_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/play_button.png" alt="play_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/play_button.png" target="_blank">play_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/play_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/play_button.png" target="_blank">play_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/play_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls.</div>
     <div class="tags">
@@ -2128,15 +2191,15 @@
 <div class="image-card"
      data-desc="a product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. the card includes the title &#39;servo&#39;, subtitle &#39;a micro-servo library&#39;, and a &#39;learn more&#39; link."
      data-name="servo_library.png"
-     data-src="../microbit/servo_library.png"
-     data-url="https://images.jointheleague.org/microbit/servo_library.png"
+     data-src="../old_classes/microbit/servo_library.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/servo_library.png"
      data-full-desc="A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link."
      data-flags="hardware,illustration,product_photo">
-  <img class="thumb" src="../microbit/servo_library.png" alt="servo_library.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/servo_library.png" alt="servo_library.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/servo_library.png" target="_blank">servo_library.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/servo_library.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/servo_library.png" target="_blank">servo_library.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/servo_library.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link.</div>
     <div class="tags">
@@ -2159,46 +2222,17 @@
 
 
 <div class="image-card"
-     data-desc="a simple vector illustration showing a diagram of a vector or arrow with labeled components. the image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education."
-     data-name="vectors.png"
-     data-src="../misc/vectors.png"
-     data-url="https://images.jointheleague.org/misc/vectors.png"
-     data-full-desc="A simple vector illustration showing a diagram of a vector or arrow with labeled components. The image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education."
-     data-flags="illustration">
-  <img class="thumb" src="../misc/vectors.png" alt="vectors.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../misc/vectors.png" target="_blank">vectors.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/misc/vectors.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple vector illustration showing a diagram of a vector or arrow with labeled components. The image displays a blue arrow pointing to the upper right with labels for &#39;head&#39;, &#39;direction&#39;, &#39;tail&#39;, and &#39;magnitude&#39;, demonstrating the basic components of a vector used in physics or mathematics education.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
      data-desc="a simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. this appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum."
      data-name="files.png"
-     data-src="../module-navigation/files.png"
-     data-url="https://images.jointheleague.org/module-navigation/files.png"
+     data-src="../old_classes/module-navigation/files.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/files.png"
      data-full-desc="A simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. This appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum."
      data-flags="illustration">
-  <img class="thumb" src="../module-navigation/files.png" alt="files.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/files.png" alt="files.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/files.png" target="_blank">files.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/files.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/files.png" target="_blank">files.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/files.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. This appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum.</div>
     <div class="tags">
@@ -2221,15 +2255,15 @@
 <div class="image-card"
      data-desc="a set of four simple line icons displayed on a dark background, showing different device or layout representations. these appear to be ui navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts)."
      data-name="pane_config.png"
-     data-src="../module-navigation/pane_config.png"
-     data-url="https://images.jointheleague.org/module-navigation/pane_config.png"
+     data-src="../old_classes/module-navigation/pane_config.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/pane_config.png"
      data-full-desc="A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts)."
      data-flags="screenshot,illustration">
-  <img class="thumb" src="../module-navigation/pane_config.png" alt="pane_config.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/pane_config.png" alt="pane_config.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/pane_config.png" target="_blank">pane_config.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/pane_config.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/pane_config.png" target="_blank">pane_config.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/pane_config.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts).</div>
     <div class="tags">
@@ -2252,17 +2286,558 @@
 <div class="image-card"
      data-desc="a simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. the icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation."
      data-name="rundebug.png"
-     data-src="../module-navigation/rundebug.png"
-     data-url="https://images.jointheleague.org/module-navigation/rundebug.png"
+     data-src="../old_classes/module-navigation/rundebug.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/rundebug.png"
      data-full-desc="A simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. The icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation."
      data-flags="illustration">
-  <img class="thumb" src="../module-navigation/rundebug.png" alt="rundebug.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/rundebug.png" alt="rundebug.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/rundebug.png" target="_blank">rundebug.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/rundebug.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/rundebug.png" target="_blank">rundebug.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/rundebug.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. The icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-name="boy_yellow.gif"
+     data-src="../old_classes/python/boy_yellow.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/boy_yellow.gif"
+     data-full-desc="A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../old_classes/python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. this is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
+     data-name="emoji.png"
+     data-src="../old_classes/python/emoji.png"
+     data-url="https://images.jointheleague.org/old_classes/python/emoji.png"
+     data-full-desc="A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
+     data-flags="illustration,stock">
+  <img class="thumb" src="../old_classes/python/emoji.png" alt="emoji.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/emoji.png" target="_blank">emoji.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/emoji.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a 3d rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. this is a stylized cool/confident emoji illustration commonly used in digital contexts."
+     data-name="emoji2.png"
+     data-src="../old_classes/python/emoji2.png"
+     data-url="https://images.jointheleague.org/old_classes/python/emoji2.png"
+     data-full-desc="A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts."
+     data-flags="illustration,product_photo,duplicate,stock">
+  <img class="thumb" src="../old_classes/python/emoji2.png" alt="emoji2.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/emoji2.png" target="_blank">emoji2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/emoji2.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">product_photo</span>
+      
+      <span class="tag">duplicate</span>
+      
+      <span class="tag">stock</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. the character has a simple, retro video game aesthetic typical of early computer graphics. this type of illustration is commonly used in educational programming contexts."
+     data-name="girl_blue.gif"
+     data-src="../old_classes/python/girl_blue.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/girl_blue.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/girl_blue.gif" target="_blank">girl_blue.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/girl_blue.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-name="girl_red.gif"
+     data-src="../old_classes/python/girl_red.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/girl_red.gif"
+     data-full-desc="A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
+     data-flags="person_1,illustration">
+  <img class="thumb" src="../old_classes/python/girl_red.gif" alt="girl_red.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/girl_red.gif" target="_blank">girl_red.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/girl_red.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
+    <div class="tags">
+      
+      <span class="tag">person_1</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
+     data-name="leaguebot_bolt.gif"
+     data-src="../old_classes/python/leaguebot_bolt.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/leaguebot_bolt.gif"
+     data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../old_classes/python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-name="leaguebot_flag.gif"
+     data-src="../old_classes/python/leaguebot_flag.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/leaguebot_flag.gif"
+     data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
+     data-flags="robot,hardware,illustration">
+  <img class="thumb" src="../old_classes/python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
+    <div class="tags">
+      
+      <span class="tag">robot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple black silhouette illustration of a mustache on a white background. this is a minimalist vector graphic commonly used as a decorative or humorous icon."
+     data-name="moustache1.gif"
+     data-src="../old_classes/python/moustache1.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/moustache1.gif"
+     data-full-desc="A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/python/moustache1.gif" alt="moustache1.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/moustache1.gif" target="_blank">moustache1.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/moustache1.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple black silhouette illustration of a mustache with curved, upturned ends on both sides. this is a classic handlebar mustache design rendered as a minimalist vector graphic."
+     data-name="moustache2.gif"
+     data-src="../old_classes/python/moustache2.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/moustache2.gif"
+     data-full-desc="A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/python/moustache2.gif" alt="moustache2.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/moustache2.gif" target="_blank">moustache2.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/moustache2.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. this appears to be a stylized graphic, possibly representing a character or object used in python curriculum materials."
+     data-name="moustache3.gif"
+     data-src="../old_classes/python/moustache3.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/moustache3.gif"
+     data-full-desc="A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/python/moustache3.gif" alt="moustache3.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/moustache3.gif" target="_blank">moustache3.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/moustache3.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a pixel art illustration of pikachu, the famous pokémon character, shown in a classic 8-bit or retro video game style. the yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. this pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
+     data-name="pikachu.gif"
+     data-src="../old_classes/python/pikachu.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/pikachu.gif"
+     data-full-desc="A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/python/pikachu.gif" alt="pikachu.gif" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/pikachu.gif" target="_blank">pikachu.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/pikachu.gif" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-name="sanic_64.png"
+     data-src="../old_classes/python/sanic_64.png"
+     data-url="https://images.jointheleague.org/old_classes/python/sanic_64.png"
+     data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
+     data-flags="logo,action,illustration">
+  <img class="thumb" src="../old_classes/python/sanic_64.png" alt="sanic_64.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/python/sanic_64.png" target="_blank">sanic_64.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/sanic_64.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
+    <div class="tags">
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">action</span>
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in vs code to represent opening or navigating to a file."
+     data-name="browser_pane.png"
+     data-src="../old_classes/vscode/browser_pane.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/browser_pane.png"
+     data-full-desc="A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/vscode/browser_pane.png" alt="browser_pane.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/browser_pane.png" target="_blank">browser_pane.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/browser_pane.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing overlapping document or file pages, representing file management or code editor functionality in vs code."
+     data-name="explorer_icon.png"
+     data-src="../old_classes/vscode/explorer_icon.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/explorer_icon.png"
+     data-full-desc="A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/vscode/explorer_icon.png" alt="explorer_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/explorer_icon.png" target="_blank">explorer_icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/explorer_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. this appears to be a vs code interface icon representing debugging, extensions, or connection management features."
+     data-name="git_changes.png"
+     data-src="../old_classes/vscode/git_changes.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/git_changes.png"
+     data-full-desc="A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/vscode/git_changes.png" alt="git_changes.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/git_changes.png" target="_blank">git_changes.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/git_changes.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. this appears to be a vs code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the ide&#39;s debugging tools."
+     data-name="league_flag_icon.png"
+     data-src="../old_classes/vscode/league_flag_icon.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/league_flag_icon.png"
+     data-full-desc="A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/vscode/league_flag_icon.png" alt="league_flag_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/league_flag_icon.png" target="_blank">league_flag_icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/league_flag_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools.</div>
+    <div class="tags">
+      
+      <span class="tag">illustration</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
+     data-name="monitor_icon.png"
+     data-src="../old_classes/vscode/monitor_icon.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/monitor_icon.png"
+     data-full-desc="A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
+     data-flags="illustration">
+  <img class="thumb" src="../old_classes/vscode/monitor_icon.png" alt="monitor_icon.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/monitor_icon.png" target="_blank">monitor_icon.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/monitor_icon.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.</div>
     <div class="tags">
       
       <span class="tag">illustration</span>
@@ -2297,402 +2872,6 @@
     <div class="tags">
       
       <span class="tag">logo</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
-     data-name="boy_yellow.gif"
-     data-src="../python/boy_yellow.gif"
-     data-url="https://images.jointheleague.org/python/boy_yellow.gif"
-     data-full-desc="A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons."
-     data-flags="person_1,illustration">
-  <img class="thumb" src="../python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
-    <div class="tags">
-      
-      <span class="tag">person_1</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. this is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
-     data-name="emoji.png"
-     data-src="../python/emoji.png"
-     data-url="https://images.jointheleague.org/python/emoji.png"
-     data-full-desc="A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
-     data-flags="illustration,stock">
-  <img class="thumb" src="../python/emoji.png" alt="emoji.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/emoji.png" target="_blank">emoji.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-      <span class="tag">stock</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a 3d rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. this is a stylized cool/confident emoji illustration commonly used in digital contexts."
-     data-name="emoji2.png"
-     data-src="../python/emoji2.png"
-     data-url="https://images.jointheleague.org/python/emoji2.png"
-     data-full-desc="A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts."
-     data-flags="illustration,product_photo,duplicate,stock">
-  <img class="thumb" src="../python/emoji2.png" alt="emoji2.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/emoji2.png" target="_blank">emoji2.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji2.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-      <span class="tag">product_photo</span>
-      
-      <span class="tag">duplicate</span>
-      
-      <span class="tag">stock</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. the character has a simple, retro video game aesthetic typical of early computer graphics. this type of illustration is commonly used in educational programming contexts."
-     data-name="girl_blue.gif"
-     data-src="../python/girl_blue.gif"
-     data-url="https://images.jointheleague.org/python/girl_blue.gif"
-     data-full-desc="A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts."
-     data-flags="illustration">
-  <img class="thumb" src="../python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/girl_blue.gif" target="_blank">girl_blue.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_blue.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
-     data-name="girl_red.gif"
-     data-src="../python/girl_red.gif"
-     data-url="https://images.jointheleague.org/python/girl_red.gif"
-     data-full-desc="A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
-     data-flags="person_1,illustration">
-  <img class="thumb" src="../python/girl_red.gif" alt="girl_red.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/girl_red.gif" target="_blank">girl_red.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_red.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
-    <div class="tags">
-      
-      <span class="tag">person_1</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
-     data-name="leaguebot_bolt.gif"
-     data-src="../python/leaguebot_bolt.gif"
-     data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif"
-     data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
-     data-flags="robot,hardware,illustration">
-  <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
-    <div class="tags">
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
-     data-name="leaguebot_flag.gif"
-     data-src="../python/leaguebot_flag.gif"
-     data-url="https://images.jointheleague.org/python/leaguebot_flag.gif"
-     data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
-     data-flags="robot,hardware,illustration">
-  <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
-    <div class="tags">
-      
-      <span class="tag">robot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple black silhouette illustration of a mustache on a white background. this is a minimalist vector graphic commonly used as a decorative or humorous icon."
-     data-name="moustache1.gif"
-     data-src="../python/moustache1.gif"
-     data-url="https://images.jointheleague.org/python/moustache1.gif"
-     data-full-desc="A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon."
-     data-flags="illustration">
-  <img class="thumb" src="../python/moustache1.gif" alt="moustache1.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/moustache1.gif" target="_blank">moustache1.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache1.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple black silhouette illustration of a mustache with curved, upturned ends on both sides. this is a classic handlebar mustache design rendered as a minimalist vector graphic."
-     data-name="moustache2.gif"
-     data-src="../python/moustache2.gif"
-     data-url="https://images.jointheleague.org/python/moustache2.gif"
-     data-full-desc="A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic."
-     data-flags="illustration">
-  <img class="thumb" src="../python/moustache2.gif" alt="moustache2.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/moustache2.gif" target="_blank">moustache2.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache2.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. this appears to be a stylized graphic, possibly representing a character or object used in python curriculum materials."
-     data-name="moustache3.gif"
-     data-src="../python/moustache3.gif"
-     data-url="https://images.jointheleague.org/python/moustache3.gif"
-     data-full-desc="A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials."
-     data-flags="illustration">
-  <img class="thumb" src="../python/moustache3.gif" alt="moustache3.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/moustache3.gif" target="_blank">moustache3.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache3.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a pixel art illustration of pikachu, the famous pokémon character, shown in a classic 8-bit or retro video game style. the yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. this pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
-     data-name="pikachu.gif"
-     data-src="../python/pikachu.gif"
-     data-url="https://images.jointheleague.org/python/pikachu.gif"
-     data-full-desc="A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
-     data-flags="illustration">
-  <img class="thumb" src="../python/pikachu.gif" alt="pikachu.gif" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/pikachu.gif" target="_blank">pikachu.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/pikachu.gif" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
-     data-name="sanic_64.png"
-     data-src="../python/sanic_64.png"
-     data-url="https://images.jointheleague.org/python/sanic_64.png"
-     data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
-     data-flags="logo,action,illustration">
-  <img class="thumb" src="../python/sanic_64.png" alt="sanic_64.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../python/sanic_64.png" target="_blank">sanic_64.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/sanic_64.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
-    <div class="tags">
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">action</span>
       
       <span class="tag">illustration</span>
       
@@ -3070,151 +3249,6 @@
 </div>
 
   
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in vs code to represent opening or navigating to a file."
-     data-name="browser_pane.png"
-     data-src="../vscode/browser_pane.png"
-     data-url="https://images.jointheleague.org/vscode/browser_pane.png"
-     data-full-desc="A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file."
-     data-flags="illustration">
-  <img class="thumb" src="../vscode/browser_pane.png" alt="browser_pane.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/browser_pane.png" target="_blank">browser_pane.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/browser_pane.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple icon showing overlapping document or file pages, representing file management or code editor functionality in vs code."
-     data-name="explorer_icon.png"
-     data-src="../vscode/explorer_icon.png"
-     data-url="https://images.jointheleague.org/vscode/explorer_icon.png"
-     data-full-desc="A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code."
-     data-flags="illustration">
-  <img class="thumb" src="../vscode/explorer_icon.png" alt="explorer_icon.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/explorer_icon.png" target="_blank">explorer_icon.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/explorer_icon.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. this appears to be a vs code interface icon representing debugging, extensions, or connection management features."
-     data-name="git_changes.png"
-     data-src="../vscode/git_changes.png"
-     data-url="https://images.jointheleague.org/vscode/git_changes.png"
-     data-full-desc="A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features."
-     data-flags="illustration">
-  <img class="thumb" src="../vscode/git_changes.png" alt="git_changes.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/git_changes.png" target="_blank">git_changes.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/git_changes.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled &#39;3&#39; highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. this appears to be a vs code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the ide&#39;s debugging tools."
-     data-name="league_flag_icon.png"
-     data-src="../vscode/league_flag_icon.png"
-     data-url="https://images.jointheleague.org/vscode/league_flag_icon.png"
-     data-full-desc="A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools."
-     data-flags="illustration">
-  <img class="thumb" src="../vscode/league_flag_icon.png" alt="league_flag_icon.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/league_flag_icon.png" target="_blank">league_flag_icon.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/league_flag_icon.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE&#39;s debugging tools.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
-     data-name="monitor_icon.png"
-     data-src="../vscode/monitor_icon.png"
-     data-url="https://images.jointheleague.org/vscode/monitor_icon.png"
-     data-full-desc="A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features."
-     data-flags="illustration">
-  <img class="thumb" src="../vscode/monitor_icon.png" alt="monitor_icon.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/monitor_icon.png" target="_blank">monitor_icon.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/monitor_icon.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.</div>
-    <div class="tags">
-      
-      <span class="tag">illustration</span>
-      
-    </div>
-  </div>
-</div>
-
-  
 </div>
 
   </div>
@@ -3414,10 +3448,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

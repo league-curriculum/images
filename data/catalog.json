@@ -2,67 +2,83 @@
   "categories": {
     "action": {
       "description": "Action shots showing students engaged in activities, demonstrating that the League is fun and active.",
-      "image_count": 45
+      "image_count": 44,
+      "old": false
     },
     "cards": {
       "description": "Adornments for classes on the website. Fairly generic representations of a class or program.",
-      "image_count": 31
+      "image_count": 31,
+      "old": false
     },
     "classes": {
       "description": "Images specific to individual classes, not the whole category but particular courses.",
-      "image_count": 3
+      "image_count": 3,
+      "old": false
     },
     "github": {
       "description": "Screenshots for websites or instructions describing how to use GitHub. Many are images of particular features of the GitHub website.",
-      "image_count": 27
+      "image_count": 27,
+      "old": false
     },
     "logos": {
       "description": "Logos for The League. Use these anywhere logos are required.",
-      "image_count": 22
+      "image_count": 22,
+      "old": false
     },
     "memes": {
       "description": "Meme images used in class where students program overlaying text over images to make memes.",
-      "image_count": 12
-    },
-    "microbit": {
-      "description": "Images for websites, instructions, and classes describing how to use the micro:bit MakeCode site.",
-      "image_count": 19
+      "image_count": 12,
+      "old": false
     },
     "misc": {
       "description": "Miscellaneous images.",
-      "image_count": 4
+      "image_count": 4,
+      "old": false
     },
     "mkt": {
       "description": "Marketing photos. These tend to be vetted as most useful, so they are high quality and used frequently.",
-      "image_count": 19
+      "image_count": 19,
+      "old": false
+    },
+    "microbit": {
+      "description": "Images for websites, instructions, and classes describing how to use the micro:bit MakeCode site.",
+      "image_count": 19,
+      "old": true
     },
     "module-navigation": {
       "description": "Module navigation images for a particular class, specifically the Java curriculum using CodeSpaces Motors.",
-      "image_count": 23
+      "image_count": 23,
+      "old": true
     },
     "motors": {
       "description": "Images for the Motors clinic. These may be deprecated as content has been moved into the Motors website.",
-      "image_count": 12
-    },
-    "p3logos": {
-      "description": "Third-party partner logos (P3 = third party), such as GitHub, Facebook, or other organizations.",
-      "image_count": 1
+      "image_count": 12,
+      "old": true
     },
     "python": {
       "description": "Images used in the Python curriculum.",
-      "image_count": 13
-    },
-    "robots": {
-      "description": "Pictures of Cutebots, robots, and other kinds of robots. Use anytime robot pictures are needed.",
-      "image_count": 3
-    },
-    "stock": {
-      "description": "Stock photography.",
-      "image_count": 26
+      "image_count": 13,
+      "old": true
     },
     "vscode": {
       "description": "Small images of VS Code features for instructions on how to use VS Code.",
-      "image_count": 18
+      "image_count": 18,
+      "old": true
+    },
+    "p3logos": {
+      "description": "Third-party partner logos (P3 = third party), such as GitHub, Facebook, or other organizations.",
+      "image_count": 1,
+      "old": false
+    },
+    "robots": {
+      "description": "Pictures of Cutebots, robots, and other kinds of robots. Use anytime robot pictures are needed.",
+      "image_count": 3,
+      "old": false
+    },
+    "stock": {
+      "description": "Stock photography.",
+      "image_count": 26,
+      "old": false
     }
   },
   "images": [
@@ -1209,13 +1225,6 @@
         "outdoor": false,
         "event": false
       }
-    },
-    {
-      "name": "test_no_yaml.png",
-      "path": "action/test_no_yaml.png",
-      "category": "action",
-      "description": "",
-      "flags": {}
     },
     {
       "name": "SanMarcos.png",
@@ -3688,500 +3697,6 @@
       }
     },
     {
-      "name": "basic.png",
-      "path": "microbit/basic.png",
-      "category": "microbit",
-      "description": "A header or label showing the word 'Basic' in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "big_heart.png",
-      "path": "microbit/big_heart.png",
-      "category": "microbit",
-      "description": "This image shows a micro:bit LED display matrix with a simple pixel art design illuminated in pink/red. The glowing rectangular LED elements form a pattern on the black background, representing how the micro:bit's 5x5 LED grid can display custom graphics and patterns.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "buttonapressed.png",
-      "path": "microbit/buttonapressed.png",
-      "category": "microbit",
-      "description": "A magenta/purple banner displaying text \"button A is pressed\" with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "cbextension.png",
-      "path": "microbit/cbextension.png",
-      "category": "microbit",
-      "description": "A logo image displaying a stylized green robot or vehicle icon next to the text \"CuteBot\" in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": true,
-        "robot": true,
-        "hardware": true,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "cbtile.png",
-      "path": "microbit/cbtile.png",
-      "category": "microbit",
-      "description": "A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": true,
-        "robot": true,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "cutebot-top.png",
-      "path": "microbit/cutebot-top.png",
-      "category": "microbit",
-      "description": "A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": true,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "cutebot.jpg",
-      "path": "microbit/cutebot.jpg",
-      "category": "microbit",
-      "description": "A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": true,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "edit_button.png",
-      "path": "microbit/edit_button.png",
-      "category": "microbit",
-      "description": "A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "hardware.png",
-      "path": "microbit/hardware.png",
-      "category": "microbit",
-      "description": "A micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold LED matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. This is a product shot of the popular educational hardware used in coding education.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "if.png",
-      "path": "microbit/if.png",
-      "category": "microbit",
-      "description": "A visual representation of a conditional programming block from MakeCode, showing an 'if true then' statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "import_button.png",
-      "path": "microbit/import_button.png",
-      "category": "microbit",
-      "description": "A simple UI button or interface element showing an upload/import icon with an upward arrow and the text 'Import' next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "loops.png",
-      "path": "microbit/loops.png",
-      "category": "microbit",
-      "description": "A header or title graphic showing the word \"Loops\" in green text alongside a green stylized 'C' logo, appearing to be from MicroBit's MakeCode educational platform.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": true,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "mb_editor.png",
-      "path": "microbit/mb_editor.png",
-      "category": "microbit",
-      "description": "A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a 'forever' loop with 'show icon' blocks.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "mb_setup_1.png",
-      "path": "microbit/mb_setup_1.png",
-      "category": "microbit",
-      "description": "A product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. The image displays the micro:bit board, a battery pack, a USB cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": true,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "mb_setup_2.png",
-      "path": "microbit/mb_setup_2.png",
-      "category": "microbit",
-      "description": "A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": true,
-        "hardware": true,
-        "action": false,
-        "illustration": true,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "microbit.png",
-      "path": "microbit/microbit.png",
-      "category": "microbit",
-      "description": "The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text 'micro:bit' in white lettering to the right of the icon.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": true,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "play_button.png",
-      "path": "microbit/play_button.png",
-      "category": "microbit",
-      "description": "A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "servo_library.png",
-      "path": "microbit/servo_library.png",
-      "category": "microbit",
-      "description": "A product card for the 'servo' micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title 'servo', subtitle 'A micro-servo library', and a 'Learn More' link.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": true,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": true,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "sign_in.png",
-      "path": "microbit/sign_in.png",
-      "category": "microbit",
-      "description": "A sign-in button interface element with the text 'Sign In' accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
       "name": "codeserver-screen.png",
       "path": "misc/codeserver-screen.png",
       "category": "misc",
@@ -4780,8 +4295,502 @@
       }
     },
     {
+      "name": "basic.png",
+      "path": "old_classes/microbit/basic.png",
+      "category": "microbit",
+      "description": "A header or label showing the word 'Basic' in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "big_heart.png",
+      "path": "old_classes/microbit/big_heart.png",
+      "category": "microbit",
+      "description": "This image shows a micro:bit LED display matrix with a simple pixel art design illuminated in pink/red. The glowing rectangular LED elements form a pattern on the black background, representing how the micro:bit's 5x5 LED grid can display custom graphics and patterns.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "buttonapressed.png",
+      "path": "old_classes/microbit/buttonapressed.png",
+      "category": "microbit",
+      "description": "A magenta/purple banner displaying text \"button A is pressed\" with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "cbextension.png",
+      "path": "old_classes/microbit/cbextension.png",
+      "category": "microbit",
+      "description": "A logo image displaying a stylized green robot or vehicle icon next to the text \"CuteBot\" in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": true,
+        "robot": true,
+        "hardware": true,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "cbtile.png",
+      "path": "old_classes/microbit/cbtile.png",
+      "category": "microbit",
+      "description": "A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": true,
+        "robot": true,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "cutebot-top.png",
+      "path": "old_classes/microbit/cutebot-top.png",
+      "category": "microbit",
+      "description": "A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": true,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "cutebot.jpg",
+      "path": "old_classes/microbit/cutebot.jpg",
+      "category": "microbit",
+      "description": "A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": true,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "edit_button.png",
+      "path": "old_classes/microbit/edit_button.png",
+      "category": "microbit",
+      "description": "A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "hardware.png",
+      "path": "old_classes/microbit/hardware.png",
+      "category": "microbit",
+      "description": "A micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold LED matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. This is a product shot of the popular educational hardware used in coding education.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "if.png",
+      "path": "old_classes/microbit/if.png",
+      "category": "microbit",
+      "description": "A visual representation of a conditional programming block from MakeCode, showing an 'if true then' statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "import_button.png",
+      "path": "old_classes/microbit/import_button.png",
+      "category": "microbit",
+      "description": "A simple UI button or interface element showing an upload/import icon with an upward arrow and the text 'Import' next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "loops.png",
+      "path": "old_classes/microbit/loops.png",
+      "category": "microbit",
+      "description": "A header or title graphic showing the word \"Loops\" in green text alongside a green stylized 'C' logo, appearing to be from MicroBit's MakeCode educational platform.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": true,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "mb_editor.png",
+      "path": "old_classes/microbit/mb_editor.png",
+      "category": "microbit",
+      "description": "A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a 'forever' loop with 'show icon' blocks.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "mb_setup_1.png",
+      "path": "old_classes/microbit/mb_setup_1.png",
+      "category": "microbit",
+      "description": "A product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. The image displays the micro:bit board, a battery pack, a USB cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": true,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "mb_setup_2.png",
+      "path": "old_classes/microbit/mb_setup_2.png",
+      "category": "microbit",
+      "description": "A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": true,
+        "hardware": true,
+        "action": false,
+        "illustration": true,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "microbit.png",
+      "path": "old_classes/microbit/microbit.png",
+      "category": "microbit",
+      "description": "The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text 'micro:bit' in white lettering to the right of the icon.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": true,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "play_button.png",
+      "path": "old_classes/microbit/play_button.png",
+      "category": "microbit",
+      "description": "A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "servo_library.png",
+      "path": "old_classes/microbit/servo_library.png",
+      "category": "microbit",
+      "description": "A product card for the 'servo' micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title 'servo', subtitle 'A micro-servo library', and a 'Learn More' link.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": true,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": true,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "sign_in.png",
+      "path": "old_classes/microbit/sign_in.png",
+      "category": "microbit",
+      "description": "A sign-in button interface element with the text 'Sign In' accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
       "name": "active_codespace.png",
-      "path": "module-navigation/active_codespace.png",
+      "path": "old_classes/module-navigation/active_codespace.png",
       "category": "module-navigation",
       "description": "A screenshot of GitHub Codespaces interface showing cloud-based development workspaces. The interface displays tabs for 'Local' and 'Codespaces', with details about an active codespace named 'cautious space halibut' on the master branch with no changes.",
       "flags": {
@@ -4807,7 +4816,7 @@
     },
     {
       "name": "bottom_pane_menu.png",
-      "path": "module-navigation/bottom_pane_menu.png",
+      "path": "old_classes/module-navigation/bottom_pane_menu.png",
       "category": "module-navigation",
       "description": "A screenshot showing a navigation menu bar with multiple tabs including TERMINAL, PORTS, JUPYTER, PROBLEMS, OUTPUT, and DEBUG CONSOLE. The PORTS tab is highlighted with a blue underline and displays a notification badge with the number 5, indicating there are 5 active ports. This appears to be from a development environment interface.",
       "flags": {
@@ -4833,7 +4842,7 @@
     },
     {
       "name": "browser_window.png",
-      "path": "module-navigation/browser_window.png",
+      "path": "old_classes/module-navigation/browser_window.png",
       "category": "module-navigation",
       "description": "A screenshot of a Python development environment showing a coding editor on the left with file explorer displaying project structure, Python code in the center editor pane showing a test function with assertions and HTML display statements, and a browser preview on the right showing a noVNC interface with a Connect button. This appears to be a Codespaces development setup for a League of Amazing Programmers Python lesson.",
       "flags": {
@@ -4859,7 +4868,7 @@
     },
     {
       "name": "code_button.png",
-      "path": "module-navigation/code_button.png",
+      "path": "old_classes/module-navigation/code_button.png",
       "category": "module-navigation",
       "description": "A green button or navigation element featuring a code bracket icon and the word \"Code\" with a dropdown arrow, commonly used in programming interfaces and educational platforms.",
       "flags": {
@@ -4885,7 +4894,7 @@
     },
     {
       "name": "create_codespace.png",
-      "path": "module-navigation/create_codespace.png",
+      "path": "old_classes/module-navigation/create_codespace.png",
       "category": "module-navigation",
       "description": "A screenshot of GitHub Codespaces interface showing the Codespaces tab for a repository. The page displays 'No codespaces' with a message indicating no codespaces are currently checked out, along with a green button to 'Create codespace on master' and a link to learn more about codespaces.",
       "flags": {
@@ -4911,7 +4920,7 @@
     },
     {
       "name": "files.png",
-      "path": "module-navigation/files.png",
+      "path": "old_classes/module-navigation/files.png",
       "category": "module-navigation",
       "description": "A simple line-drawn icon showing overlapping document or window frames, rendered in gray on a light background. This appears to be a user interface icon, likely representing file management, window management, or a module navigation element for a coding curriculum.",
       "flags": {
@@ -4937,7 +4946,7 @@
     },
     {
       "name": "fork_button.png",
-      "path": "module-navigation/fork_button.png",
+      "path": "old_classes/module-navigation/fork_button.png",
       "category": "module-navigation",
       "description": "A navigation header displaying 'Fork Level0-Module0' with the GitHub logo on a green background. This appears to be part of a web interface for a coding curriculum module.",
       "flags": {
@@ -4963,7 +4972,7 @@
     },
     {
       "name": "l0-m0_repo.png",
-      "path": "module-navigation/l0-m0_repo.png",
+      "path": "old_classes/module-navigation/l0-m0_repo.png",
       "category": "module-navigation",
       "description": "A GitHub repository page showing the Level0-Module0 project from The League's Java curriculum. The screenshot displays the repository structure with various folders (.devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src) and configuration files, forked from League-Java/Level0-Module0. The page shows code repository management interface with branch information and project metadata.",
       "flags": {
@@ -4989,7 +4998,7 @@
     },
     {
       "name": "new_codespace_button.png",
-      "path": "module-navigation/new_codespace_button.png",
+      "path": "old_classes/module-navigation/new_codespace_button.png",
       "category": "module-navigation",
       "description": "A screenshot of GitHub Codespaces configuration interface for creating a new development environment. The form shows settings for a League of Amazing Programmers Java repository, including repository selection, branch, dev container configuration, region, and machine type options.",
       "flags": {
@@ -5015,7 +5024,7 @@
     },
     {
       "name": "novnc.png",
-      "path": "module-navigation/novnc.png",
+      "path": "old_classes/module-navigation/novnc.png",
       "category": "module-navigation",
       "description": "A screenshot of the noVNC interface showing a connection screen with the noVNC logo in green and yellow text and a blue \"Connect\" button. This appears to be a remote desktop/virtual machine connection interface, likely used for accessing CodeSpaces Motors development environments in The League's Java curriculum.",
       "flags": {
@@ -5041,7 +5050,7 @@
     },
     {
       "name": "open_codespc.png",
-      "path": "module-navigation/open_codespc.png",
+      "path": "old_classes/module-navigation/open_codespc.png",
       "category": "module-navigation",
       "description": "A clickable button or banner with an orange background featuring the GitHub logo and text \"Open in Codespaces\". This is a navigation element for opening a coding project in GitHub Codespaces, commonly used in educational coding platforms.",
       "flags": {
@@ -5067,7 +5076,7 @@
     },
     {
       "name": "pane_config.png",
-      "path": "module-navigation/pane_config.png",
+      "path": "old_classes/module-navigation/pane_config.png",
       "category": "module-navigation",
       "description": "A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts).",
       "flags": {
@@ -5093,7 +5102,7 @@
     },
     {
       "name": "ports.png",
-      "path": "module-navigation/ports.png",
+      "path": "old_classes/module-navigation/ports.png",
       "category": "module-navigation",
       "description": "A screenshot of a development environment's Ports tab showing two active port forwards (5901 and 6080) with their associated URLs, running processes, and an 'Open in Browser' button. This appears to be from VS Code or a similar IDE being used for running web applications.",
       "flags": {
@@ -5119,7 +5128,7 @@
     },
     {
       "name": "ports_pane.png",
-      "path": "module-navigation/ports_pane.png",
+      "path": "old_classes/module-navigation/ports_pane.png",
       "category": "module-navigation",
       "description": "A screenshot of a development environment's port forwarding configuration table showing two active ports (5901 and 6080) with their forwarded addresses, running processes, and visibility settings. The interface displays localhost addresses and Python/VNC processes typical of a coding development environment.",
       "flags": {
@@ -5145,7 +5154,7 @@
     },
     {
       "name": "red_square.png",
-      "path": "module-navigation/red_square.png",
+      "path": "old_classes/module-navigation/red_square.png",
       "category": "module-navigation",
       "description": "A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas.",
       "flags": {
@@ -5171,7 +5180,7 @@
     },
     {
       "name": "run_menu_closed.png",
-      "path": "module-navigation/run_menu_closed.png",
+      "path": "old_classes/module-navigation/run_menu_closed.png",
       "category": "module-navigation",
       "description": "A screenshot of a code editor or IDE interface showing a 'Run and Debug' button with a play icon on the left, and a dropdown menu labeled 'DragonFight' on the right. This appears to be part of a coding environment's module navigation interface.",
       "flags": {
@@ -5197,7 +5206,7 @@
     },
     {
       "name": "run_menu_open.png",
-      "path": "module-navigation/run_menu_open.png",
+      "path": "old_classes/module-navigation/run_menu_open.png",
       "category": "module-navigation",
       "description": "A screenshot of a development environment showing a run and debug configuration dropdown menu. The menu displays various project options like DragonfFight, FlamingNinjaStar, RobotDemo, and others, with DragonfFight currently selected. Below are debugging options for Node.js, Python, and CMake.",
       "flags": {
@@ -5223,7 +5232,7 @@
     },
     {
       "name": "rundebug.png",
-      "path": "module-navigation/rundebug.png",
+      "path": "old_classes/module-navigation/rundebug.png",
       "category": "module-navigation",
       "description": "A simple line icon showing a play button (triangle) pointing right with a gear or cog symbol overlapping it on the left side. The icon uses a minimalist design with black lines on a light gray background, suggesting a module or lesson related to coding mechanics or programming automation.",
       "flags": {
@@ -5249,7 +5258,7 @@
     },
     {
       "name": "source_link.png",
-      "path": "module-navigation/source_link.png",
+      "path": "old_classes/module-navigation/source_link.png",
       "category": "module-navigation",
       "description": "A navigation button or link showing the GitHub logo (Octocat) in black alongside the text 'View Source' in orange. This appears to be a UI element for accessing source code, likely part of a coding curriculum interface.",
       "flags": {
@@ -5275,7 +5284,7 @@
     },
     {
       "name": "three_buttons.png",
-      "path": "module-navigation/three_buttons.png",
+      "path": "old_classes/module-navigation/three_buttons.png",
       "category": "module-navigation",
       "description": "Three horizontal button bars with GitHub branding and action text. The left orange button says 'Open in Codespaces', the middle green button says 'Fork Level0-Module0', and the right blue button says 'View Level0-Module0'. These appear to be navigation/action buttons for a coding module interface.",
       "flags": {
@@ -5301,7 +5310,7 @@
     },
     {
       "name": "view_button.png",
-      "path": "module-navigation/view_button.png",
+      "path": "old_classes/module-navigation/view_button.png",
       "category": "module-navigation",
       "description": "A navigation header showing the GitHub logo alongside text that reads 'View Level0-Module0'. This appears to be a clickable link or button for accessing a specific module in The League's Java curriculum.",
       "flags": {
@@ -5327,7 +5336,7 @@
     },
     {
       "name": "vscode.png",
-      "path": "module-navigation/vscode.png",
+      "path": "old_classes/module-navigation/vscode.png",
       "category": "module-navigation",
       "description": "A screenshot of VS Code showing a README.md file for Level0-Module0, which is part of a coding curriculum. The file contains introductory instructions for students learning to draw shapes, control code flow, use dialogs, and build games. The left sidebar displays the project explorer with various files and folders, while a terminal window is visible at the bottom.",
       "flags": {
@@ -5353,7 +5362,7 @@
     },
     {
       "name": "vscode_marked.png",
-      "path": "module-navigation/vscode_marked.png",
+      "path": "old_classes/module-navigation/vscode_marked.png",
       "category": "module-navigation",
       "description": "A screenshot of VS Code showing a README.md file for Level0-Module0, which is an introductory coding workshop module. The file displays learning objectives including drawing shapes with Processing, controlling code flow, using strings and dialogs, and building simple games. The left sidebar shows the project file structure with folders like scripts, src, and images.",
       "flags": {
@@ -5379,7 +5388,7 @@
     },
     {
       "name": "50_duty_trace.png",
-      "path": "motors/50_duty_trace.png",
+      "path": "old_classes/motors/50_duty_trace.png",
       "category": "motors",
       "description": "An oscilloscope display showing an electrical waveform measurement with voltage and frequency data. The screen displays a yellow square wave pattern with measurements including Vmax (3.35V), Vmin (0.02V), Vave (1.65V), Vrms (2.32V), Vpp (3.37V), frequency (0.050kHz), duty cycle (50.0%), and cycle time (20.000ms). This is a screenshot of oscilloscope software or hardware used for electronics analysis and measurement.",
       "flags": {
@@ -5405,7 +5414,7 @@
     },
     {
       "name": "box_contents.png",
-      "path": "motors/box_contents.png",
+      "path": "old_classes/motors/box_contents.png",
       "category": "motors",
       "description": "A flat-lay product photograph showing various electronic components and hardware used in robotics or maker projects, including circuit boards, motors, servos, wiring harnesses, and control modules arranged neatly on a gray surface. This appears to be a kit or collection of parts for building motorized projects, typical of what The League of Amazing Programmers would use in their youth coding and robotics curriculum.",
       "flags": {
@@ -5431,7 +5440,7 @@
     },
     {
       "name": "box_contents_2.png",
-      "path": "motors/box_contents_2.png",
+      "path": "old_classes/motors/box_contents_2.png",
       "category": "motors",
       "description": "A flat-lay product photo of various electronic components and hardware used for robotics and motor control projects, arranged neatly on a gray background. The collection includes servo motors, a microcontroller board, circuit boards, jumper wires, connectors, and other electrical components. This appears to be a kit or collection of parts for The League's motors clinic curriculum.",
       "flags": {
@@ -5457,7 +5466,7 @@
     },
     {
       "name": "breakout.png",
-      "path": "motors/breakout.png",
+      "path": "old_classes/motors/breakout.png",
       "category": "motors",
       "description": "A photograph of a Keyestudio circuit board module with a Cytronix 80P connector at the top. The black PCB board features various electronic components including resistors, capacitors, and connector pins arranged in rows (numbered 0-7 on the sides) with red and yellow terminal blocks. This appears to be a motor control or expansion board commonly used in educational robotics projects.",
       "flags": {
@@ -5483,7 +5492,7 @@
     },
     {
       "name": "breakout_connect.png",
-      "path": "motors/breakout_connect.png",
+      "path": "old_classes/motors/breakout_connect.png",
       "category": "motors",
       "description": "A Dell laptop is connected via USB cable to a microcontroller board (appears to be a micro:bit or similar educational circuit board) with an LED grid visible on top and colorful component headers below. The laptop screen displays what appears to be a programming interface or application. This setup demonstrates a typical hardware-software integration used in youth coding education.",
       "flags": {
@@ -5509,7 +5518,7 @@
     },
     {
       "name": "hbridge-top.png",
-      "path": "motors/hbridge-top.png",
+      "path": "old_classes/motors/hbridge-top.png",
       "category": "motors",
       "description": "A close-up photograph of an electronic circuit board with green terminal blocks at the top, various resistors, capacitors, and integrated circuits on a blue PCB base, and connector pins at the bottom. This appears to be a motor control or driver module used in robotics projects.",
       "flags": {
@@ -5535,7 +5544,7 @@
     },
     {
       "name": "hobby_servo.png",
-      "path": "motors/hobby_servo.png",
+      "path": "old_classes/motors/hobby_servo.png",
       "category": "motors",
       "description": "A blue microservo motor (labeled SG90) photographed against a white background with colored wires (red, yellow, brown) attached. This is a common small servo motor used in robotics and electronics projects, typical of components used in youth coding and hardware education.",
       "flags": {
@@ -5561,7 +5570,7 @@
     },
     {
       "name": "microbit_contents.png",
-      "path": "motors/microbit_contents.png",
+      "path": "old_classes/motors/microbit_contents.png",
       "category": "motors",
       "description": "A flat-lay product photo of microcontroller hardware components arranged on a dark surface. The image shows a micro:bit board (top left), a battery pack with red and white wires (left), white USB cables, and a black USB cable connector (right). These are typical components used in educational coding and robotics projects.",
       "flags": {
@@ -5587,7 +5596,7 @@
     },
     {
       "name": "motor_setup.png",
-      "path": "motors/motor_setup.png",
+      "path": "old_classes/motors/motor_setup.png",
       "category": "motors",
       "description": "A Dell laptop is connected to a microcontroller board (appears to be a micro:bit or similar educational circuit board) with USB cables. The board features colorful components including an LED matrix display and is positioned on a dark surface next to the laptop. The laptop screen displays what appears to be a programming interface or application window.",
       "flags": {
@@ -5613,7 +5622,7 @@
     },
     {
       "name": "oscope.png",
-      "path": "motors/oscope.png",
+      "path": "old_classes/motors/oscope.png",
       "category": "motors",
       "description": "A flat-lay photograph of electronic testing and measurement equipment displayed on a gray surface. The kit includes an oscilloscope with a yellow-green rugged case and digital display, various probe cables with connectors, a soldering iron with stand, and test leads with alligator clips. This appears to be a typical electronics troubleshooting or repair kit used for measuring electrical signals and testing circuits.",
       "flags": {
@@ -5639,7 +5648,7 @@
     },
     {
       "name": "small_dc_motor.png",
-      "path": "motors/small_dc_motor.png",
+      "path": "old_classes/motors/small_dc_motor.png",
       "category": "motors",
       "description": "A small electric motor with a gray metal cylindrical housing and a white plastic mounting bracket or base. The motor has a protruding shaft and appears to be a basic DC motor commonly used in educational robotics and electronics projects.",
       "flags": {
@@ -5665,7 +5674,7 @@
     },
     {
       "name": "stepper-driver.png",
-      "path": "motors/stepper-driver.png",
+      "path": "old_classes/motors/stepper-driver.png",
       "category": "motors",
       "description": "A circuit board showing electronic components including a ULN2003AN motor driver IC chip, four resistors labeled R5-R8, a white connector block with positions A-B-C-D, and mounting holes. This appears to be a motor control circuit board commonly used in educational robotics projects.",
       "flags": {
@@ -5690,34 +5699,8 @@
       }
     },
     {
-      "name": "github-mark-white.png",
-      "path": "p3logos/github-mark-white.png",
-      "category": "p3logos",
-      "description": "A minimalist logo featuring a simple geometric design in light gray on a white background. The logo appears to be a stylized symbol or icon, likely representing a third-party partner or technology platform.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": true,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
       "name": "boy_yellow.gif",
-      "path": "python/boy_yellow.gif",
+      "path": "old_classes/python/boy_yellow.gif",
       "category": "python",
       "description": "A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.",
       "flags": {
@@ -5743,7 +5726,7 @@
     },
     {
       "name": "emoji.png",
-      "path": "python/emoji.png",
+      "path": "old_classes/python/emoji.png",
       "category": "python",
       "description": "A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.",
       "flags": {
@@ -5769,7 +5752,7 @@
     },
     {
       "name": "emoji2.png",
-      "path": "python/emoji2.png",
+      "path": "old_classes/python/emoji2.png",
       "category": "python",
       "description": "A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.",
       "flags": {
@@ -5795,7 +5778,7 @@
     },
     {
       "name": "girl_blue.gif",
-      "path": "python/girl_blue.gif",
+      "path": "old_classes/python/girl_blue.gif",
       "category": "python",
       "description": "A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.",
       "flags": {
@@ -5821,7 +5804,7 @@
     },
     {
       "name": "girl_red.gif",
-      "path": "python/girl_red.gif",
+      "path": "old_classes/python/girl_red.gif",
       "category": "python",
       "description": "A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.",
       "flags": {
@@ -5847,7 +5830,7 @@
     },
     {
       "name": "leaguebot_bolt.gif",
-      "path": "python/leaguebot_bolt.gif",
+      "path": "old_classes/python/leaguebot_bolt.gif",
       "category": "python",
       "description": "A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.",
       "flags": {
@@ -5873,7 +5856,7 @@
     },
     {
       "name": "leaguebot_flag.gif",
-      "path": "python/leaguebot_flag.gif",
+      "path": "old_classes/python/leaguebot_flag.gif",
       "category": "python",
       "description": "A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.",
       "flags": {
@@ -5899,7 +5882,7 @@
     },
     {
       "name": "moustache1.gif",
-      "path": "python/moustache1.gif",
+      "path": "old_classes/python/moustache1.gif",
       "category": "python",
       "description": "A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.",
       "flags": {
@@ -5925,7 +5908,7 @@
     },
     {
       "name": "moustache2.gif",
-      "path": "python/moustache2.gif",
+      "path": "old_classes/python/moustache2.gif",
       "category": "python",
       "description": "A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.",
       "flags": {
@@ -5951,7 +5934,7 @@
     },
     {
       "name": "moustache3.gif",
-      "path": "python/moustache3.gif",
+      "path": "old_classes/python/moustache3.gif",
       "category": "python",
       "description": "A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.",
       "flags": {
@@ -5977,7 +5960,7 @@
     },
     {
       "name": "pikachu.gif",
-      "path": "python/pikachu.gif",
+      "path": "old_classes/python/pikachu.gif",
       "category": "python",
       "description": "A pixel art illustration of Pikachu, the famous Pok\u00e9mon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.",
       "flags": {
@@ -6003,7 +5986,7 @@
     },
     {
       "name": "sanic_64.png",
-      "path": "python/sanic_64.png",
+      "path": "old_classes/python/sanic_64.png",
       "category": "python",
       "description": "A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.",
       "flags": {
@@ -6029,7 +6012,7 @@
     },
     {
       "name": "spiral.png",
-      "path": "python/spiral.png",
+      "path": "old_classes/python/spiral.png",
       "category": "python",
       "description": "A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows 'Python Turtle Graphics' and demonstrates the output of a turtle graphics script commonly used in introductory programming education.",
       "flags": {
@@ -6043,6 +6026,500 @@
         "action": false,
         "illustration": false,
         "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "browser_pane.png",
+      "path": "old_classes/vscode/browser_pane.png",
+      "category": "vscode",
+      "description": "A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "create_codespace.png",
+      "path": "old_classes/vscode/create_codespace.png",
+      "category": "vscode",
+      "description": "A green button or banner with white text that reads 'Create codespace on master'. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "create_codespace_sm.png",
+      "path": "old_classes/vscode/create_codespace_sm.png",
+      "category": "vscode",
+      "description": "A green button or label showing the text 'Create codespace on master', which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "debug_bar.png",
+      "path": "old_classes/vscode/debug_bar.png",
+      "category": "vscode",
+      "description": "A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "explorer_icon.png",
+      "path": "old_classes/vscode/explorer_icon.png",
+      "category": "vscode",
+      "description": "A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "git_changes.png",
+      "path": "old_classes/vscode/git_changes.png",
+      "category": "vscode",
+      "description": "A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled '3' highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "league_flag_icon.png",
+      "path": "old_classes/vscode/league_flag_icon.png",
+      "category": "vscode",
+      "description": "A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE's debugging tools.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "lesson-browser.png",
+      "path": "old_classes/vscode/lesson-browser.png",
+      "category": "vscode",
+      "description": "A screenshot of a user interface showing an 'ACTIONS' section with three buttons: a blue 'Next Lesson' button at the top, and two buttons below it - a green 'Run' button with a play icon and a red 'Stop' button. This appears to be from an educational coding platform's interface.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "monitor_icon.png",
+      "path": "old_classes/vscode/monitor_icon.png",
+      "category": "vscode",
+      "description": "A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "run_buttons.png",
+      "path": "old_classes/vscode/run_buttons.png",
+      "category": "vscode",
+      "description": "A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": false,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "run_cell.png",
+      "path": "old_classes/vscode/run_cell.png",
+      "category": "vscode",
+      "description": "A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today's date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "run_tina.png",
+      "path": "old_classes/vscode/run_tina.png",
+      "category": "vscode",
+      "description": "A screenshot of VS Code showing a Python programming lesson from The League's Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with 'Why, hello there!' text.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "sc_changes.png",
+      "path": "old_classes/vscode/sc_changes.png",
+      "category": "vscode",
+      "description": "A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue \"Commit\" button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "sc_edit_message.png",
+      "path": "old_classes/vscode/sc_edit_message.png",
+      "category": "vscode",
+      "description": "A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file 'lessons/00_Turtles/03c_Turtle_Tricks.py' is modified and ready to be committed.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "sc_sync.png",
+      "path": "old_classes/vscode/sc_sync.png",
+      "category": "vscode",
+      "description": "A screenshot of a VS Code interface element showing a blue header bar with white text that reads 'Sync Changes 1\u2191', indicating a synchronization feature with one pending change to upload.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "select_python.png",
+      "path": "old_classes/vscode/select_python.png",
+      "category": "vscode",
+      "description": "A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text \"Type to choose a kernel source\" and two options below: \"Python Environments...\" and \"Existing Jupyter Server...\"",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "select_venv.png",
+      "path": "old_classes/vscode/select_venv.png",
+      "category": "vscode",
+      "description": "A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "vscode_start.png",
+      "path": "old_classes/vscode/vscode_start.png",
+      "category": "vscode",
+      "description": "A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code's welcome screen with a dark theme.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": true,
+        "logo": false,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": false,
+        "programming": true,
+        "group_photo": false,
+        "product_photo": false,
+        "duplicate": false,
+        "stock": false,
+        "presentation": false,
+        "building": false,
+        "outdoor": false,
+        "event": false
+      }
+    },
+    {
+      "name": "github-mark-white.png",
+      "path": "p3logos/github-mark-white.png",
+      "category": "p3logos",
+      "description": "A minimalist logo featuring a simple geometric design in light gray on a white background. The logo appears to be a stylized symbol or icon, likely representing a third-party partner or technology platform.",
+      "flags": {
+        "person_1": false,
+        "person_n": false,
+        "teaching": false,
+        "screenshot": false,
+        "logo": true,
+        "robot": false,
+        "hardware": false,
+        "action": false,
+        "illustration": true,
+        "programming": false,
         "group_photo": false,
         "product_photo": false,
         "duplicate": false,
@@ -6801,474 +7278,6 @@
         "product_photo": false,
         "duplicate": false,
         "stock": true,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "browser_pane.png",
-      "path": "vscode/browser_pane.png",
-      "category": "vscode",
-      "description": "A simple icon showing a document or file with a folded corner and an arrow pointing to the right, commonly used in VS Code to represent opening or navigating to a file.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "create_codespace.png",
-      "path": "vscode/create_codespace.png",
-      "category": "vscode",
-      "description": "A green button or banner with white text that reads 'Create codespace on master'. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "create_codespace_sm.png",
-      "path": "vscode/create_codespace_sm.png",
-      "category": "vscode",
-      "description": "A green button or label showing the text 'Create codespace on master', which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "debug_bar.png",
-      "path": "vscode/debug_bar.png",
-      "category": "vscode",
-      "description": "A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "explorer_icon.png",
-      "path": "vscode/explorer_icon.png",
-      "category": "vscode",
-      "description": "A simple icon showing overlapping document or file pages, representing file management or code editor functionality in VS Code.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "git_changes.png",
-      "path": "vscode/git_changes.png",
-      "category": "vscode",
-      "description": "A simple icon showing a network or connection diagram with nodes (circles) connected by lines, with a blue circle labeled '3' highlighted in the lower right. This appears to be a VS Code interface icon representing debugging, extensions, or connection management features.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "league_flag_icon.png",
-      "path": "vscode/league_flag_icon.png",
-      "category": "vscode",
-      "description": "A simple illustration of a flag with a lightning bolt symbol on it, rendered in grayscale. This appears to be a VS Code interface icon or indicator, likely representing a breakpoint, debugging feature, or code execution flag used in the IDE's debugging tools.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "lesson-browser.png",
-      "path": "vscode/lesson-browser.png",
-      "category": "vscode",
-      "description": "A screenshot of a user interface showing an 'ACTIONS' section with three buttons: a blue 'Next Lesson' button at the top, and two buttons below it - a green 'Run' button with a play icon and a red 'Stop' button. This appears to be from an educational coding platform's interface.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "monitor_icon.png",
-      "path": "vscode/monitor_icon.png",
-      "category": "vscode",
-      "description": "A simple black and white icon of a desktop monitor or computer screen, commonly used in software interfaces to represent display settings or screen-related features.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": false,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": true,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "run_buttons.png",
-      "path": "vscode/run_buttons.png",
-      "category": "vscode",
-      "description": "A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": false,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "run_cell.png",
-      "path": "vscode/run_cell.png",
-      "category": "vscode",
-      "description": "A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today's date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "run_tina.png",
-      "path": "vscode/run_tina.png",
-      "category": "vscode",
-      "description": "A screenshot of VS Code showing a Python programming lesson from The League's Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with 'Why, hello there!' text.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "sc_changes.png",
-      "path": "vscode/sc_changes.png",
-      "category": "vscode",
-      "description": "A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue \"Commit\" button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "sc_edit_message.png",
-      "path": "vscode/sc_edit_message.png",
-      "category": "vscode",
-      "description": "A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file 'lessons/00_Turtles/03c_Turtle_Tricks.py' is modified and ready to be committed.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "sc_sync.png",
-      "path": "vscode/sc_sync.png",
-      "category": "vscode",
-      "description": "A screenshot of a VS Code interface element showing a blue header bar with white text that reads 'Sync Changes 1\u2191', indicating a synchronization feature with one pending change to upload.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "select_python.png",
-      "path": "vscode/select_python.png",
-      "category": "vscode",
-      "description": "A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text \"Type to choose a kernel source\" and two options below: \"Python Environments...\" and \"Existing Jupyter Server...\"",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "select_venv.png",
-      "path": "vscode/select_venv.png",
-      "category": "vscode",
-      "description": "A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
-        "presentation": false,
-        "building": false,
-        "outdoor": false,
-        "event": false
-      }
-    },
-    {
-      "name": "vscode_start.png",
-      "path": "vscode/vscode_start.png",
-      "category": "vscode",
-      "description": "A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code's welcome screen with a dark theme.",
-      "flags": {
-        "person_1": false,
-        "person_n": false,
-        "teaching": false,
-        "screenshot": true,
-        "logo": false,
-        "robot": false,
-        "hardware": false,
-        "action": false,
-        "illustration": false,
-        "programming": true,
-        "group_photo": false,
-        "product_photo": false,
-        "duplicate": false,
-        "stock": false,
         "presentation": false,
         "building": false,
         "outdoor": false,

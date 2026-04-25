@@ -4,7 +4,7 @@ import json
 import yaml
 from pathlib import Path
 
-SKIP_DIRS = {'.git', '.venv', '__pycache__', 'data', 'scripts', 'templates', 'node_modules'}
+SKIP_DIRS = {'.git', '.venv', '__pycache__', 'data', 'scripts', 'templates', 'node_modules', 'old_classes'}
 IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
 
 

@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" >
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" >
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" >
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" >
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" >
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -762,10 +796,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

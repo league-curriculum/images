@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" >
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" class="active">
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" open>
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" >
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" class="active">
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -471,15 +505,15 @@
 <div class="image-card"
      data-desc="a pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. this is a simple, retro-style sprite graphic typical of beginner programming lessons."
      data-name="boy_yellow.gif"
-     data-src="../python/boy_yellow.gif"
-     data-url="https://images.jointheleague.org/python/boy_yellow.gif"
+     data-src="../old_classes/python/boy_yellow.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/boy_yellow.gif"
      data-full-desc="A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons."
      data-flags="person_1,illustration">
-  <img class="thumb" src="../python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/boy_yellow.gif" alt="boy_yellow.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/boy_yellow.gif" target="_blank">boy_yellow.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/boy_yellow.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A pixel art style illustration of a simple character with a yellow round head and body wearing what appears to be a brown or orange outfit. This is a simple, retro-style sprite graphic typical of beginner programming lessons.</div>
     <div class="tags">
@@ -504,15 +538,15 @@
 <div class="image-card"
      data-desc="a thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. this is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
      data-name="emoji.png"
-     data-src="../python/emoji.png"
-     data-url="https://images.jointheleague.org/python/emoji.png"
+     data-src="../old_classes/python/emoji.png"
+     data-url="https://images.jointheleague.org/old_classes/python/emoji.png"
      data-full-desc="A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving."
      data-flags="illustration,stock">
-  <img class="thumb" src="../python/emoji.png" alt="emoji.png" loading="lazy">
+  <img class="thumb" src="../old_classes/python/emoji.png" alt="emoji.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/emoji.png" target="_blank">emoji.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/emoji.png" target="_blank">emoji.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/emoji.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A thinking face emoji with a hand gesture touching its chin, expressing thoughtfulness or contemplation. This is a standard emoji illustration commonly used to represent confusion, consideration, or problem-solving.</div>
     <div class="tags">
@@ -541,15 +575,15 @@
 <div class="image-card"
      data-desc="a 3d rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. this is a stylized cool/confident emoji illustration commonly used in digital contexts."
      data-name="emoji2.png"
-     data-src="../python/emoji2.png"
-     data-url="https://images.jointheleague.org/python/emoji2.png"
+     data-src="../old_classes/python/emoji2.png"
+     data-url="https://images.jointheleague.org/old_classes/python/emoji2.png"
      data-full-desc="A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts."
      data-flags="illustration,product_photo,duplicate,stock">
-  <img class="thumb" src="../python/emoji2.png" alt="emoji2.png" loading="lazy">
+  <img class="thumb" src="../old_classes/python/emoji2.png" alt="emoji2.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/emoji2.png" target="_blank">emoji2.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/emoji2.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/emoji2.png" target="_blank">emoji2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/emoji2.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A 3D rendered emoji character with a yellow-to-orange gradient sphere displaying a smiling face wearing black sunglasses. This is a stylized cool/confident emoji illustration commonly used in digital contexts.</div>
     <div class="tags">
@@ -576,15 +610,15 @@
 <div class="image-card"
      data-desc="a pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. the character has a simple, retro video game aesthetic typical of early computer graphics. this type of illustration is commonly used in educational programming contexts."
      data-name="girl_blue.gif"
-     data-src="../python/girl_blue.gif"
-     data-url="https://images.jointheleague.org/python/girl_blue.gif"
+     data-src="../old_classes/python/girl_blue.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/girl_blue.gif"
      data-full-desc="A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts."
      data-flags="illustration">
-  <img class="thumb" src="../python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/girl_blue.gif" alt="girl_blue.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/girl_blue.gif" target="_blank">girl_blue.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_blue.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/girl_blue.gif" target="_blank">girl_blue.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/girl_blue.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A pixel art style illustration of a yellow character with a round head wearing what appears to be a red outfit. The character has a simple, retro video game aesthetic typical of early computer graphics. This type of illustration is commonly used in educational programming contexts.</div>
     <div class="tags">
@@ -607,15 +641,15 @@
 <div class="image-card"
      data-desc="a pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. this is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
      data-name="girl_red.gif"
-     data-src="../python/girl_red.gif"
-     data-url="https://images.jointheleague.org/python/girl_red.gif"
+     data-src="../old_classes/python/girl_red.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/girl_red.gif"
      data-full-desc="A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials."
      data-flags="person_1,illustration">
-  <img class="thumb" src="../python/girl_red.gif" alt="girl_red.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/girl_red.gif" alt="girl_red.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/girl_red.gif" target="_blank">girl_red.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/girl_red.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/girl_red.gif" target="_blank">girl_red.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/girl_red.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A pixel art style illustration of a yellow character with a round head and simple features, wearing what appears to be red clothing. This is a classic retro-style sprite graphic, likely used as an icon or mascot in educational programming materials.</div>
     <div class="tags">
@@ -642,15 +676,15 @@
 <div class="image-card"
      data-desc="a vector illustration of a simple robot with a gray body, white panels, and orange accents. the robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. this appears to be a stylized mascot or icon design."
      data-name="leaguebot_bolt.gif"
-     data-src="../python/leaguebot_bolt.gif"
-     data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif"
+     data-src="../old_classes/python/leaguebot_bolt.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/leaguebot_bolt.gif"
      data-full-desc="A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design."
      data-flags="robot,hardware,illustration">
-  <img class="thumb" src="../python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/leaguebot_bolt.gif" alt="leaguebot_bolt.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/leaguebot_bolt.gif" target="_blank">leaguebot_bolt.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/leaguebot_bolt.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A vector illustration of a simple robot with a gray body, white panels, and orange accents. The robot has two orange circular eyes on its head and an orange lightning bolt symbol on its chest, suggesting energy or power. This appears to be a stylized mascot or icon design.</div>
     <div class="tags">
@@ -679,15 +713,15 @@
 <div class="image-card"
      data-desc="a simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. the robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
      data-name="leaguebot_flag.gif"
-     data-src="../python/leaguebot_flag.gif"
-     data-url="https://images.jointheleague.org/python/leaguebot_flag.gif"
+     data-src="../old_classes/python/leaguebot_flag.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/leaguebot_flag.gif"
      data-full-desc="A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes."
      data-flags="robot,hardware,illustration">
-  <img class="thumb" src="../python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/leaguebot_flag.gif" alt="leaguebot_flag.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/leaguebot_flag.gif" target="_blank">leaguebot_flag.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/leaguebot_flag.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple vector illustration of a cartoon robot with a gray body, orange circular eyes, and an orange flag with a lightning bolt symbol on its chest. The robot is drawn in a minimalist style with clean lines and geometric shapes, suitable for educational or branding purposes.</div>
     <div class="tags">
@@ -712,15 +746,15 @@
 <div class="image-card"
      data-desc="a simple black silhouette illustration of a mustache on a white background. this is a minimalist vector graphic commonly used as a decorative or humorous icon."
      data-name="moustache1.gif"
-     data-src="../python/moustache1.gif"
-     data-url="https://images.jointheleague.org/python/moustache1.gif"
+     data-src="../old_classes/python/moustache1.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/moustache1.gif"
      data-full-desc="A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon."
      data-flags="illustration">
-  <img class="thumb" src="../python/moustache1.gif" alt="moustache1.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/moustache1.gif" alt="moustache1.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/moustache1.gif" target="_blank">moustache1.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache1.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/moustache1.gif" target="_blank">moustache1.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/moustache1.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple black silhouette illustration of a mustache on a white background. This is a minimalist vector graphic commonly used as a decorative or humorous icon.</div>
     <div class="tags">
@@ -741,15 +775,15 @@
 <div class="image-card"
      data-desc="a simple black silhouette illustration of a mustache with curved, upturned ends on both sides. this is a classic handlebar mustache design rendered as a minimalist vector graphic."
      data-name="moustache2.gif"
-     data-src="../python/moustache2.gif"
-     data-url="https://images.jointheleague.org/python/moustache2.gif"
+     data-src="../old_classes/python/moustache2.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/moustache2.gif"
      data-full-desc="A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic."
      data-flags="illustration">
-  <img class="thumb" src="../python/moustache2.gif" alt="moustache2.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/moustache2.gif" alt="moustache2.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/moustache2.gif" target="_blank">moustache2.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache2.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/moustache2.gif" target="_blank">moustache2.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/moustache2.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple black silhouette illustration of a mustache with curved, upturned ends on both sides. This is a classic handlebar mustache design rendered as a minimalist vector graphic.</div>
     <div class="tags">
@@ -770,15 +804,15 @@
 <div class="image-card"
      data-desc="a black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. this appears to be a stylized graphic, possibly representing a character or object used in python curriculum materials."
      data-name="moustache3.gif"
-     data-src="../python/moustache3.gif"
-     data-url="https://images.jointheleague.org/python/moustache3.gif"
+     data-src="../old_classes/python/moustache3.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/moustache3.gif"
      data-full-desc="A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials."
      data-flags="illustration">
-  <img class="thumb" src="../python/moustache3.gif" alt="moustache3.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/moustache3.gif" alt="moustache3.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/moustache3.gif" target="_blank">moustache3.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/moustache3.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/moustache3.gif" target="_blank">moustache3.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/moustache3.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A black silhouette illustration of a simple, rounded dome-like or umbrella-like shape with hair-like strands hanging down from the top. This appears to be a stylized graphic, possibly representing a character or object used in Python curriculum materials.</div>
     <div class="tags">
@@ -799,15 +833,15 @@
 <div class="image-card"
      data-desc="a pixel art illustration of pikachu, the famous pokémon character, shown in a classic 8-bit or retro video game style. the yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. this pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
      data-name="pikachu.gif"
-     data-src="../python/pikachu.gif"
-     data-url="https://images.jointheleague.org/python/pikachu.gif"
+     data-src="../old_classes/python/pikachu.gif"
+     data-url="https://images.jointheleague.org/old_classes/python/pikachu.gif"
      data-full-desc="A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts."
      data-flags="illustration">
-  <img class="thumb" src="../python/pikachu.gif" alt="pikachu.gif" loading="lazy">
+  <img class="thumb" src="../old_classes/python/pikachu.gif" alt="pikachu.gif" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/pikachu.gif" target="_blank">pikachu.gif</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/pikachu.gif" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/pikachu.gif" target="_blank">pikachu.gif</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/pikachu.gif" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A pixel art illustration of Pikachu, the famous Pokémon character, shown in a classic 8-bit or retro video game style. The yellow electric-type creature is depicted with its characteristic red cheeks, pointed ears, and lightning bolt tail. This pixelated artwork style is commonly used in educational programming contexts to teach coding concepts.</div>
     <div class="tags">
@@ -832,15 +866,15 @@
 <div class="image-card"
      data-desc="a blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. the simple, stylized illustration appears to be a playful character design suitable for educational content."
      data-name="sanic_64.png"
-     data-src="../python/sanic_64.png"
-     data-url="https://images.jointheleague.org/python/sanic_64.png"
+     data-src="../old_classes/python/sanic_64.png"
+     data-url="https://images.jointheleague.org/old_classes/python/sanic_64.png"
      data-full-desc="A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content."
      data-flags="logo,action,illustration">
-  <img class="thumb" src="../python/sanic_64.png" alt="sanic_64.png" loading="lazy">
+  <img class="thumb" src="../old_classes/python/sanic_64.png" alt="sanic_64.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/sanic_64.png" target="_blank">sanic_64.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/sanic_64.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/sanic_64.png" target="_blank">sanic_64.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/sanic_64.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A blue cartoon character or mascot with a round body, running or moving dynamically with red feet/shoes. The simple, stylized illustration appears to be a playful character design suitable for educational content.</div>
     <div class="tags">
@@ -867,15 +901,15 @@
 <div class="image-card"
      data-desc="a screenshot of a python turtle graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. the window title shows &#39;python turtle graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
      data-name="spiral.png"
-     data-src="../python/spiral.png"
-     data-url="https://images.jointheleague.org/python/spiral.png"
+     data-src="../old_classes/python/spiral.png"
+     data-url="https://images.jointheleague.org/old_classes/python/spiral.png"
      data-full-desc="A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../python/spiral.png" alt="spiral.png" loading="lazy">
+  <img class="thumb" src="../old_classes/python/spiral.png" alt="spiral.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/spiral.png" target="_blank">spiral.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/spiral.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/spiral.png" target="_blank">spiral.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/spiral.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education.</div>
     <div class="tags">
@@ -1088,10 +1122,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

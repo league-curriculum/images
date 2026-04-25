@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" class="active">
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" >
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" open>
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" class="active">
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" >
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -471,15 +505,15 @@
 <div class="image-card"
      data-desc="a header or label showing the word &#39;basic&#39; in blue text next to a grid icon made of blue squares, typically representing the basic category or section in makecode for micro:bit programming."
      data-name="basic.png"
-     data-src="../microbit/basic.png"
-     data-url="https://images.jointheleague.org/microbit/basic.png"
+     data-src="../old_classes/microbit/basic.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/basic.png"
      data-full-desc="A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../microbit/basic.png" alt="basic.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/basic.png" alt="basic.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/basic.png" target="_blank">basic.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/basic.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/basic.png" target="_blank">basic.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/basic.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming.</div>
     <div class="tags">
@@ -504,15 +538,15 @@
 <div class="image-card"
      data-desc="this image shows a micro:bit led display matrix with a simple pixel art design illuminated in pink/red. the glowing rectangular led elements form a pattern on the black background, representing how the micro:bit&#39;s 5x5 led grid can display custom graphics and patterns."
      data-name="big_heart.png"
-     data-src="../microbit/big_heart.png"
-     data-url="https://images.jointheleague.org/microbit/big_heart.png"
+     data-src="../old_classes/microbit/big_heart.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/big_heart.png"
      data-full-desc="This image shows a micro:bit LED display matrix with a simple pixel art design illuminated in pink/red. The glowing rectangular LED elements form a pattern on the black background, representing how the micro:bit&#39;s 5x5 LED grid can display custom graphics and patterns."
      data-flags="hardware,product_photo">
-  <img class="thumb" src="../microbit/big_heart.png" alt="big_heart.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/big_heart.png" alt="big_heart.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/big_heart.png" target="_blank">big_heart.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/big_heart.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/big_heart.png" target="_blank">big_heart.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/big_heart.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">This image shows a micro:bit LED display matrix with a simple pixel art design illuminated in pink/red. The glowing rectangular LED elements form a pattern on the black background, representing how the micro:bit&#39;s 5x5 LED grid can display custom graphics and patterns.</div>
     <div class="tags">
@@ -539,15 +573,15 @@
 <div class="image-card"
      data-desc="a magenta/purple banner displaying text &#34;button a is pressed&#34; with a small dropdown arrow icon, styled as a makecode block used in micro:bit programming. this is a visual representation of an event block from the makecode block-based coding interface."
      data-name="buttonapressed.png"
-     data-src="../microbit/buttonapressed.png"
-     data-url="https://images.jointheleague.org/microbit/buttonapressed.png"
+     data-src="../old_classes/microbit/buttonapressed.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/buttonapressed.png"
      data-full-desc="A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface."
      data-flags="screenshot,illustration,programming">
-  <img class="thumb" src="../microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.</div>
     <div class="tags">
@@ -578,15 +612,15 @@
 <div class="image-card"
      data-desc="a logo image displaying a stylized green robot or vehicle icon next to the text &#34;cutebot&#34; in green. the design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
      data-name="cbextension.png"
-     data-src="../microbit/cbextension.png"
-     data-url="https://images.jointheleague.org/microbit/cbextension.png"
+     data-src="../old_classes/microbit/cbextension.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png"
      data-full-desc="A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project."
      data-flags="logo,robot,hardware,illustration">
-  <img class="thumb" src="../microbit/cbextension.png" alt="cbextension.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/cbextension.png" alt="cbextension.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/cbextension.png" target="_blank">cbextension.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/cbextension.png" target="_blank">cbextension.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbextension.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A logo image displaying a stylized green robot or vehicle icon next to the text &#34;CuteBot&#34; in green. The design is simple and appears to be a product or project branding element, likely representing a cute robot vehicle project.</div>
     <div class="tags">
@@ -619,15 +653,15 @@
 <div class="image-card"
      data-desc="a product showcase displaying the elecfreaks cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an led display panel. the image shows the robot against a light blue pixelated background with the elecfreaks logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
      data-name="cbtile.png"
-     data-src="../microbit/cbtile.png"
-     data-url="https://images.jointheleague.org/microbit/cbtile.png"
+     data-src="../old_classes/microbit/cbtile.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cbtile.png"
      data-full-desc="A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product."
      data-flags="logo,robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cbtile.png" alt="cbtile.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/cbtile.png" alt="cbtile.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/cbtile.png" target="_blank">cbtile.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/cbtile.png" target="_blank">cbtile.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cbtile.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A product showcase displaying the ELECFREAKS Cutebot, a micro:bit smart robot with colorful design elements including wheels, sensors, and an LED display panel. The image shows the robot against a light blue pixelated background with the ELECFREAKS logo and includes text identifying it as a micro:bit smart cutebot educational robotics product.</div>
     <div class="tags">
@@ -658,15 +692,15 @@
 <div class="image-card"
      data-desc="a top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. the image includes a label pointing to the switch mechanism at the bottom."
      data-name="cutebot-top.png"
-     data-src="../microbit/cutebot-top.png"
-     data-url="https://images.jointheleague.org/microbit/cutebot-top.png"
+     data-src="../old_classes/microbit/cutebot-top.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cutebot-top.png"
      data-full-desc="A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom."
      data-flags="robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cutebot-top.png" alt="cutebot-top.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/cutebot-top.png" alt="cutebot-top.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/cutebot-top.png" target="_blank">cutebot-top.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cutebot-top.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/cutebot-top.png" target="_blank">cutebot-top.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cutebot-top.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A top-down view of a micro:bit robot car with blue and white striped body, showing the internal hardware including battery compartment, circuit board, wheels, and electronic components. The image includes a label pointing to the switch mechanism at the bottom.</div>
     <div class="tags">
@@ -695,15 +729,15 @@
 <div class="image-card"
      data-desc="a micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. this is a complete educational robotics platform designed for youth programming and hardware projects."
      data-name="cutebot.jpg"
-     data-src="../microbit/cutebot.jpg"
-     data-url="https://images.jointheleague.org/microbit/cutebot.jpg"
+     data-src="../old_classes/microbit/cutebot.jpg"
+     data-url="https://images.jointheleague.org/old_classes/microbit/cutebot.jpg"
      data-full-desc="A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects."
      data-flags="robot,hardware,product_photo">
-  <img class="thumb" src="../microbit/cutebot.jpg" alt="cutebot.jpg" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/cutebot.jpg" alt="cutebot.jpg" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/cutebot.jpg" target="_blank">cutebot.jpg</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/cutebot.jpg" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/cutebot.jpg" target="_blank">cutebot.jpg</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/cutebot.jpg" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A micro:bit robot car kit displayed against a white background, featuring a blue and gray chassis with two white sensor modules on the front, a circuit board control unit mounted on top, batteries on the side, and black wheels with silver rims. This is a complete educational robotics platform designed for youth programming and hardware projects.</div>
     <div class="tags">
@@ -728,15 +762,15 @@
 <div class="image-card"
      data-desc="a simple white icon of a document or note with a pencil, displayed on an orange background. this appears to be a ui icon commonly used to represent editing, creating, or writing functionality."
      data-name="edit_button.png"
-     data-src="../microbit/edit_button.png"
-     data-url="https://images.jointheleague.org/microbit/edit_button.png"
+     data-src="../old_classes/microbit/edit_button.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/edit_button.png"
      data-full-desc="A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality."
      data-flags="illustration">
-  <img class="thumb" src="../microbit/edit_button.png" alt="edit_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/edit_button.png" alt="edit_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/edit_button.png" target="_blank">edit_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/edit_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/edit_button.png" target="_blank">edit_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/edit_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple white icon of a document or note with a pencil, displayed on an orange background. This appears to be a UI icon commonly used to represent editing, creating, or writing functionality.</div>
     <div class="tags">
@@ -759,15 +793,15 @@
 <div class="image-card"
      data-desc="a micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold led matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. this is a product shot of the popular educational hardware used in coding education."
      data-name="hardware.png"
-     data-src="../microbit/hardware.png"
-     data-url="https://images.jointheleague.org/microbit/hardware.png"
+     data-src="../old_classes/microbit/hardware.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/hardware.png"
      data-full-desc="A micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold LED matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. This is a product shot of the popular educational hardware used in coding education."
      data-flags="hardware,product_photo">
-  <img class="thumb" src="../microbit/hardware.png" alt="hardware.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/hardware.png" alt="hardware.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/hardware.png" target="_blank">hardware.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/hardware.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/hardware.png" target="_blank">hardware.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/hardware.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A micro:bit microcontroller board is displayed against a white background, showing its distinctive black circuit board with a gold LED matrix grid in the center, pink accent triangles on the side, and gold connection pads along the bottom edge. This is a product shot of the popular educational hardware used in coding education.</div>
     <div class="tags">
@@ -794,15 +828,15 @@
 <div class="image-card"
      data-desc="a visual representation of a conditional programming block from makecode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. this is a screenshot of the block-based programming interface used for micro:bit coding."
      data-name="if.png"
-     data-src="../microbit/if.png"
-     data-url="https://images.jointheleague.org/microbit/if.png"
+     data-src="../old_classes/microbit/if.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/if.png"
      data-full-desc="A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding."
      data-flags="screenshot,illustration,programming">
-  <img class="thumb" src="../microbit/if.png" alt="if.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/if.png" alt="if.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/if.png" target="_blank">if.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/if.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/if.png" target="_blank">if.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/if.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.</div>
     <div class="tags">
@@ -829,15 +863,15 @@
 <div class="image-card"
      data-desc="a simple ui button or interface element showing an upload/import icon with an upward arrow and the text &#39;import&#39; next to it. this appears to be a screenshot of a software interface element, likely from the makecode platform used for micro:bit programming."
      data-name="import_button.png"
-     data-src="../microbit/import_button.png"
-     data-url="https://images.jointheleague.org/microbit/import_button.png"
+     data-src="../old_classes/microbit/import_button.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/import_button.png"
      data-full-desc="A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../microbit/import_button.png" alt="import_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/import_button.png" alt="import_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/import_button.png" target="_blank">import_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/import_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/import_button.png" target="_blank">import_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/import_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming.</div>
     <div class="tags">
@@ -864,15 +898,15 @@
 <div class="image-card"
      data-desc="a header or title graphic showing the word &#34;loops&#34; in green text alongside a green stylized &#39;c&#39; logo, appearing to be from microbit&#39;s makecode educational platform."
      data-name="loops.png"
-     data-src="../microbit/loops.png"
-     data-url="https://images.jointheleague.org/microbit/loops.png"
+     data-src="../old_classes/microbit/loops.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/loops.png"
      data-full-desc="A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../microbit/loops.png" alt="loops.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/loops.png" alt="loops.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/loops.png" target="_blank">loops.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/loops.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/loops.png" target="_blank">loops.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/loops.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform.</div>
     <div class="tags">
@@ -901,15 +935,15 @@
 <div class="image-card"
      data-desc="a screenshot of the microsoft makecode interface for micro:bit programming. the screen shows the blocks editor with a micro:bit device visualization on the left displaying led patterns, and a color-coded menu of programming blocks (basic, input, music, led, radio, loops, logic, variables, math, extensions, advanced) on the left. the main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
      data-name="mb_editor.png"
-     data-src="../microbit/mb_editor.png"
-     data-url="https://images.jointheleague.org/microbit/mb_editor.png"
+     data-src="../old_classes/microbit/mb_editor.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/mb_editor.png"
      data-full-desc="A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
      data-flags="screenshot,hardware,programming">
-  <img class="thumb" src="../microbit/mb_editor.png" alt="mb_editor.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/mb_editor.png" alt="mb_editor.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/mb_editor.png" target="_blank">mb_editor.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_editor.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/mb_editor.png" target="_blank">mb_editor.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/mb_editor.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks.</div>
     <div class="tags">
@@ -936,15 +970,15 @@
 <div class="image-card"
      data-desc="a product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. the image displays the micro:bit board, a battery pack, a usb cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education."
      data-name="mb_setup_1.png"
-     data-src="../microbit/mb_setup_1.png"
-     data-url="https://images.jointheleague.org/microbit/mb_setup_1.png"
+     data-src="../old_classes/microbit/mb_setup_1.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_1.png"
      data-full-desc="A product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. The image displays the micro:bit board, a battery pack, a USB cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education."
      data-flags="hardware,product_photo">
-  <img class="thumb" src="../microbit/mb_setup_1.png" alt="mb_setup_1.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/mb_setup_1.png" alt="mb_setup_1.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/mb_setup_1.png" target="_blank">mb_setup_1.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_setup_1.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/mb_setup_1.png" target="_blank">mb_setup_1.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_1.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A product photo showing a blue netbook/laptop with a micro:bit microcontroller circuit board and its accessories laid out below it on a wooden surface. The image displays the micro:bit board, a battery pack, a USB cable, and what appears to be instructional documentation, representing the complete hardware kit used for coding education.</div>
     <div class="tags">
@@ -975,15 +1009,15 @@
 <div class="image-card"
      data-desc="a dell laptop displays the makecode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. connected to the laptop via usb cable is a micro:bit device with its characteristic red led grid display visible, along with a battery pack, demonstrating a complete coding setup for the league of amazing programmers."
      data-name="mb_setup_2.png"
-     data-src="../microbit/mb_setup_2.png"
-     data-url="https://images.jointheleague.org/microbit/mb_setup_2.png"
+     data-src="../old_classes/microbit/mb_setup_2.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_2.png"
      data-full-desc="A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers."
      data-flags="robot,hardware,illustration,programming,product_photo">
-  <img class="thumb" src="../microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/mb_setup_2.png" alt="mb_setup_2.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/mb_setup_2.png" target="_blank">mb_setup_2.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/mb_setup_2.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A Dell laptop displays the MakeCode editor interface with a micro:bit project open, showing a blue robot illustration and programming blocks. Connected to the laptop via USB cable is a micro:bit device with its characteristic red LED grid display visible, along with a battery pack, demonstrating a complete coding setup for The League of Amazing Programmers.</div>
     <div class="tags">
@@ -1012,15 +1046,15 @@
 <div class="image-card"
      data-desc="the micro:bit logo displayed on a blue background. the logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
      data-name="microbit.png"
-     data-src="../microbit/microbit.png"
-     data-url="https://images.jointheleague.org/microbit/microbit.png"
+     data-src="../old_classes/microbit/microbit.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/microbit.png"
      data-full-desc="The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon."
      data-flags="logo">
-  <img class="thumb" src="../microbit/microbit.png" alt="microbit.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/microbit.png" alt="microbit.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/microbit.png" target="_blank">microbit.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/microbit.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/microbit.png" target="_blank">microbit.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/microbit.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">The micro:bit logo displayed on a blue background. The logo features a white rounded rectangular shape with the text &#39;micro:bit&#39; in white lettering to the right of the icon.</div>
     <div class="tags">
@@ -1041,15 +1075,15 @@
 <div class="image-card"
      data-desc="a simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. this is a typical interface icon used to represent video playback or media controls."
      data-name="play_button.png"
-     data-src="../microbit/play_button.png"
-     data-url="https://images.jointheleague.org/microbit/play_button.png"
+     data-src="../old_classes/microbit/play_button.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/play_button.png"
      data-full-desc="A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls."
      data-flags="illustration">
-  <img class="thumb" src="../microbit/play_button.png" alt="play_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/play_button.png" alt="play_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/play_button.png" target="_blank">play_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/play_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/play_button.png" target="_blank">play_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/play_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A simple icon showing an orange play button (right-pointing triangle) centered on a white background within a rounded square frame with a dark red/brown border. This is a typical interface icon used to represent video playback or media controls.</div>
     <div class="tags">
@@ -1074,15 +1108,15 @@
 <div class="image-card"
      data-desc="a product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. the card includes the title &#39;servo&#39;, subtitle &#39;a micro-servo library&#39;, and a &#39;learn more&#39; link."
      data-name="servo_library.png"
-     data-src="../microbit/servo_library.png"
-     data-url="https://images.jointheleague.org/microbit/servo_library.png"
+     data-src="../old_classes/microbit/servo_library.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/servo_library.png"
      data-full-desc="A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link."
      data-flags="hardware,illustration,product_photo">
-  <img class="thumb" src="../microbit/servo_library.png" alt="servo_library.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/servo_library.png" alt="servo_library.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/servo_library.png" target="_blank">servo_library.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/servo_library.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/servo_library.png" target="_blank">servo_library.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/servo_library.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A product card for the &#39;servo&#39; micro-servo library, featuring a stylized illustration of a servo motor component on a coral red background with decorative technical elements. The card includes the title &#39;servo&#39;, subtitle &#39;A micro-servo library&#39;, and a &#39;Learn More&#39; link.</div>
     <div class="tags">
@@ -1107,15 +1141,15 @@
 <div class="image-card"
      data-desc="a sign-in button interface element with the text &#39;sign in&#39; accompanied by a user account icon. this appears to be a ui component from a website or application, likely from the microbit makecode platform."
      data-name="sign_in.png"
-     data-src="../microbit/sign_in.png"
-     data-url="https://images.jointheleague.org/microbit/sign_in.png"
+     data-src="../old_classes/microbit/sign_in.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/sign_in.png"
      data-full-desc="A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform."
      data-flags="screenshot">
-  <img class="thumb" src="../microbit/sign_in.png" alt="sign_in.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/sign_in.png" alt="sign_in.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../microbit/sign_in.png" target="_blank">sign_in.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/sign_in.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/sign_in.png" target="_blank">sign_in.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/sign_in.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform.</div>
     <div class="tags">
@@ -1326,10 +1360,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

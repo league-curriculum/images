@@ -72,6 +72,29 @@
       padding-left: 1.25rem;
       font-size: .85rem;
     }
+    .sidebar details > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: .7rem;
+      padding: .5rem 1rem .25rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .sidebar details > summary::-webkit-details-marker { display: none; }
+    .sidebar details > summary::before {
+      content: "\25B6";
+      font-size: .55rem;
+      transition: transform .15s;
+      color: var(--gray-500);
+    }
+    .sidebar details[open] > summary::before {
+      transform: rotate(90deg);
+    }
 
     /* Main area */
     .main {
@@ -366,10 +389,6 @@
     memes (12)
   </a>
   
-  <a href="microbit.html" >
-    microbit (19)
-  </a>
-  
   <a href="misc.html" >
     misc (4)
   </a>
@@ -378,20 +397,8 @@
     mkt (19)
   </a>
   
-  <a href="module-navigation.html" >
-    module-navigation (23)
-  </a>
-  
-  <a href="motors.html" >
-    motors (12)
-  </a>
-  
   <a href="p3logos.html" >
     p3logos (1)
-  </a>
-  
-  <a href="python.html" >
-    python (13)
   </a>
   
   <a href="robots.html" >
@@ -402,9 +409,33 @@
     stock (26)
   </a>
   
-  <a href="vscode.html" >
-    vscode (18)
-  </a>
+
+  
+  
+  <details id="old-classes" >
+    <summary>Old Classes</summary>
+    
+    <a href="microbit.html" >
+      microbit (19)
+    </a>
+    
+    <a href="module-navigation.html" >
+      module-navigation (23)
+    </a>
+    
+    <a href="motors.html" >
+      motors (12)
+    </a>
+    
+    <a href="python.html" >
+      python (13)
+    </a>
+    
+    <a href="vscode.html" >
+      vscode (18)
+    </a>
+    
+  </details>
   
 
   <h2>Flags</h2>
@@ -445,6 +476,9 @@
   
   <a class="flag-link" href="flag-teaching.html" >teaching</a>
   
+
+  <h2>Data</h2>
+  <a href="data/catalog.json" download>Download catalog.json</a>
 </nav>
 
 <div class="main">
@@ -1620,249 +1654,6 @@
 
 
 <div class="image-card"
-     data-desc="a header or label showing the word &#39;basic&#39; in blue text next to a grid icon made of blue squares, typically representing the basic category or section in makecode for micro:bit programming."
-     data-name="basic.png"
-     data-src="../microbit/basic.png"
-     data-url="https://images.jointheleague.org/microbit/basic.png"
-     data-full-desc="A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../microbit/basic.png" alt="basic.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/basic.png" target="_blank">basic.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/basic.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a magenta/purple banner displaying text &#34;button a is pressed&#34; with a small dropdown arrow icon, styled as a makecode block used in micro:bit programming. this is a visual representation of an event block from the makecode block-based coding interface."
-     data-name="buttonapressed.png"
-     data-src="../microbit/buttonapressed.png"
-     data-url="https://images.jointheleague.org/microbit/buttonapressed.png"
-     data-full-desc="A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface."
-     data-flags="screenshot,illustration,programming">
-  <img class="thumb" src="../microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">illustration</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a visual representation of a conditional programming block from makecode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. this is a screenshot of the block-based programming interface used for micro:bit coding."
-     data-name="if.png"
-     data-src="../microbit/if.png"
-     data-url="https://images.jointheleague.org/microbit/if.png"
-     data-full-desc="A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding."
-     data-flags="screenshot,illustration,programming">
-  <img class="thumb" src="../microbit/if.png" alt="if.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/if.png" target="_blank">if.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/if.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">illustration</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a simple ui button or interface element showing an upload/import icon with an upward arrow and the text &#39;import&#39; next to it. this appears to be a screenshot of a software interface element, likely from the makecode platform used for micro:bit programming."
-     data-name="import_button.png"
-     data-src="../microbit/import_button.png"
-     data-url="https://images.jointheleague.org/microbit/import_button.png"
-     data-full-desc="A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../microbit/import_button.png" alt="import_button.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/import_button.png" target="_blank">import_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/import_button.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a header or title graphic showing the word &#34;loops&#34; in green text alongside a green stylized &#39;c&#39; logo, appearing to be from microbit&#39;s makecode educational platform."
-     data-name="loops.png"
-     data-src="../microbit/loops.png"
-     data-url="https://images.jointheleague.org/microbit/loops.png"
-     data-full-desc="A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform."
-     data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../microbit/loops.png" alt="loops.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/loops.png" target="_blank">loops.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/loops.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">logo</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of the microsoft makecode interface for micro:bit programming. the screen shows the blocks editor with a micro:bit device visualization on the left displaying led patterns, and a color-coded menu of programming blocks (basic, input, music, led, radio, loops, logic, variables, math, extensions, advanced) on the left. the main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
-     data-name="mb_editor.png"
-     data-src="../microbit/mb_editor.png"
-     data-url="https://images.jointheleague.org/microbit/mb_editor.png"
-     data-full-desc="A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
-     data-flags="screenshot,hardware,programming">
-  <img class="thumb" src="../microbit/mb_editor.png" alt="mb_editor.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/mb_editor.png" target="_blank">mb_editor.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/mb_editor.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">hardware</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a sign-in button interface element with the text &#39;sign in&#39; accompanied by a user account icon. this appears to be a ui component from a website or application, likely from the microbit makecode platform."
-     data-name="sign_in.png"
-     data-src="../microbit/sign_in.png"
-     data-url="https://images.jointheleague.org/microbit/sign_in.png"
-     data-full-desc="A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform."
-     data-flags="screenshot">
-  <img class="thumb" src="../microbit/sign_in.png" alt="sign_in.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../microbit/sign_in.png" target="_blank">sign_in.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/microbit/sign_in.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
      data-desc="a screenshot of the league of amazing programmers&#39; web-based python learning platform showing a lesson called &#39;meet tina&#39;. the interface displays python code that creates and manipulates a turtle graphics object, with a live preview on the right showing a red circle being drawn. the left sidebar shows the lesson hierarchy within the python apprentice course."
      data-name="codeserver-screen.png"
      data-src="../misc/codeserver-screen.png"
@@ -1933,17 +1724,260 @@
 
 
 <div class="image-card"
-     data-desc="a screenshot of github codespaces interface showing cloud-based development workspaces. the interface displays tabs for &#39;local&#39; and &#39;codespaces&#39;, with details about an active codespace named &#39;cautious space halibut&#39; on the master branch with no changes."
-     data-name="active_codespace.png"
-     data-src="../module-navigation/active_codespace.png"
-     data-url="https://images.jointheleague.org/module-navigation/active_codespace.png"
-     data-full-desc="A screenshot of GitHub Codespaces interface showing cloud-based development workspaces. The interface displays tabs for &#39;Local&#39; and &#39;Codespaces&#39;, with details about an active codespace named &#39;cautious space halibut&#39; on the master branch with no changes."
+     data-desc="a header or label showing the word &#39;basic&#39; in blue text next to a grid icon made of blue squares, typically representing the basic category or section in makecode for micro:bit programming."
+     data-name="basic.png"
+     data-src="../old_classes/microbit/basic.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/basic.png"
+     data-full-desc="A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/active_codespace.png" alt="active_codespace.png" loading="lazy">
+  <img class="thumb" src="../old_classes/microbit/basic.png" alt="basic.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/active_codespace.png" target="_blank">active_codespace.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/active_codespace.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/microbit/basic.png" target="_blank">basic.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/basic.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A header or label showing the word &#39;Basic&#39; in blue text next to a grid icon made of blue squares, typically representing the Basic category or section in MakeCode for micro:bit programming.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a magenta/purple banner displaying text &#34;button a is pressed&#34; with a small dropdown arrow icon, styled as a makecode block used in micro:bit programming. this is a visual representation of an event block from the makecode block-based coding interface."
+     data-name="buttonapressed.png"
+     data-src="../old_classes/microbit/buttonapressed.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/buttonapressed.png"
+     data-full-desc="A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface."
+     data-flags="screenshot,illustration,programming">
+  <img class="thumb" src="../old_classes/microbit/buttonapressed.png" alt="buttonapressed.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/buttonapressed.png" target="_blank">buttonapressed.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/buttonapressed.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A magenta/purple banner displaying text &#34;button A is pressed&#34; with a small dropdown arrow icon, styled as a MakeCode block used in micro:bit programming. This is a visual representation of an event block from the MakeCode block-based coding interface.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a visual representation of a conditional programming block from makecode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. this is a screenshot of the block-based programming interface used for micro:bit coding."
+     data-name="if.png"
+     data-src="../old_classes/microbit/if.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/if.png"
+     data-full-desc="A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding."
+     data-flags="screenshot,illustration,programming">
+  <img class="thumb" src="../old_classes/microbit/if.png" alt="if.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/if.png" target="_blank">if.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/if.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A visual representation of a conditional programming block from MakeCode, showing an &#39;if true then&#39; statement structure with a plus icon for adding additional code blocks. This is a screenshot of the block-based programming interface used for micro:bit coding.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">illustration</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a simple ui button or interface element showing an upload/import icon with an upward arrow and the text &#39;import&#39; next to it. this appears to be a screenshot of a software interface element, likely from the makecode platform used for micro:bit programming."
+     data-name="import_button.png"
+     data-src="../old_classes/microbit/import_button.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/import_button.png"
+     data-full-desc="A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/microbit/import_button.png" alt="import_button.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/import_button.png" target="_blank">import_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/import_button.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A simple UI button or interface element showing an upload/import icon with an upward arrow and the text &#39;Import&#39; next to it. This appears to be a screenshot of a software interface element, likely from the MakeCode platform used for micro:bit programming.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a header or title graphic showing the word &#34;loops&#34; in green text alongside a green stylized &#39;c&#39; logo, appearing to be from microbit&#39;s makecode educational platform."
+     data-name="loops.png"
+     data-src="../old_classes/microbit/loops.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/loops.png"
+     data-full-desc="A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform."
+     data-flags="screenshot,logo,programming">
+  <img class="thumb" src="../old_classes/microbit/loops.png" alt="loops.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/loops.png" target="_blank">loops.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/loops.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A header or title graphic showing the word &#34;Loops&#34; in green text alongside a green stylized &#39;C&#39; logo, appearing to be from MicroBit&#39;s MakeCode educational platform.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">logo</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of the microsoft makecode interface for micro:bit programming. the screen shows the blocks editor with a micro:bit device visualization on the left displaying led patterns, and a color-coded menu of programming blocks (basic, input, music, led, radio, loops, logic, variables, math, extensions, advanced) on the left. the main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
+     data-name="mb_editor.png"
+     data-src="../old_classes/microbit/mb_editor.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/mb_editor.png"
+     data-full-desc="A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks."
+     data-flags="screenshot,hardware,programming">
+  <img class="thumb" src="../old_classes/microbit/mb_editor.png" alt="mb_editor.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/mb_editor.png" target="_blank">mb_editor.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/mb_editor.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of the Microsoft MakeCode interface for micro:bit programming. The screen shows the Blocks editor with a micro:bit device visualization on the left displaying LED patterns, and a color-coded menu of programming blocks (Basic, Input, Music, Led, Radio, Loops, Logic, Variables, Math, Extensions, Advanced) on the left. The main coding area on the right shows a &#39;forever&#39; loop with &#39;show icon&#39; blocks.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">hardware</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a sign-in button interface element with the text &#39;sign in&#39; accompanied by a user account icon. this appears to be a ui component from a website or application, likely from the microbit makecode platform."
+     data-name="sign_in.png"
+     data-src="../old_classes/microbit/sign_in.png"
+     data-url="https://images.jointheleague.org/old_classes/microbit/sign_in.png"
+     data-full-desc="A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform."
+     data-flags="screenshot">
+  <img class="thumb" src="../old_classes/microbit/sign_in.png" alt="sign_in.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/microbit/sign_in.png" target="_blank">sign_in.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/microbit/sign_in.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A sign-in button interface element with the text &#39;Sign In&#39; accompanied by a user account icon. This appears to be a UI component from a website or application, likely from the MicroBit MakeCode platform.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of github codespaces interface showing cloud-based development workspaces. the interface displays tabs for &#39;local&#39; and &#39;codespaces&#39;, with details about an active codespace named &#39;cautious space halibut&#39; on the master branch with no changes."
+     data-name="active_codespace.png"
+     data-src="../old_classes/module-navigation/active_codespace.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/active_codespace.png"
+     data-full-desc="A screenshot of GitHub Codespaces interface showing cloud-based development workspaces. The interface displays tabs for &#39;Local&#39; and &#39;Codespaces&#39;, with details about an active codespace named &#39;cautious space halibut&#39; on the master branch with no changes."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/module-navigation/active_codespace.png" alt="active_codespace.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/module-navigation/active_codespace.png" target="_blank">active_codespace.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/active_codespace.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of GitHub Codespaces interface showing cloud-based development workspaces. The interface displays tabs for &#39;Local&#39; and &#39;Codespaces&#39;, with details about an active codespace named &#39;cautious space halibut&#39; on the master branch with no changes.</div>
     <div class="tags">
@@ -1968,15 +2002,15 @@
 <div class="image-card"
      data-desc="a screenshot showing a navigation menu bar with multiple tabs including terminal, ports, jupyter, problems, output, and debug console. the ports tab is highlighted with a blue underline and displays a notification badge with the number 5, indicating there are 5 active ports. this appears to be from a development environment interface."
      data-name="bottom_pane_menu.png"
-     data-src="../module-navigation/bottom_pane_menu.png"
-     data-url="https://images.jointheleague.org/module-navigation/bottom_pane_menu.png"
+     data-src="../old_classes/module-navigation/bottom_pane_menu.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/bottom_pane_menu.png"
      data-full-desc="A screenshot showing a navigation menu bar with multiple tabs including TERMINAL, PORTS, JUPYTER, PROBLEMS, OUTPUT, and DEBUG CONSOLE. The PORTS tab is highlighted with a blue underline and displays a notification badge with the number 5, indicating there are 5 active ports. This appears to be from a development environment interface."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/bottom_pane_menu.png" alt="bottom_pane_menu.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/bottom_pane_menu.png" alt="bottom_pane_menu.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/bottom_pane_menu.png" target="_blank">bottom_pane_menu.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/bottom_pane_menu.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/bottom_pane_menu.png" target="_blank">bottom_pane_menu.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/bottom_pane_menu.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot showing a navigation menu bar with multiple tabs including TERMINAL, PORTS, JUPYTER, PROBLEMS, OUTPUT, and DEBUG CONSOLE. The PORTS tab is highlighted with a blue underline and displays a notification badge with the number 5, indicating there are 5 active ports. This appears to be from a development environment interface.</div>
     <div class="tags">
@@ -2001,15 +2035,15 @@
 <div class="image-card"
      data-desc="a screenshot of a python development environment showing a coding editor on the left with file explorer displaying project structure, python code in the center editor pane showing a test function with assertions and html display statements, and a browser preview on the right showing a novnc interface with a connect button. this appears to be a codespaces development setup for a league of amazing programmers python lesson."
      data-name="browser_window.png"
-     data-src="../module-navigation/browser_window.png"
-     data-url="https://images.jointheleague.org/module-navigation/browser_window.png"
+     data-src="../old_classes/module-navigation/browser_window.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/browser_window.png"
      data-full-desc="A screenshot of a Python development environment showing a coding editor on the left with file explorer displaying project structure, Python code in the center editor pane showing a test function with assertions and HTML display statements, and a browser preview on the right showing a noVNC interface with a Connect button. This appears to be a Codespaces development setup for a League of Amazing Programmers Python lesson."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/browser_window.png" alt="browser_window.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/browser_window.png" alt="browser_window.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/browser_window.png" target="_blank">browser_window.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/browser_window.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/browser_window.png" target="_blank">browser_window.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/browser_window.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a Python development environment showing a coding editor on the left with file explorer displaying project structure, Python code in the center editor pane showing a test function with assertions and HTML display statements, and a browser preview on the right showing a noVNC interface with a Connect button. This appears to be a Codespaces development setup for a League of Amazing Programmers Python lesson.</div>
     <div class="tags">
@@ -2034,15 +2068,15 @@
 <div class="image-card"
      data-desc="a green button or navigation element featuring a code bracket icon and the word &#34;code&#34; with a dropdown arrow, commonly used in programming interfaces and educational platforms."
      data-name="code_button.png"
-     data-src="../module-navigation/code_button.png"
-     data-url="https://images.jointheleague.org/module-navigation/code_button.png"
+     data-src="../old_classes/module-navigation/code_button.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/code_button.png"
      data-full-desc="A green button or navigation element featuring a code bracket icon and the word &#34;Code&#34; with a dropdown arrow, commonly used in programming interfaces and educational platforms."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/code_button.png" alt="code_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/code_button.png" alt="code_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/code_button.png" target="_blank">code_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/code_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/code_button.png" target="_blank">code_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/code_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A green button or navigation element featuring a code bracket icon and the word &#34;Code&#34; with a dropdown arrow, commonly used in programming interfaces and educational platforms.</div>
     <div class="tags">
@@ -2065,15 +2099,15 @@
 <div class="image-card"
      data-desc="a screenshot of github codespaces interface showing the codespaces tab for a repository. the page displays &#39;no codespaces&#39; with a message indicating no codespaces are currently checked out, along with a green button to &#39;create codespace on master&#39; and a link to learn more about codespaces."
      data-name="create_codespace.png"
-     data-src="../module-navigation/create_codespace.png"
-     data-url="https://images.jointheleague.org/module-navigation/create_codespace.png"
+     data-src="../old_classes/module-navigation/create_codespace.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/create_codespace.png"
      data-full-desc="A screenshot of GitHub Codespaces interface showing the Codespaces tab for a repository. The page displays &#39;No codespaces&#39; with a message indicating no codespaces are currently checked out, along with a green button to &#39;Create codespace on master&#39; and a link to learn more about codespaces."
      data-flags="screenshot">
-  <img class="thumb" src="../module-navigation/create_codespace.png" alt="create_codespace.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/create_codespace.png" alt="create_codespace.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/create_codespace.png" target="_blank">create_codespace.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/create_codespace.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/create_codespace.png" target="_blank">create_codespace.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/create_codespace.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of GitHub Codespaces interface showing the Codespaces tab for a repository. The page displays &#39;No codespaces&#39; with a message indicating no codespaces are currently checked out, along with a green button to &#39;Create codespace on master&#39; and a link to learn more about codespaces.</div>
     <div class="tags">
@@ -2096,15 +2130,15 @@
 <div class="image-card"
      data-desc="a navigation header displaying &#39;fork level0-module0&#39; with the github logo on a green background. this appears to be part of a web interface for a coding curriculum module."
      data-name="fork_button.png"
-     data-src="../module-navigation/fork_button.png"
-     data-url="https://images.jointheleague.org/module-navigation/fork_button.png"
+     data-src="../old_classes/module-navigation/fork_button.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/fork_button.png"
      data-full-desc="A navigation header displaying &#39;Fork Level0-Module0&#39; with the GitHub logo on a green background. This appears to be part of a web interface for a coding curriculum module."
      data-flags="screenshot,logo">
-  <img class="thumb" src="../module-navigation/fork_button.png" alt="fork_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/fork_button.png" alt="fork_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/fork_button.png" target="_blank">fork_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/fork_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/fork_button.png" target="_blank">fork_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/fork_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A navigation header displaying &#39;Fork Level0-Module0&#39; with the GitHub logo on a green background. This appears to be part of a web interface for a coding curriculum module.</div>
     <div class="tags">
@@ -2129,15 +2163,15 @@
 <div class="image-card"
      data-desc="a github repository page showing the level0-module0 project from the league&#39;s java curriculum. the screenshot displays the repository structure with various folders (.devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src) and configuration files, forked from league-java/level0-module0. the page shows code repository management interface with branch information and project metadata."
      data-name="l0-m0_repo.png"
-     data-src="../module-navigation/l0-m0_repo.png"
-     data-url="https://images.jointheleague.org/module-navigation/l0-m0_repo.png"
+     data-src="../old_classes/module-navigation/l0-m0_repo.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/l0-m0_repo.png"
      data-full-desc="A GitHub repository page showing the Level0-Module0 project from The League&#39;s Java curriculum. The screenshot displays the repository structure with various folders (.devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src) and configuration files, forked from League-Java/Level0-Module0. The page shows code repository management interface with branch information and project metadata."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/l0-m0_repo.png" alt="l0-m0_repo.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/l0-m0_repo.png" alt="l0-m0_repo.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/l0-m0_repo.png" target="_blank">l0-m0_repo.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/l0-m0_repo.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/l0-m0_repo.png" target="_blank">l0-m0_repo.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/l0-m0_repo.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A GitHub repository page showing the Level0-Module0 project from The League&#39;s Java curriculum. The screenshot displays the repository structure with various folders (.devcontainer, .eclipse, .vscode, bin, images, lib, scripts, src) and configuration files, forked from League-Java/Level0-Module0. The page shows code repository management interface with branch information and project metadata.</div>
     <div class="tags">
@@ -2162,15 +2196,15 @@
 <div class="image-card"
      data-desc="a screenshot of github codespaces configuration interface for creating a new development environment. the form shows settings for a league of amazing programmers java repository, including repository selection, branch, dev container configuration, region, and machine type options."
      data-name="new_codespace_button.png"
-     data-src="../module-navigation/new_codespace_button.png"
-     data-url="https://images.jointheleague.org/module-navigation/new_codespace_button.png"
+     data-src="../old_classes/module-navigation/new_codespace_button.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/new_codespace_button.png"
      data-full-desc="A screenshot of GitHub Codespaces configuration interface for creating a new development environment. The form shows settings for a League of Amazing Programmers Java repository, including repository selection, branch, dev container configuration, region, and machine type options."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/new_codespace_button.png" alt="new_codespace_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/new_codespace_button.png" alt="new_codespace_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/new_codespace_button.png" target="_blank">new_codespace_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/new_codespace_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/new_codespace_button.png" target="_blank">new_codespace_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/new_codespace_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of GitHub Codespaces configuration interface for creating a new development environment. The form shows settings for a League of Amazing Programmers Java repository, including repository selection, branch, dev container configuration, region, and machine type options.</div>
     <div class="tags">
@@ -2195,15 +2229,15 @@
 <div class="image-card"
      data-desc="a screenshot of the novnc interface showing a connection screen with the novnc logo in green and yellow text and a blue &#34;connect&#34; button. this appears to be a remote desktop/virtual machine connection interface, likely used for accessing codespaces motors development environments in the league&#39;s java curriculum."
      data-name="novnc.png"
-     data-src="../module-navigation/novnc.png"
-     data-url="https://images.jointheleague.org/module-navigation/novnc.png"
+     data-src="../old_classes/module-navigation/novnc.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/novnc.png"
      data-full-desc="A screenshot of the noVNC interface showing a connection screen with the noVNC logo in green and yellow text and a blue &#34;Connect&#34; button. This appears to be a remote desktop/virtual machine connection interface, likely used for accessing CodeSpaces Motors development environments in The League&#39;s Java curriculum."
      data-flags="screenshot,logo">
-  <img class="thumb" src="../module-navigation/novnc.png" alt="novnc.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/novnc.png" alt="novnc.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/novnc.png" target="_blank">novnc.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/novnc.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/novnc.png" target="_blank">novnc.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/novnc.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of the noVNC interface showing a connection screen with the noVNC logo in green and yellow text and a blue &#34;Connect&#34; button. This appears to be a remote desktop/virtual machine connection interface, likely used for accessing CodeSpaces Motors development environments in The League&#39;s Java curriculum.</div>
     <div class="tags">
@@ -2230,15 +2264,15 @@
 <div class="image-card"
      data-desc="a clickable button or banner with an orange background featuring the github logo and text &#34;open in codespaces&#34;. this is a navigation element for opening a coding project in github codespaces, commonly used in educational coding platforms."
      data-name="open_codespc.png"
-     data-src="../module-navigation/open_codespc.png"
-     data-url="https://images.jointheleague.org/module-navigation/open_codespc.png"
+     data-src="../old_classes/module-navigation/open_codespc.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/open_codespc.png"
      data-full-desc="A clickable button or banner with an orange background featuring the GitHub logo and text &#34;Open in Codespaces&#34;. This is a navigation element for opening a coding project in GitHub Codespaces, commonly used in educational coding platforms."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../module-navigation/open_codespc.png" alt="open_codespc.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/open_codespc.png" alt="open_codespc.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/open_codespc.png" target="_blank">open_codespc.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/open_codespc.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/open_codespc.png" target="_blank">open_codespc.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/open_codespc.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A clickable button or banner with an orange background featuring the GitHub logo and text &#34;Open in Codespaces&#34;. This is a navigation element for opening a coding project in GitHub Codespaces, commonly used in educational coding platforms.</div>
     <div class="tags">
@@ -2265,15 +2299,15 @@
 <div class="image-card"
      data-desc="a set of four simple line icons displayed on a dark background, showing different device or layout representations. these appear to be ui navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts)."
      data-name="pane_config.png"
-     data-src="../module-navigation/pane_config.png"
-     data-url="https://images.jointheleague.org/module-navigation/pane_config.png"
+     data-src="../old_classes/module-navigation/pane_config.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/pane_config.png"
      data-full-desc="A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts)."
      data-flags="screenshot,illustration">
-  <img class="thumb" src="../module-navigation/pane_config.png" alt="pane_config.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/pane_config.png" alt="pane_config.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/pane_config.png" target="_blank">pane_config.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/pane_config.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/pane_config.png" target="_blank">pane_config.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/pane_config.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A set of four simple line icons displayed on a dark background, showing different device or layout representations. These appear to be UI navigation icons, possibly representing different view modes or device types (phone, tablet, book/split view, and grid layouts).</div>
     <div class="tags">
@@ -2298,15 +2332,15 @@
 <div class="image-card"
      data-desc="a screenshot of a development environment&#39;s ports tab showing two active port forwards (5901 and 6080) with their associated urls, running processes, and an &#39;open in browser&#39; button. this appears to be from vs code or a similar ide being used for running web applications."
      data-name="ports.png"
-     data-src="../module-navigation/ports.png"
-     data-url="https://images.jointheleague.org/module-navigation/ports.png"
+     data-src="../old_classes/module-navigation/ports.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/ports.png"
      data-full-desc="A screenshot of a development environment&#39;s Ports tab showing two active port forwards (5901 and 6080) with their associated URLs, running processes, and an &#39;Open in Browser&#39; button. This appears to be from VS Code or a similar IDE being used for running web applications."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/ports.png" alt="ports.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/ports.png" alt="ports.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/ports.png" target="_blank">ports.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/ports.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/ports.png" target="_blank">ports.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/ports.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a development environment&#39;s Ports tab showing two active port forwards (5901 and 6080) with their associated URLs, running processes, and an &#39;Open in Browser&#39; button. This appears to be from VS Code or a similar IDE being used for running web applications.</div>
     <div class="tags">
@@ -2331,15 +2365,15 @@
 <div class="image-card"
      data-desc="a screenshot of a development environment&#39;s port forwarding configuration table showing two active ports (5901 and 6080) with their forwarded addresses, running processes, and visibility settings. the interface displays localhost addresses and python/vnc processes typical of a coding development environment."
      data-name="ports_pane.png"
-     data-src="../module-navigation/ports_pane.png"
-     data-url="https://images.jointheleague.org/module-navigation/ports_pane.png"
+     data-src="../old_classes/module-navigation/ports_pane.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/ports_pane.png"
      data-full-desc="A screenshot of a development environment&#39;s port forwarding configuration table showing two active ports (5901 and 6080) with their forwarded addresses, running processes, and visibility settings. The interface displays localhost addresses and Python/VNC processes typical of a coding development environment."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/ports_pane.png" alt="ports_pane.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/ports_pane.png" alt="ports_pane.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/ports_pane.png" target="_blank">ports_pane.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/ports_pane.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/ports_pane.png" target="_blank">ports_pane.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/ports_pane.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a development environment&#39;s port forwarding configuration table showing two active ports (5901 and 6080) with their forwarded addresses, running processes, and visibility settings. The interface displays localhost addresses and Python/VNC processes typical of a coding development environment.</div>
     <div class="tags">
@@ -2366,15 +2400,15 @@
 <div class="image-card"
      data-desc="a screenshot of an ide (integrated development environment) showing java code from the league of amazing programmers. the left side displays the robotdemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas."
      data-name="red_square.png"
-     data-src="../module-navigation/red_square.png"
-     data-url="https://images.jointheleague.org/module-navigation/red_square.png"
+     data-src="../old_classes/module-navigation/red_square.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/red_square.png"
      data-full-desc="A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas."
      data-flags="screenshot,robot,programming">
-  <img class="thumb" src="../module-navigation/red_square.png" alt="red_square.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/red_square.png" alt="red_square.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/red_square.png" target="_blank">red_square.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/red_square.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/red_square.png" target="_blank">red_square.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/red_square.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of an IDE (Integrated Development Environment) showing Java code from The League of Amazing Programmers. The left side displays the RobotDemo.java source code with copyright notice and imports, while the right side shows a debugging/execution window with a simulated robot visualization in a red-bordered square on a graphical canvas.</div>
     <div class="tags">
@@ -2401,15 +2435,15 @@
 <div class="image-card"
      data-desc="a screenshot of a code editor or ide interface showing a &#39;run and debug&#39; button with a play icon on the left, and a dropdown menu labeled &#39;dragonfight&#39; on the right. this appears to be part of a coding environment&#39;s module navigation interface."
      data-name="run_menu_closed.png"
-     data-src="../module-navigation/run_menu_closed.png"
-     data-url="https://images.jointheleague.org/module-navigation/run_menu_closed.png"
+     data-src="../old_classes/module-navigation/run_menu_closed.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/run_menu_closed.png"
      data-full-desc="A screenshot of a code editor or IDE interface showing a &#39;Run and Debug&#39; button with a play icon on the left, and a dropdown menu labeled &#39;DragonFight&#39; on the right. This appears to be part of a coding environment&#39;s module navigation interface."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/run_menu_closed.png" alt="run_menu_closed.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/run_menu_closed.png" alt="run_menu_closed.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/run_menu_closed.png" target="_blank">run_menu_closed.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/run_menu_closed.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/run_menu_closed.png" target="_blank">run_menu_closed.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/run_menu_closed.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a code editor or IDE interface showing a &#39;Run and Debug&#39; button with a play icon on the left, and a dropdown menu labeled &#39;DragonFight&#39; on the right. This appears to be part of a coding environment&#39;s module navigation interface.</div>
     <div class="tags">
@@ -2434,15 +2468,15 @@
 <div class="image-card"
      data-desc="a screenshot of a development environment showing a run and debug configuration dropdown menu. the menu displays various project options like dragonffight, flamingninjastar, robotdemo, and others, with dragonffight currently selected. below are debugging options for node.js, python, and cmake."
      data-name="run_menu_open.png"
-     data-src="../module-navigation/run_menu_open.png"
-     data-url="https://images.jointheleague.org/module-navigation/run_menu_open.png"
+     data-src="../old_classes/module-navigation/run_menu_open.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/run_menu_open.png"
      data-full-desc="A screenshot of a development environment showing a run and debug configuration dropdown menu. The menu displays various project options like DragonfFight, FlamingNinjaStar, RobotDemo, and others, with DragonfFight currently selected. Below are debugging options for Node.js, Python, and CMake."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/run_menu_open.png" alt="run_menu_open.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/run_menu_open.png" alt="run_menu_open.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/run_menu_open.png" target="_blank">run_menu_open.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/run_menu_open.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/run_menu_open.png" target="_blank">run_menu_open.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/run_menu_open.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a development environment showing a run and debug configuration dropdown menu. The menu displays various project options like DragonfFight, FlamingNinjaStar, RobotDemo, and others, with DragonfFight currently selected. Below are debugging options for Node.js, Python, and CMake.</div>
     <div class="tags">
@@ -2467,15 +2501,15 @@
 <div class="image-card"
      data-desc="a navigation button or link showing the github logo (octocat) in black alongside the text &#39;view source&#39; in orange. this appears to be a ui element for accessing source code, likely part of a coding curriculum interface."
      data-name="source_link.png"
-     data-src="../module-navigation/source_link.png"
-     data-url="https://images.jointheleague.org/module-navigation/source_link.png"
+     data-src="../old_classes/module-navigation/source_link.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/source_link.png"
      data-full-desc="A navigation button or link showing the GitHub logo (Octocat) in black alongside the text &#39;View Source&#39; in orange. This appears to be a UI element for accessing source code, likely part of a coding curriculum interface."
      data-flags="screenshot,logo">
-  <img class="thumb" src="../module-navigation/source_link.png" alt="source_link.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/source_link.png" alt="source_link.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/source_link.png" target="_blank">source_link.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/source_link.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/source_link.png" target="_blank">source_link.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/source_link.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A navigation button or link showing the GitHub logo (Octocat) in black alongside the text &#39;View Source&#39; in orange. This appears to be a UI element for accessing source code, likely part of a coding curriculum interface.</div>
     <div class="tags">
@@ -2502,15 +2536,15 @@
 <div class="image-card"
      data-desc="three horizontal button bars with github branding and action text. the left orange button says &#39;open in codespaces&#39;, the middle green button says &#39;fork level0-module0&#39;, and the right blue button says &#39;view level0-module0&#39;. these appear to be navigation/action buttons for a coding module interface."
      data-name="three_buttons.png"
-     data-src="../module-navigation/three_buttons.png"
-     data-url="https://images.jointheleague.org/module-navigation/three_buttons.png"
+     data-src="../old_classes/module-navigation/three_buttons.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/three_buttons.png"
      data-full-desc="Three horizontal button bars with GitHub branding and action text. The left orange button says &#39;Open in Codespaces&#39;, the middle green button says &#39;Fork Level0-Module0&#39;, and the right blue button says &#39;View Level0-Module0&#39;. These appear to be navigation/action buttons for a coding module interface."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../module-navigation/three_buttons.png" alt="three_buttons.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/three_buttons.png" alt="three_buttons.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/three_buttons.png" target="_blank">three_buttons.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/three_buttons.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/three_buttons.png" target="_blank">three_buttons.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/three_buttons.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">Three horizontal button bars with GitHub branding and action text. The left orange button says &#39;Open in Codespaces&#39;, the middle green button says &#39;Fork Level0-Module0&#39;, and the right blue button says &#39;View Level0-Module0&#39;. These appear to be navigation/action buttons for a coding module interface.</div>
     <div class="tags">
@@ -2539,15 +2573,15 @@
 <div class="image-card"
      data-desc="a navigation header showing the github logo alongside text that reads &#39;view level0-module0&#39;. this appears to be a clickable link or button for accessing a specific module in the league&#39;s java curriculum."
      data-name="view_button.png"
-     data-src="../module-navigation/view_button.png"
-     data-url="https://images.jointheleague.org/module-navigation/view_button.png"
+     data-src="../old_classes/module-navigation/view_button.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/view_button.png"
      data-full-desc="A navigation header showing the GitHub logo alongside text that reads &#39;View Level0-Module0&#39;. This appears to be a clickable link or button for accessing a specific module in The League&#39;s Java curriculum."
      data-flags="screenshot,logo,programming">
-  <img class="thumb" src="../module-navigation/view_button.png" alt="view_button.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/view_button.png" alt="view_button.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/view_button.png" target="_blank">view_button.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/view_button.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/view_button.png" target="_blank">view_button.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/view_button.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A navigation header showing the GitHub logo alongside text that reads &#39;View Level0-Module0&#39;. This appears to be a clickable link or button for accessing a specific module in The League&#39;s Java curriculum.</div>
     <div class="tags">
@@ -2574,15 +2608,15 @@
 <div class="image-card"
      data-desc="a screenshot of vs code showing a readme.md file for level0-module0, which is part of a coding curriculum. the file contains introductory instructions for students learning to draw shapes, control code flow, use dialogs, and build games. the left sidebar displays the project explorer with various files and folders, while a terminal window is visible at the bottom."
      data-name="vscode.png"
-     data-src="../module-navigation/vscode.png"
-     data-url="https://images.jointheleague.org/module-navigation/vscode.png"
+     data-src="../old_classes/module-navigation/vscode.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/vscode.png"
      data-full-desc="A screenshot of VS Code showing a README.md file for Level0-Module0, which is part of a coding curriculum. The file contains introductory instructions for students learning to draw shapes, control code flow, use dialogs, and build games. The left sidebar displays the project explorer with various files and folders, while a terminal window is visible at the bottom."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/vscode.png" alt="vscode.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/vscode.png" alt="vscode.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/vscode.png" target="_blank">vscode.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/vscode.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/vscode.png" target="_blank">vscode.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/vscode.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of VS Code showing a README.md file for Level0-Module0, which is part of a coding curriculum. The file contains introductory instructions for students learning to draw shapes, control code flow, use dialogs, and build games. The left sidebar displays the project explorer with various files and folders, while a terminal window is visible at the bottom.</div>
     <div class="tags">
@@ -2607,15 +2641,15 @@
 <div class="image-card"
      data-desc="a screenshot of vs code showing a readme.md file for level0-module0, which is an introductory coding workshop module. the file displays learning objectives including drawing shapes with processing, controlling code flow, using strings and dialogs, and building simple games. the left sidebar shows the project file structure with folders like scripts, src, and images."
      data-name="vscode_marked.png"
-     data-src="../module-navigation/vscode_marked.png"
-     data-url="https://images.jointheleague.org/module-navigation/vscode_marked.png"
+     data-src="../old_classes/module-navigation/vscode_marked.png"
+     data-url="https://images.jointheleague.org/old_classes/module-navigation/vscode_marked.png"
      data-full-desc="A screenshot of VS Code showing a README.md file for Level0-Module0, which is an introductory coding workshop module. The file displays learning objectives including drawing shapes with Processing, controlling code flow, using strings and dialogs, and building simple games. The left sidebar shows the project file structure with folders like scripts, src, and images."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../module-navigation/vscode_marked.png" alt="vscode_marked.png" loading="lazy">
+  <img class="thumb" src="../old_classes/module-navigation/vscode_marked.png" alt="vscode_marked.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../module-navigation/vscode_marked.png" target="_blank">vscode_marked.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/module-navigation/vscode_marked.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/module-navigation/vscode_marked.png" target="_blank">vscode_marked.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/module-navigation/vscode_marked.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of VS Code showing a README.md file for Level0-Module0, which is an introductory coding workshop module. The file displays learning objectives including drawing shapes with Processing, controlling code flow, using strings and dialogs, and building simple games. The left sidebar shows the project file structure with folders like scripts, src, and images.</div>
     <div class="tags">
@@ -2640,15 +2674,15 @@
 <div class="image-card"
      data-desc="an oscilloscope display showing an electrical waveform measurement with voltage and frequency data. the screen displays a yellow square wave pattern with measurements including vmax (3.35v), vmin (0.02v), vave (1.65v), vrms (2.32v), vpp (3.37v), frequency (0.050khz), duty cycle (50.0%), and cycle time (20.000ms). this is a screenshot of oscilloscope software or hardware used for electronics analysis and measurement."
      data-name="50_duty_trace.png"
-     data-src="../motors/50_duty_trace.png"
-     data-url="https://images.jointheleague.org/motors/50_duty_trace.png"
+     data-src="../old_classes/motors/50_duty_trace.png"
+     data-url="https://images.jointheleague.org/old_classes/motors/50_duty_trace.png"
      data-full-desc="An oscilloscope display showing an electrical waveform measurement with voltage and frequency data. The screen displays a yellow square wave pattern with measurements including Vmax (3.35V), Vmin (0.02V), Vave (1.65V), Vrms (2.32V), Vpp (3.37V), frequency (0.050kHz), duty cycle (50.0%), and cycle time (20.000ms). This is a screenshot of oscilloscope software or hardware used for electronics analysis and measurement."
      data-flags="screenshot,hardware">
-  <img class="thumb" src="../motors/50_duty_trace.png" alt="50_duty_trace.png" loading="lazy">
+  <img class="thumb" src="../old_classes/motors/50_duty_trace.png" alt="50_duty_trace.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../motors/50_duty_trace.png" target="_blank">50_duty_trace.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/motors/50_duty_trace.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/motors/50_duty_trace.png" target="_blank">50_duty_trace.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/motors/50_duty_trace.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">An oscilloscope display showing an electrical waveform measurement with voltage and frequency data. The screen displays a yellow square wave pattern with measurements including Vmax (3.35V), Vmin (0.02V), Vave (1.65V), Vrms (2.32V), Vpp (3.37V), frequency (0.050kHz), duty cycle (50.0%), and cycle time (20.000ms). This is a screenshot of oscilloscope software or hardware used for electronics analysis and measurement.</div>
     <div class="tags">
@@ -2673,17 +2707,442 @@
 <div class="image-card"
      data-desc="a screenshot of a python turtle graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. the window title shows &#39;python turtle graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
      data-name="spiral.png"
-     data-src="../python/spiral.png"
-     data-url="https://images.jointheleague.org/python/spiral.png"
+     data-src="../old_classes/python/spiral.png"
+     data-url="https://images.jointheleague.org/old_classes/python/spiral.png"
      data-full-desc="A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education."
      data-flags="screenshot,programming">
-  <img class="thumb" src="../python/spiral.png" alt="spiral.png" loading="lazy">
+  <img class="thumb" src="../old_classes/python/spiral.png" alt="spiral.png" loading="lazy">
   <div class="info">
     <div class="name-row">
-      <div class="name"><a href="../python/spiral.png" target="_blank">spiral.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/python/spiral.png" title="Copy URL">&#x2398;</button>
+      <div class="name"><a href="../old_classes/python/spiral.png" target="_blank">spiral.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/python/spiral.png" title="Copy URL">&#x2398;</button>
     </div>
     <div class="desc">A screenshot of a Python Turtle Graphics program displaying a colorful spiral pattern made of nested geometric shapes in red, blue, green, yellow, and orange lines on a black background. The window title shows &#39;Python Turtle Graphics&#39; and demonstrates the output of a turtle graphics script commonly used in introductory programming education.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a green button or banner with white text that reads &#39;create codespace on master&#39;. this appears to be a ui element from visual studio code related to creating a github codespace."
+     data-name="create_codespace.png"
+     data-src="../old_classes/vscode/create_codespace.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/create_codespace.png"
+     data-full-desc="A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/create_codespace.png" alt="create_codespace.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/create_codespace.png" target="_blank">create_codespace.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/create_codespace.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a green button or label showing the text &#39;create codespace on master&#39;, which appears to be a ui element from github or vs code for creating a cloud-based development environment."
+     data-name="create_codespace_sm.png"
+     data-src="../old_classes/vscode/create_codespace_sm.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/create_codespace_sm.png"
+     data-full-desc="A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/create_codespace_sm.png" alt="create_codespace_sm.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/create_codespace_sm.png" target="_blank">create_codespace_sm.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/create_codespace_sm.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a row of vs code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. these are standard ui elements found in the vs code editor interface."
+     data-name="debug_bar.png"
+     data-src="../old_classes/vscode/debug_bar.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/debug_bar.png"
+     data-full-desc="A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/debug_bar.png" alt="debug_bar.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/debug_bar.png" target="_blank">debug_bar.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/debug_bar.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a user interface showing an &#39;actions&#39; section with three buttons: a blue &#39;next lesson&#39; button at the top, and two buttons below it - a green &#39;run&#39; button with a play icon and a red &#39;stop&#39; button. this appears to be from an educational coding platform&#39;s interface."
+     data-name="lesson-browser.png"
+     data-src="../old_classes/vscode/lesson-browser.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/lesson-browser.png"
+     data-full-desc="A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/lesson-browser.png" alt="lesson-browser.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/lesson-browser.png" target="_blank">lesson-browser.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/lesson-browser.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot showing a row of vs code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
+     data-name="run_buttons.png"
+     data-src="../old_classes/vscode/run_buttons.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/run_buttons.png"
+     data-full-desc="A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
+     data-flags="screenshot">
+  <img class="thumb" src="../old_classes/vscode/run_buttons.png" alt="run_buttons.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/run_buttons.png" target="_blank">run_buttons.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/run_buttons.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of python code in visual studio code showing a beginner programming example. the code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. a red arrow annotation points to the import statement at the top."
+     data-name="run_cell.png"
+     data-src="../old_classes/vscode/run_cell.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/run_cell.png"
+     data-full-desc="A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/run_cell.png" alt="run_cell.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/run_cell.png" target="_blank">run_cell.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/run_cell.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of vs code showing a python programming lesson from the league&#39;s python-apprentice curriculum. the left panel displays a file explorer with lesson folders and python files (including turtle graphics exercises), the center shows python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;why, hello there!&#39; text."
+     data-name="run_tina.png"
+     data-src="../old_classes/vscode/run_tina.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/run_tina.png"
+     data-full-desc="A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/run_tina.png" alt="run_tina.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/run_tina.png" target="_blank">run_tina.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/run_tina.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a source control interface in vs code showing a commit dialog. the interface displays a message input field, a blue &#34;commit&#34; button, and a list of 3 modified files related to python lessons including turtle tricks and getting started modules."
+     data-name="sc_changes.png"
+     data-src="../old_classes/vscode/sc_changes.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/sc_changes.png"
+     data-full-desc="A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/sc_changes.png" alt="sc_changes.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/sc_changes.png" target="_blank">sc_changes.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/sc_changes.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a git commit message editor in vs code showing the commit_editmsg file. the editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_turtles/03c_turtle_tricks.py&#39; is modified and ready to be committed."
+     data-name="sc_edit_message.png"
+     data-src="../old_classes/vscode/sc_edit_message.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/sc_edit_message.png"
+     data-full-desc="A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/sc_edit_message.png" alt="sc_edit_message.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/sc_edit_message.png" target="_blank">sc_edit_message.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/sc_edit_message.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a vs code interface element showing a blue header bar with white text that reads &#39;sync changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
+     data-name="sc_sync.png"
+     data-src="../old_classes/vscode/sc_sync.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/sc_sync.png"
+     data-full-desc="A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/sc_sync.png" alt="sc_sync.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/sc_sync.png" target="_blank">sc_sync.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/sc_sync.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a jupyter kernel selection dialog in vs code. the interface shows a search box with placeholder text &#34;type to choose a kernel source&#34; and two options below: &#34;python environments...&#34; and &#34;existing jupyter server...&#34;"
+     data-name="select_python.png"
+     data-src="../old_classes/vscode/select_python.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/select_python.png"
+     data-full-desc="A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;"
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/select_python.png" alt="select_python.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/select_python.png" target="_blank">select_python.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/select_python.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a python development environment selection dialog in vs code. the interface shows options to create a new python environment or select from existing ones, including a recommended .venv (python 3.12.4) and several other python installations."
+     data-name="select_venv.png"
+     data-src="../old_classes/vscode/select_venv.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/select_venv.png"
+     data-full-desc="A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/select_venv.png" alt="select_venv.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/select_venv.png" target="_blank">select_venv.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/select_venv.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations.</div>
+    <div class="tags">
+      
+      <span class="tag">screenshot</span>
+      
+      <span class="tag">programming</span>
+      
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+  
+
+  
+
+
+<div class="image-card"
+     data-desc="a screenshot of a vs code start menu showing options for creating a new file, opening files, cloning a git repository, and connecting to a remote environment. this appears to be from visual studio code&#39;s welcome screen with a dark theme."
+     data-name="vscode_start.png"
+     data-src="../old_classes/vscode/vscode_start.png"
+     data-url="https://images.jointheleague.org/old_classes/vscode/vscode_start.png"
+     data-full-desc="A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme."
+     data-flags="screenshot,programming">
+  <img class="thumb" src="../old_classes/vscode/vscode_start.png" alt="vscode_start.png" loading="lazy">
+  <div class="info">
+    <div class="name-row">
+      <div class="name"><a href="../old_classes/vscode/vscode_start.png" target="_blank">vscode_start.png</a></div>
+      <button class="copy-btn" data-url="https://images.jointheleague.org/old_classes/vscode/vscode_start.png" title="Copy URL">&#x2398;</button>
+    </div>
+    <div class="desc">A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme.</div>
     <div class="tags">
       
       <span class="tag">screenshot</span>
@@ -2869,431 +3328,6 @@
       <span class="tag">programming</span>
       
       <span class="tag">stock</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a green button or banner with white text that reads &#39;create codespace on master&#39;. this appears to be a ui element from visual studio code related to creating a github codespace."
-     data-name="create_codespace.png"
-     data-src="../vscode/create_codespace.png"
-     data-url="https://images.jointheleague.org/vscode/create_codespace.png"
-     data-full-desc="A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/create_codespace.png" alt="create_codespace.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/create_codespace.png" target="_blank">create_codespace.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/create_codespace.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A green button or banner with white text that reads &#39;Create codespace on master&#39;. This appears to be a UI element from Visual Studio Code related to creating a GitHub Codespace.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a green button or label showing the text &#39;create codespace on master&#39;, which appears to be a ui element from github or vs code for creating a cloud-based development environment."
-     data-name="create_codespace_sm.png"
-     data-src="../vscode/create_codespace_sm.png"
-     data-url="https://images.jointheleague.org/vscode/create_codespace_sm.png"
-     data-full-desc="A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/create_codespace_sm.png" alt="create_codespace_sm.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/create_codespace_sm.png" target="_blank">create_codespace_sm.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/create_codespace_sm.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A green button or label showing the text &#39;Create codespace on master&#39;, which appears to be a UI element from GitHub or VS Code for creating a cloud-based development environment.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a row of vs code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. these are standard ui elements found in the vs code editor interface."
-     data-name="debug_bar.png"
-     data-src="../vscode/debug_bar.png"
-     data-url="https://images.jointheleague.org/vscode/debug_bar.png"
-     data-full-desc="A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/debug_bar.png" alt="debug_bar.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/debug_bar.png" target="_blank">debug_bar.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/debug_bar.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A row of VS Code interface icons showing various toolbar buttons and controls, including layout options, navigation arrows, undo/redo, and command palette shortcuts. These are standard UI elements found in the VS Code editor interface.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a user interface showing an &#39;actions&#39; section with three buttons: a blue &#39;next lesson&#39; button at the top, and two buttons below it - a green &#39;run&#39; button with a play icon and a red &#39;stop&#39; button. this appears to be from an educational coding platform&#39;s interface."
-     data-name="lesson-browser.png"
-     data-src="../vscode/lesson-browser.png"
-     data-url="https://images.jointheleague.org/vscode/lesson-browser.png"
-     data-full-desc="A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/lesson-browser.png" alt="lesson-browser.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/lesson-browser.png" target="_blank">lesson-browser.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/lesson-browser.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a user interface showing an &#39;ACTIONS&#39; section with three buttons: a blue &#39;Next Lesson&#39; button at the top, and two buttons below it - a green &#39;Run&#39; button with a play icon and a red &#39;Stop&#39; button. This appears to be from an educational coding platform&#39;s interface.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot showing a row of vs code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
-     data-name="run_buttons.png"
-     data-src="../vscode/run_buttons.png"
-     data-url="https://images.jointheleague.org/vscode/run_buttons.png"
-     data-full-desc="A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots."
-     data-flags="screenshot">
-  <img class="thumb" src="../vscode/run_buttons.png" alt="run_buttons.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/run_buttons.png" target="_blank">run_buttons.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/run_buttons.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot showing a row of VS Code interface icons including a play/run button, dropdown arrow, split editor panel button, and a menu button with three dots.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of python code in visual studio code showing a beginner programming example. the code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. a red arrow annotation points to the import statement at the top."
-     data-name="run_cell.png"
-     data-src="../vscode/run_cell.png"
-     data-url="https://images.jointheleague.org/vscode/run_cell.png"
-     data-full-desc="A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/run_cell.png" alt="run_cell.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/run_cell.png" target="_blank">run_cell.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/run_cell.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of Python code in Visual Studio Code showing a beginner programming example. The code demonstrates importing the datetime module, getting today&#39;s date, creating a string with a message, and printing it. A red arrow annotation points to the import statement at the top.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of vs code showing a python programming lesson from the league&#39;s python-apprentice curriculum. the left panel displays a file explorer with lesson folders and python files (including turtle graphics exercises), the center shows python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;why, hello there!&#39; text."
-     data-name="run_tina.png"
-     data-src="../vscode/run_tina.png"
-     data-url="https://images.jointheleague.org/vscode/run_tina.png"
-     data-full-desc="A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/run_tina.png" alt="run_tina.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/run_tina.png" target="_blank">run_tina.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/run_tina.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of VS Code showing a Python programming lesson from The League&#39;s Python-Apprentice curriculum. The left panel displays a file explorer with lesson folders and Python files (including turtle graphics exercises), the center shows Python code for a turtle graphics program with comments, and the right panel displays the output - a red circle drawn by the turtle graphics program with &#39;Why, hello there!&#39; text.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a source control interface in vs code showing a commit dialog. the interface displays a message input field, a blue &#34;commit&#34; button, and a list of 3 modified files related to python lessons including turtle tricks and getting started modules."
-     data-name="sc_changes.png"
-     data-src="../vscode/sc_changes.png"
-     data-url="https://images.jointheleague.org/vscode/sc_changes.png"
-     data-full-desc="A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/sc_changes.png" alt="sc_changes.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/sc_changes.png" target="_blank">sc_changes.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/sc_changes.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a source control interface in VS Code showing a commit dialog. The interface displays a message input field, a blue &#34;Commit&#34; button, and a list of 3 modified files related to Python lessons including turtle tricks and getting started modules.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a git commit message editor in vs code showing the commit_editmsg file. the editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_turtles/03c_turtle_tricks.py&#39; is modified and ready to be committed."
-     data-name="sc_edit_message.png"
-     data-src="../vscode/sc_edit_message.png"
-     data-url="https://images.jointheleague.org/vscode/sc_edit_message.png"
-     data-full-desc="A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/sc_edit_message.png" alt="sc_edit_message.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/sc_edit_message.png" target="_blank">sc_edit_message.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/sc_edit_message.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a Git commit message editor in VS Code showing the COMMIT_EDITMSG file. The editor displays default git commit instructions in green text, including a section showing that a file &#39;lessons/00_Turtles/03c_Turtle_Tricks.py&#39; is modified and ready to be committed.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a vs code interface element showing a blue header bar with white text that reads &#39;sync changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
-     data-name="sc_sync.png"
-     data-src="../vscode/sc_sync.png"
-     data-url="https://images.jointheleague.org/vscode/sc_sync.png"
-     data-full-desc="A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/sc_sync.png" alt="sc_sync.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/sc_sync.png" target="_blank">sc_sync.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/sc_sync.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a VS Code interface element showing a blue header bar with white text that reads &#39;Sync Changes 1↑&#39;, indicating a synchronization feature with one pending change to upload.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a jupyter kernel selection dialog in vs code. the interface shows a search box with placeholder text &#34;type to choose a kernel source&#34; and two options below: &#34;python environments...&#34; and &#34;existing jupyter server...&#34;"
-     data-name="select_python.png"
-     data-src="../vscode/select_python.png"
-     data-url="https://images.jointheleague.org/vscode/select_python.png"
-     data-full-desc="A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;"
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/select_python.png" alt="select_python.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/select_python.png" target="_blank">select_python.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/select_python.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a Jupyter kernel selection dialog in VS Code. The interface shows a search box with placeholder text &#34;Type to choose a kernel source&#34; and two options below: &#34;Python Environments...&#34; and &#34;Existing Jupyter Server...&#34;</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a python development environment selection dialog in vs code. the interface shows options to create a new python environment or select from existing ones, including a recommended .venv (python 3.12.4) and several other python installations."
-     data-name="select_venv.png"
-     data-src="../vscode/select_venv.png"
-     data-url="https://images.jointheleague.org/vscode/select_venv.png"
-     data-full-desc="A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/select_venv.png" alt="select_venv.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/select_venv.png" target="_blank">select_venv.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/select_venv.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a Python development environment selection dialog in VS Code. The interface shows options to create a new Python environment or select from existing ones, including a recommended .venv (Python 3.12.4) and several other Python installations.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
-      
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-  
-
-  
-
-
-<div class="image-card"
-     data-desc="a screenshot of a vs code start menu showing options for creating a new file, opening files, cloning a git repository, and connecting to a remote environment. this appears to be from visual studio code&#39;s welcome screen with a dark theme."
-     data-name="vscode_start.png"
-     data-src="../vscode/vscode_start.png"
-     data-url="https://images.jointheleague.org/vscode/vscode_start.png"
-     data-full-desc="A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme."
-     data-flags="screenshot,programming">
-  <img class="thumb" src="../vscode/vscode_start.png" alt="vscode_start.png" loading="lazy">
-  <div class="info">
-    <div class="name-row">
-      <div class="name"><a href="../vscode/vscode_start.png" target="_blank">vscode_start.png</a></div>
-      <button class="copy-btn" data-url="https://images.jointheleague.org/vscode/vscode_start.png" title="Copy URL">&#x2398;</button>
-    </div>
-    <div class="desc">A screenshot of a VS Code Start menu showing options for creating a new file, opening files, cloning a Git repository, and connecting to a remote environment. This appears to be from Visual Studio Code&#39;s welcome screen with a dark theme.</div>
-    <div class="tags">
-      
-      <span class="tag">screenshot</span>
-      
-      <span class="tag">programming</span>
       
     </div>
   </div>
@@ -3499,10 +3533,24 @@ document.getElementById('search').addEventListener('input', (e) => {
   }, 200);
 });
 
+// --- Old Classes toggle persistence ---
+function bindOldClassesToggle() {
+  const details = document.getElementById('old-classes');
+  if (!details) return;
+  // Don't override server-set open state when an old category is active.
+  if (!details.hasAttribute('open') && localStorage.getItem('oldClassesOpen') === '1') {
+    details.setAttribute('open', '');
+  }
+  details.addEventListener('toggle', () => {
+    localStorage.setItem('oldClassesOpen', details.open ? '1' : '0');
+  });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   originalContent = document.getElementById('page-content').innerHTML;
   bindCards();
+  bindOldClassesToggle();
 
   const cards = document.querySelectorAll('.image-card');
   const counter = document.getElementById('result-count');

@@ -303,9 +303,11 @@ def run_describe(base: Path, categories: list[str] | None):
     dirs_to_process = categories if categories else sorted(CATEGORIES.keys())
 
     for category in dirs_to_process:
-        dir_path = base / category
-        if dir_path.is_dir():
-            process_directory(client, base, dir_path, category)
+        # Categories may live at the top level or inside old_classes/.
+        for candidate in (base / category, base / 'old_classes' / category):
+            if candidate.is_dir():
+                process_directory(client, base, candidate, category)
+                break
         else:
             print(f"Warning: directory '{category}' not found, skipping")
 
