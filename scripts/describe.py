@@ -27,6 +27,10 @@ CATEGORIES = {
         "Screenshots for websites or instructions describing how to use GitHub. "
         "Many are images of particular features of the GitHub website."
     ),
+    'group': (
+        "Group photos of students, instructors, and event attendees — posed "
+        "shots and gatherings from League events, classes, and visits."
+    ),
     'logos': (
         "Logos for The League. Use these anywhere logos are required."
     ),
@@ -54,6 +58,10 @@ CATEGORIES = {
     'p3logos': (
         "Third-party partner logos (P3 = third party), such as GitHub, "
         "Facebook, or other organizations."
+    ),
+    'projects': (
+        "Photos of student projects — physical builds, hardware constructions, "
+        "and creative works produced during League classes and clinics."
     ),
     'python': "Images used in the Python curriculum.",
     'robots': (
@@ -303,11 +311,9 @@ def run_describe(base: Path, categories: list[str] | None):
     dirs_to_process = categories if categories else sorted(CATEGORIES.keys())
 
     for category in dirs_to_process:
-        # Categories may live at the top level or inside old_classes/.
-        for candidate in (base / category, base / 'old_classes' / category):
-            if candidate.is_dir():
-                process_directory(client, base, candidate, category)
-                break
+        dir_path = base / category
+        if dir_path.is_dir():
+            process_directory(client, base, dir_path, category)
         else:
             print(f"Warning: directory '{category}' not found, skipping")
 

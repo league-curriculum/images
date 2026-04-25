@@ -1,0 +1,29 @@
+image:
+  name: IMG_3839.jpeg
+  path: robots/IMG_3839.jpeg
+category: robots
+description: A small orange robot with a visible circuit board and wheel is positioned
+  on a white mat with black lines and circles, appearing to be in a robotics learning
+  environment. The mat has colored blocks (yellow, red, green, and purple) placed
+  in circular zones, suggesting this is a programming or robotics challenge setup.
+  The setting appears to be indoors on a wooden table with computer equipment visible
+  in the background.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

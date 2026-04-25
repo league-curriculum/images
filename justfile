@@ -16,7 +16,6 @@ compile:
 index:
     uv run mkimg index
 
-# Start a local dev server to preview the catalog
-dev port="8000":
-    @echo "Serving at http://localhost:{{ port }}/_site/"
-    uv run python -m http.server {{ port }}
+# Build the site and serve it locally (opens browser)
+serve port="8000":
+    uv run mkimg serve --port {{ port }}

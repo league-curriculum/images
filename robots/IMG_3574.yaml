@@ -1,0 +1,27 @@
+image:
+  name: IMG_3574.jpeg
+  path: robots/IMG_3574.jpeg
+category: robots
+description: A small educational robot with a green battery and blue chassis on wheels
+  is shown with its internal components visible. Next to it are a bright green ball
+  and colorful stacked foam blocks (blue, orange, and yellow), which appear to be
+  props for robotics activities or competitions.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

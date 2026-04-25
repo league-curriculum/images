@@ -7,6 +7,8 @@ from jinja2 import Environment, FileSystemLoader
 
 SITE_DIR = '_site'
 
+OLD_CATEGORIES = {'github', 'memes', 'microbit', 'module-navigation', 'motors', 'python', 'vscode'}
+
 
 def run_index(base: Path):
     """Generate index.html and per-category HTML pages into _site/."""
@@ -39,8 +41,8 @@ def run_index(base: Path):
         }
 
     sorted_cats = sorted(catalog['categories'].items())
-    categories_list = [_entry(n, i) for n, i in sorted_cats if not i.get('old')]
-    old_categories_list = [_entry(n, i) for n, i in sorted_cats if i.get('old')]
+    categories_list = [_entry(n, i) for n, i in sorted_cats if n not in OLD_CATEGORIES]
+    old_categories_list = [_entry(n, i) for n, i in sorted_cats if n in OLD_CATEGORIES]
 
     flags = catalog.get('flags', [])
     all_images = catalog.get('images', [])

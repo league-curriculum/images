@@ -1,0 +1,27 @@
+image:
+  name: IMG_3625.jpeg
+  path: robots/IMG_3625.jpeg
+category: robots
+description: Two small programmable robots displayed on a bright blue background.
+  On the left is a red robot with a blue attachment and buttons, while on the right
+  is a blue and white robot with wheels and circuit board components visible. Both
+  appear to be educational robotics kits designed for learning programming and robotics.
+flags:
+  person_1: false
+  person_n: false
+  teaching: false
+  screenshot: false
+  logo: false
+  robot: true
+  hardware: true
+  action: false
+  illustration: false
+  programming: false
+  group_photo: false
+  product_photo: true
+  duplicate: false
+  stock: false
+  presentation: false
+  building: false
+  outdoor: false
+  event: false

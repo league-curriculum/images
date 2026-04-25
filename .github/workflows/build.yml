@@ -41,7 +41,7 @@ jobs:
       - name: Prepare Pages artifact
         run: |
           # Copy image directories into _site so pages are self-contained
-          for dir in action cards classes github logos memes misc mkt p3logos robots stock old_classes; do
+          for dir in action cards classes github logos memes microbit misc mkt module-navigation motors p3logos python robots stock vscode; do
             if [ -d "$dir" ]; then
               cp -r "$dir" _site/
             fi
