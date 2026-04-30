@@ -81,6 +81,26 @@ def serve(port, no_build, no_open):
 
 
 @cli.command()
+@click.option('--dry-run', is_flag=True, help='List what would be uploaded without touching MediaCMS.')
+@click.option('--category', 'categories', multiple=True, help='Restrict to one or more categories.')
+@click.option('--exclude', 'exclude', multiple=True, help='Skip one or more categories.')
+@click.option('--limit', type=int, default=0, help='Stop after uploading this many new images (0 = no limit).')
+def upload(dry_run, categories, exclude, limit):
+    """Import all images and metadata into MediaCMS.
+
+    Reads MEDIACMS_API and MEDIACMS_API_TOKEN from .env. Categories must
+    already exist on the server (create via admin); tags are auto-created
+    when assigned. State is tracked in data/mediacms_state.json so re-runs
+    skip already-uploaded images.
+    """
+    from scripts.upload import run_upload
+    run_upload(BASE, dry_run=dry_run,
+               only_categories=list(categories) if categories else None,
+               exclude_categories=list(exclude) if exclude else None,
+               limit=limit)
+
+
+@cli.command()
 def build():
     """Run full pipeline: describe, compile, index.
 
