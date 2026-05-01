@@ -48,6 +48,8 @@ jobs:
           done
           # Copy CNAME for custom domain
           cp CNAME _site/ 2>/dev/null || true
+          # Disable Jekyll processing on Pages
+          touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:
